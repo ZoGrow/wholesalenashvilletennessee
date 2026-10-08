@@ -410,35 +410,61 @@ def main():
 
     with open(args.config) as f:
         cfg = json.load(f)
-    # Scrape `target` agents (times scrape_multiplier, if you want extra to make up for
-    # the ones cleaning removes). Only leads that pass every check are sent.
     target = args.limit or cfg.get("daily_clean_leads", 100)
-    scrape = min(target * cfg.get("scrape_multiplier", 1), 5000)
-    cfg["apify"].setdefault("input", {})["maxResults"] = scrape
-    print(f"Target: {target} clean leads (scraping up to {scrape} agents)")
+    out_dir = os.path.join(HERE, cfg.get("output_dir", "output"))
 
     if args.input_json:
         with open(args.input_json) as f:
-            items = json.load(f)
+            rounds = [json.load(f)]
     else:
-        items = fetch_apify_items(cfg)
+        rounds = None  # scrape from Apify, growing the scrape each round
 
-    leads, rejected = build_leads(items, cfg)
-    out_dir = os.path.join(HERE, cfg.get("output_dir", "output"))
+    # Keep scraping (bigger each round) until `target` clean leads have been sent.
+    # Apify returns agents in the same order each time, so later rounds re-cover the
+    # first agents; anything already handled this run is skipped.
+    scrape = min(target * cfg.get("scrape_multiplier", 3), 5000)
+    max_rounds = cfg.get("max_scrape_rounds", 4)
+    handled, sent_all, removed_all, failed_all = set(), [], [], 0
+    for rnd in range(1, max_rounds + 1):
+        if rounds is not None:
+            if rnd > 1:
+                break
+            items = rounds[0]
+        else:
+            cfg["apify"].setdefault("input", {})["maxResults"] = scrape
+            print(f"Round {rnd}: scraping up to {scrape} agents for {target - len(sent_all)} more clean leads")
+            items = fetch_apify_items(cfg)
 
+        leads, rejected = build_leads(items, cfg)
+        key = lambda r: r["phone"] or r["email"] or r["source_url"] or r["full_name"]
+        leads = [r for r in leads if key(r) not in handled]
+        rejected = [r for r in rejected if key(r) not in handled]
+        handled.update(key(r) for r in leads + rejected)
+        removed_all += rejected
+
+        if not args.send:
+            sent_all = leads[:target]
+            break
+        sent, removed, failed = push_to_ghl(leads, cfg, target - len(sent_all))
+        sent_all += sent
+        removed_all += removed
+        failed_all += failed
+        if len(sent_all) >= target or scrape >= 5000 or len(items) < scrape:
+            break  # done, at Apify's cap, or the market has no more agents
+        scrape = min(scrape * 2, 5000)
+
+    write_csv(sent_all, out_dir)
+    write_csv(removed_all, out_dir, "removed", CSV_COLUMNS + ["reason"])
     if not args.send:
-        write_csv(leads[:target], out_dir)
-        write_csv(rejected, out_dir, "removed", CSV_COLUMNS + ["reason"])
         print("Dry run: nothing sent to GoHighLevel. Sample of what would be pushed:")
-        for lead in leads[:3]:
+        for lead in sent_all[:3]:
             print("  " + json.dumps(ghl_contact_body(lead, "<GHL_LOCATION_ID>", cfg)))
         return 0
-
-    sent, removed, failed = push_to_ghl(leads, cfg, target)
-    write_csv(sent, out_dir)
-    write_csv(rejected + removed, out_dir, "removed", CSV_COLUMNS + ["reason"])
-    return 1 if failed and cfg["ghl"].get("fail_on_errors", True) else 0
-
+    print(f"DONE: {len(sent_all)} of {target} clean leads sent to outreach")
+    if len(sent_all) < target:
+        print("Ran out of new agents in this market before reaching the target. Add more "
+              "locations in config.json or raise max_scrape_rounds.")
+    return 1 if failed_all and cfg["ghl"].get("fail_on_errors", True) else 0
 
 if __name__ == "__main__":
     sys.exit(main())

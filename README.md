@@ -32,9 +32,10 @@ untouched. New contacts are first created untagged; after a short wait the scrip
 one back and only tags the ones GHL has not put on Do Not Disturb. DND contacts get the
 tag `dnd-skipped` instead and never enter the outreach workflow.
 
-Each run scrapes `daily_clean_leads` agents (100) and sends only the ones that pass every
-check, so the number texted is usually lower. Set `scrape_multiplier` above 1 to scrape
-extra and fill up to the full amount.
+Each run sends exactly `daily_clean_leads` (100) clean leads to outreach. It first scrapes
+3x that (`scrape_multiplier`), and if too few pass, scrapes again at double the size (up to
+`max_scrape_rounds`, max 5,000 agents) until the target is hit or Nashville runs out of
+new agents.
 
 ## Setup
 

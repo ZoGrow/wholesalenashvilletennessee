@@ -6,7 +6,7 @@ on:
   workflow_dispatch:        # lets you run it by hand from the Actions tab
     inputs:
       limit:
-        description: "Test size: scrape this many agents and send only the clean ones (blank = normal run)"
+        description: "Test size: send exactly this many clean leads (blank = normal daily amount)"
         required: false
         default: ""
 

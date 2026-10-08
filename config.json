@@ -1,6 +1,7 @@
 {
   "daily_clean_leads": 100,
-  "scrape_multiplier": 1,
+  "scrape_multiplier": 3,
+  "max_scrape_rounds": 4,
   "apify": {
     "actor_id": "automation-lab~realtor-agents-scraper",
     "mode": "run",

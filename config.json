@@ -3,7 +3,9 @@
     "actor_id": "automation-lab~realtor-agents-scraper",
     "mode": "run",
     "input": {
-      "locations": ["Nashville, TN"],
+      "locations": [
+        "Nashville, TN"
+      ],
       "listingStatus": "both",
       "maxResults": 100
     },
@@ -12,21 +14,50 @@
   "field_map": {
     "first_name": [],
     "last_name": [],
-    "full_name": ["name"],
-    "phone": ["primaryPhone", "phones.0.number"],
-    "email": ["email"],
-    "company": ["brokerage"],
-    "website": ["websiteUrl"],
-    "address": ["officeAddress"],
-    "city": ["city"],
-    "state": ["state"],
-    "postal_code": ["postalCode"],
-    "source_url": ["profileUrl"]
+    "full_name": [
+      "name"
+    ],
+    "phone": [],
+    "email": [
+      "email"
+    ],
+    "company": [
+      "brokerage"
+    ],
+    "website": [
+      "websiteUrl"
+    ],
+    "address": [
+      "officeAddress"
+    ],
+    "city": [
+      "city"
+    ],
+    "state": [
+      "state"
+    ],
+    "postal_code": [
+      "postalCode"
+    ],
+    "source_url": [
+      "profileUrl"
+    ]
   },
   "ghl": {
-    "tags": ["apify-daily-lead"],
+    "tags": [
+      "apify-daily-lead"
+    ],
     "source": "Apify realtor agents scraper",
     "fail_on_errors": true
   },
-  "output_dir": "output"
+  "output_dir": "output",
+  "mobile_only": {
+    "list_path": "phones",
+    "types": [
+      "mobile",
+      "cell",
+      "cellular",
+      "wireless"
+    ]
+  }
 }

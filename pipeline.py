@@ -174,8 +174,22 @@ def normalize_phone(raw, default_country="1"):
     return f"+{digits}" if len(digits) > 11 else ""
 
 
-def to_lead(item, field_map):
+def mobile_phone(item, mobile_cfg):
+    """Pick the first phone whose type looks like a cell number, e.g.
+    {"phones": [{"number": "5125549618", "type": "Mobile"}]}. Returns "" if none."""
+    phones = get_path(item, mobile_cfg.get("list_path", "phones")) or []
+    wanted = [t.lower() for t in mobile_cfg.get("types", ["mobile", "cell"])]
+    for ph in phones if isinstance(phones, list) else []:
+        if isinstance(ph, dict) and str(ph.get("type", "")).lower() in wanted:
+            return str(ph.get("number", ""))
+    return ""
+
+
+def to_lead(item, field_map, mobile_cfg=None):
     lead = {col: first_value(item, field_map.get(col, [])) for col in CSV_COLUMNS}
+    if mobile_cfg:
+        # Texts can't reach landlines, so only use a phone the source marks as mobile.
+        lead["phone"] = mobile_phone(item, mobile_cfg)
     lead["phone"] = normalize_phone(lead["phone"])
     lead["email"] = lead["email"].lower()
     if not lead["full_name"]:
@@ -187,10 +201,11 @@ def to_lead(item, field_map):
 
 
 def build_leads(items, cfg):
+    mobile_cfg = cfg.get("mobile_only")
     leads, seen, skipped = [], set(), 0
     for item in items:
-        lead = to_lead(item, cfg["field_map"])
-        if not (lead["phone"] or lead["email"]):
+        lead = to_lead(item, cfg["field_map"], mobile_cfg)
+        if not (lead["phone"] or lead["email"]) or (mobile_cfg and not lead["phone"]):
             skipped += 1
             continue
         key = lead["phone"] or lead["email"]
@@ -198,7 +213,8 @@ def build_leads(items, cfg):
             continue
         seen.add(key)
         leads.append(lead)
-    print(f"{len(items)} items -> {len(leads)} leads ({skipped} skipped: no phone or email)")
+    reason = "no mobile number" if mobile_cfg else "no phone or email"
+    print(f"{len(items)} items -> {len(leads)} leads ({skipped} skipped: {reason})")
     return leads
 
 

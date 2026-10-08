@@ -396,6 +396,31 @@ def push_to_ghl(leads, cfg, target):
     return sent, removed, failed
 
 
+class ZipRotation:
+    """Hands out ZIP codes a few at a time so each scrape covers areas not hit recently.
+
+    The starting point moves forward every day (based on the date, so no state file is
+    needed): day 1 scrapes ZIPs 1-2, day 2 ZIPs 3-4, and so on, wrapping around at the
+    end of the list. Top-up rounds in the same run take the next ZIPs along."""
+
+    def __init__(self, cfg):
+        rot = cfg["apify"].get("zip_rotation") or {}
+        self.zips = rot.get("zips", [])
+        self.per_round = max(1, rot.get("per_round", 2))
+        self.enabled = bool(self.zips)
+        day = (dt.date.today() - dt.date(2026, 1, 1)).days
+        self.pos = (day * self.per_round) % len(self.zips) if self.zips else 0
+        self.used = 0
+
+    def next_batch(self):
+        if self.used >= len(self.zips):
+            return []
+        n = min(self.per_round, len(self.zips) - self.used)
+        batch = [self.zips[(self.pos + i) % len(self.zips)] for i in range(n)]
+        self.pos, self.used = self.pos + n, self.used + n
+        return batch
+
+
 def write_summary(target, scraped, cap, sent, removed):
     """Show a scraped-vs-sent table on the GitHub Actions run page."""
     path = os.environ.get("GITHUB_STEP_SUMMARY")
@@ -440,25 +465,38 @@ def main():
         with open(args.input_json) as f:
             rounds = [json.load(f)]
     else:
-        rounds = None  # scrape from Apify, growing the scrape each round
+        rounds = None  # scrape from Apify
 
-    # Keep scraping (a little more each round) until `target` clean leads have been sent.
-    # Apify returns agents in the same order each time, so later rounds re-cover the
-    # first agents; anything already handled this run is skipped.
-    # Hard cap on agents scraped per run so cleaning can't quietly burn through credits.
+    # Each round scrapes only what is still needed (x scrape_multiplier). With ZIP rotation,
+    # every round moves on to ZIPs not yet scraped, so nothing is paid for twice and each
+    # day starts where the rotation left off. Total scraped never exceeds `cap`.
     cap = min(max(int(target * cfg.get("max_scrape_ratio", 2)), 20), 5000)
-    scrape = min(int(target * cfg.get("scrape_multiplier", 1.2) + 0.999), cap)
+    mult = cfg.get("scrape_multiplier", 1.2)
     max_rounds = cfg.get("max_scrape_rounds", 5)
-    handled, sent_all, removed_all, failed_all = set(), [], [], 0
+    zips = ZipRotation(cfg)
+    handled, sent_all, removed_all, failed_all, scraped = set(), [], [], 0, 0
     for rnd in range(1, max_rounds + 1):
+        need = target - len(sent_all)
+        ask = min(int(need * mult + 0.999), cap - scraped)
+        if ask <= 0:
+            break
         if rounds is not None:
             if rnd > 1:
                 break
             items = rounds[0]
         else:
-            cfg["apify"].setdefault("input", {})["maxResults"] = scrape
-            print(f"Round {rnd}: scraping up to {scrape} agents ({target - len(sent_all)} clean leads still needed)")
+            if zips.enabled:
+                area = zips.next_batch()
+                if not area:
+                    print("Every ZIP in the rotation has been scraped this run")
+                    break
+                cfg["apify"]["input"]["locations"] = area
+                cfg["apify"]["input"].pop("location", None)
+            cfg["apify"].setdefault("input", {})["maxResults"] = ask
+            where = ", ".join(cfg["apify"]["input"].get("locations", []))
+            print(f"Round {rnd}: scraping up to {ask} agents in {where} ({need} clean leads still needed)")
             items = fetch_apify_items(cfg)
+        scraped += len(items)
 
         leads, rejected = build_leads(items, cfg)
         key = lambda r: r["phone"] or r["email"] or r["source_url"] or r["full_name"]
@@ -470,15 +508,14 @@ def main():
         if not args.send:
             sent_all = leads[:target]
             break
-        sent, removed, failed = push_to_ghl(leads, cfg, target - len(sent_all))
+        sent, removed, failed = push_to_ghl(leads, cfg, need)
         sent_all += sent
         removed_all += removed
         failed_all += failed
-        if len(sent_all) >= target or scrape >= cap or len(items) < scrape:
-            break  # done, at the scrape cap, or the market has no more agents
-        # Top up by just the shortfall (plus the same 1.2x buffer), not double.
-        shortfall = target - len(sent_all)
-        scrape = min(scrape + int(shortfall * cfg.get("scrape_multiplier", 1.2) + 0.999), cap)
+        if len(sent_all) >= target:
+            break
+        if not zips.enabled and len(items) < ask:
+            break  # without rotation, a short scrape means the market is exhausted
 
     write_csv(sent_all, out_dir)
     write_csv(removed_all, out_dir, "removed", CSV_COLUMNS + ["reason"])
@@ -491,7 +528,7 @@ def main():
     if len(sent_all) < target:
         print(f"Stopped short: hit the {cap}-agent scrape cap or ran out of new agents. "
               "Add more locations in config.json if this keeps happening.")
-    write_summary(target, len(handled), cap, sent_all, removed_all)
+    write_summary(target, scraped, cap, sent_all, removed_all)
     return 1 if failed_all and cfg["ghl"].get("fail_on_errors", True) else 0
 
 if __name__ == "__main__":

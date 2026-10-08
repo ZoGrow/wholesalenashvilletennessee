@@ -12,7 +12,40 @@
       ],
       "listingStatus": "both"
     },
-    "max_wait_minutes": 60
+    "max_wait_minutes": 60,
+    "zip_rotation": {
+      "_note": "Nashville / Davidson County ZIPs. Each day scrapes the next few; top-ups move to the next ZIPs. Remove this block to scrape all of 'locations' instead.",
+      "per_round": 2,
+      "zips": [
+        "37203",
+        "37206",
+        "37209",
+        "37211",
+        "37013",
+        "37205",
+        "37215",
+        "37204",
+        "37212",
+        "37207",
+        "37208",
+        "37214",
+        "37216",
+        "37217",
+        "37218",
+        "37220",
+        "37221",
+        "37076",
+        "37115",
+        "37138",
+        "37072",
+        "37210",
+        "37201",
+        "37219",
+        "37228",
+        "37080",
+        "37189"
+      ]
+    }
   },
   "field_map": {
     "first_name": [],

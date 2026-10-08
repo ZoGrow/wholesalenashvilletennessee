@@ -263,11 +263,13 @@ def main():
     ap.add_argument("--send", action="store_true",
                     help="actually push to GoHighLevel (default is a dry run)")
     ap.add_argument("--input-json", help="use a local JSON file of items instead of calling Apify")
-    ap.add_argument("--limit", type=int, help="only process the first N leads (for testing)")
+    ap.add_argument("--limit", type=int, help="only scrape and process N leads (for testing)")
     args = ap.parse_args()
 
     with open(args.config) as f:
         cfg = json.load(f)
+    if args.limit:
+        cfg["apify"].setdefault("input", {})["maxResults"] = args.limit
 
     if args.input_json:
         with open(args.input_json) as f:

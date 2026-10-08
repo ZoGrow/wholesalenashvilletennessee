@@ -3,7 +3,12 @@ name: Daily leads to GoHighLevel
 on:
   schedule:
     - cron: "0 13 * * *"   # 13:00 UTC = 9am Eastern (8am in winter)
-  workflow_dispatch: {}     # lets you run it by hand from the Actions tab
+  workflow_dispatch:        # lets you run it by hand from the Actions tab
+    inputs:
+      limit:
+        description: "Test size: only this many agents (leave blank for the normal run)"
+        required: false
+        default: ""
 
 jobs:
   run:
@@ -19,7 +24,8 @@ jobs:
           GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
           GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
           GHL_WORKFLOW_ID: ${{ secrets.GHL_WORKFLOW_ID }}
-        run: python pipeline.py --send
+          LIMIT: ${{ inputs.limit }}
+        run: python pipeline.py --send ${LIMIT:+--limit "$LIMIT"}
       - name: Save today's CSV
         uses: actions/upload-artifact@v4
         with:

@@ -26,7 +26,7 @@
   "ghl": {
     "tags": ["apify-daily-lead"],
     "source": "Apify realtor agents scraper",
-    "fail_on_errors": false
+    "fail_on_errors": true
   },
   "output_dir": "output"
 }

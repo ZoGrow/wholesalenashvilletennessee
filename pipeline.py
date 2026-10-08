@@ -294,7 +294,7 @@ def main():
         for lead in leads[:3]:
             print("  " + json.dumps(ghl_contact_body(lead, "<GHL_LOCATION_ID>", cfg)))
         return 0
-    return 1 if push_to_ghl(leads, cfg) and cfg["ghl"].get("fail_on_errors") else 0
+    return 1 if push_to_ghl(leads, cfg) and cfg["ghl"].get("fail_on_errors", True) else 0
 
 
 if __name__ == "__main__":

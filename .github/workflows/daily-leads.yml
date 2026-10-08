@@ -1,0 +1,28 @@
+name: Daily leads to GoHighLevel
+
+on:
+  schedule:
+    - cron: "0 13 * * *"   # 13:00 UTC = 9am Eastern (8am in winter)
+  workflow_dispatch: {}     # lets you run it by hand from the Actions tab
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pull leads and push to GoHighLevel
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
+          GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
+          GHL_WORKFLOW_ID: ${{ secrets.GHL_WORKFLOW_ID }}
+        run: python pipeline.py --send
+      - name: Save today's CSV
+        uses: actions/upload-artifact@v4
+        with:
+          name: leads-csv
+          path: output/*.csv
+          retention-days: 30

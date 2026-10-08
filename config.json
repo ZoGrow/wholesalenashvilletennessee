@@ -1,0 +1,32 @@
+{
+  "apify": {
+    "actor_id": "automation-lab~realtor-agents-scraper",
+    "mode": "run",
+    "input": {
+      "locations": ["Nashville, TN"],
+      "listingStatus": "both",
+      "maxResults": 100
+    },
+    "max_wait_minutes": 60
+  },
+  "field_map": {
+    "first_name": [],
+    "last_name": [],
+    "full_name": ["name"],
+    "phone": ["primaryPhone", "phones.0.number"],
+    "email": ["email"],
+    "company": ["brokerage"],
+    "website": ["websiteUrl"],
+    "address": ["officeAddress"],
+    "city": ["city"],
+    "state": ["state"],
+    "postal_code": ["postalCode"],
+    "source_url": ["profileUrl"]
+  },
+  "ghl": {
+    "tags": ["apify-daily-lead"],
+    "source": "Apify realtor agents scraper",
+    "fail_on_errors": false
+  },
+  "output_dir": "output"
+}

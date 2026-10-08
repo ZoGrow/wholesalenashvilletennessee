@@ -396,6 +396,29 @@ def push_to_ghl(leads, cfg, target):
     return sent, removed, failed
 
 
+def write_summary(target, scraped, cap, sent, removed):
+    """Show a scraped-vs-sent table on the GitHub Actions run page."""
+    path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if not path:
+        return
+    tally = {}
+    for r in removed:
+        tally[r["reason"]] = tally.get(r["reason"], 0) + 1
+    rate = f"{len(sent) / scraped:.0%}" if scraped else "n/a"
+    lines = [
+        "## Lead run summary", "",
+        "| | Count |", "|---|---|",
+        f"| Target | {target} |",
+        f"| Agents scraped | {scraped} (cap {cap}) |",
+        f"| **Sent to outreach** | **{len(sent)}** |",
+        f"| Removed | {len(removed)} |",
+        f"| Usable rate | {rate} |", "",
+        "| Removed because | Count |", "|---|---|",
+    ] + [f"| {k} | {v} |" for k, v in sorted(tally.items(), key=lambda kv: -kv[1])]
+    with open(path, "a") as f:
+        f.write("\n".join(lines) + "\n")
+
+
 # ----------------------------------------------------------------------- main
 
 def main():
@@ -422,8 +445,10 @@ def main():
     # Keep scraping (a little more each round) until `target` clean leads have been sent.
     # Apify returns agents in the same order each time, so later rounds re-cover the
     # first agents; anything already handled this run is skipped.
-    scrape = min(int(target * cfg.get("scrape_multiplier", 1.2) + 0.999), 5000)
-    max_rounds = cfg.get("max_scrape_rounds", 4)
+    # Hard cap on agents scraped per run so cleaning can't quietly burn through credits.
+    cap = min(max(int(target * cfg.get("max_scrape_ratio", 2)), 20), 5000)
+    scrape = min(int(target * cfg.get("scrape_multiplier", 1.2) + 0.999), cap)
+    max_rounds = cfg.get("max_scrape_rounds", 5)
     handled, sent_all, removed_all, failed_all = set(), [], [], 0
     for rnd in range(1, max_rounds + 1):
         if rounds is not None:
@@ -449,11 +474,11 @@ def main():
         sent_all += sent
         removed_all += removed
         failed_all += failed
-        if len(sent_all) >= target or scrape >= 5000 or len(items) < scrape:
-            break  # done, at Apify's cap, or the market has no more agents
+        if len(sent_all) >= target or scrape >= cap or len(items) < scrape:
+            break  # done, at the scrape cap, or the market has no more agents
         # Top up by just the shortfall (plus the same 1.2x buffer), not double.
         shortfall = target - len(sent_all)
-        scrape = min(scrape + int(shortfall * cfg.get("scrape_multiplier", 1.2) + 0.999), 5000)
+        scrape = min(scrape + int(shortfall * cfg.get("scrape_multiplier", 1.2) + 0.999), cap)
 
     write_csv(sent_all, out_dir)
     write_csv(removed_all, out_dir, "removed", CSV_COLUMNS + ["reason"])
@@ -464,8 +489,9 @@ def main():
         return 0
     print(f"DONE: {len(sent_all)} of {target} clean leads sent to outreach")
     if len(sent_all) < target:
-        print("Ran out of new agents in this market before reaching the target. Add more "
-              "locations in config.json or raise max_scrape_rounds.")
+        print(f"Stopped short: hit the {cap}-agent scrape cap or ran out of new agents. "
+              "Add more locations in config.json if this keeps happening.")
+    write_summary(target, len(handled), cap, sent_all, removed_all)
     return 1 if failed_all and cfg["ghl"].get("fail_on_errors", True) else 0
 
 if __name__ == "__main__":

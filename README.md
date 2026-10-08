@@ -33,8 +33,8 @@ one back and only tags the ones GHL has not put on Do Not Disturb. DND contacts 
 tag `dnd-skipped` instead and never enter the outreach workflow.
 
 Each run sends exactly `daily_clean_leads` (100) clean leads to outreach. It first scrapes
-1.2x that (`scrape_multiplier`), and if too few pass, scrapes again a little further to cover just the shortfall (up to
-`max_scrape_rounds`, max 5,000 agents) until the target is hit or Nashville runs out of
+1.2x that (`scrape_multiplier`), and if too few pass, scrapes again a little further to cover just the shortfall (never more than
+`max_scrape_ratio` x the target, i.e. 200 agents for 100) until the target is hit or Nashville runs out of
 new agents.
 
 ## Setup

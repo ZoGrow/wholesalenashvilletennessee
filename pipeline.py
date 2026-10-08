@@ -422,7 +422,7 @@ def main():
     # Keep scraping (bigger each round) until `target` clean leads have been sent.
     # Apify returns agents in the same order each time, so later rounds re-cover the
     # first agents; anything already handled this run is skipped.
-    scrape = min(target * cfg.get("scrape_multiplier", 3), 5000)
+    scrape = min(int(target * cfg.get("scrape_multiplier", 1.2) + 0.999), 5000)
     max_rounds = cfg.get("max_scrape_rounds", 4)
     handled, sent_all, removed_all, failed_all = set(), [], [], 0
     for rnd in range(1, max_rounds + 1):

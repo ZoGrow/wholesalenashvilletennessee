@@ -32,12 +32,11 @@ untouched. New contacts are first created untagged; after a short wait the scrip
 one back and only tags the ones GHL has not put on Do Not Disturb. DND contacts get the
 tag `dnd-skipped` instead and never enter the outreach workflow.
 
-Each run sends exactly `daily_clean_leads` (100) clean leads to outreach. Scraping rotates
-through Nashville ZIP codes (`apify.zip_rotation`): each day starts on the next two ZIPs, so
-the agents scraped are mostly new rather than the same top-of-list agents every day. It first scrapes
-1.2x that (`scrape_multiplier`), and if too few pass, scrapes again a little further to cover just the shortfall (never more than
-`max_scrape_ratio` x the target, i.e. 200 agents for 100) until the target is hit or Nashville runs out of
-new agents.
+Each run does ONE Apify scrape of 1.5x the target (`scrape_multiplier`; 150 agents for
+`daily_clean_leads` = 100) from the next 3 Nashville ZIPs in the rotation
+(`apify.zip_rotation`), cleans them, and sends up to the target. If fewer pass, it sends
+what passed rather than scraping again (raise `max_scrape_rounds` to allow top-ups). The run
+Summary shows the usable rate, so tune `scrape_multiplier` to match it.
 
 ## Setup
 

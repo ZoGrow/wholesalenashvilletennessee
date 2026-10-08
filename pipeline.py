@@ -419,7 +419,7 @@ def main():
     else:
         rounds = None  # scrape from Apify, growing the scrape each round
 
-    # Keep scraping (bigger each round) until `target` clean leads have been sent.
+    # Keep scraping (a little more each round) until `target` clean leads have been sent.
     # Apify returns agents in the same order each time, so later rounds re-cover the
     # first agents; anything already handled this run is skipped.
     scrape = min(int(target * cfg.get("scrape_multiplier", 1.2) + 0.999), 5000)
@@ -432,7 +432,7 @@ def main():
             items = rounds[0]
         else:
             cfg["apify"].setdefault("input", {})["maxResults"] = scrape
-            print(f"Round {rnd}: scraping up to {scrape} agents for {target - len(sent_all)} more clean leads")
+            print(f"Round {rnd}: scraping up to {scrape} agents ({target - len(sent_all)} clean leads still needed)")
             items = fetch_apify_items(cfg)
 
         leads, rejected = build_leads(items, cfg)
@@ -451,7 +451,9 @@ def main():
         failed_all += failed
         if len(sent_all) >= target or scrape >= 5000 or len(items) < scrape:
             break  # done, at Apify's cap, or the market has no more agents
-        scrape = min(scrape * 2, 5000)
+        # Top up by just the shortfall (plus the same 1.2x buffer), not double.
+        shortfall = target - len(sent_all)
+        scrape = min(scrape + int(shortfall * cfg.get("scrape_multiplier", 1.2) + 0.999), 5000)
 
     write_csv(sent_all, out_dir)
     write_csv(removed_all, out_dir, "removed", CSV_COLUMNS + ["reason"])

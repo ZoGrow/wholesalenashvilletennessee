@@ -48,7 +48,9 @@
       "apify-daily-lead"
     ],
     "source": "Apify realtor agents scraper",
-    "fail_on_errors": true
+    "fail_on_errors": true,
+    "dnd_tag": "dnd-skipped",
+    "dnd_check_delay_seconds": 60
   },
   "output_dir": "output",
   "mobile_only": {
@@ -59,5 +61,6 @@
       "cellular",
       "wireless"
     ]
-  }
+  },
+  "suppression_file": "suppression.csv"
 }

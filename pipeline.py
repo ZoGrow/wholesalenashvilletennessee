@@ -200,29 +200,88 @@ def to_lead(item, field_map, mobile_cfg=None):
     return lead
 
 
+TOLL_FREE = {"800", "833", "844", "855", "866", "877", "888"}
+
+
+def phone_problem(phone):
+    """Return why a +1 number can't be a real US mobile, or "" if it looks fine."""
+    digits = phone[2:] if phone.startswith("+1") else ""
+    if len(digits) != 10:
+        return "not a US number"
+    area, exchange, line = digits[:3], digits[3:6], digits[6:]
+    if area[0] in "01" or exchange[0] in "01" or area[1:] == "11":
+        return "invalid number"
+    if area in TOLL_FREE:
+        return "toll-free number"
+    if exchange == "555" and line.startswith("01"):
+        return "fake 555 number"
+    return ""
+
+
+def load_suppression(cfg):
+    """Numbers and emails to never contact (opt-outs, people you know), one per line."""
+    path = cfg.get("suppression_file")
+    if not path or not os.path.exists(os.path.join(HERE, path)):
+        return set()
+    out = set()
+    with open(os.path.join(HERE, path)) as f:
+        for line in f:
+            value = line.split(",")[0].strip()
+            if not value or value.startswith("#"):
+                continue
+            out.add(value.lower() if "@" in value else normalize_phone(value))
+    return out
+
+
 def build_leads(items, cfg):
+    """Clean the scraped items. Returns (leads, rejected); rejected rows carry a reason."""
     mobile_cfg = cfg.get("mobile_only")
-    leads, seen, skipped = [], set(), 0
-    for item in items:
-        lead = to_lead(item, cfg["field_map"], mobile_cfg)
-        if not (lead["phone"] or lead["email"]) or (mobile_cfg and not lead["phone"]):
-            skipped += 1
+    suppressed = load_suppression(cfg)
+    rows = [to_lead(item, cfg["field_map"], mobile_cfg) for item in items]
+
+    # The same "mobile" listed for several agents is a team or office line, not a person.
+    names_by_phone = {}
+    for r in rows:
+        if r["phone"]:
+            names_by_phone.setdefault(r["phone"], set()).add(r["full_name"].lower())
+
+    leads, rejected, seen = [], [], set()
+    for r in rows:
+        reason = ""
+        if mobile_cfg and not r["phone"]:
+            reason = "no mobile number"
+        elif not (r["phone"] or r["email"]):
+            reason = "no phone or email"
+        elif r["phone"] and phone_problem(r["phone"]):
+            reason = phone_problem(r["phone"])
+        elif not r["full_name"]:
+            reason = "no name"
+        elif r["phone"] and len(names_by_phone[r["phone"]]) > 1:
+            reason = "number shared by several agents"
+        elif r["phone"] in suppressed or (r["email"] and r["email"] in suppressed):
+            reason = "on suppression list"
+        elif (r["phone"] or r["email"]) in seen:
+            reason = "duplicate"
+        if reason:
+            rejected.append({**r, "reason": reason})
             continue
-        key = lead["phone"] or lead["email"]
-        if key in seen:
-            continue
-        seen.add(key)
-        leads.append(lead)
-    reason = "no mobile number" if mobile_cfg else "no phone or email"
-    print(f"{len(items)} items -> {len(leads)} leads ({skipped} skipped: {reason})")
-    return leads
+        seen.add(r["phone"] or r["email"])
+        leads.append(r)
+
+    print(f"{len(items)} scraped -> {len(leads)} clean leads, {len(rejected)} removed")
+    tally = {}
+    for r in rejected:
+        tally[r["reason"]] = tally.get(r["reason"], 0) + 1
+    for reason, n in sorted(tally.items(), key=lambda kv: -kv[1]):
+        print(f"  {n:4d} {reason}")
+    return leads, rejected
 
 
-def write_csv(leads, out_dir):
+def write_csv(leads, out_dir, name="leads", columns=CSV_COLUMNS):
     os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, f"leads_{dt.date.today().isoformat()}.csv")
+    path = os.path.join(out_dir, f"{name}_{dt.date.today().isoformat()}.csv")
     with open(path, "w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=CSV_COLUMNS)
+        w = csv.DictWriter(f, fieldnames=columns)
         w.writeheader()
         w.writerows(leads)
     print(f"Wrote {path}")
@@ -255,29 +314,61 @@ def ghl_contact_body(lead, location_id, cfg):
     return {k: v for k, v in body.items() if v is not None}
 
 
+def is_dnd(contact):
+    """True if GHL has the contact on Do Not Disturb for everything or for SMS."""
+    if contact.get("dnd"):
+        return True
+    sms = (contact.get("dndSettings") or {}).get("SMS") or {}
+    return str(sms.get("status", "")).lower() in ("active", "permanent")
+
+
 def push_to_ghl(leads, cfg):
+    """Two passes: create/update every contact untagged, give GHL a moment to run its own
+    Do Not Disturb checks, then tag only the contacts GHL will actually let you text.
+    DND contacts get a separate tag so they never enter the outreach workflow."""
     location_id = get_secret("GHL_LOCATION_ID")
     workflow_id = get_secret("GHL_WORKFLOW_ID", required=False)
     h = ghl_headers()
-    ok = failed = 0
+    dnd_tag = cfg["ghl"].get("dnd_tag", "dnd-skipped")
+    failed = 0
+
+    created = []
     for lead in leads:
         try:
             res = http_json("POST", f"{GHL_BASE}/contacts/upsert", h,
                             ghl_contact_body(lead, location_id, cfg))
-            contact_id = res["contact"]["id"]
+            created.append((lead, res["contact"]["id"], res.get("new", True)))
+        except Exception as e:  # keep going; one bad lead shouldn't stop the batch
+            failed += 1
+            print(f"  failed {lead['phone'] or lead['email']}: {e}")
+        time.sleep(0.25)  # stays well under GHL's burst rate limit
+
+    wait = cfg["ghl"].get("dnd_check_delay_seconds", 60)
+    if created and wait:
+        print(f"Waiting {wait}s for GHL to run its DND checks")
+        time.sleep(wait)
+
+    reachable = dnd = 0
+    for lead, contact_id, is_new in created:
+        try:
+            contact = http_json("GET", f"{GHL_BASE}/contacts/{contact_id}", h)["contact"]
+            if is_dnd(contact):
+                dnd += 1
+                http_json("POST", f"{GHL_BASE}/contacts/{contact_id}/tags", h, {"tags": [dnd_tag]})
+                continue
             # Tags are added separately so existing tags are kept. GHL only fires a
             # "tag added" trigger when the tag is new, so a lead that shows up again
             # on a later day is updated but does not get the outreach twice.
             http_json("POST", f"{GHL_BASE}/contacts/{contact_id}/tags", h,
                       {"tags": cfg["ghl"]["tags"]})
-            if workflow_id and res.get("new", True):
+            if workflow_id and is_new:
                 http_json("POST", f"{GHL_BASE}/contacts/{contact_id}/workflow/{workflow_id}", h, {})
-            ok += 1
-        except Exception as e:  # keep going; one bad lead shouldn't stop the batch
+            reachable += 1
+        except Exception as e:
             failed += 1
             print(f"  failed {lead['phone'] or lead['email']}: {e}")
-        time.sleep(0.25)  # stays well under GHL's burst rate limit
-    print(f"GoHighLevel: {ok} upserted, {failed} failed")
+        time.sleep(0.25)
+    print(f"GoHighLevel: {reachable} sent to outreach, {dnd} on DND (tagged {dnd_tag}), {failed} failed")
     return failed
 
 
@@ -303,10 +394,12 @@ def main():
     else:
         items = fetch_apify_items(cfg)
 
-    leads = build_leads(items, cfg)
+    leads, rejected = build_leads(items, cfg)
     if args.limit:
         leads = leads[: args.limit]
-    write_csv(leads, os.path.join(HERE, cfg.get("output_dir", "output")))
+    out_dir = os.path.join(HERE, cfg.get("output_dir", "output"))
+    write_csv(leads, out_dir)
+    write_csv(rejected, out_dir, "removed", CSV_COLUMNS + ["reason"])
 
     if not args.send:
         print("Dry run: nothing sent to GoHighLevel. Sample of what would be pushed:")

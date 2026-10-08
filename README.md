@@ -20,6 +20,17 @@ workflow triggered by that tag send the outreach.
 5. **Daily schedule** – `.github/workflows/daily-leads.yml` runs it at 13:00 UTC on
    GitHub Actions (free) and keeps each day's CSV for 30 days.
 
+## Cleaning (before anything reaches GHL)
+
+Each run removes: agents with no number marked Mobile, invalid / toll-free / fake 555
+numbers, agents with no name, numbers listed for several different agents (team or
+office lines), duplicates, and anything in `suppression.csv`. Removed rows and the
+reason go to `output/removed_YYYY-MM-DD.csv`.
+
+In GHL, contacts are first created untagged; after a short wait the script reads each
+one back and only tags the ones GHL has not put on Do Not Disturb. DND contacts get the
+tag `dnd-skipped` instead and never enter the outreach workflow.
+
 ## Setup
 
 1. `config.json` is set up for `automation-lab/realtor-agents-scraper`. Set

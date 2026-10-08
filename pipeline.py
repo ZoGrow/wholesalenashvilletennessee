@@ -36,6 +36,9 @@ import urllib.request
 APIFY_BASE = "https://api.apify.com/v2"
 GHL_BASE = "https://services.leadconnectorhq.com"
 GHL_VERSION = "2021-07-28"
+# GHL sits behind Cloudflare, which blocks Python's default "Python-urllib" user agent
+# (error 1010), so every request identifies itself with a regular browser-style one.
+USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36"
 
 CSV_COLUMNS = [
     "first_name", "last_name", "full_name", "phone", "email",
@@ -50,7 +53,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 def http_json(method, url, headers=None, body=None, timeout=120, retries=4):
     """JSON request with retries on 429/5xx. Returns parsed JSON (or None)."""
     data = json.dumps(body).encode() if body is not None else None
-    hdrs = {"Accept": "application/json", **(headers or {})}
+    hdrs = {"Accept": "application/json", "User-Agent": USER_AGENT, **(headers or {})}
     if data is not None:
         hdrs["Content-Type"] = "application/json"
     for attempt in range(retries + 1):

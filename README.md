@@ -27,9 +27,14 @@ numbers, agents with no name, numbers listed for several different agents (team 
 office lines), duplicates, and anything in `suppression.csv`. Removed rows and the
 reason go to `output/removed_YYYY-MM-DD.csv`.
 
-In GHL, contacts are first created untagged; after a short wait the script reads each
+Agents already in GHL (any contact with the same phone/email) are skipped and left
+untouched. New contacts are first created untagged; after a short wait the script reads each
 one back and only tags the ones GHL has not put on Do Not Disturb. DND contacts get the
 tag `dnd-skipped` instead and never enter the outreach workflow.
+
+Each run scrapes `daily_clean_leads` agents (100) and sends only the ones that pass every
+check, so the number texted is usually lower. Set `scrape_multiplier` above 1 to scrape
+extra and fill up to the full amount.
 
 ## Setup
 

@@ -322,54 +322,78 @@ def is_dnd(contact):
     return str(sms.get("status", "")).lower() in ("active", "permanent")
 
 
-def push_to_ghl(leads, cfg):
-    """Two passes: create/update every contact untagged, give GHL a moment to run its own
-    Do Not Disturb checks, then tag only the contacts GHL will actually let you text.
-    DND contacts get a separate tag so they never enter the outreach workflow."""
+def find_existing(lead, location_id, h):
+    """Return the GHL contact that already has this phone/email, or None."""
+    q = {"locationId": location_id}
+    if lead["phone"]:
+        q["number"] = lead["phone"]
+    else:
+        q["email"] = lead["email"]
+    res = http_json("GET", f"{GHL_BASE}/contacts/search/duplicate?" + urllib.parse.urlencode(q), h)
+    return (res or {}).get("contact")
+
+
+def push_to_ghl(leads, cfg, target):
+    """Send up to `target` clean, textable, brand-new leads to the outreach workflow.
+
+    Works in rounds: create the next batch of contacts untagged, give GHL a moment to
+    run its own Do Not Disturb checks, then tag only the ones GHL will let you text.
+    DND contacts get `dnd_tag` so they never enter the workflow. Anyone already in GHL
+    is left untouched. Repeats until `target` is reached or the leads run out.
+    Returns (sent, removed, failed); removed rows carry a reason."""
     location_id = get_secret("GHL_LOCATION_ID")
     workflow_id = get_secret("GHL_WORKFLOW_ID", required=False)
     h = ghl_headers()
     dnd_tag = cfg["ghl"].get("dnd_tag", "dnd-skipped")
-    failed = 0
-
-    created = []
-    for lead in leads:
-        try:
-            res = http_json("POST", f"{GHL_BASE}/contacts/upsert", h,
-                            ghl_contact_body(lead, location_id, cfg))
-            created.append((lead, res["contact"]["id"], res.get("new", True)))
-        except Exception as e:  # keep going; one bad lead shouldn't stop the batch
-            failed += 1
-            print(f"  failed {lead['phone'] or lead['email']}: {e}")
-        time.sleep(0.25)  # stays well under GHL's burst rate limit
-
     wait = cfg["ghl"].get("dnd_check_delay_seconds", 60)
-    if created and wait:
-        print(f"Waiting {wait}s for GHL to run its DND checks")
-        time.sleep(wait)
+    sent, removed, failed = [], [], 0
+    queue = list(leads)
 
-    reachable = dnd = 0
-    for lead, contact_id, is_new in created:
-        try:
-            contact = http_json("GET", f"{GHL_BASE}/contacts/{contact_id}", h)["contact"]
-            if is_dnd(contact):
-                dnd += 1
-                http_json("POST", f"{GHL_BASE}/contacts/{contact_id}/tags", h, {"tags": [dnd_tag]})
-                continue
-            # Tags are added separately so existing tags are kept. GHL only fires a
-            # "tag added" trigger when the tag is new, so a lead that shows up again
-            # on a later day is updated but does not get the outreach twice.
-            http_json("POST", f"{GHL_BASE}/contacts/{contact_id}/tags", h,
-                      {"tags": cfg["ghl"]["tags"]})
-            if workflow_id and is_new:
-                http_json("POST", f"{GHL_BASE}/contacts/{contact_id}/workflow/{workflow_id}", h, {})
-            reachable += 1
-        except Exception as e:
-            failed += 1
-            print(f"  failed {lead['phone'] or lead['email']}: {e}")
-        time.sleep(0.25)
-    print(f"GoHighLevel: {reachable} sent to outreach, {dnd} on DND (tagged {dnd_tag}), {failed} failed")
-    return failed
+    while queue and len(sent) < target:
+        need = target - len(sent)
+        batch = []
+        while queue and len(batch) < need:
+            lead = queue.pop(0)
+            try:
+                if find_existing(lead, location_id, h):
+                    removed.append({**lead, "reason": "already in GHL"})
+                    continue
+                res = http_json("POST", f"{GHL_BASE}/contacts/upsert", h,
+                                ghl_contact_body(lead, location_id, cfg))
+                batch.append((lead, res["contact"]["id"]))
+            except Exception as e:  # keep going; one bad lead shouldn't stop the batch
+                failed += 1
+                print(f"  failed {lead['phone'] or lead['email']}: {e}")
+            time.sleep(0.25)  # stays well under GHL's burst rate limit
+        if not batch:
+            continue
+
+        if wait:
+            print(f"Created {len(batch)} contacts; waiting {wait}s for GHL's DND checks")
+            time.sleep(wait)
+
+        for lead, contact_id in batch:
+            try:
+                contact = http_json("GET", f"{GHL_BASE}/contacts/{contact_id}", h)["contact"]
+                if is_dnd(contact):
+                    http_json("POST", f"{GHL_BASE}/contacts/{contact_id}/tags", h, {"tags": [dnd_tag]})
+                    removed.append({**lead, "reason": "DND in GHL"})
+                    continue
+                # Adding the tag is what starts the GHL outreach workflow.
+                http_json("POST", f"{GHL_BASE}/contacts/{contact_id}/tags", h,
+                          {"tags": cfg["ghl"]["tags"]})
+                if workflow_id:
+                    http_json("POST", f"{GHL_BASE}/contacts/{contact_id}/workflow/{workflow_id}", h, {})
+                sent.append(lead)
+            except Exception as e:
+                failed += 1
+                print(f"  failed {lead['phone'] or lead['email']}: {e}")
+            time.sleep(0.25)
+
+    print(f"GoHighLevel: {len(sent)} of {target} sent to outreach, "
+          f"{sum(r['reason'] == 'DND in GHL' for r in removed)} DND (tagged {dnd_tag}), "
+          f"{sum(r['reason'] == 'already in GHL' for r in removed)} already in GHL, {failed} failed")
+    return sent, removed, failed
 
 
 # ----------------------------------------------------------------------- main
@@ -381,13 +405,17 @@ def main():
                     help="actually push to GoHighLevel (default is a dry run)")
     ap.add_argument("--input-json", help="use a local JSON file of items instead of calling Apify")
     ap.add_argument("--limit", type=int,
-                    help="only push N clean leads (for testing); scrapes 10x that so enough survive cleaning")
+                    help="send this many clean leads instead of the daily amount (for testing)")
     args = ap.parse_args()
 
     with open(args.config) as f:
         cfg = json.load(f)
-    if args.limit:
-        cfg["apify"].setdefault("input", {})["maxResults"] = min(args.limit * 10, 5000)
+    # Scrape `target` agents (times scrape_multiplier, if you want extra to make up for
+    # the ones cleaning removes). Only leads that pass every check are sent.
+    target = args.limit or cfg.get("daily_clean_leads", 100)
+    scrape = min(target * cfg.get("scrape_multiplier", 1), 5000)
+    cfg["apify"].setdefault("input", {})["maxResults"] = scrape
+    print(f"Target: {target} clean leads (scraping up to {scrape} agents)")
 
     if args.input_json:
         with open(args.input_json) as f:
@@ -396,18 +424,20 @@ def main():
         items = fetch_apify_items(cfg)
 
     leads, rejected = build_leads(items, cfg)
-    if args.limit:
-        leads = leads[: args.limit]
     out_dir = os.path.join(HERE, cfg.get("output_dir", "output"))
-    write_csv(leads, out_dir)
-    write_csv(rejected, out_dir, "removed", CSV_COLUMNS + ["reason"])
 
     if not args.send:
+        write_csv(leads[:target], out_dir)
+        write_csv(rejected, out_dir, "removed", CSV_COLUMNS + ["reason"])
         print("Dry run: nothing sent to GoHighLevel. Sample of what would be pushed:")
         for lead in leads[:3]:
             print("  " + json.dumps(ghl_contact_body(lead, "<GHL_LOCATION_ID>", cfg)))
         return 0
-    return 1 if push_to_ghl(leads, cfg) and cfg["ghl"].get("fail_on_errors", True) else 0
+
+    sent, removed, failed = push_to_ghl(leads, cfg, target)
+    write_csv(sent, out_dir)
+    write_csv(rejected + removed, out_dir, "removed", CSV_COLUMNS + ["reason"])
+    return 1 if failed and cfg["ghl"].get("fail_on_errors", True) else 0
 
 
 if __name__ == "__main__":

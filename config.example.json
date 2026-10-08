@@ -1,4 +1,6 @@
 {
+  "daily_clean_leads": 100,
+  "scrape_multiplier": 1,
   "apify": {
     "actor_id": "automation-lab~realtor-agents-scraper",
     "mode": "run",
@@ -6,8 +8,7 @@
       "locations": [
         "Nashville, TN"
       ],
-      "listingStatus": "both",
-      "maxResults": 100
+      "listingStatus": "both"
     },
     "max_wait_minutes": 60
   },

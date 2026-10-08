@@ -72,12 +72,23 @@ def http_json(method, url, headers=None, body=None, timeout=120, retries=4):
             raise
 
 
+def get_secret(name, required=True):
+    """Read a secret from the environment, catching common copy-paste mistakes."""
+    value = (os.environ.get(name) or "").strip()
+    if not value:
+        if required:
+            sys.exit(f"{name} is not set")
+        return None
+    if not value.isascii() or any(c.isspace() for c in value):
+        sys.exit(f"{name} contains spaces or non-standard characters (e.g. an arrow or "
+                 f"curly quote). Re-paste only the key itself into the GitHub secret.")
+    return value
+
+
 # ---------------------------------------------------------------------- apify
 
 def apify_headers():
-    token = os.environ.get("APIFY_TOKEN")
-    if not token:
-        sys.exit("APIFY_TOKEN is not set")
+    token = get_secret("APIFY_TOKEN")
     return {"Authorization": f"Bearer {token}"}
 
 
@@ -202,9 +213,7 @@ def write_csv(leads, out_dir):
 # ---------------------------------------------------------------- gohighlevel
 
 def ghl_headers():
-    token = os.environ.get("GHL_TOKEN")
-    if not token:
-        sys.exit("GHL_TOKEN is not set")
+    token = get_secret("GHL_TOKEN")
     return {"Authorization": f"Bearer {token}", "Version": GHL_VERSION}
 
 
@@ -228,10 +237,8 @@ def ghl_contact_body(lead, location_id, cfg):
 
 
 def push_to_ghl(leads, cfg):
-    location_id = os.environ.get("GHL_LOCATION_ID")
-    if not location_id:
-        sys.exit("GHL_LOCATION_ID is not set")
-    workflow_id = os.environ.get("GHL_WORKFLOW_ID")
+    location_id = get_secret("GHL_LOCATION_ID")
+    workflow_id = get_secret("GHL_WORKFLOW_ID", required=False)
     h = ghl_headers()
     ok = failed = 0
     for lead in leads:

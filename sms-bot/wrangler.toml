@@ -1,0 +1,12 @@
+name = "nashville-sms-bot"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+SENDER_NAME = "Zack"
+BOT_GOAL = "Find out if they have or hear about off-market, distressed, or hard-to-sell properties (or sellers who want a fast cash sale) and get them to send those deals to us. Offer them their full commission or a referral fee on anything we close."
+DRY_RUN = "true"
+
+# Secrets (set with `npx wrangler secret put NAME`, never put them in this file):
+# ANTHROPIC_API_KEY, GHL_TOKEN, GHL_LOCATION_ID, WEBHOOK_SECRET

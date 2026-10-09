@@ -1,0 +1,30 @@
+name: Deploy SMS reply bot
+
+on:
+  workflow_dispatch:          # run by hand from the Actions tab after changing sms-bot/
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+        working-directory: sms-bot
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: sms-bot
+          secrets: |
+            ANTHROPIC_API_KEY
+            GHL_TOKEN
+            GHL_LOCATION_ID
+            WEBHOOK_SECRET
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
+          GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
+          WEBHOOK_SECRET: ${{ secrets.SMS_BOT_WEBHOOK_SECRET }}

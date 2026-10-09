@@ -1,8 +1,8 @@
 {
   "daily_clean_leads": 100,
-  "scrape_multiplier": 1.5,
+  "scrape_multiplier": 2,
   "max_scrape_ratio": 3,
-  "max_scrape_rounds": 3,
+  "max_scrape_rounds": 1,
   "min_topup_scrape": 10,
   "apify": {
     "actor_id": "automation-lab~realtor-agents-scraper",
@@ -87,13 +87,13 @@
     "source": "Apify realtor agents scraper",
     "fail_on_errors": true,
     "dnd_tag": "dnd-skipped",
-    "dnd_check_delay_seconds": 30,
+    "dnd_check_delay_seconds": 0,
     "parallel_requests": 8,
     "verify_texts_sent": true,
     "verify_delays_seconds": [
-      45,
-      45,
-      60
+      30,
+      30,
+      45
     ],
     "no_text_tag": "text-not-sent"
   },

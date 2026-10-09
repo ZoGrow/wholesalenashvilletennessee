@@ -91,9 +91,8 @@
     "parallel_requests": 8,
     "verify_texts_sent": true,
     "verify_delays_seconds": [
-      30,
-      30,
-      45
+      25,
+      25
     ],
     "no_text_tag": "text-not-sent"
   },

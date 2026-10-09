@@ -526,23 +526,49 @@ class ZipRotation:
         return batch
 
 
-def write_summary(target, scraped, cap, sent, removed):
-    """Show a scraped-vs-sent table on the GitHub Actions run page."""
-    path = os.environ.get("GITHUB_STEP_SUMMARY")
-    if not path:
-        return
+REASONS = [
+    "no mobile number", "no phone or email", "invalid number", "toll-free number",
+    "fake 555 number", "not a US number", "no name", "number shared by several agents",
+    "on suppression list", "duplicate", "already in GHL", "DND in GHL",
+    "text not sent by GHL (skipped or failed)",
+]
+
+
+def write_summary(target, scraped, cap, sent, removed, test=False):
+    """Show a scraped-vs-sent table on the run page and append a row to
+    stats/history.csv (committed back to the repo by the workflow)."""
     tally = {}
     for r in removed:
         tally[r["reason"]] = tally.get(r["reason"], 0) + 1
+    leftover = max(scraped - len(sent) - len(removed), 0)
     rate = f"{len(sent) / scraped:.0%}" if scraped else "n/a"
+    usable = f"{(len(sent) + leftover) / scraped:.0%}" if scraped else "n/a"
+
+    os.makedirs(os.path.join(HERE, "stats"), exist_ok=True)
+    hist = os.path.join(HERE, "stats", "history.csv")
+    cols = ["date", "time_utc", "test", "target", "scraped", "sent", "clean_not_needed"] + REASONS
+    new_file = not os.path.exists(hist)
+    with open(hist, "a", newline="") as f:
+        w = csv.writer(f)
+        if new_file:
+            w.writerow(cols)
+        now = dt.datetime.now(dt.timezone.utc)
+        w.writerow([now.date().isoformat(), now.strftime("%H:%M"), "yes" if test else "no",
+                    target, scraped, len(sent), leftover] + [tally.get(r, 0) for r in REASONS])
+
+    path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if not path:
+        return
     lines = [
         "## Lead run summary", "",
         "| | Count |", "|---|---|",
         f"| Target | {target} |",
         f"| Agents scraped | {scraped} (cap {cap}) |",
         f"| **Texts confirmed sent** | **{len(sent)}** |",
+        f"| Clean but not needed (target already hit) | {leftover} |",
         f"| Removed | {len(removed)} |",
-        f"| Usable rate | {rate} |", "",
+        f"| Sent / scraped | {rate} |",
+        f"| Usable (sent + clean leftovers) / scraped | {usable} |", "",
         "| Removed because | Count |", "|---|---|",
     ] + [f"| {k} | {v} |" for k, v in sorted(tally.items(), key=lambda kv: -kv[1])]
     with open(path, "a") as f:
@@ -640,7 +666,7 @@ def main():
     if len(sent_all) < target:
         print(f"Stopped short: hit the {cap}-agent scrape cap or ran out of new agents. "
               "Add more locations in config.json if this keeps happening.")
-    write_summary(target, scraped, cap, sent_all, removed_all)
+    write_summary(target, scraped, cap, sent_all, removed_all, test=bool(args.limit))
     return 1 if failed_all and cfg["ghl"].get("fail_on_errors", True) else 0
 
 if __name__ == "__main__":

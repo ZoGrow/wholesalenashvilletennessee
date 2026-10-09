@@ -1,8 +1,9 @@
 {
   "daily_clean_leads": 100,
   "scrape_multiplier": 1.5,
-  "max_scrape_ratio": 2,
-  "max_scrape_rounds": 1,
+  "max_scrape_ratio": 3,
+  "max_scrape_rounds": 3,
+  "min_topup_scrape": 10,
   "apify": {
     "actor_id": "automation-lab~realtor-agents-scraper",
     "mode": "run",

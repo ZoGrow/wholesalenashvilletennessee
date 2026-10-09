@@ -520,7 +520,10 @@ def main():
     handled, sent_all, removed_all, failed_all, scraped = set(), [], [], 0, 0
     for rnd in range(1, max_rounds + 1):
         need = target - len(sent_all)
-        ask = min(int(need * mult + 0.999), cap - scraped)
+        ask = int(need * mult + 0.999)
+        if rnd > 1:  # top-ups: one reasonably sized scrape rather than many tiny ones
+            ask = max(ask, cfg.get("min_topup_scrape", 10))
+        ask = min(ask, cap - scraped)
         if ask <= 0:
             break
         if rounds is not None:

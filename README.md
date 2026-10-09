@@ -39,6 +39,11 @@ Each run sends EXACTLY `daily_clean_leads` (100) clean leads. It does one Apify 
 `max_scrape_rounds` scrapes and `max_scrape_ratio` x the target in total. The run Summary
 shows the usable rate; if top-ups happen often, raise `scrape_multiplier`.
 
+A lead only counts once GHL has actually sent its first text: after enrolling, the script
+reads each contact's conversation. If the workflow skipped it (e.g. DND flagged at send time)
+or the text failed, the contact is tagged `text-not-sent` and replaced with the next lead.
+The GHL token needs the View Conversations and View Conversation Messages scopes for this.
+
 ## Setup
 
 1. `config.json` is set up for `automation-lab/realtor-agents-scraper`. Set

@@ -358,6 +358,38 @@ def find_existing(lead, location_id, h):
     return (res or {}).get("contact")
 
 
+class VerifyError(Exception):
+    """Raised when we can't read GHL conversations; stops the run so it never over-sends."""
+
+
+def sms_outcome(contact_id, location_id, h):
+    """Look at the contact's GHL conversation: "sent" if an outbound SMS went out,
+    "failed" if one was attempted but failed/undelivered, "none" if nothing yet."""
+    q = urllib.parse.urlencode({"locationId": location_id, "contactId": contact_id})
+    try:
+        convs = http_json("GET", f"{GHL_BASE}/conversations/search?{q}", h) or {}
+        outcome = "none"
+        for conv in convs.get("conversations", []):
+            res = http_json("GET", f"{GHL_BASE}/conversations/{conv['id']}/messages", h) or {}
+            msgs = res.get("messages", [])
+            if isinstance(msgs, dict):  # GHL nests the list: {"messages": {"messages": [...]}}
+                msgs = msgs.get("messages", [])
+            for m in msgs:
+                kind = str(m.get("messageType") or m.get("type") or "").upper()
+                if m.get("direction") != "outbound" or "SMS" not in kind:
+                    continue
+                if str(m.get("status", "")).lower() in ("failed", "undelivered"):
+                    outcome = "failed"
+                else:
+                    return "sent"
+        return outcome
+    except RuntimeError as e:
+        if "HTTP 401" in str(e) or "HTTP 403" in str(e):
+            raise VerifyError("GHL token can't read conversations. Add the 'View Conversations' "
+                              "and 'View Conversation Messages' scopes to the private integration.") from None
+        raise
+
+
 def push_to_ghl(leads, cfg, target):
     """Send up to `target` clean, textable, brand-new leads to the outreach workflow.
 
@@ -373,6 +405,9 @@ def push_to_ghl(leads, cfg, target):
     dnd_tag = cfg["ghl"].get("dnd_tag", "dnd-skipped")
     wait = cfg["ghl"].get("dnd_check_delay_seconds", 60)
     workers = cfg["ghl"].get("parallel_requests", 8)
+    verify = cfg["ghl"].get("verify_texts_sent", True)
+    verify_delays = cfg["ghl"].get("verify_delays_seconds", [45, 45, 60])
+    no_text_tag = cfg["ghl"].get("no_text_tag", "text-not-sent")
     sent, removed, failed = [], [], 0
     queue = list(leads)
 
@@ -424,16 +459,43 @@ def push_to_ghl(leads, cfg, target):
                 print(f"Created {len(batch)} contacts; waiting {wait}s for GHL's DND checks")
                 time.sleep(wait)
 
+            enrolled = []
             for status, lead, info in pool.map(tag, batch):
                 if status == "sent":
-                    sent.append(lead)
+                    enrolled.append(lead)
                 elif status == "dnd":
                     removed.append({**lead, "reason": "DND in GHL"})
                 else:
                     failed += 1
                     print(f"  failed {lead['phone'] or lead['email']}: {info}")
+            if not verify or not enrolled:
+                sent += enrolled
+                continue
 
-    print(f"GoHighLevel: {len(sent)} of {target} sent to outreach, "
+            # Only count a lead once GHL has actually sent its first text. Anyone the
+            # workflow skipped (DND flagged at send time) or whose text failed is replaced.
+            ids = {id(lead): cid for lead, cid in batch}
+            pending = enrolled
+            for attempt, delay in enumerate(verify_delays):
+                print(f"Enrolled {len(pending)}; waiting {delay}s, then checking GHL sent their texts")
+                time.sleep(delay)
+                outcomes = list(pool.map(lambda l: sms_outcome(ids[id(l)], location_id, h), pending))
+                still = []
+                for lead, out in zip(pending, outcomes):
+                    if out == "sent":
+                        sent.append(lead)
+                    elif out == "failed" or attempt == len(verify_delays) - 1:
+                        removed.append({**lead, "reason": "text not sent by GHL (skipped or failed)"})
+                        http_json("POST", f"{GHL_BASE}/contacts/{ids[id(lead)]}/tags", h,
+                                  {"tags": [no_text_tag]})
+                    else:
+                        still.append(lead)
+                pending = still
+                if not pending:
+                    break
+
+    print(f"GoHighLevel: {len(sent)} of {target} texts confirmed sent, "
+          f"{sum(r['reason'].startswith('text not sent') for r in removed)} not sent by GHL, "
           f"{sum(r['reason'] == 'DND in GHL' for r in removed)} DND (tagged {dnd_tag}), "
           f"{sum(r['reason'] == 'already in GHL' for r in removed)} already in GHL, {failed} failed")
     return sent, removed, failed
@@ -478,7 +540,7 @@ def write_summary(target, scraped, cap, sent, removed):
         "| | Count |", "|---|---|",
         f"| Target | {target} |",
         f"| Agents scraped | {scraped} (cap {cap}) |",
-        f"| **Sent to outreach** | **{len(sent)}** |",
+        f"| **Texts confirmed sent** | **{len(sent)}** |",
         f"| Removed | {len(removed)} |",
         f"| Usable rate | {rate} |", "",
         "| Removed because | Count |", "|---|---|",
@@ -554,7 +616,11 @@ def main():
         if not args.send:
             sent_all = leads[:target]
             break
-        sent, removed, failed = push_to_ghl(leads, cfg, need)
+        try:
+            sent, removed, failed = push_to_ghl(leads, cfg, need)
+        except VerifyError as e:
+            print(f"STOPPED: {e}")
+            return 1
         sent_all += sent
         removed_all += removed
         failed_all += failed
@@ -570,7 +636,7 @@ def main():
         for lead in sent_all[:3]:
             print("  " + json.dumps(ghl_contact_body(lead, "<GHL_LOCATION_ID>", cfg)))
         return 0
-    print(f"DONE: {len(sent_all)} of {target} clean leads sent to outreach")
+    print(f"DONE: {len(sent_all)} of {target} texts confirmed sent")
     if len(sent_all) < target:
         print(f"Stopped short: hit the {cap}-agent scrape cap or ran out of new agents. "
               "Add more locations in config.json if this keeps happening.")

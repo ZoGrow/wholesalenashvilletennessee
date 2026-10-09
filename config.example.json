@@ -87,8 +87,15 @@
     "source": "Apify realtor agents scraper",
     "fail_on_errors": true,
     "dnd_tag": "dnd-skipped",
-    "dnd_check_delay_seconds": 60,
-    "parallel_requests": 8
+    "dnd_check_delay_seconds": 30,
+    "parallel_requests": 8,
+    "verify_texts_sent": true,
+    "verify_delays_seconds": [
+      45,
+      45,
+      60
+    ],
+    "no_text_tag": "text-not-sent"
   },
   "output_dir": "output",
   "mobile_only": {

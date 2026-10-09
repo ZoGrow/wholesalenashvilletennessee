@@ -28,7 +28,9 @@ import json
 import os
 import re
 import sys
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -50,6 +52,27 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 # ---------------------------------------------------------------- http helper
 
+class RateLimiter:
+    """Spaces out requests across threads. GHL allows bursts of 100 requests per 10 s
+    per sub-account; we stay under that."""
+
+    def __init__(self, per_second):
+        self.interval = 1.0 / per_second
+        self.lock = threading.Lock()
+        self.next_at = 0.0
+
+    def wait(self):
+        with self.lock:
+            now = time.monotonic()
+            at = max(now, self.next_at)
+            self.next_at = at + self.interval
+        if at > now:
+            time.sleep(at - now)
+
+
+GHL_LIMITER = RateLimiter(8)
+
+
 def http_json(method, url, headers=None, body=None, timeout=120, retries=4):
     """JSON request with retries on 429/5xx. Returns parsed JSON (or None)."""
     data = json.dumps(body).encode() if body is not None else None
@@ -57,6 +80,8 @@ def http_json(method, url, headers=None, body=None, timeout=120, retries=4):
     if data is not None:
         hdrs["Content-Type"] = "application/json"
     for attempt in range(retries + 1):
+        if url.startswith(GHL_BASE):
+            GHL_LIMITER.wait()
         req = urllib.request.Request(url, data=data, headers=hdrs, method=method)
         try:
             with urllib.request.urlopen(req, timeout=timeout) as resp:
@@ -118,7 +143,7 @@ def fetch_apify_items(cfg):
     while run["status"] in ("READY", "RUNNING"):
         if time.time() > deadline:
             sys.exit(f"Apify run {run_id} still running after max_wait_minutes; giving up")
-        time.sleep(15)
+        time.sleep(5)
         run = http_json("GET", f"{APIFY_BASE}/actor-runs/{run_id}", h)["data"]
         print(f"  run {run_id}: {run['status']}")
     if run["status"] != "SUCCEEDED":
@@ -340,55 +365,73 @@ def push_to_ghl(leads, cfg, target):
     run its own Do Not Disturb checks, then tag only the ones GHL will let you text.
     DND contacts get `dnd_tag` so they never enter the workflow. Anyone already in GHL
     is left untouched. Repeats until `target` is reached or the leads run out.
+    Requests run in parallel threads, rate-limited to stay inside GHL's API limits.
     Returns (sent, removed, failed); removed rows carry a reason."""
     location_id = get_secret("GHL_LOCATION_ID")
     workflow_id = get_secret("GHL_WORKFLOW_ID", required=False)
     h = ghl_headers()
     dnd_tag = cfg["ghl"].get("dnd_tag", "dnd-skipped")
     wait = cfg["ghl"].get("dnd_check_delay_seconds", 60)
+    workers = cfg["ghl"].get("parallel_requests", 8)
     sent, removed, failed = [], [], 0
     queue = list(leads)
 
-    while queue and len(sent) < target:
-        need = target - len(sent)
-        batch = []
-        while queue and len(batch) < need:
-            lead = queue.pop(0)
-            try:
-                if find_existing(lead, location_id, h):
-                    removed.append({**lead, "reason": "already in GHL"})
-                    continue
-                res = http_json("POST", f"{GHL_BASE}/contacts/upsert", h,
-                                ghl_contact_body(lead, location_id, cfg))
-                batch.append((lead, res["contact"]["id"]))
-            except Exception as e:  # keep going; one bad lead shouldn't stop the batch
-                failed += 1
-                print(f"  failed {lead['phone'] or lead['email']}: {e}")
-            time.sleep(0.25)  # stays well under GHL's burst rate limit
-        if not batch:
-            continue
+    def create(lead):
+        """-> ("existing"|"created"|"failed", lead, contact_id_or_error)"""
+        try:
+            if find_existing(lead, location_id, h):
+                return "existing", lead, None
+            res = http_json("POST", f"{GHL_BASE}/contacts/upsert", h,
+                            ghl_contact_body(lead, location_id, cfg))
+            return "created", lead, res["contact"]["id"]
+        except Exception as e:
+            return "failed", lead, e
 
-        if wait:
-            print(f"Created {len(batch)} contacts; waiting {wait}s for GHL's DND checks")
-            time.sleep(wait)
+    def tag(item):
+        """-> ("sent"|"dnd"|"failed", lead, error)"""
+        lead, contact_id = item
+        try:
+            contact = http_json("GET", f"{GHL_BASE}/contacts/{contact_id}", h)["contact"]
+            if is_dnd(contact):
+                http_json("POST", f"{GHL_BASE}/contacts/{contact_id}/tags", h, {"tags": [dnd_tag]})
+                return "dnd", lead, None
+            # Adding the tag is what starts the GHL outreach workflow.
+            http_json("POST", f"{GHL_BASE}/contacts/{contact_id}/tags", h, {"tags": cfg["ghl"]["tags"]})
+            if workflow_id:
+                http_json("POST", f"{GHL_BASE}/contacts/{contact_id}/workflow/{workflow_id}", h, {})
+            return "sent", lead, None
+        except Exception as e:
+            return "failed", lead, e
 
-        for lead, contact_id in batch:
-            try:
-                contact = http_json("GET", f"{GHL_BASE}/contacts/{contact_id}", h)["contact"]
-                if is_dnd(contact):
-                    http_json("POST", f"{GHL_BASE}/contacts/{contact_id}/tags", h, {"tags": [dnd_tag]})
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        while queue and len(sent) < target:
+            need = target - len(sent)
+            batch = []
+            while queue and len(batch) < need:
+                chunk, queue = queue[: need - len(batch)], queue[need - len(batch):]
+                for status, lead, info in pool.map(create, chunk):
+                    if status == "created":
+                        batch.append((lead, info))
+                    elif status == "existing":
+                        removed.append({**lead, "reason": "already in GHL"})
+                    else:
+                        failed += 1
+                        print(f"  failed {lead['phone'] or lead['email']}: {info}")
+            if not batch:
+                continue
+
+            if wait:
+                print(f"Created {len(batch)} contacts; waiting {wait}s for GHL's DND checks")
+                time.sleep(wait)
+
+            for status, lead, info in pool.map(tag, batch):
+                if status == "sent":
+                    sent.append(lead)
+                elif status == "dnd":
                     removed.append({**lead, "reason": "DND in GHL"})
-                    continue
-                # Adding the tag is what starts the GHL outreach workflow.
-                http_json("POST", f"{GHL_BASE}/contacts/{contact_id}/tags", h,
-                          {"tags": cfg["ghl"]["tags"]})
-                if workflow_id:
-                    http_json("POST", f"{GHL_BASE}/contacts/{contact_id}/workflow/{workflow_id}", h, {})
-                sent.append(lead)
-            except Exception as e:
-                failed += 1
-                print(f"  failed {lead['phone'] or lead['email']}: {e}")
-            time.sleep(0.25)
+                else:
+                    failed += 1
+                    print(f"  failed {lead['phone'] or lead['email']}: {info}")
 
     print(f"GoHighLevel: {len(sent)} of {target} sent to outreach, "
           f"{sum(r['reason'] == 'DND in GHL' for r in removed)} DND (tagged {dnd_tag}), "

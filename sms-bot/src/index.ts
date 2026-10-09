@@ -11,6 +11,9 @@ export interface Env {
   WEBHOOK_SECRET: string; // must match ?key= on the webhook URL set in GHL
   BOT_GOAL: string; // plain-English goal, set in wrangler.toml
   SENDER_NAME: string; // the first name the bot signs as
+  ARV_PERCENT: string; // max offer = ARV x this % - repairs - fee
+  ASSIGNMENT_FEE: string; // our wholesale fee in dollars
+  PROPERTY_TYPES: string; // what we buy
   DRY_RUN?: string; // "true" = log the reply instead of texting it
 }
 
@@ -120,13 +123,13 @@ async function nextReply(thread: Sms[], contact: Record<string, any>, env: Env):
       max_tokens: 16000,
       betas: ["server-side-fallback-2026-07-01"],
       fallbacks: "default",
-      // Lets Claude look up a listing the agent sends (Zillow, Realtor.com, Redfin, ...).
+      // Lets Claude look up a listing the agent sends (Zillow, Realtor.com, Redfin, ...) and nearby sales for ARV.
       tools: [
-        { type: "web_search_20260209", name: "web_search", max_uses: 3, user_location: { type: "approximate", city: "Nashville", region: "Tennessee", country: "US" } },
+        { type: "web_search_20260209", name: "web_search", max_uses: 6, user_location: { type: "approximate", city: "Nashville", region: "Tennessee", country: "US" } },
         { type: "web_fetch_20260209", name: "web_fetch", max_uses: 3 },
       ],
       output_config: { effort: "low", format: REPLY_FORMAT },
-      system: SYSTEM_PROMPT.replaceAll("{{GOAL}}", env.BOT_GOAL).replaceAll("{{NAME}}", env.SENDER_NAME),
+      system: systemPrompt(env),
       messages,
     });
     // A long lookup can pause; resend with the partial turn and the server picks up where it left off.
@@ -143,6 +146,14 @@ async function nextReply(thread: Sms[], contact: Record<string, any>, env: Env):
   const last = texts[texts.length - 1];
   if (!last) return null;
   return JSON.parse(last.text) as Decision;
+}
+
+function systemPrompt(env: Env): string {
+  return SYSTEM_PROMPT.replaceAll("{{GOAL}}", env.BOT_GOAL)
+    .replaceAll("{{NAME}}", env.SENDER_NAME)
+    .replaceAll("{{ARV_PERCENT}}", env.ARV_PERCENT)
+    .replaceAll("{{FEE}}", Number(env.ASSIGNMENT_FEE).toLocaleString("en-US"))
+    .replaceAll("{{PROPERTY_TYPES}}", env.PROPERTY_TYPES);
 }
 
 async function smsThread(contactId: string, env: Env): Promise<Sms[]> {

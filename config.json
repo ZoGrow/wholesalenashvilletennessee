@@ -1,6 +1,6 @@
 {
   "daily_clean_leads": 1000,
-  "scrape_multiplier": 2,
+  "scrape_multiplier": 1,
   "max_scrape_ratio": 3,
   "max_scrape_rounds": 1,
   "min_topup_scrape": 10,

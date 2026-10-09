@@ -1,0 +1,2 @@
+date,time_utc,test,target,scraped,sent,clean_not_needed,no mobile number,no phone or email,invalid number,toll-free number,fake 555 number,not a US number,no name,number shared by several agents,on suppression list,duplicate,already in GHL,DND in GHL,text not sent by GHL (skipped or failed)
+2026-10-09,15:55,no,1000,889,336,0,433,0,0,0,0,0,0,6,0,1,104,1,8

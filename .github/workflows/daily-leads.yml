@@ -2,7 +2,7 @@ name: Daily leads to GoHighLevel
 
 on:
   schedule:
-    # 10am Central, Monday-Friday, with backup slots every 30 minutes until noon.
+    # 10am Central, Monday-Friday, with backup slots every 30 minutes until noon. (edited by Zack)
     # GitHub only speaks UTC and sometimes skips or delays a scheduled run, so the
     # gate step below runs only from 10am Chicago time and only if today's run
     # hasn't already happened (checked in stats/history.csv).

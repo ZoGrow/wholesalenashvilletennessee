@@ -2,7 +2,11 @@ name: Daily leads to GoHighLevel
 
 on:
   schedule:
-    - cron: "0 13 * * *"   # 13:00 UTC = 9am Eastern (8am in winter)
+    # 10am Central, Monday-Friday. GitHub only speaks UTC, so both the daylight-time
+    # (15:00 UTC) and standard-time (16:00 UTC) slots are listed; the first step
+    # skips whichever one isn't 10am in Chicago today.
+    - cron: "0 15 * * 1-5"
+    - cron: "0 16 * * 1-5"
   workflow_dispatch:        # lets you run it by hand from the Actions tab
     inputs:
       limit:
@@ -17,11 +21,26 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
+      - name: Only run at 10am Central
+        id: clock
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then echo "go=yes" >> "$GITHUB_OUTPUT"; exit 0; fi
+          offset=$(TZ=America/Chicago date +%z)   # -0500 in summer, -0600 in winter
+          slot="${{ github.event.schedule }}"
+          if { [ "$offset" = "-0500" ] && [ "$slot" = "0 15 * * 1-5" ]; } || \
+             { [ "$offset" = "-0600" ] && [ "$slot" = "0 16 * * 1-5" ]; }; then
+            echo "go=yes" >> "$GITHUB_OUTPUT"
+          else
+            echo "Not the 10am Central slot today; skipping."; echo "go=no" >> "$GITHUB_OUTPUT"
+          fi
       - uses: actions/checkout@v4
+        if: steps.clock.outputs.go == 'yes'
       - uses: actions/setup-python@v5
+        if: steps.clock.outputs.go == 'yes'
         with:
           python-version: "3.12"
       - name: Pull leads and push to GoHighLevel
+        if: steps.clock.outputs.go == 'yes'
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
@@ -30,7 +49,7 @@ jobs:
           LIMIT: ${{ inputs.limit }}
         run: python pipeline.py --send ${LIMIT:+--limit "$LIMIT"}
       - name: Save today's CSV
-        if: always()
+        if: always() && steps.clock.outputs.go == 'yes'
         uses: actions/upload-artifact@v4
         with:
           name: leads-csv
@@ -38,7 +57,7 @@ jobs:
           retention-days: 30
           if-no-files-found: ignore
       - name: Save run stats to the repo
-        if: always()
+        if: always() && steps.clock.outputs.go == 'yes'
         run: |
           [ -f stats/history.csv ] || exit 0
           git config user.name "lead-pipeline"

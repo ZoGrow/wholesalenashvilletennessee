@@ -1,5 +1,5 @@
 {
-  "daily_clean_leads": 100,
+  "daily_clean_leads": 1000,
   "scrape_multiplier": 2,
   "max_scrape_ratio": 3,
   "max_scrape_rounds": 1,
@@ -16,7 +16,7 @@
     "max_wait_minutes": 60,
     "zip_rotation": {
       "_note": "Nashville / Davidson County ZIPs. Each day scrapes the next few; top-ups move to the next ZIPs. Remove this block to scrape all of 'locations' instead.",
-      "per_round": 3,
+      "per_round": 9,
       "zips": [
         "37203",
         "37206",

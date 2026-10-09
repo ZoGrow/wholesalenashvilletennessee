@@ -32,8 +32,8 @@ untouched. New contacts are first created untagged; after a short wait the scrip
 one back and only tags the ones GHL has not put on Do Not Disturb. DND contacts get the
 tag `dnd-skipped` instead and never enter the outreach workflow.
 
-Each run does ONE Apify scrape of 2x the target (`scrape_multiplier`; 200 agents for
-`daily_clean_leads` = 100) from the next 3 Nashville ZIPs in the rotation
+Runs Monday-Friday at 10am Central. Each run does ONE Apify scrape of 2x the target (`scrape_multiplier`; 2,000 agents for
+`daily_clean_leads` = 1000) from the next 9 Nashville ZIPs in the rotation
 (`apify.zip_rotation`), cleans them, and works through that one batch until the target
 number of texts has gone out. No second scrape (`max_scrape_rounds` = 1).
 

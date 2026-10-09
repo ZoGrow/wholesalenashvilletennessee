@@ -20,6 +20,7 @@ export interface Env {
 const GHL = "https://services.leadconnectorhq.com";
 const MODEL = "claude-opus-5-5";
 const HANDOFF_TAG = "hot-lead"; // bot stops and you take over
+const WARM_TAG = "warm-lead"; // has something coming later; bot keeps talking
 const BOT_OFF_TAGS = ["hot-lead", "bot-off", "dnd-skipped"]; // bot never replies to these
 const MAX_HISTORY = 40;
 
@@ -71,15 +72,16 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
     if (env.DRY_RUN === "true") console.log("DRY RUN reply to", contactId, ":", decision.reply);
     else await ghl(env, "/conversations/messages", "POST", { type: "SMS", contactId, message: decision.reply.trim() });
   }
-  if (decision.handoff) {
-    await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [HANDOFF_TAG] });
+  if (decision.handoff || decision.warm) {
+    await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [decision.handoff ? HANDOFF_TAG : WARM_TAG] });
     if (decision.note) {
-      await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `SMS bot handoff: ${decision.note}` });
+      const label = decision.handoff ? "SMS bot handoff" : "SMS bot, possible future deal";
+      await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `${label}: ${decision.note}` });
     }
   }
 }
 
-type Decision = { reply: string; handoff: boolean; note: string };
+type Decision = { reply: string; handoff: boolean; warm: boolean; note: string };
 
 const REPLY_FORMAT = {
   type: "json_schema" as const,
@@ -88,12 +90,16 @@ const REPLY_FORMAT = {
     properties: {
       reply: { type: "string", description: "The next text message to send, or empty to send nothing." },
       handoff: { type: "boolean", description: "True when a human should take over now." },
+      warm: {
+        type: "boolean",
+        description: "True when the agent may have a property later (e.g. 'maybe one next month') but nothing is ready yet.",
+      },
       note: {
         type: "string",
-        description: "When handoff is true: one or two lines for the human with the address, listing price, condition and seller's asking price learned so far. Else empty.",
+        description: "When handoff or warm is true: for warm, one line on what they might have and when; for handoff, one or two lines for the human with the address, listing price, condition and seller's asking price learned so far. Else empty.",
       },
     },
-    required: ["reply", "handoff", "note"],
+    required: ["reply", "handoff", "warm", "note"],
     additionalProperties: false,
   },
 };
@@ -139,7 +145,7 @@ async function nextReply(thread: Sms[], contact: Record<string, any>, env: Env):
 
   if (response.stop_reason === "refusal") {
     console.warn("refused", response.stop_details);
-    return { reply: "", handoff: true, note: "Bot could not answer this one." };
+    return { reply: "", handoff: true, warm: false, note: "Bot could not answer this one." };
   }
   // The JSON answer is the last text block; earlier ones can be notes around the web lookups.
   const texts = response.content.filter((b): b is Anthropic.Beta.BetaTextBlock => b.type === "text");

@@ -2,7 +2,8 @@
 
 When a lead texts back, GoHighLevel calls this Cloudflare Worker. It reads the SMS
 thread from GHL, asks Claude (`claude-opus-5-5`) for the next reply, and texts it
-back through GHL. When the lead shares a deal, wants a call, or needs a human, it
+back through GHL. When an agent sends a listing or address, it looks it up online (web search)
+and asks about condition and the seller's asking price. Once it has both, or the agent wants an offer or a call, it
 tags them `hot-lead`, leaves a note, and stops replying to them.
 
 - Bot instructions: `src/prompt.ts`. Goal and sender name: `wrangler.toml` `[vars]`.

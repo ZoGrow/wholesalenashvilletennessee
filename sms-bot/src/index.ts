@@ -23,7 +23,7 @@ const MAX_HISTORY = 40;
 type Sms = { direction: "inbound" | "outbound"; body: string; at: string };
 
 export default {
-  async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+  async fetch(req: Request, env: Env): Promise<Response> {
     const url = new URL(req.url);
     if (req.method === "GET") return new Response("sms bot ok");
     if (req.method !== "POST" || url.searchParams.get("key") !== env.WEBHOOK_SECRET) {
@@ -33,8 +33,14 @@ export default {
     const contactId: string | undefined =
       payload.contact_id ?? payload.contactId ?? payload.contact?.id ?? payload.customData?.contact_id;
     if (!contactId) return new Response("no contact id", { status: 400 });
-    // Answer GHL right away; the reply is written and sent in the background.
-    ctx.waitUntil(handleReply(contactId, env).catch((e) => console.error("reply failed", contactId, e)));
+    // Handled before answering GHL: a listing lookup can take longer than background work is
+    // allowed to run. If GHL retries meanwhile, the retry sees our reply already sent and skips.
+    try {
+      await handleReply(contactId, env);
+    } catch (e) {
+      console.error("reply failed", contactId, e);
+      return new Response("error", { status: 500 });
+    }
     return new Response("ok");
   },
 };
@@ -72,6 +78,23 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
 
 type Decision = { reply: string; handoff: boolean; note: string };
 
+const REPLY_FORMAT = {
+  type: "json_schema" as const,
+  schema: {
+    type: "object",
+    properties: {
+      reply: { type: "string", description: "The next text message to send, or empty to send nothing." },
+      handoff: { type: "boolean", description: "True when a human should take over now." },
+      note: {
+        type: "string",
+        description: "When handoff is true: one or two lines for the human with the address, listing price, condition and seller's asking price learned so far. Else empty.",
+      },
+    },
+    required: ["reply", "handoff", "note"],
+    additionalProperties: false,
+  },
+};
+
 async function nextReply(thread: Sms[], contact: Record<string, any>, env: Env): Promise<Decision | null> {
   const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
   const transcript = thread
@@ -85,43 +108,41 @@ async function nextReply(thread: Sms[], contact: Record<string, any>, env: Env):
     .filter(Boolean)
     .join("\n");
 
-  const response = await client.beta.messages.create({
-    model: MODEL,
-    max_tokens: 16000,
-    betas: ["server-side-fallback-2026-07-01"],
-    fallbacks: "default",
-    output_config: {
-      effort: "low",
-      format: {
-        type: "json_schema",
-        schema: {
-          type: "object",
-          properties: {
-            reply: { type: "string", description: "The next text message to send, or empty to send nothing." },
-            handoff: { type: "boolean", description: "True when a human should take over now." },
-            note: { type: "string", description: "One line for the human on why, when handoff is true; else empty." },
-          },
-          required: ["reply", "handoff", "note"],
-          additionalProperties: false,
-        },
-      },
-    },
-    system: SYSTEM_PROMPT.replaceAll("{{GOAL}}", env.BOT_GOAL).replaceAll("{{NAME}}", env.SENDER_NAME),
-    messages: [
-      {
-        role: "user",
-        content: `About this agent:\n${about || "(nothing on file)"}\n\nSMS thread so far, oldest first:\n${transcript}\n\nWrite our next text.`,
-      },
-    ],
-  });
+  const userTurn: Anthropic.Beta.BetaMessageParam = {
+    role: "user",
+    content: `About this agent:\n${about || "(nothing on file)"}\n\nSMS thread so far, oldest first:\n${transcript}\n\nWrite our next text.`,
+  };
+  let messages: Anthropic.Beta.BetaMessageParam[] = [userTurn];
+  let response: Anthropic.Beta.BetaMessage;
+  for (let turn = 0; ; turn++) {
+    response = await client.beta.messages.create({
+      model: MODEL,
+      max_tokens: 16000,
+      betas: ["server-side-fallback-2026-07-01"],
+      fallbacks: "default",
+      // Lets Claude look up a listing the agent sends (Zillow, Realtor.com, Redfin, ...).
+      tools: [
+        { type: "web_search_20260209", name: "web_search", max_uses: 3, user_location: { type: "approximate", city: "Nashville", region: "Tennessee", country: "US" } },
+        { type: "web_fetch_20260209", name: "web_fetch", max_uses: 3 },
+      ],
+      output_config: { effort: "low", format: REPLY_FORMAT },
+      system: SYSTEM_PROMPT.replaceAll("{{GOAL}}", env.BOT_GOAL).replaceAll("{{NAME}}", env.SENDER_NAME),
+      messages,
+    });
+    // A long lookup can pause; resend with the partial turn and the server picks up where it left off.
+    if (response.stop_reason !== "pause_turn" || turn >= 3) break;
+    messages = [userTurn, { role: "assistant", content: response.content }];
+  }
 
   if (response.stop_reason === "refusal") {
     console.warn("refused", response.stop_details);
     return { reply: "", handoff: true, note: "Bot could not answer this one." };
   }
-  const text = response.content.find((b) => b.type === "text");
-  if (!text || text.type !== "text") return null;
-  return JSON.parse(text.text) as Decision;
+  // The JSON answer is the last text block; earlier ones can be notes around the web lookups.
+  const texts = response.content.filter((b): b is Anthropic.Beta.BetaTextBlock => b.type === "text");
+  const last = texts[texts.length - 1];
+  if (!last) return null;
+  return JSON.parse(last.text) as Decision;
 }
 
 async function smsThread(contactId: string, env: Env): Promise<Sms[]> {

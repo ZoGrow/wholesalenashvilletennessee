@@ -506,37 +506,39 @@ ZIP_STATE = Path("stats/zip_rotation.json")
 
 
 class ZipRotation:
-    """Hands out ZIP codes a few at a time so each scrape covers areas not hit recently.
+    """Hands out ZIP codes a few at a time, never one scraped in the last
+    `rescrape_after_days` days (Apify returns the same agents for a ZIP every time, so
+    re-scraping one only pays for people we already have).
 
-    Where the last scrape stopped is kept in stats/zip_rotation.json (committed back to
-    the repo by the workflow), so every run starts at the next ZIPs no matter how many
-    days or weekends passed, wrapping around at the end of the list. Top-up rounds in
-    the same run take the next ZIPs along."""
+    Each ZIP's last scrape date is kept in stats/zip_rotation.json, committed back to the
+    repo by the workflow. When every ZIP is used up, nothing is scraped."""
 
     def __init__(self, cfg):
         rot = cfg["apify"].get("zip_rotation") or {}
-        self.zips = rot.get("zips", [])
+        self.zips = [str(z) for z in rot.get("zips", [])]
         self.per_round = max(1, rot.get("per_round", 2))
+        self.wait_days = rot.get("rescrape_after_days", 90)
         self.enabled = bool(self.zips)
         try:
-            start = int(json.loads(ZIP_STATE.read_text())["next_index"])
-        except (OSError, ValueError, KeyError):
-            start = 0
-        self.pos = start % len(self.zips) if self.zips else 0
-        self.used = 0
+            self.last = json.loads(ZIP_STATE.read_text()).get("last_scraped", {})
+        except (OSError, ValueError):
+            self.last = {}
+
+    def fresh(self):
+        cutoff = (dt.date.today() - dt.timedelta(days=self.wait_days)).isoformat()
+        return [z for z in self.zips if self.last.get(z, "") < cutoff]
 
     def next_batch(self):
-        if self.used >= len(self.zips):
-            return []
-        n = min(self.per_round, len(self.zips) - self.used)
-        batch = [self.zips[(self.pos + i) % len(self.zips)] for i in range(n)]
-        self.pos, self.used = self.pos + n, self.used + n
+        batch = self.fresh()[: self.per_round]
+        today = dt.date.today().isoformat()
+        for z in batch:
+            self.last[z] = today
         return batch
 
     def save(self):
-        """Remember where to start next time (call once ZIPs have actually been scraped)."""
+        """Record what was scraped (call once ZIPs have actually been scraped)."""
         ZIP_STATE.parent.mkdir(parents=True, exist_ok=True)
-        ZIP_STATE.write_text(json.dumps({"next_index": self.pos % len(self.zips)}) + "\n")
+        ZIP_STATE.write_text(json.dumps({"last_scraped": dict(sorted(self.last.items()))}, indent=1) + "\n")
 
 
 REASONS = [
@@ -635,7 +637,8 @@ def main():
             if zips.enabled:
                 area = zips.next_batch()
                 if not area:
-                    print("Every ZIP in the rotation has been scraped this run")
+                    print(f"STOPPED: every ZIP has been scraped in the last {zips.wait_days} days; "
+                          "add new ZIPs to config.json to keep going. Nothing was scraped.")
                     break
                 cfg["apify"]["input"]["locations"] = area
                 cfg["apify"]["input"].pop("location", None)

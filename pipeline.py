@@ -31,6 +31,7 @@ import sys
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -501,20 +502,27 @@ def push_to_ghl(leads, cfg, target):
     return sent, removed, failed
 
 
+ZIP_STATE = Path("stats/zip_rotation.json")
+
+
 class ZipRotation:
     """Hands out ZIP codes a few at a time so each scrape covers areas not hit recently.
 
-    The starting point moves forward every day (based on the date, so no state file is
-    needed): day 1 scrapes ZIPs 1-2, day 2 ZIPs 3-4, and so on, wrapping around at the
-    end of the list. Top-up rounds in the same run take the next ZIPs along."""
+    Where the last scrape stopped is kept in stats/zip_rotation.json (committed back to
+    the repo by the workflow), so every run starts at the next ZIPs no matter how many
+    days or weekends passed, wrapping around at the end of the list. Top-up rounds in
+    the same run take the next ZIPs along."""
 
     def __init__(self, cfg):
         rot = cfg["apify"].get("zip_rotation") or {}
         self.zips = rot.get("zips", [])
         self.per_round = max(1, rot.get("per_round", 2))
         self.enabled = bool(self.zips)
-        day = (dt.date.today() - dt.date(2026, 1, 1)).days
-        self.pos = (day * self.per_round) % len(self.zips) if self.zips else 0
+        try:
+            start = int(json.loads(ZIP_STATE.read_text())["next_index"])
+        except (OSError, ValueError, KeyError):
+            start = 0
+        self.pos = start % len(self.zips) if self.zips else 0
         self.used = 0
 
     def next_batch(self):
@@ -524,6 +532,11 @@ class ZipRotation:
         batch = [self.zips[(self.pos + i) % len(self.zips)] for i in range(n)]
         self.pos, self.used = self.pos + n, self.used + n
         return batch
+
+    def save(self):
+        """Remember where to start next time (call once ZIPs have actually been scraped)."""
+        ZIP_STATE.parent.mkdir(parents=True, exist_ok=True)
+        ZIP_STATE.write_text(json.dumps({"next_index": self.pos % len(self.zips)}) + "\n")
 
 
 REASONS = [
@@ -630,6 +643,8 @@ def main():
             where = ", ".join(cfg["apify"]["input"].get("locations", []))
             print(f"Round {rnd}: scraping up to {ask} agents in {where} ({need} clean leads still needed)")
             items = fetch_apify_items(cfg)
+            if zips.enabled and args.send:
+                zips.save()
         scraped += len(items)
 
         leads, rejected = build_leads(items, cfg)

@@ -415,8 +415,9 @@ def push_to_ghl(leads, cfg, target):
     def create(lead):
         """-> ("existing"|"created"|"failed", lead, contact_id_or_error)"""
         try:
-            if find_existing(lead, location_id, h):
-                return "existing", lead, None
+            existing = find_existing(lead, location_id, h)
+            if existing:
+                return "existing", lead, existing
             res = http_json("POST", f"{GHL_BASE}/contacts/upsert", h,
                             ghl_contact_body(lead, location_id, cfg))
             return "created", lead, res["contact"]["id"]
@@ -449,7 +450,12 @@ def push_to_ghl(leads, cfg, target):
                     if status == "created":
                         batch.append((lead, info))
                     elif status == "existing":
-                        removed.append({**lead, "reason": "already in GHL"})
+                        # Split ours from contacts that were in GHL before this pipeline
+                        # (the duplicate search may omit tags; those count as older contacts).
+                        tags = {str(t).lower() for t in (info.get("tags") or [])}
+                        ours = any(t.lower() in tags for t in cfg["ghl"]["tags"])
+                        removed.append({**lead, "reason": "already texted by pipeline" if ours
+                                        else "already in GHL"})
                     else:
                         failed += 1
                         print(f"  failed {lead['phone'] or lead['email']}: {info}")
@@ -498,7 +504,7 @@ def push_to_ghl(leads, cfg, target):
     print(f"GoHighLevel: {len(sent)} of {target} texts confirmed sent, "
           f"{sum(r['reason'].startswith('text not sent') for r in removed)} not sent by GHL, "
           f"{sum(r['reason'] == 'DND in GHL' for r in removed)} DND (tagged {dnd_tag}), "
-          f"{sum(r['reason'] == 'already in GHL' for r in removed)} already in GHL, {failed} failed")
+          f"{sum(r['reason'] in ('already in GHL', 'already texted by pipeline') for r in removed)} already in GHL, {failed} failed")
     return sent, removed, failed
 
 
@@ -545,7 +551,7 @@ REASONS = [
     "no mobile number", "no phone or email", "invalid number", "toll-free number",
     "fake 555 number", "not a US number", "no name", "number shared by several agents",
     "on suppression list", "duplicate", "already in GHL", "DND in GHL",
-    "text not sent by GHL (skipped or failed)",
+    "text not sent by GHL (skipped or failed)", "already texted by pipeline",
 ]
 
 

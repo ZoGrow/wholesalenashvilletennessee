@@ -1,0 +1,12 @@
+{
+ "actor": "braveleads/realtor-real-estate-agent-leads-scraper",
+ "input": {
+  "locations": [
+   "37203"
+  ],
+  "limitPerLocation": 50,
+  "agentType": "both"
+ },
+ "error": "HTTP 400",
+ "body": "{\n  \"error\": {\n    \"type\": \"invalid-input\",\n    \"message\": \"Input is not valid: Field input.limitPerLocation must be >= 100\"\n  }\n}"
+}

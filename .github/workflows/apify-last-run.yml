@@ -1,0 +1,27 @@
+name: Check last Apify runs
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Read the last Apify runs
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python scripts/apify_last_run.py "$(python -c "import json;print(json.load(open('config.json'))['apify']['actor_id'])")"
+      - name: Save to the repo
+        run: |
+          git config user.name "lead-pipeline"
+          git config user.email "lead-pipeline@users.noreply.github.com"
+          git add stats/apify_last_run.json
+          git commit -m "Apify run check" || exit 0
+          git pull --rebase origin main && git push origin HEAD:main

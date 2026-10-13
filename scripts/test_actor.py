@@ -1,7 +1,7 @@
 """Try an Apify actor on a small sample and save a summary of its output shape
 (field names, phone formats and labels, counts) to stats/actor_test.json.
 No names, numbers or emails are saved: digits and letters in values are masked."""
-import json, os, re, sys, urllib.request
+import json, os, re, sys, urllib.error, urllib.request
 from collections import Counter
 
 actor, run_input = sys.argv[1], json.loads(sys.argv[2])
@@ -9,7 +9,15 @@ url = (f"https://api.apify.com/v2/acts/{actor.replace('/', '~')}/run-sync-get-da
        f"?token={os.environ['APIFY_TOKEN']}&timeout=280")
 req = urllib.request.Request(url, data=json.dumps(run_input).encode(),
                              headers={"Content-Type": "application/json", "User-Agent": "Mozilla/5.0"})
-items = json.load(urllib.request.urlopen(req, timeout=300))
+try:
+    items = json.load(urllib.request.urlopen(req, timeout=300))
+except urllib.error.HTTPError as e:
+    os.makedirs("stats", exist_ok=True)
+    body = e.read().decode(errors="replace").replace(os.environ["APIFY_TOKEN"], "***")[:2000]
+    json.dump({"actor": actor, "input": run_input, "error": f"HTTP {e.code}", "body": body},
+              open("stats/actor_test.json", "w"), indent=1)
+    print(body)
+    sys.exit(0)
 
 def mask(v):
     if isinstance(v, dict):

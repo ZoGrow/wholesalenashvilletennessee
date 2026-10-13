@@ -33,7 +33,7 @@ one back and only tags the ones GHL has not put on Do Not Disturb. DND contacts 
 tag `dnd-skipped` instead and never enter the outreach workflow.
 
 Runs Monday-Friday at 10am Central. If GitHub skips or delays that slot, backup slots every 30 minutes until noon start it instead; a day never runs twice (the first step checks `stats/history.csv`). Each run does ONE Apify scrape of 1,000 agents
-(`daily_clean_leads` x `scrape_multiplier` = 1000 x 1) from the next 9 Nashville ZIPs in the rotation
+(`daily_clean_leads` x `scrape_multiplier` = 1000 x 1) from the next 9 ZIPs in the rotation (Nashville, then Middle TN suburbs, then Memphis, Knoxville and Chattanooga)
 (`apify.zip_rotation`), cleans them, and sends every clean one; nothing extra is scraped. No second scrape (`max_scrape_rounds` = 1). Each ZIP's last scrape date is saved in `stats/zip_rotation.json`, and a ZIP is never scraped again within `rescrape_after_days` (90); when none are left the run scrapes nothing.
 
 A lead only counts once GHL has actually sent its first text: after enrolling, the script

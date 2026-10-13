@@ -463,8 +463,9 @@ def push_to_ghl(leads, cfg, target):
 
     Works in rounds: create the next batch of contacts untagged, give GHL a moment to
     run its own Do Not Disturb checks, then tag only the ones GHL will let you text.
-    DND contacts get `dnd_tag` so they never enter the workflow. Anyone already in GHL
-    is left untouched. Repeats until `target` is reached or the leads run out.
+    DND contacts get `dnd_tag` so they never enter the workflow. Contacts already in
+    GHL are skipped if they carry the workflow tag (or `never_text_tags`); older contacts
+    without it are texted too when `text_older_contacts` is on. Repeats until `target` is reached or the leads run out.
     Requests run in parallel threads, rate-limited to stay inside GHL's API limits.
     Returns (sent, removed, failed); removed rows carry a reason."""
     location_id = get_secret("GHL_LOCATION_ID")
@@ -476,6 +477,10 @@ def push_to_ghl(leads, cfg, target):
     verify = cfg["ghl"].get("verify_texts_sent", True)
     verify_delays = cfg["ghl"].get("verify_delays_seconds", [45, 45, 60])
     no_text_tag = cfg["ghl"].get("no_text_tag", "text-not-sent")
+    reuse_older = cfg["ghl"].get("text_older_contacts", False)
+    # Anyone with one of these tags has already been through the outreach workflow.
+    skip_tags = {t.lower() for t in cfg["ghl"]["tags"] + [dnd_tag, no_text_tag]
+                 + cfg["ghl"].get("never_text_tags", [])}
     sent, removed, failed = [], [], 0
     queue = list(leads)
 
@@ -484,7 +489,13 @@ def push_to_ghl(leads, cfg, target):
         try:
             existing = find_existing(lead, location_id, h)
             if existing:
-                return "existing", lead, existing
+                # The duplicate search can leave tags out, so read the full contact.
+                full = http_json("GET", f"{GHL_BASE}/contacts/{existing['id']}", h)["contact"]
+                tags = {str(t).lower() for t in (full.get("tags") or [])}
+                if tags & skip_tags or not reuse_older:
+                    return "existing", lead, full
+                # In GHL from older outreach but never in this workflow: text them too.
+                return "created", lead, full["id"]
             res = http_json("POST", f"{GHL_BASE}/contacts/upsert", h,
                             ghl_contact_body(lead, location_id, cfg))
             return "created", lead, res["contact"]["id"]
@@ -520,7 +531,7 @@ def push_to_ghl(leads, cfg, target):
                         # Split ours from contacts that were in GHL before this pipeline
                         # (the duplicate search may omit tags; those count as older contacts).
                         tags = {str(t).lower() for t in (info.get("tags") or [])}
-                        ours = any(t.lower() in tags for t in cfg["ghl"]["tags"])
+                        ours = bool(tags & skip_tags)
                         removed.append({**lead, "reason": "already texted by pipeline" if ours
                                         else "already in GHL"})
                     else:

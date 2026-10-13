@@ -1160,7 +1160,13 @@
       25,
       25
     ],
-    "no_text_tag": "text-not-sent"
+    "no_text_tag": "text-not-sent",
+    "text_older_contacts": true,
+    "never_text_tags": [
+      "hot-lead",
+      "warm-lead",
+      "bot-off"
+    ]
   },
   "output_dir": "output",
   "suppression_file": "suppression.csv",

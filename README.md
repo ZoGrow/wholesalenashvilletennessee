@@ -33,7 +33,7 @@ numbers, agents with no name, numbers listed for several different agents (team 
 office lines), duplicates, and anything in `suppression.csv`. Removed rows and the
 reason go to `output/removed_YYYY-MM-DD.csv`.
 
-Agents already in GHL (any contact with the same phone/email) are skipped and left untouched; the stats split them into "already texted by pipeline" (has the `apify-daily-lead` tag) and "already in GHL" (older contacts). New contacts are first created untagged; after a short wait the script reads each
+Agents who already went through the outreach workflow (contact has `apify-daily-lead`, `dnd-skipped`, `text-not-sent` or a `never_text_tags` tag) are skipped and counted as "already texted by pipeline". Older GHL contacts without those tags (from earlier outreach) are texted too while `ghl.text_older_contacts` is on. New contacts are first created untagged; after a short wait the script reads each
 one back and only tags the ones GHL has not put on Do Not Disturb. DND contacts get the
 tag `dnd-skipped` instead and never enter the outreach workflow.
 

@@ -722,7 +722,7 @@ def main():
             where = ", ".join(cfg["apify"]["input"].get("locations", []))
             print(f"Round {rnd}: scraping up to {ask} agents in {where} ({need} clean leads still needed)")
             items = fetch_apify_items(cfg)
-            if zips.enabled and args.send:
+            if zips.enabled and args.send and items:  # an empty scrape doesn't use up its ZIPs
                 zips.save()
         scraped += len(items)
 

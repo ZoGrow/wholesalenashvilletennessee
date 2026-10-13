@@ -137,9 +137,16 @@ def fetch_apify_items(cfg):
         print(f"Reading latest successful run of {actor}")
         return http_json("GET", dataset_url, h) or []
 
-    print(f"Starting Apify actor {actor}")
-    run = http_json("POST", f"{APIFY_BASE}/acts/{actor_path(actor)}/runs",
-                    h, cfg["apify"].get("input", {}))["data"]
+    reuse = os.environ.get("APIFY_RUN_ID", "").strip()
+    if reuse:  # rerun on agents an earlier run already paid for, instead of scraping again
+        print(f"Reusing agents from Apify run {reuse}")
+        run = http_json("GET", f"{APIFY_BASE}/actor-runs/{reuse}", h)["data"]
+    else:
+        print(f"Starting Apify actor {actor}")
+        cost = cfg["apify"].get("max_cost_usd")
+        query = f"?maxTotalChargeUsd={cost}" if cost else ""
+        run = http_json("POST", f"{APIFY_BASE}/acts/{actor_path(actor)}/runs{query}",
+                        h, cfg["apify"].get("input", {}))["data"]
     run_id = run["id"]
     deadline = time.time() + cfg["apify"].get("max_wait_minutes", 60) * 60
     while run["status"] in ("READY", "RUNNING"):
@@ -149,7 +156,10 @@ def fetch_apify_items(cfg):
         run = http_json("GET", f"{APIFY_BASE}/actor-runs/{run_id}", h)["data"]
         print(f"  run {run_id}: {run['status']}")
     if run["status"] != "SUCCEEDED":
-        sys.exit(f"Apify run {run_id} ended with status {run['status']}")
+        # A run stopped by a cost cap or timeout still keeps what it scraped; use that.
+        print(f"WARNING: Apify run {run_id} ended {run['status']}: {run.get('statusMessage') or ''}")
+        if run["status"] not in ("ABORTED", "TIMED-OUT"):
+            sys.exit(f"Apify run {run_id} ended with status {run['status']}")
 
     items, offset, limit = [], 0, 1000
     while True:

@@ -13,6 +13,10 @@ on:
         description: "Test size: send exactly this many clean leads (blank = normal daily amount)"
         required: false
         default: ""
+      apify_run_id:
+        description: "Reuse the agents from this Apify run instead of scraping again (blank = scrape)"
+        required: false
+        default: ""
 
 permissions:
   contents: write   # lets the run save stats/history.csv back to the repo
@@ -50,6 +54,7 @@ jobs:
           GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
           GHL_WORKFLOW_ID: ${{ secrets.GHL_WORKFLOW_ID }}
           LIMIT: ${{ inputs.limit }}
+          APIFY_RUN_ID: ${{ inputs.apify_run_id }}
         run: python pipeline.py --send ${LIMIT:+--limit "$LIMIT"}
       - name: Save today's CSV
         if: always() && steps.clock.outputs.go == 'yes'

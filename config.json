@@ -14,6 +14,7 @@
       "agentType": "both"
     },
     "max_wait_minutes": 60,
+    "max_cost_usd": 3,
     "zip_rotation": {
       "_note": "Each run scrapes the next 3 ZIPs not scraped in rescrape_after_days; Nashville first, then Middle TN, then Memphis/Knoxville/Chattanooga.",
       "per_round": 3,

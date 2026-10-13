@@ -27,6 +27,7 @@ for run in get(f"https://api.apify.com/v2/acts/{actor}/runs?desc=1&limit=3")["da
         "usageTotalUsd": full.get("usageTotalUsd"), "datasetItems": ds.get("itemCount"),
         "input": inp, "log_tail": log.replace(token, "***")[-4000:],
     })
+out.append({"account_limits": get("https://api.apify.com/v2/users/me/limits")["data"]})
 os.makedirs("stats", exist_ok=True)
 json.dump(out, open("stats/apify_last_run.json", "w"), indent=1)
 print(json.dumps(out, indent=1)[:6000])

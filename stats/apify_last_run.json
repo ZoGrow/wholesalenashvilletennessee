@@ -57,5 +57,42 @@
    "agentType": "both"
   },
   "log_tail": "2026-10-13T02:53:28.818Z ACTOR: Pulling container image of build RvzQqfFd5NKDJqRdF from registry.\n2026-10-13T02:53:29.987Z ACTOR: Creating container.\n2026-10-13T02:53:30.057Z ACTOR: Starting container.\n2026-10-13T02:53:30.059Z ACTOR: Running under \"LIMITED_PERMISSIONS\".\n2026-10-13T02:53:31.043Z INFO \u23f3 Scanning search for agents. | Limit: 100/location \n2026-10-13T02:53:31.044Z \n2026-10-13T02:53:32.218Z INFO \ud83d\udd25 Scraping started | 37203 \u2014 1464 agents across 61 pages\n2026-10-13T02:53:32.220Z \n2026-10-13T02:53:37.774Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T02:53:37.775Z \n2026-10-13T02:53:58.924Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T02:53:58.926Z \n2026-10-13T02:54:40.855Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T02:54:40.856Z \n2026-10-13T02:55:21.725Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T02:55:21.726Z \n2026-10-13T02:56:12.514Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T02:56:12.516Z \n2026-10-13T02:56:13.494Z INFO \u2705 37203 \u2014 120 agents collected\n2026-10-13T02:56:13.496Z \n2026-10-13T02:56:13.497Z INFO \u2705 Finished! | Total: 120 || Duplicates: 0\n"
+ },
+ {
+  "account_limits": {
+   "monthlyUsageCycle": {
+    "startAt": "2026-09-18T00:00:00.000Z",
+    "endAt": "2026-10-17T23:59:59.999Z"
+   },
+   "limits": {
+    "maxMonthlyUsageUsd": 100,
+    "maxMonthlyActorComputeUnits": 1999999,
+    "maxMonthlyExternalDataTransferGbytes": 999999,
+    "maxMonthlyProxySerps": 9999999,
+    "maxMonthlyUnblockerUnits": 99999990,
+    "maxMonthlyResidentialProxyGbytes": 49999,
+    "maxActorMemoryGbytes": 64,
+    "maxActorCount": 500,
+    "maxActorTaskCount": 5000,
+    "maxScheduleCount": 100,
+    "maxConcurrentActorJobs": 32,
+    "maxTeamAccountSeatCount": 999,
+    "dataRetentionDays": 31
+   },
+   "current": {
+    "monthlyUsageUsd": 100.0056181625273,
+    "monthlyActorComputeUnits": 0.02337597222222222,
+    "monthlyExternalDataTransferGbytes": 0.006866268813610077,
+    "monthlyProxySerps": 0,
+    "monthlyUnblockerUnits": 0,
+    "monthlyResidentialProxyGbytes": 8.893199265003204e-06,
+    "actorMemoryGbytes": 0,
+    "actorCount": 0,
+    "actorTaskCount": 10,
+    "scheduleCount": 0,
+    "activeActorJobCount": 0,
+    "teamAccountSeatCount": 3
+   }
+  }
  }
 ]

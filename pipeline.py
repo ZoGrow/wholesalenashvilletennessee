@@ -333,10 +333,13 @@ def build_leads(items, cfg):
         if r["phone"]:
             names_by_phone.setdefault(r["phone"], set()).add(r["full_name"].lower())
 
+    banned = {s.upper() for s in cfg.get("exclude_states", [])}
     leads, rejected, seen = [], [], set()
     for r in rows:
         reason = ""
-        if mobile_cfg and not r["phone"]:
+        if (r["state"] or "").strip().upper() in banned:
+            reason = "excluded state"
+        elif mobile_cfg and not r["phone"]:
             reason = "no mobile number"
         elif personal and not r["phone"]:
             reason = "only office numbers"
@@ -616,7 +619,7 @@ REASONS = [
     "fake 555 number", "not a US number", "no name", "number shared by several agents",
     "on suppression list", "duplicate", "already in GHL", "DND in GHL",
     "text not sent by GHL (skipped or failed)", "already texted by pipeline",
-    "only office numbers",
+    "only office numbers", "excluded state",
 ]
 
 

@@ -23,6 +23,7 @@ Only the Python standard library is used.
 
 import argparse
 import csv
+import hashlib
 import datetime as dt
 import json
 import os
@@ -211,9 +212,57 @@ def mobile_phone(item, mobile_cfg):
     return ""
 
 
-def to_lead(item, field_map, mobile_cfg=None):
+OFFICE_NUMBERS = os.path.join(HERE, "stats", "office_numbers.txt")
+
+
+def number_key(phone):
+    """Short hash of a number, so the office-line list in the repo holds no raw numbers."""
+    return hashlib.sha256(phone.encode()).hexdigest()[:16]
+
+
+def all_phones(item, list_path):
+    raw = get_path(item, list_path) or []
+    raw = raw if isinstance(raw, list) else [raw]
+    out = []
+    for ph in raw:
+        num = normalize_phone(str(ph.get("number", "") if isinstance(ph, dict) else ph))
+        if num and num not in out:
+            out.append(num)
+    return out
+
+
+def pick_personal_phones(items, cfg):
+    """For sources that don't label phones: an office line is listed for every agent at
+    that brokerage, so a number that appears for more than one agent (in this scrape or
+    any earlier one) is treated as an office line. Each agent gets the first number that's
+    theirs alone, or "" if all their numbers are office lines. Remembers new office lines."""
+    path = cfg["personal_phone"].get("list_path", "phones")
+    name_paths = cfg["field_map"].get("full_name", [])
+    owners = {}
+    for item in items:
+        name = first_value(item, name_paths).lower()
+        for num in all_phones(item, path):
+            owners.setdefault(num, set()).add(name)
+    try:
+        known = set(open(OFFICE_NUMBERS).read().split())
+    except OSError:
+        known = set()
+    shared = {num for num, names in owners.items() if len(names) > 1}
+    office = known | {number_key(n) for n in shared}
+    picks = [next((n for n in all_phones(item, path) if number_key(n) not in office), "")
+             for item in items]
+    if office - known:
+        os.makedirs(os.path.dirname(OFFICE_NUMBERS), exist_ok=True)
+        with open(OFFICE_NUMBERS, "w") as f:
+            f.write("\n".join(sorted(office)) + "\n")
+    return picks
+
+
+def to_lead(item, field_map, mobile_cfg=None, phone=None):
     lead = {col: first_value(item, field_map.get(col, [])) for col in CSV_COLUMNS}
-    if mobile_cfg:
+    if phone is not None:
+        lead["phone"] = phone
+    elif mobile_cfg:
         # Texts can't reach landlines, so only use a phone the source marks as mobile.
         lead["phone"] = mobile_phone(item, mobile_cfg)
     lead["phone"] = normalize_phone(lead["phone"])
@@ -262,8 +311,11 @@ def load_suppression(cfg):
 def build_leads(items, cfg):
     """Clean the scraped items. Returns (leads, rejected); rejected rows carry a reason."""
     mobile_cfg = cfg.get("mobile_only")
+    personal = cfg.get("personal_phone")
     suppressed = load_suppression(cfg)
-    rows = [to_lead(item, cfg["field_map"], mobile_cfg) for item in items]
+    picks = pick_personal_phones(items, cfg) if personal else [None] * len(items)
+    rows = [to_lead(item, cfg["field_map"], mobile_cfg, phone)
+            for item, phone in zip(items, picks)]
 
     # The same "mobile" listed for several agents is a team or office line, not a person.
     names_by_phone = {}
@@ -276,6 +328,8 @@ def build_leads(items, cfg):
         reason = ""
         if mobile_cfg and not r["phone"]:
             reason = "no mobile number"
+        elif personal and not r["phone"]:
+            reason = "only office numbers"
         elif not (r["phone"] or r["email"]):
             reason = "no phone or email"
         elif r["phone"] and phone_problem(r["phone"]):
@@ -552,6 +606,7 @@ REASONS = [
     "fake 555 number", "not a US number", "no name", "number shared by several agents",
     "on suppression list", "duplicate", "already in GHL", "DND in GHL",
     "text not sent by GHL (skipped or failed)", "already texted by pipeline",
+    "only office numbers",
 ]
 
 
@@ -648,7 +703,12 @@ def main():
                     break
                 cfg["apify"]["input"]["locations"] = area
                 cfg["apify"]["input"].pop("location", None)
-            cfg["apify"].setdefault("input", {})["maxResults"] = ask
+            per_loc = cfg["apify"].get("per_location_limit")
+            if per_loc:  # actor takes a cap per location instead of a total
+                n_loc = max(1, len(cfg["apify"]["input"].get("locations", [])))
+                cfg["apify"]["input"][per_loc["field"]] = max(per_loc.get("min", 1), -(-ask // n_loc))
+            else:
+                cfg["apify"].setdefault("input", {})["maxResults"] = ask
             where = ", ".join(cfg["apify"]["input"].get("locations", []))
             print(f"Round {rnd}: scraping up to {ask} agents in {where} ({need} clean leads still needed)")
             items = fetch_apify_items(cfg)

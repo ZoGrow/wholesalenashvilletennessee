@@ -22,13 +22,18 @@ workflow triggered by that tag send the outreach.
 
 ## Cleaning (before anything reaches GHL)
 
-Each run removes: agents with no number marked Mobile, invalid / toll-free / fake 555
+Agents come from Realtor.com's agent directory (`braveleads/realtor-real-estate-agent-leads-scraper`),
+which includes agents with no current listings. Its phones aren't labeled mobile or office, so
+any number listed for more than one agent (this run or any earlier one) is treated as an office
+line and skipped; each agent is texted on the first number that's theirs alone ("only office
+numbers" if none). Known office lines are kept as short hashes in `stats/office_numbers.txt`.
+
+Each run also removes: invalid / toll-free / fake 555
 numbers, agents with no name, numbers listed for several different agents (team or
 office lines), duplicates, and anything in `suppression.csv`. Removed rows and the
 reason go to `output/removed_YYYY-MM-DD.csv`.
 
-Agents already in GHL (any contact with the same phone/email) are skipped and left untouched; the stats split them into "already texted by pipeline" (has the `apify-daily-lead` tag) and "already in GHL" (older contacts).
-untouched. New contacts are first created untagged; after a short wait the script reads each
+Agents already in GHL (any contact with the same phone/email) are skipped and left untouched; the stats split them into "already texted by pipeline" (has the `apify-daily-lead` tag) and "already in GHL" (older contacts). New contacts are first created untagged; after a short wait the script reads each
 one back and only tags the ones GHL has not put on Do Not Disturb. DND contacts get the
 tag `dnd-skipped` instead and never enter the outreach workflow.
 
@@ -43,10 +48,9 @@ The GHL token needs the View Conversations and View Conversation Messages scopes
 
 ## Setup
 
-1. `config.json` is set up for `automation-lab/realtor-agents-scraper`. Set
-   `apify.input.locations` to your markets (cities, states or ZIPs), `listingStatus`
-   (`both`, `for_sale`, `sold`, `for_rent`) and `maxResults` (agents per run, max 5000).
-   Cost is about $5 per 1,000 agents on Apify's Bronze plan.
+1. `config.json` is set up for `braveleads/realtor-real-estate-agent-leads-scraper`. Markets are
+   the ZIPs in `apify.zip_rotation.zips`; the daily 1,000 is split across each run's ZIPs via
+   `limitPerLocation` (minimum 100). Cost is about $2 per 1,000 agents.
 2. Get the keys (never paste them into chat or config files):
    - `APIFY_TOKEN` – Apify console → Settings → API & Integrations.
    - `GHL_TOKEN` – GHL sub-account → Settings → Private Integrations, with

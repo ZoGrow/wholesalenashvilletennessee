@@ -5,17 +5,17 @@
   "max_scrape_rounds": 1,
   "min_topup_scrape": 10,
   "apify": {
-    "actor_id": "automation-lab~realtor-agents-scraper",
+    "actor_id": "braveleads~realtor-real-estate-agent-leads-scraper",
     "mode": "run",
     "input": {
       "locations": [
         "Nashville, TN"
       ],
-      "listingStatus": "both"
+      "agentType": "both"
     },
     "max_wait_minutes": 60,
     "zip_rotation": {
-      "_note": "Nashville / Davidson County ZIPs. Each day scrapes the next few; top-ups move to the next ZIPs. Remove this block to scrape all of 'locations' instead.",
+      "_note": "Each run scrapes the next 3 ZIPs not scraped in rescrape_after_days; Nashville first, then Middle TN, then Memphis/Knoxville/Chattanooga.",
       "per_round": 3,
       "zips": [
         "37203",
@@ -114,20 +114,28 @@
         "37363"
       ],
       "rescrape_after_days": 90
+    },
+    "per_location_limit": {
+      "field": "limitPerLocation",
+      "min": 100
     }
   },
   "field_map": {
-    "first_name": [],
-    "last_name": [],
+    "first_name": [
+      "firstName"
+    ],
+    "last_name": [
+      "lastName"
+    ],
     "full_name": [
-      "name"
+      "fullName"
     ],
     "phone": [],
     "email": [
-      "email"
+      "emails"
     ],
     "company": [
-      "brokerage"
+      "officeName"
     ],
     "website": [
       "websiteUrl"
@@ -142,17 +150,15 @@
       "state"
     ],
     "postal_code": [
-      "postalCode"
+      "zip"
     ],
-    "source_url": [
-      "profileUrl"
-    ]
+    "source_url": []
   },
   "ghl": {
     "tags": [
       "apify-daily-lead"
     ],
-    "source": "Apify realtor agents scraper",
+    "source": "Apify Realtor.com agent directory",
     "fail_on_errors": true,
     "dnd_tag": "dnd-skipped",
     "dnd_check_delay_seconds": 0,
@@ -165,14 +171,8 @@
     "no_text_tag": "text-not-sent"
   },
   "output_dir": "output",
-  "mobile_only": {
-    "list_path": "phones",
-    "types": [
-      "mobile",
-      "cell",
-      "cellular",
-      "wireless"
-    ]
-  },
-  "suppression_file": "suppression.csv"
+  "suppression_file": "suppression.csv",
+  "personal_phone": {
+    "list_path": "phones"
+  }
 }

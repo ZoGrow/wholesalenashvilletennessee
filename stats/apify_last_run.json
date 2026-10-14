@@ -80,9 +80,9 @@
     "dataRetentionDays": 31
    },
    "current": {
-    "monthlyUsageUsd": 100.0056181625273,
+    "monthlyUsageUsd": 100.0402605114492,
     "monthlyActorComputeUnits": 0.02337597222222222,
-    "monthlyExternalDataTransferGbytes": 0.006866268813610077,
+    "monthlyExternalDataTransferGbytes": 0.0080592455342412,
     "monthlyProxySerps": 0,
     "monthlyUnblockerUnits": 0,
     "monthlyResidentialProxyGbytes": 8.893199265003204e-06,

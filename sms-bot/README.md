@@ -16,6 +16,9 @@ something later get tagged `warm-lead` with a note, and the bot keeps the conver
 - Qualified lead = distressed + off-market + seller asking at or under `QUALIFY_PERCENT` (60) % of the
   Zestimate. Those get `hot-lead` + `qualified-lead` and a note; the bot hands off. Ones that clearly fail
   get `not-qualified` and a note saying why; the bot asks the agent for other distressed off-market deals.
+- Each qualified lead also gets a "New qualified lead" card (address, asking vs Zestimate, condition,
+  numbers, agent, GHL link) as a note, posted to Slack when the `SLACK_WEBHOOK_URL` repo secret is set
+  (a Slack Incoming Webhook URL; rerun the deploy after adding it).
   Tag a contact `bot-off` to take a conversation over yourself.
 
 ## Setup

@@ -6,6 +6,7 @@ import { SYSTEM_PROMPT } from "./prompt";
 
 export interface Env {
   ANTHROPIC_API_KEY: string;
+  SLACK_WEBHOOK_URL?: string; // optional: qualified leads are posted to this Slack channel
   GHL_TOKEN: string;
   GHL_LOCATION_ID: string;
   WEBHOOK_SECRET: string; // must match ?key= on the webhook URL set in GHL
@@ -112,9 +113,50 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
       await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `${label}: ${decision.note}` });
     }
   }
+  if (decision.deal === "qualified") {
+    const card = qualifiedLeadCard(decision.lead, contact, contactId, env);
+    await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: card.replace(/[*_]/g, "") });
+    if (env.SLACK_WEBHOOK_URL) {
+      const res = await fetch(env.SLACK_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: card }),
+      });
+      if (!res.ok) console.error("slack post failed", res.status, await res.text());
+    }
+  }
 }
 
-type Decision = { reply: string; handoff: boolean; warm: boolean; optout: boolean; deal: string; note: string };
+type Lead = Record<(typeof LEAD_FIELDS)[number], string>;
+const LEAD_FIELDS = [
+  "address", "asking_price", "zestimate", "percent_of_zestimate", "market_status", "condition",
+  "beds_baths_sqft", "year_built", "occupancy", "motivation", "timeline", "arv_range", "repairs",
+  "max_offer", "summary",
+] as const;
+
+/** The "New qualified lead" message: posted to Slack and saved as a note on the contact. */
+function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: string, env: Env): string {
+  const v = (k: keyof Lead) => (lead?.[k] || "").trim() || "unknown";
+  const agent = [contact.firstName && `${contact.firstName} ${contact.lastName ?? ""}`.trim(), contact.companyName, contact.phone]
+    .filter(Boolean).join(" · ");
+  const link = `https://app.gohighlevel.com/v2/location/${env.GHL_LOCATION_ID}/contacts/detail/${contactId}`;
+  return [
+    `🏠 *New qualified lead: ${v("address")}*`,
+    `*Asking:* ${v("asking_price")} (${v("percent_of_zestimate")} of Zestimate ${v("zestimate")})`,
+    `*Status:* ${v("market_status")}`,
+    `*Condition:* ${v("condition")}`,
+    `*Property:* ${v("beds_baths_sqft")} · built ${v("year_built")} · ${v("occupancy")}`,
+    `*Seller:* ${v("motivation")} · timeline: ${v("timeline")}`,
+    `*Rough numbers:* ARV ${v("arv_range")} · repairs ${v("repairs")} · max offer ${v("max_offer")}`,
+    `*Agent:* ${agent || "unknown"}`,
+    `*Why it qualifies:* ${v("summary")}`,
+    `<${link}|Open in GHL>`,
+  ].join("\n");
+}
+
+type Decision = {
+  reply: string; handoff: boolean; warm: boolean; optout: boolean; deal: string; note: string; lead: Lead;
+};
 
 /** They asked us to stop: no reply, tag them, and turn on SMS Do Not Disturb so nothing texts them again. */
 async function optOut(contactId: string, env: Env, text: string): Promise<void> {
@@ -144,12 +186,19 @@ const REPLY_FORMAT = {
         enum: ["qualified", "not_qualified", "unknown"],
         description: "qualified = distressed, off-market and asking at or under the qualify % of Zestimate; not_qualified = we know enough and it fails; unknown = still learning.",
       },
+      lead: {
+        type: "object",
+        description: "Fill in when deal is qualified (short values, e.g. \"$145,000\", \"52%\", \"Off-market\"); otherwise empty strings.",
+        properties: Object.fromEntries(LEAD_FIELDS.map((f) => [f, { type: "string" }])),
+        required: [...LEAD_FIELDS],
+        additionalProperties: false,
+      },
       note: {
         type: "string",
         description: "When handoff or warm is true: for warm, one line on what they might have and when; for handoff, one or two lines for the human with the address, listing price, condition and seller's asking price learned so far. Else empty.",
       },
     },
-    required: ["reply", "handoff", "warm", "optout", "deal", "note"],
+    required: ["reply", "handoff", "warm", "optout", "deal", "lead", "note"],
     additionalProperties: false,
   },
 };
@@ -195,7 +244,7 @@ async function nextReply(thread: Sms[], contact: Record<string, any>, env: Env):
 
   if (response.stop_reason === "refusal") {
     console.warn("refused", response.stop_details);
-    return { reply: "", handoff: true, warm: false, optout: false, deal: "unknown", note: "Bot could not answer this one." };
+    return { reply: "", handoff: true, warm: false, optout: false, deal: "unknown", note: "Bot could not answer this one.", lead: {} as Lead };
   }
   // The JSON answer is the last text block; earlier ones can be notes around the web lookups.
   const texts = response.content.filter((b): b is Anthropic.Beta.BetaTextBlock => b.type === "text");

@@ -44,6 +44,6 @@ When you hand off, the note is for {{NAME}} only (never text these numbers to th
 - Rough repairs: light cosmetic about $20/sqft, medium (kitchen, baths, flooring) about $35/sqft, heavy (roof, HVAC, foundation, full gut) $50-70/sqft.
 - Max offer = ARV x {{ARV_PERCENT}}% - repairs - \${{FEE}} fee, and whether the asking price is under it or over it.
 - Be conservative: when comps are thin or condition is unclear, use the lower ARV and higher repair estimate.
-Mark all of these as rough estimates.
+Mark all of these as rough estimates. When deal is qualified, also fill in every lead field (it becomes the qualified-lead card {{NAME}} gets in Slack); write "unknown" for anything you don't know.
 
 If their last text needs no answer (for example "ok" or "thanks" after you've wrapped up), return an empty reply.`;

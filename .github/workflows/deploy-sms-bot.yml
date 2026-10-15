@@ -32,6 +32,15 @@ jobs:
           GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
           GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
           WEBHOOK_SECRET: ${{ secrets.SMS_BOT_WEBHOOK_SECRET }}
+      - name: Connect Slack (if the SLACK_WEBHOOK_URL secret is set)
+        working-directory: sms-bot
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          [ -n "$SLACK_WEBHOOK_URL" ] || { echo "No SLACK_WEBHOOK_URL secret; skipping Slack"; exit 0; }
+          printf '%s' "$SLACK_WEBHOOK_URL" | npx wrangler secret put SLACK_WEBHOOK_URL
       - name: Show the webhook URL
         run: |
           echo "### SMS bot is deployed" >> "$GITHUB_STEP_SUMMARY"

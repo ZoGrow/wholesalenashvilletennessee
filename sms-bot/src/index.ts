@@ -43,7 +43,7 @@ export default {
       await handleReply(contactId, env);
     } catch (e) {
       console.error("reply failed", contactId, e);
-      return new Response("error", { status: 500 });
+      return new Response(`error: ${String(e).slice(0, 1500)}`, { status: 500 });
     }
     return new Response("ok");
   },

@@ -1,0 +1,31 @@
+name: Test the SMS bot on a contact
+
+on:
+  workflow_dispatch:
+    inputs:
+      contact:
+        description: "Name, phone or email of a GHL contact who has replied"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Send the bot a reply webhook
+        env:
+          GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
+          GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
+          WEBHOOK_SECRET: ${{ secrets.SMS_BOT_WEBHOOK_SECRET }}
+          CONTACT: ${{ inputs.contact }}
+        run: python scripts/probe_bot.py "$CONTACT"
+      - name: Save the result to the repo
+        run: |
+          git config user.name "lead-pipeline"
+          git config user.email "lead-pipeline@users.noreply.github.com"
+          git add stats/bot_probe.json
+          git commit -m "SMS bot probe" || exit 0
+          git pull --rebase origin main && git push origin HEAD:main

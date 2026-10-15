@@ -127,11 +127,26 @@
    ]
   }
  ],
+ "reset": [
+  "hot-lead",
+  "warm-lead",
+  "qualified-lead",
+  "not-qualified",
+  "bot-off"
+ ],
  "probed": "0bIyRR",
  "status": 200,
  "body": "ok",
- "seconds": 0.2,
+ "seconds": 46.1,
  "notes": [
+  {
+   "at": "2026-10-15T21:52:21.883Z",
+   "body": "\ud83c\udfe0 New qualified lead: 8019 Tavenor Ln, Houston, TX 77075\nAsking: $135,000 (ballpark, flexible) (~60% of Zestimate ~$225,000 (est. from nearby, Zestimate not found))\nStatus: Off-market\nCondition: Needs lots of repairs (details unknown)\nProperty: 3/2, ~1,608 sqft \u00b7 built 1979 \u00b7 unknown\nSeller: unknown \u00b7 timeline: unknown\nRough numbers: ARV ~$245k-$260k (rough) \u00b7 repairs ~$80k (heavy, $50/sqft, rough) \u00b7 max offer ~$81,500 (rough)\nAgent: Zack Olabi \u00b7 +18329177656\nWhy it qualifies: Off-market 3/2 in Skyscraper Shadows that needs a lot of work. Seller's ballpark is $135k and the agent says there's r"
+  },
+  {
+   "at": "2026-10-15T21:52:21.733Z",
+   "body": "SMS bot handoff: QUALIFIED (borderline). 8019 Tavenor Ln, Houston TX 77075. Off-market, 3/2, ~1,608 sqft, built 1979, agent says it needs lots of repairs (no details yet). Seller's ballpark is $135k and the agent says there's room on price. I couldn't find the Zestimate, so I estimated value at ~$225k from nearby homes (8023 Tavenor, 3/2 1,410 sqft, Redfin est. $223k). Asking is ~60% of that. Rough ARV is $245-260k based on renovated Skyscraper Shadows homes nearby (one listed at ~$260k), but comps are thin. Rough repairs ~$80k (heavy, $50/sqft). Rough max offer = $245k x 70% - $80k - $10k = ~"
+  },
   {
    "at": "2026-10-15T21:23:37.696Z",
    "body": "SMS bot handoff: 8019 Tavenor Ln, Houston TX 77075. Off-market, so no list price. 3/2, about 1,608 sqft, built 1979. Agent says it's in bad shape and needs lots of repairs, no details yet. Seller hasn't named a price; agent says there's room and to 'send what you can'. Rough repairs, heavy at $50-70/sqft: about $80k-$113k. Haven't pulled sold comps for ARV yet, so pull them before making an offer. Max offer = ARV x 70% - repairs - $10k. All of these are rough estimates."
@@ -147,6 +162,7 @@
  ],
  "tags_now": [
   "apify-daily-lead",
-  "hot-lead"
+  "hot-lead",
+  "qualified-lead"
  ]
 }

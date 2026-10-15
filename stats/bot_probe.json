@@ -1,7 +1,133 @@
 {
- "matches": 1,
- "tags": [],
- "status": 200,
- "body": "ok",
- "seconds": 0.5
+ "matches": [
+  {
+   "id": "d0ZrWm",
+   "tags": [],
+   "messages": [
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
+     "type": 31,
+     "status": null,
+     "dateAdded": "2025-11-11T17:16:22.641Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
+     "type": 31,
+     "status": null,
+     "dateAdded": "2025-11-11T17:15:13.241Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
+     "type": 31,
+     "status": null,
+     "dateAdded": "2025-11-11T16:52:15.893Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
+     "type": 31,
+     "status": null,
+     "dateAdded": "2025-11-11T16:49:51.491Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
+     "type": 31,
+     "status": null,
+     "dateAdded": "2025-11-10T01:07:30.971Z"
+    }
+   ]
+  },
+  {
+   "id": "LIPS4c",
+   "tags": [],
+   "messages": [
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
+     "type": 31,
+     "status": null,
+     "dateAdded": "2026-08-05T00:09:35.562Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
+     "type": 31,
+     "status": null,
+     "dateAdded": "2026-08-05T00:09:35.290Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
+     "type": 31,
+     "status": null,
+     "dateAdded": "2026-08-04T23:38:47.438Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
+     "type": 31,
+     "status": null,
+     "dateAdded": "2026-08-04T23:22:52.456Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
+     "type": 31,
+     "status": null,
+     "dateAdded": "2026-08-04T19:15:14.503Z"
+    }
+   ]
+  },
+  {
+   "id": "0bIyRR",
+   "tags": [
+    "apify-daily-lead"
+   ],
+   "messages": [
+    {
+     "direction": "inbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2026-10-15T17:31:11.548Z"
+    },
+    {
+     "direction": "inbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2026-10-15T17:31:11.436Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2026-10-15T17:30:00.702Z"
+    },
+    {
+     "direction": "inbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2026-10-15T17:27:12.479Z"
+    },
+    {
+     "direction": "inbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2026-10-15T17:27:12.435Z"
+    }
+   ]
+  }
+ ],
+ "probed": "0bIyRR",
+ "status": 500,
+ "body": "error: Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Cg4SgceDYv2WBHtQd7VG9\"}",
+ "seconds": 2.7
 }

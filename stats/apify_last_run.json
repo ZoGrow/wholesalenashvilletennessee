@@ -1,97 +1,80 @@
 [
  {
-  "id": "Q21BnddWm9zqKaOJo",
-  "status": "ABORTED",
-  "statusMessage": "This run was aborted because it reached its maximum cost of $0.87.",
-  "startedAt": "2026-10-13T15:38:19.870Z",
-  "finishedAt": "2026-10-13T15:51:05.175Z",
+  "id": "CUx2c7hbh4fPvGd35",
+  "status": "SUCCEEDED",
+  "statusMessage": null,
+  "startedAt": "2026-10-15T22:19:46.029Z",
+  "finishedAt": "2026-10-15T22:19:47.098Z",
   "timeoutSecs": 75000,
   "memoryMbytes": 256,
-  "usageTotalUsd": 0.868,
-  "datasetItems": 430,
+  "usageTotalUsd": 0.011,
+  "datasetItems": 1,
   "input": {
    "locations": [
-    "37203",
-    "37206",
-    "37209"
+    "37215",
+    "37204",
+    "37212"
    ],
    "agentType": "both",
-   "limitPerLocation": 334
+   "limitPerLocation": 167
   },
-  "log_tail": "2026-10-13T15:38:20.047Z ACTOR: Pulling container image of build RvzQqfFd5NKDJqRdF from registry.\n2026-10-13T15:38:21.467Z ACTOR: Creating container.\n2026-10-13T15:38:21.533Z ACTOR: Starting container.\n2026-10-13T15:38:21.534Z ACTOR: Running under \"LIMITED_PERMISSIONS\".\n2026-10-13T15:38:22.615Z INFO \u23f3 Scanning search for agents. | Limit: 334/location \n2026-10-13T15:38:22.616Z \n2026-10-13T15:38:23.501Z INFO \ud83d\udd25 Scraping started | 37206 \u2014 1192 agents across 50 pages\n2026-10-13T15:38:23.502Z \n2026-10-13T15:38:23.570Z INFO \ud83d\udd25 Scraping started | 37203 \u2014 1464 agents across 61 pages\n2026-10-13T15:38:23.572Z \n2026-10-13T15:38:35.869Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:38:35.871Z \n2026-10-13T15:39:11.768Z WARN  Setting status message timed out after 1s\n2026-10-13T15:39:32.099Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:39:32.101Z \n2026-10-13T15:40:24.668Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:40:24.669Z \n2026-10-13T15:41:03.468Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:41:03.469Z \n2026-10-13T15:41:19.267Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:41:19.268Z \n2026-10-13T15:41:59.968Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:41:59.969Z \n2026-10-13T15:42:53.469Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:42:53.470Z \n2026-10-13T15:43:07.967Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:43:07.968Z \n2026-10-13T15:43:10.168Z WARN  Getting the current run timed out after 1s\n2026-10-13T15:43:58.069Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:43:58.070Z \n2026-10-13T15:43:59.868Z WARN  Getting the current run timed out after 1s\n2026-10-13T15:44:51.796Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:44:51.799Z \n2026-10-13T15:45:26.767Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:45:26.768Z \n2026-10-13T15:45:46.971Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:45:46.972Z \n2026-10-13T15:46:45.069Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:46:45.070Z \n2026-10-13T15:46:49.479Z WARN  Getting the current run timed out after 1s\n2026-10-13T15:47:07.343Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:47:07.344Z \n2026-10-13T15:48:03.168Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:48:03.169Z \n2026-10-13T15:48:43.568Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:48:43.569Z \n2026-10-13T15:49:27.968Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:49:27.969Z \n2026-10-13T15:49:42.900Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:49:42.901Z \n2026-10-13T15:50:39.268Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T15:50:39.270Z \n2026-10-13T15:50:56.430Z ACTOR: The Actor run was aborted by the user.\n2026-10-13T15:50:56.432Z ACTOR: Actor run will be killed gracefully. It has 30 seconds to persist state.\n2026-10-13T15:50:56.433Z ACTOR: Notifying Actor process about persisting state.\n2026-10-13T15:51:02.769Z INFO \ud83c\udf89 Pushed 4 agents\n2026-10-13T15:51:02.771Z \n"
+  "log_tail": "2026-10-15T22:19:46.172Z ACTOR: Pulling container image of build RvzQqfFd5NKDJqRdF from registry.\n2026-10-15T22:19:46.174Z ACTOR: Creating container.\n2026-10-15T22:19:46.229Z ACTOR: Starting container.\n2026-10-15T22:19:46.230Z ACTOR: Running under \"LIMITED_PERMISSIONS\".\n2026-10-15T22:19:47.028Z WARN Free plan limit reached (126/100). Upgrade to scrape more.\n"
  },
  {
-  "id": "yhEOuMlGRzrevEGqM",
+  "id": "QTaK2T96GL34iCipq",
   "status": "SUCCEEDED",
-  "statusMessage": "37203 \u2014 scraped 120/100 | Total: 120",
-  "startedAt": "2026-10-13T02:56:49.902Z",
-  "finishedAt": "2026-10-13T03:00:24.410Z",
-  "timeoutSecs": 280,
+  "statusMessage": "37205 \u2014 scraped 39/33 | Total: 126",
+  "startedAt": "2026-10-15T22:14:32.367Z",
+  "finishedAt": "2026-10-15T22:17:25.249Z",
+  "timeoutSecs": 75000,
   "memoryMbytes": 256,
-  "usageTotalUsd": 0.25,
-  "datasetItems": 120,
+  "usageTotalUsd": 0.136,
+  "datasetItems": 126,
   "input": {
    "locations": [
-    "37203"
+    "37211",
+    "37013",
+    "37205"
    ],
-   "limitPerLocation": 100,
-   "agentType": "both"
+   "agentType": "both",
+   "limitPerLocation": 100
   },
-  "log_tail": "2026-10-13T02:56:50.077Z ACTOR: Pulling container image of build RvzQqfFd5NKDJqRdF from registry.\n2026-10-13T02:56:50.080Z ACTOR: Creating container.\n2026-10-13T02:56:50.171Z ACTOR: Starting container.\n2026-10-13T02:56:50.173Z ACTOR: Running under \"LIMITED_PERMISSIONS\".\n2026-10-13T02:56:51.216Z INFO \u23f3 Scanning search for agents. | Limit: 100/location \n2026-10-13T02:56:51.217Z \n2026-10-13T02:56:52.524Z INFO Continuing from page 6 | 37203 \u2014 1464 agents across 61 pages\n2026-10-13T02:56:52.526Z \n2026-10-13T02:57:39.940Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T02:57:39.943Z \n2026-10-13T02:58:24.813Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T02:58:24.817Z \n2026-10-13T02:58:57.347Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T02:58:57.348Z \n2026-10-13T02:59:43.734Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T02:59:43.736Z \n2026-10-13T03:00:23.141Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T03:00:23.146Z \n2026-10-13T03:00:24.064Z INFO \u2705 37203 \u2014 120 agents collected\n2026-10-13T03:00:24.067Z \n2026-10-13T03:00:24.069Z INFO \u2705 Finished! | Total: 120 || Duplicates: 0\n"
- },
- {
-  "id": "qRXq14hPf3p6zghvV",
-  "status": "SUCCEEDED",
-  "statusMessage": "37203 \u2014 scraped 120/100 | Total: 120",
-  "startedAt": "2026-10-13T02:53:28.635Z",
-  "finishedAt": "2026-10-13T02:56:13.788Z",
-  "timeoutSecs": 280,
-  "memoryMbytes": 256,
-  "usageTotalUsd": 0.25,
-  "datasetItems": 120,
-  "input": {
-   "locations": [
-    "37203"
-   ],
-   "limitPerLocation": 100,
-   "agentType": "both"
-  },
-  "log_tail": "2026-10-13T02:53:28.818Z ACTOR: Pulling container image of build RvzQqfFd5NKDJqRdF from registry.\n2026-10-13T02:53:29.987Z ACTOR: Creating container.\n2026-10-13T02:53:30.057Z ACTOR: Starting container.\n2026-10-13T02:53:30.059Z ACTOR: Running under \"LIMITED_PERMISSIONS\".\n2026-10-13T02:53:31.043Z INFO \u23f3 Scanning search for agents. | Limit: 100/location \n2026-10-13T02:53:31.044Z \n2026-10-13T02:53:32.218Z INFO \ud83d\udd25 Scraping started | 37203 \u2014 1464 agents across 61 pages\n2026-10-13T02:53:32.220Z \n2026-10-13T02:53:37.774Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T02:53:37.775Z \n2026-10-13T02:53:58.924Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T02:53:58.926Z \n2026-10-13T02:54:40.855Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T02:54:40.856Z \n2026-10-13T02:55:21.725Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T02:55:21.726Z \n2026-10-13T02:56:12.514Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-13T02:56:12.516Z \n2026-10-13T02:56:13.494Z INFO \u2705 37203 \u2014 120 agents collected\n2026-10-13T02:56:13.496Z \n2026-10-13T02:56:13.497Z INFO \u2705 Finished! | Total: 120 || Duplicates: 0\n"
+  "log_tail": "2026-10-15T22:14:32.547Z ACTOR: Pulling container image of build RvzQqfFd5NKDJqRdF from registry.\n2026-10-15T22:14:34.199Z ACTOR: Creating container.\n2026-10-15T22:14:34.261Z ACTOR: Starting container.\n2026-10-15T22:14:34.264Z ACTOR: Running under \"LIMITED_PERMISSIONS\".\n2026-10-15T22:14:35.620Z INFO \u23f3 Scanning search for agents. | Limit: 33/location \n2026-10-15T22:14:35.622Z \n2026-10-15T22:14:36.386Z INFO \ud83d\udd25 Scraping started | 37013 \u2014 887 agents across 37 pages\n2026-10-15T22:14:36.388Z \n2026-10-15T22:14:36.515Z INFO \ud83d\udd25 Scraping started | 37211 \u2014 1283 agents across 54 pages\n2026-10-15T22:14:36.517Z \n2026-10-15T22:14:52.945Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-15T22:14:52.947Z \n2026-10-15T22:15:44.846Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-15T22:15:44.848Z \n2026-10-15T22:15:46.311Z INFO \u2705 37013 \u2014 48 agents collected\n2026-10-15T22:15:46.312Z \n2026-10-15T22:16:00.950Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-15T22:16:00.951Z \n2026-10-15T22:16:14.989Z INFO \u2705 37211 \u2014 39 agents collected\n2026-10-15T22:16:14.990Z \n2026-10-15T22:16:16.463Z INFO \ud83d\udd25 Scraping started | 37205 \u2014 1302 agents across 55 pages\n2026-10-15T22:16:16.464Z \n2026-10-15T22:16:30.281Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-15T22:16:30.283Z \n2026-10-15T22:17:23.942Z INFO \ud83c\udf89 Pushed 24 agents\n2026-10-15T22:17:23.943Z \n2026-10-15T22:17:24.656Z INFO \u2705 37205 \u2014 39 agents collected\n2026-10-15T22:17:24.657Z \n2026-10-15T22:17:24.690Z INFO \ud83c\udf89 Pushed 6 agents\n2026-10-15T22:17:24.697Z \n2026-10-15T22:17:24.793Z INFO \u2705 Finished! | Total: 126 || Duplicates: 19\n"
  },
  {
   "account_limits": {
    "monthlyUsageCycle": {
-    "startAt": "2026-09-18T00:00:00.000Z",
-    "endAt": "2026-10-17T23:59:59.999Z"
+    "startAt": "2026-10-13T00:00:00.000Z",
+    "endAt": "2026-11-12T23:59:59.999Z"
    },
    "limits": {
-    "maxMonthlyUsageUsd": 100,
-    "maxMonthlyActorComputeUnits": 1999999,
-    "maxMonthlyExternalDataTransferGbytes": 999999,
-    "maxMonthlyProxySerps": 9999999,
-    "maxMonthlyUnblockerUnits": 99999990,
-    "maxMonthlyResidentialProxyGbytes": 49999,
-    "maxActorMemoryGbytes": 64,
+    "maxMonthlyUsageUsd": 5,
+    "maxMonthlyActorComputeUnits": 625,
+    "maxMonthlyExternalDataTransferGbytes": 1000,
+    "maxMonthlyProxySerps": 50000,
+    "maxMonthlyUnblockerUnits": 1000000,
+    "maxMonthlyResidentialProxyGbytes": 20,
+    "maxActorMemoryGbytes": 16,
     "maxActorCount": 500,
     "maxActorTaskCount": 5000,
     "maxScheduleCount": 100,
-    "maxConcurrentActorJobs": 32,
-    "maxTeamAccountSeatCount": 999,
-    "dataRetentionDays": 31
+    "maxConcurrentActorJobs": 5,
+    "maxTeamAccountSeatCount": 9,
+    "dataRetentionDays": 7
    },
    "current": {
-    "monthlyUsageUsd": 100.0402605114492,
-    "monthlyActorComputeUnits": 0.02337597222222222,
-    "monthlyExternalDataTransferGbytes": 0.0080592455342412,
+    "monthlyUsageUsd": 0.14715225819119215,
+    "monthlyActorComputeUnits": 0,
+    "monthlyExternalDataTransferGbytes": 0.0005092909559607506,
     "monthlyProxySerps": 0,
     "monthlyUnblockerUnits": 0,
-    "monthlyResidentialProxyGbytes": 8.893199265003204e-06,
+    "monthlyResidentialProxyGbytes": 0,
     "actorMemoryGbytes": 0,
     "actorCount": 0,
-    "actorTaskCount": 10,
+    "actorTaskCount": 0,
     "scheduleCount": 0,
     "activeActorJobCount": 0,
-    "teamAccountSeatCount": 3
+    "teamAccountSeatCount": 1
    }
   }
  }

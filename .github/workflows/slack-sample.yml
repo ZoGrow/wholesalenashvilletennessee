@@ -11,4 +11,5 @@ jobs:
       - name: Post the sample card
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: curl -sS --fail -X POST -H 'Content-Type: application/json' --data @scripts/sample_lead_card.json "$SLACK_WEBHOOK_URL"
+        run: |
+          curl -sS --fail -X POST -H 'Content-Type: application/json' --data @scripts/sample_lead_card.json "$SLACK_WEBHOOK_URL"

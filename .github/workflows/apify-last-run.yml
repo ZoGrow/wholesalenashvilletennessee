@@ -2,6 +2,11 @@ name: Check last Apify runs
 
 on:
   workflow_dispatch:
+    inputs:
+      backup_apify:
+        description: "Check the backup Apify account (APIFY_TOKEN_2)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -16,7 +21,7 @@ jobs:
           python-version: "3.12"
       - name: Read the last Apify runs
         env:
-          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          APIFY_TOKEN: ${{ inputs.backup_apify && secrets.APIFY_TOKEN_2 || secrets.APIFY_TOKEN }}
         run: python scripts/apify_last_run.py "$(python -c "import json;print(json.load(open('config.json'))['apify']['actor_id'])")"
       - name: Save to the repo
         run: |

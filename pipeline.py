@@ -279,6 +279,10 @@ def to_lead(item, field_map, mobile_cfg=None, phone=None):
     lead["email"] = lead["email"].lower()
     if not lead["full_name"]:
         lead["full_name"] = " ".join(x for x in (lead["first_name"], lead["last_name"]) if x)
+    # Realtor.com often gives cities in all caps ("NASHVILLE"); texts use {{contact.city}}.
+    city = (lead.get("city") or "").strip()
+    if city and (city.isupper() or city.islower()):
+        lead["city"] = re.sub(r"\bMc(\w)", lambda m: "Mc" + m.group(1).upper(), city.title())
     if lead["full_name"] and not (lead["first_name"] or lead["last_name"]):
         parts = lead["full_name"].split()
         lead["first_name"], lead["last_name"] = parts[0], " ".join(parts[1:])

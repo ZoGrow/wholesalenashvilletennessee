@@ -14,6 +14,7 @@ jobs:
       - run: npm ci
         working-directory: sms-bot
       - uses: cloudflare/wrangler-action@v3
+        id: deploy
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -28,3 +29,9 @@ jobs:
           GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
           GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
           WEBHOOK_SECRET: ${{ secrets.SMS_BOT_WEBHOOK_SECRET }}
+      - name: Show the webhook URL
+        run: |
+          echo "### SMS bot is deployed" >> "$GITHUB_STEP_SUMMARY"
+          echo "Webhook URL for GHL: \`${URL}/?key=\` followed by your SMS_BOT_WEBHOOK_SECRET" >> "$GITHUB_STEP_SUMMARY"
+        env:
+          URL: ${{ steps.deploy.outputs.deployment-url }}

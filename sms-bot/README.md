@@ -8,7 +8,8 @@ tags them `hot-lead`, leaves a note, and stops replying to them. Agents who migh
 something later get tagged `warm-lead` with a note, and the bot keeps the conversation going.
 
 - Bot instructions: `src/prompt.ts`. Goal and sender name: `wrangler.toml` `[vars]`.
-- `DRY_RUN = "true"` logs replies instead of sending them. Set it to `"false"` to go live.
+- `DRY_RUN = "true"` (test mode) texts nothing: each reply the bot would send is saved as a note
+  on the contact in GHL ("SMS bot (test mode, not sent) would reply: ..."). Set it to `"false"` to go live.
 - The bot never replies to contacts tagged `hot-lead`, `bot-off`, or `dnd-skipped`, or to DND contacts.
   Tag a contact `bot-off` to take a conversation over yourself.
 

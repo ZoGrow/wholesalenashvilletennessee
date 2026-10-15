@@ -69,8 +69,13 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
   if (!decision) return;
 
   if (decision.reply.trim()) {
-    if (env.DRY_RUN === "true") console.log("DRY RUN reply to", contactId, ":", decision.reply);
-    else await ghl(env, "/conversations/messages", "POST", { type: "SMS", contactId, message: decision.reply.trim() });
+    if (env.DRY_RUN === "true") {
+      // Test mode: nothing is texted; the reply shows up as a note on the contact in GHL.
+      console.log("DRY RUN reply to", contactId, ":", decision.reply);
+      await ghl(env, `/contacts/${contactId}/notes`, "POST", {
+        body: `SMS bot (test mode, not sent) would reply: ${decision.reply.trim()}`,
+      });
+    } else await ghl(env, "/conversations/messages", "POST", { type: "SMS", contactId, message: decision.reply.trim() });
   }
   if (decision.handoff || decision.warm) {
     await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [decision.handoff ? HANDOFF_TAG : WARM_TAG] });

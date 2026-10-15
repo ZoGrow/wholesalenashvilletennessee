@@ -41,6 +41,8 @@ jobs:
         run: |
           [ -n "$SLACK_WEBHOOK_URL" ] || { echo "No SLACK_WEBHOOK_URL secret; skipping Slack"; exit 0; }
           printf '%s' "$SLACK_WEBHOOK_URL" | npx wrangler secret put SLACK_WEBHOOK_URL
+          curl -sS -X POST -H 'Content-Type: application/json' \
+            -d '{"text":"✅ Lead bot connected. New qualified leads will show up here."}' "$SLACK_WEBHOOK_URL"
       - name: Show the webhook URL
         run: |
           echo "### SMS bot is deployed" >> "$GITHUB_STEP_SUMMARY"

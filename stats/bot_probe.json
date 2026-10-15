@@ -129,5 +129,18 @@
  "probed": "0bIyRR",
  "status": 200,
  "body": "ok",
- "seconds": 19.9
+ "seconds": 20.3,
+ "notes": [
+  {
+   "at": "2026-10-15T21:10:46.588Z",
+   "body": "SMS bot (test mode, not sent) would reply: Thanks for sending 8019 Tavenor Ln. Looks like a 3/2, about 1,600 sqft, built in '79, and not listed right now, so off-market? What kind of shape is it in? Roof, HVAC, any foundation issues?"
+  },
+  {
+   "at": "2026-10-15T21:06:25.754Z",
+   "body": "SMS bot (test mode, not sent) would reply: Thanks for sending this. I see 8019 Tavenor Ln is a 3/2, about 1,608 sqft, built in 1979, and Zillow has it as not on the market, so it's off-market? What kind of shape is it in, and how old are the roof and HVAC?"
+  }
+ ],
+ "tags_now": [
+  "apify-daily-lead"
+ ]
 }

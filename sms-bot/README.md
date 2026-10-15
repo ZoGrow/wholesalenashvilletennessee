@@ -10,7 +10,11 @@ something later get tagged `warm-lead` with a note, and the bot keeps the conver
 - Bot instructions: `src/prompt.ts`. Goal and sender name: `wrangler.toml` `[vars]`.
 - `DRY_RUN = "true"` (test mode) texts nothing: each reply the bot would send is saved as a note
   on the contact in GHL ("SMS bot (test mode, not sent) would reply: ..."). Set it to `"false"` to go live.
-- The bot never replies to contacts tagged `hot-lead`, `bot-off`, or `dnd-skipped`, or to DND contacts.
+- The bot never replies to contacts tagged `hot-lead`, `bot-off`, `dnd-skipped` or `opted-out`, or to DND contacts.
+- Opt-outs ("STOP", "remove me", "don't text me", "wrong number", or anything Claude reads as asking us to stop)
+  get no reply: the contact is tagged `opted-out`, SMS Do Not Disturb is turned on, and a note is left.
+- Handoffs also get `deal-good` (asking price at or under our max offer) or `deal-close` (within ~10%),
+  and the note starts with GOOD DEAL / CLOSE / OVER.
   Tag a contact `bot-off` to take a conversation over yourself.
 
 ## Setup

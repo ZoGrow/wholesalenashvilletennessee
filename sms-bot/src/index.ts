@@ -21,7 +21,12 @@ const GHL = "https://services.leadconnectorhq.com";
 const MODEL = "claude-opus-5-5";
 const HANDOFF_TAG = "hot-lead"; // bot stops and you take over
 const WARM_TAG = "warm-lead"; // has something coming later; bot keeps talking
-const BOT_OFF_TAGS = ["hot-lead", "bot-off", "dnd-skipped"]; // bot never replies to these
+const OPTED_OUT_TAG = "opted-out"; // asked us to stop: never text again
+const BOT_OFF_TAGS = ["hot-lead", "bot-off", "dnd-skipped", OPTED_OUT_TAG]; // bot never replies to these
+// Clear opt-outs ("STOP", "remove me", "don't text me", ...). Subtler ones are caught by Claude (optout).
+const OPT_OUT =
+  /^\s*(stop\w*|stop all|unsubscribe|cancel|end|quit|opt[\s-]?out|remove)\s*[.!]*\s*$|\b(remove me|take me off|unsubscribe|opt(ed)?[\s-]?out|stop (texting|messaging|contacting)|(do not|don'?t) (text|message|contact)|lose (this|my) number|wrong number)\b/i;
+const DEAL_TAGS: Record<string, string> = { good: "deal-good", close: "deal-close" };
 const MAX_HISTORY = 40;
 
 type Sms = { direction: "inbound" | "outbound"; body: string; at: string };
@@ -63,10 +68,17 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
     console.log("skip: nothing new from", contactId); // already answered (duplicate webhook)
     return;
   }
-  if (/^\s*(stop|unsubscribe|cancel|end|quit)\s*$/i.test(last.body)) return; // GHL handles opt-outs
+  if (OPT_OUT.test(last.body)) {
+    await optOut(contactId, env, last.body);
+    return;
+  }
 
   const decision = await nextReply(thread, contact, env);
   if (!decision) return;
+  if (decision.optout) {
+    await optOut(contactId, env, last.body);
+    return;
+  }
   // Writing a reply takes a while; if GHL retried meanwhile and that copy already answered,
   // or the agent texted again (a newer webhook will answer both), don't send this one.
   const now = await smsThread(contactId, env);
@@ -86,7 +98,9 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
     } else await ghl(env, "/conversations/messages", "POST", { type: "SMS", contactId, message: decision.reply.trim() });
   }
   if (decision.handoff || decision.warm) {
-    await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [decision.handoff ? HANDOFF_TAG : WARM_TAG] });
+    const tags = [decision.handoff ? HANDOFF_TAG : WARM_TAG];
+    if (DEAL_TAGS[decision.deal]) tags.push(DEAL_TAGS[decision.deal]);
+    await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags });
     if (decision.note) {
       const label = decision.handoff ? "SMS bot handoff" : "SMS bot, possible future deal";
       await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `${label}: ${decision.note}` });
@@ -94,7 +108,15 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
   }
 }
 
-type Decision = { reply: string; handoff: boolean; warm: boolean; note: string };
+type Decision = { reply: string; handoff: boolean; warm: boolean; optout: boolean; deal: string; note: string };
+
+/** They asked us to stop: no reply, tag them, and turn on SMS Do Not Disturb so nothing texts them again. */
+async function optOut(contactId: string, env: Env, text: string): Promise<void> {
+  console.log("opt-out from", contactId);
+  await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [OPTED_OUT_TAG] });
+  await ghl(env, `/contacts/${contactId}`, "PUT", { dndSettings: { SMS: { status: "active", message: "Opted out by text" } } });
+  await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `SMS bot: opted out, no more texts. They said: "${text.slice(0, 200)}"` });
+}
 
 const REPLY_FORMAT = {
   type: "json_schema" as const,
@@ -107,12 +129,21 @@ const REPLY_FORMAT = {
         type: "boolean",
         description: "True when the agent may have a property later (e.g. 'maybe one next month') but nothing is ready yet.",
       },
+      optout: {
+        type: "boolean",
+        description: "True when they ask us to stop texting, remove them, or say it's the wrong number. Then reply must be empty.",
+      },
+      deal: {
+        type: "string",
+        enum: ["good", "close", "over", "unknown"],
+        description: "On handoff: seller's asking price vs our max offer. good = at or under, close = within about 10% over, over = well over, unknown = not enough info.",
+      },
       note: {
         type: "string",
         description: "When handoff or warm is true: for warm, one line on what they might have and when; for handoff, one or two lines for the human with the address, listing price, condition and seller's asking price learned so far. Else empty.",
       },
     },
-    required: ["reply", "handoff", "warm", "note"],
+    required: ["reply", "handoff", "warm", "optout", "deal", "note"],
     additionalProperties: false,
   },
 };
@@ -158,7 +189,7 @@ async function nextReply(thread: Sms[], contact: Record<string, any>, env: Env):
 
   if (response.stop_reason === "refusal") {
     console.warn("refused", response.stop_details);
-    return { reply: "", handoff: true, warm: false, note: "Bot could not answer this one." };
+    return { reply: "", handoff: true, warm: false, optout: false, deal: "unknown", note: "Bot could not answer this one." };
   }
   // The JSON answer is the last text block; earlier ones can be notes around the web lookups.
   const texts = response.content.filter((b): b is Anthropic.Beta.BetaTextBlock => b.type === "text");

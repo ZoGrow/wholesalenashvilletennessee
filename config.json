@@ -1165,7 +1165,8 @@
     "never_text_tags": [
       "hot-lead",
       "warm-lead",
-      "bot-off"
+      "bot-off",
+      "opted-out"
     ]
   },
   "output_dir": "output",

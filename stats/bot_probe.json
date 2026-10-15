@@ -93,6 +93,13 @@
      "messageType": "TYPE_SMS",
      "type": 2,
      "status": "delivered",
+     "dateAdded": "2026-10-15T21:15:24.825Z"
+    },
+    {
+     "direction": "inbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
      "dateAdded": "2026-10-15T17:31:11.548Z"
     },
     {
@@ -115,21 +122,14 @@
      "type": 2,
      "status": "delivered",
      "dateAdded": "2026-10-15T17:27:12.479Z"
-    },
-    {
-     "direction": "inbound",
-     "messageType": "TYPE_SMS",
-     "type": 2,
-     "status": "delivered",
-     "dateAdded": "2026-10-15T17:27:12.435Z"
     }
    ]
   }
  ],
  "probed": "0bIyRR",
- "status": 200,
- "body": "ok",
- "seconds": 20.3,
+ "status": 500,
+ "body": "error: Error: GHL POST /conversations/messages: 401 {\"statusCode\":401,\"message\":\"The token is not authorized for this scope.\"}",
+ "seconds": 10.4,
  "notes": [
   {
    "at": "2026-10-15T21:10:46.588Z",

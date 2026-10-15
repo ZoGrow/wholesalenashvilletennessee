@@ -23,6 +23,12 @@ for c in contacts:
         best = c
     out["matches"].append(info)
 c = best
+if c and os.environ.get("RESET") == "true":  # test contact: clear the bot's tags so it talks again
+    clear = ["hot-lead", "warm-lead", "qualified-lead", "not-qualified", "bot-off"]
+    urllib.request.urlopen(urllib.request.Request(
+        f"{GHL}/contacts/{c['id']}/tags", method="DELETE", data=json.dumps({"tags": clear}).encode(),
+        headers={**H, "Content-Type": "application/json"}))
+    out["reset"] = clear
 if c:
     out["probed"] = c["id"][-6:]
     req = urllib.request.Request(f"{url}/?key={os.environ['WEBHOOK_SECRET']}", method="POST",

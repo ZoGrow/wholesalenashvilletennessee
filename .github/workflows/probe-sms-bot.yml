@@ -6,6 +6,10 @@ on:
       contact:
         description: "Name, phone or email of a GHL contact who has replied"
         required: true
+      reset:
+        description: "Clear the bot's tags (hot-lead, warm-lead, qualified-lead, not-qualified, bot-off) first"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -21,6 +25,7 @@ jobs:
           GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
           WEBHOOK_SECRET: ${{ secrets.SMS_BOT_WEBHOOK_SECRET }}
           CONTACT: ${{ inputs.contact }}
+          RESET: ${{ inputs.reset }}
         run: python scripts/probe_bot.py "$CONTACT"
       - name: Save the result to the repo
         run: |

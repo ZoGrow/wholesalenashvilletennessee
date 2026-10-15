@@ -67,6 +67,14 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
 
   const decision = await nextReply(thread, contact, env);
   if (!decision) return;
+  // Writing a reply takes a while; if GHL retried meanwhile and that copy already answered,
+  // or the agent texted again (a newer webhook will answer both), don't send this one.
+  const now = await smsThread(contactId, env);
+  const newest = now[now.length - 1];
+  if (!newest || newest.direction !== "inbound" || newest.at !== last.at) {
+    console.log("skip: thread moved on while writing the reply for", contactId);
+    return;
+  }
 
   if (decision.reply.trim()) {
     if (env.DRY_RUN === "true") {

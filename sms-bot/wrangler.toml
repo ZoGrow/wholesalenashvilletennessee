@@ -9,7 +9,7 @@ BOT_GOAL = "When an agent sends a listing or an address, look it up online, then
 ARV_PERCENT = "70"
 ASSIGNMENT_FEE = "10000"
 PROPERTY_TYPES = "single-family houses in most US states (not Pennsylvania, South Carolina, Iowa, Kentucky, Nebraska, North Dakota, Oregon, Connecticut or Virginia)"
-DRY_RUN = "true"
+DRY_RUN = "false"
 
 # Secrets (set with `npx wrangler secret put NAME`, never put them in this file):
 # ANTHROPIC_API_KEY, GHL_TOKEN, GHL_LOCATION_ID, WEBHOOK_SECRET

@@ -28,7 +28,7 @@ const BOT_OFF_TAGS = ["hot-lead", "bot-off", "dnd-skipped", OPTED_OUT_TAG]; // b
 // Clear opt-outs ("STOP", "remove me", "don't text me", ...). Subtler ones are caught by Claude (optout).
 const OPT_OUT =
   /^\s*(stop\w*|stop all|unsubscribe|cancel|end|quit|opt[\s-]?out|remove)\s*[.!]*\s*$|\b(remove me|take me off|unsubscribe|opt(ed)?[\s-]?out|stop (texting|messaging|contacting)|(do not|don'?t) (text|message|contact)|lose (this|my) number|wrong number)\b/i;
-const QUALIFIED_TAG = "qualified-lead"; // distressed, off-market, asking about half of Zestimate
+const QUALIFIED_TAG = "qualified-lead"; // asking under Zestimate, seller vetted
 const NOT_QUALIFIED_TAG = "not-qualified";
 const MAX_HISTORY = 40;
 
@@ -183,7 +183,7 @@ const REPLY_FORMAT = {
       deal: {
         type: "string",
         enum: ["qualified", "not_qualified", "unknown"],
-        description: "qualified = distressed, off-market and asking at or under the qualify % of Zestimate; not_qualified = we know enough and it fails; unknown = still learning.",
+        description: "qualified = asking under the qualify % of Zestimate and we know why they are selling; not_qualified = we know enough and it fails; unknown = still learning.",
       },
       lead: {
         type: "object",

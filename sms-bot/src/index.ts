@@ -14,6 +14,7 @@ export interface Env {
   ARV_PERCENT: string; // max offer = ARV x this % - repairs - fee
   ASSIGNMENT_FEE: string; // our wholesale fee in dollars
   PROPERTY_TYPES: string; // what we buy
+  QUALIFY_PERCENT: string; // qualified = asking at or under this % of Zestimate
   DRY_RUN?: string; // "true" = log the reply instead of texting it
 }
 
@@ -26,7 +27,8 @@ const BOT_OFF_TAGS = ["hot-lead", "bot-off", "dnd-skipped", OPTED_OUT_TAG]; // b
 // Clear opt-outs ("STOP", "remove me", "don't text me", ...). Subtler ones are caught by Claude (optout).
 const OPT_OUT =
   /^\s*(stop\w*|stop all|unsubscribe|cancel|end|quit|opt[\s-]?out|remove)\s*[.!]*\s*$|\b(remove me|take me off|unsubscribe|opt(ed)?[\s-]?out|stop (texting|messaging|contacting)|(do not|don'?t) (text|message|contact)|lose (this|my) number|wrong number)\b/i;
-const DEAL_TAGS: Record<string, string> = { good: "deal-good", close: "deal-close" };
+const QUALIFIED_TAG = "qualified-lead"; // distressed, off-market, asking about half of Zestimate
+const NOT_QUALIFIED_TAG = "not-qualified";
 const MAX_HISTORY = 40;
 
 type Sms = { direction: "inbound" | "outbound"; body: string; at: string };
@@ -97,12 +99,16 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
       });
     } else await ghl(env, "/conversations/messages", "POST", { type: "SMS", contactId, message: decision.reply.trim() });
   }
-  if (decision.handoff || decision.warm) {
-    const tags = [decision.handoff ? HANDOFF_TAG : WARM_TAG];
-    if (DEAL_TAGS[decision.deal]) tags.push(DEAL_TAGS[decision.deal]);
-    await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags });
+  const newTags: string[] = [];
+  if (decision.handoff) newTags.push(HANDOFF_TAG);
+  else if (decision.warm) newTags.push(WARM_TAG);
+  if (decision.deal === "qualified") newTags.push(QUALIFIED_TAG);
+  if (decision.deal === "not_qualified") newTags.push(NOT_QUALIFIED_TAG);
+  if (newTags.length) {
+    await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: newTags });
     if (decision.note) {
-      const label = decision.handoff ? "SMS bot handoff" : "SMS bot, possible future deal";
+      const label = decision.handoff ? "SMS bot handoff"
+        : decision.deal === "not_qualified" ? "SMS bot, did not qualify" : "SMS bot, possible future deal";
       await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `${label}: ${decision.note}` });
     }
   }
@@ -135,8 +141,8 @@ const REPLY_FORMAT = {
       },
       deal: {
         type: "string",
-        enum: ["good", "close", "over", "unknown"],
-        description: "On handoff: seller's asking price vs our max offer. good = at or under, close = within about 10% over, over = well over, unknown = not enough info.",
+        enum: ["qualified", "not_qualified", "unknown"],
+        description: "qualified = distressed, off-market and asking at or under the qualify % of Zestimate; not_qualified = we know enough and it fails; unknown = still learning.",
       },
       note: {
         type: "string",
@@ -203,7 +209,8 @@ function systemPrompt(env: Env): string {
     .replaceAll("{{NAME}}", env.SENDER_NAME)
     .replaceAll("{{ARV_PERCENT}}", env.ARV_PERCENT)
     .replaceAll("{{FEE}}", Number(env.ASSIGNMENT_FEE).toLocaleString("en-US"))
-    .replaceAll("{{PROPERTY_TYPES}}", env.PROPERTY_TYPES);
+    .replaceAll("{{PROPERTY_TYPES}}", env.PROPERTY_TYPES)
+    .replaceAll("{{QUALIFY_PERCENT}}", env.QUALIFY_PERCENT || "55");
 }
 
 async function smsThread(contactId: string, env: Env): Promise<Sms[]> {

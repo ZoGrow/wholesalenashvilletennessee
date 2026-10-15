@@ -5,9 +5,10 @@ compatibility_flags = ["nodejs_compat"]
 
 [vars]
 SENDER_NAME = "Zack"
-BOT_GOAL = "When an agent sends a listing or an address, look it up online, then text the agent to find out the property's condition and what the seller is asking. Once we know both, hand it to Zack to run numbers."
+BOT_GOAL = "When an agent sends a listing or an address, look it up online, then find out the condition, whether it is off-market, and what the seller is asking. Hand Zack only qualified leads: distressed, off-market, seller asking roughly half of the Zestimate."
 ARV_PERCENT = "70"
 ASSIGNMENT_FEE = "10000"
+QUALIFY_PERCENT = "55" # qualified lead: seller asks at or under this % of Zestimate (Zack: roughly 50%)
 PROPERTY_TYPES = "single-family houses in most US states (not Pennsylvania, South Carolina, Iowa, Kentucky, Nebraska, North Dakota, Oregon, Connecticut or Virginia)"
 DRY_RUN = "false"
 

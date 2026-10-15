@@ -13,8 +13,9 @@ something later get tagged `warm-lead` with a note, and the bot keeps the conver
 - The bot never replies to contacts tagged `hot-lead`, `bot-off`, `dnd-skipped` or `opted-out`, or to DND contacts.
 - Opt-outs ("STOP", "remove me", "don't text me", "wrong number", or anything Claude reads as asking us to stop)
   get no reply: the contact is tagged `opted-out`, SMS Do Not Disturb is turned on, and a note is left.
-- Handoffs also get `deal-good` (asking price at or under our max offer) or `deal-close` (within ~10%),
-  and the note starts with GOOD DEAL / CLOSE / OVER.
+- Qualified lead = distressed + off-market + seller asking at or under `QUALIFY_PERCENT` (55) % of the
+  Zestimate. Those get `hot-lead` + `qualified-lead` and a note; the bot hands off. Ones that clearly fail
+  get `not-qualified` and a note saying why; the bot asks the agent for other distressed off-market deals.
   Tag a contact `bot-off` to take a conversation over yourself.
 
 ## Setup

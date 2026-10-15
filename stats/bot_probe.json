@@ -85,43 +85,44 @@
   {
    "id": "0bIyRR",
    "tags": [
-    "apify-daily-lead"
+    "apify-daily-lead",
+    "hot-lead"
    ],
    "messages": [
     {
-     "direction": "outbound",
-     "messageType": "TYPE_SMS",
-     "type": 2,
-     "status": "pending",
-     "dateAdded": "2026-10-15T21:21:05.043Z"
-    },
-    {
      "direction": "inbound",
      "messageType": "TYPE_SMS",
      "type": 2,
      "status": "delivered",
-     "dateAdded": "2026-10-15T21:15:24.825Z"
-    },
-    {
-     "direction": "inbound",
-     "messageType": "TYPE_SMS",
-     "type": 2,
-     "status": "delivered",
-     "dateAdded": "2026-10-15T17:31:11.548Z"
-    },
-    {
-     "direction": "inbound",
-     "messageType": "TYPE_SMS",
-     "type": 2,
-     "status": "delivered",
-     "dateAdded": "2026-10-15T17:31:11.436Z"
+     "dateAdded": "2026-10-15T21:49:45.337Z"
     },
     {
      "direction": "outbound",
      "messageType": "TYPE_SMS",
      "type": 2,
      "status": "delivered",
-     "dateAdded": "2026-10-15T17:30:00.702Z"
+     "dateAdded": "2026-10-15T21:23:36.771Z"
+    },
+    {
+     "direction": "inbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2026-10-15T21:23:27.023Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2026-10-15T21:22:14.977Z"
+    },
+    {
+     "direction": "inbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2026-10-15T21:22:07.871Z"
     }
    ]
   }
@@ -129,8 +130,12 @@
  "probed": "0bIyRR",
  "status": 200,
  "body": "ok",
- "seconds": 1.8,
+ "seconds": 0.2,
  "notes": [
+  {
+   "at": "2026-10-15T21:23:37.696Z",
+   "body": "SMS bot handoff: 8019 Tavenor Ln, Houston TX 77075. Off-market, so no list price. 3/2, about 1,608 sqft, built 1979. Agent says it's in bad shape and needs lots of repairs, no details yet. Seller hasn't named a price; agent says there's room and to 'send what you can'. Rough repairs, heavy at $50-70/sqft: about $80k-$113k. Haven't pulled sold comps for ARV yet, so pull them before making an offer. Max offer = ARV x 70% - repairs - $10k. All of these are rough estimates."
+  },
   {
    "at": "2026-10-15T21:10:46.588Z",
    "body": "SMS bot (test mode, not sent) would reply: Thanks for sending 8019 Tavenor Ln. Looks like a 3/2, about 1,600 sqft, built in '79, and not listed right now, so off-market? What kind of shape is it in? Roof, HVAC, any foundation issues?"
@@ -141,6 +146,7 @@
   }
  ],
  "tags_now": [
-  "apify-daily-lead"
+  "apify-daily-lead",
+  "hot-lead"
  ]
 }

@@ -13,6 +13,10 @@ on:
         description: "Test size: send exactly this many clean leads (blank = normal daily amount)"
         required: false
         default: ""
+      backup_apify:
+        description: "Use the backup Apify account (APIFY_TOKEN_2 secret)"
+        type: boolean
+        default: false
       apify_run_id:
         description: "Reuse the agents from this Apify run instead of scraping again (blank = scrape)"
         required: false
@@ -49,7 +53,7 @@ jobs:
       - name: Pull leads and push to GoHighLevel
         if: steps.clock.outputs.go == 'yes'
         env:
-          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          APIFY_TOKEN: ${{ inputs.backup_apify && secrets.APIFY_TOKEN_2 || secrets.APIFY_TOKEN }}
           GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
           GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
           GHL_WORKFLOW_ID: ${{ secrets.GHL_WORKFLOW_ID }}

@@ -37,6 +37,10 @@ if c:
     except Exception as e:
         out.update(status="no answer", body=str(e))
     out["seconds"] = round(time.time() - t, 1)
+    notes = get(f"/contacts/{c['id']}/notes").get("notes", [])
+    out["notes"] = [{"at": n.get("dateAdded"), "body": (n.get("body") or "")[:600]} for n in notes[:5]]
+    full = get(f"/contacts/{c['id']}")["contact"]
+    out["tags_now"] = full.get("tags")
 for k in ("GHL_TOKEN", "WEBHOOK_SECRET"):
     out = json.loads(json.dumps(out).replace(os.environ[k], "***"))
 os.makedirs("stats", exist_ok=True)

@@ -1,0 +1,31 @@
+name: Fix all-caps cities in GHL
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Change them (unchecked = only count)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix cities
+        env:
+          GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
+          GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
+          APPLY: ${{ inputs.apply }}
+        run: python scripts/fix_city_caps.py
+      - name: Save the summary
+        run: |
+          git config user.name "lead-pipeline"
+          git config user.email "lead-pipeline@users.noreply.github.com"
+          git add stats/city_fix.json
+          git commit -m "City caps fix" || exit 0
+          git pull --rebase origin main && git push origin HEAD:main

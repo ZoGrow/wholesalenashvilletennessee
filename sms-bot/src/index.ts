@@ -140,18 +140,17 @@ function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: 
   const agent = [contact.firstName && `${contact.firstName} ${contact.lastName ?? ""}`.trim(), contact.companyName, contact.phone]
     .filter(Boolean).join(" · ");
   const link = `https://app.gohighlevel.com/v2/location/${env.GHL_LOCATION_ID}/contacts/detail/${contactId}`;
+  // Blank lines between sections so it's easy to scan in Slack.
   return [
-    `🏠 *New qualified lead: ${v("address")}*`,
-    `*Asking:* ${v("asking_price")} (${v("percent_of_zestimate")} of Zestimate ${v("zestimate")})`,
-    `*Status:* ${v("market_status")}`,
-    `*Condition:* ${v("condition")}`,
-    `*Property:* ${v("beds_baths_sqft")} · built ${v("year_built")} · ${v("occupancy")}`,
-    `*Seller:* ${v("motivation")} · timeline: ${v("timeline")}`,
-    `*Rough numbers:* ARV ${v("arv_range")} · repairs ${v("repairs")} · max offer ${v("max_offer")}`,
-    `*Agent:* ${agent || "unknown"}`,
-    `*Why it qualifies:* ${v("summary")}`,
+    `🏠 *New qualified lead*\n*${v("address")}*`,
+    `💰 *Asking:* ${v("asking_price")}\n📊 *Zestimate:* ${v("zestimate")} (asking is ${v("percent_of_zestimate")})\n📍 *Status:* ${v("market_status")}`,
+    `🔧 *Condition:* ${v("condition")}\n🏡 *Property:* ${v("beds_baths_sqft")} · built ${v("year_built")} · ${v("occupancy")}`,
+    `🙋 *Seller:* ${v("motivation")}\n⏱️ *Timeline:* ${v("timeline")}`,
+    `🧮 *Rough numbers*\nARV: ${v("arv_range")}\nRepairs: ${v("repairs")}\nMax offer: ${v("max_offer")}`,
+    `👤 *Agent:* ${agent || "unknown"}`,
+    `✅ *Why it qualifies:* ${v("summary")}`,
     `<${link}|Open in GHL>`,
-  ].join("\n");
+  ].join("\n\n");
 }
 
 type Decision = {

@@ -1,0 +1,14 @@
+name: Send a sample lead card to Slack
+
+on:
+  workflow_dispatch:
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Post the sample card
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: curl -sS --fail -X POST -H 'Content-Type: application/json' --data @scripts/sample_lead_card.json "$SLACK_WEBHOOK_URL"

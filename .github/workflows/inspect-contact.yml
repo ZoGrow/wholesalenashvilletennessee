@@ -1,0 +1,30 @@
+name: Inspect a contact's texts
+
+on:
+  workflow_dispatch:
+    inputs:
+      contact:
+        description: "Name, phone or email of a GHL contact"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read the contact's messages
+        env:
+          GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
+          GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
+          CONTACT: ${{ inputs.contact }}
+        run: python scripts/inspect_contact.py "$CONTACT"
+      - name: Save the result to the repo
+        run: |
+          git config user.name "lead-pipeline"
+          git config user.email "lead-pipeline@users.noreply.github.com"
+          git add stats/contact_inspect.json
+          git commit -m "Contact inspect" || exit 0
+          git pull --rebase origin main && git push origin HEAD:main

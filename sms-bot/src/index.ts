@@ -31,6 +31,7 @@ const OPT_OUT =
 const QUALIFIED_TAG = "qualified-lead"; // asking under Zestimate, seller vetted
 const NOT_QUALIFIED_TAG = "not-qualified";
 const MAX_HISTORY = 40;
+const REPLY_DELAY_MS = 20_000; // replies go out no sooner than this after their text
 // Check-ins: "maybe next month" / "let me see what I can find" gets a tag like follow-up-2026-10-23 (Central date).
 // A cron (wrangler.toml) texts everyone whose date has come, if they haven't texted since.
 const FOLLOW_UP_PREFIX = "follow-up-";
@@ -174,6 +175,9 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
     await optOut(contactId, env, last.body);
     return;
   }
+  // Zack wants replies to land about 20 seconds after their text, like a person typing back.
+  const wait = REPLY_DELAY_MS - (Date.now() - Date.parse(last.at));
+  if (wait > 0) await new Promise((r) => setTimeout(r, Math.min(wait, REPLY_DELAY_MS)));
   // Writing a reply takes a while; if GHL retried meanwhile and that copy already answered,
   // or the agent texted again (a newer webhook will answer both), don't send this one.
   const now = await smsThread(contactId, env);

@@ -31,6 +31,7 @@ const OPT_OUT =
 const QUALIFIED_TAG = "qualified-lead"; // asking under Zestimate, seller vetted
 const NOT_QUALIFIED_TAG = "not-qualified";
 const MAX_HISTORY = 40;
+const REPLIED_TAG = "agent-replied"; // anyone who has texted back; counted in the weekly scorecard
 const REPLY_DELAY_MS = 20_000; // replies go out no sooner than this after their text
 // Check-ins: "maybe next month" / "let me see what I can find" gets a tag like follow-up-2026-10-23 (Central date).
 // A cron (wrangler.toml) texts everyone whose date has come, if they haven't texted since.
@@ -126,6 +127,7 @@ async function sendSms(contactId: string, text: string, thread: Sms[], contact: 
     if (!status || !/30007|carrier/i.test(status.error ?? "")) return;
     console.warn("carrier blocked text to", contactId, ":", text);
     await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `SMS bot: carrier blocked this text as spam (30007): "${text}"` });
+    await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: ["carrier-blocked"] });
     if (attempt >= 1) return;
     const redo = await nextReply(thread, contact, env, false, text);
     if (!redo?.reply.trim() || redo.optout) return;
@@ -165,6 +167,7 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
     return;
   }
 
+  if (!tags.includes(REPLIED_TAG)) await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [REPLIED_TAG] });
   // They texted back: any planned check-in is replaced by whatever this reply decides.
   const stale = tags.filter((t) => t.startsWith(FOLLOW_UP_PREFIX) || t === CHECKED_IN_TAG);
   if (stale.length) await ghl(env, `/contacts/${contactId}/tags`, "DELETE", { tags: stale });
@@ -230,7 +233,7 @@ type Lead = Record<(typeof LEAD_FIELDS)[number], string>;
 const LEAD_FIELDS = [
   "address", "asking_price", "zestimate", "percent_of_zestimate", "market_status", "condition",
   "beds_baths_sqft", "year_built", "occupancy", "motivation", "timeline", "arv_range", "repairs",
-  "max_offer", "summary",
+  "max_offer", "opening_offer", "call_script", "summary",
 ] as const;
 
 /** The "New qualified lead" message: posted to Slack and saved as a note on the contact. */
@@ -246,6 +249,7 @@ function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: 
     `🔧 *Condition:* ${v("condition")}\n🏡 *Property:* ${v("beds_baths_sqft")} · built ${v("year_built")} · ${v("occupancy")}`,
     `🙋 *Seller:* ${v("motivation")}\n⏱️ *Timeline:* ${v("timeline")}`,
     `🧮 *Rough numbers*\nARV: ${v("arv_range")}\nRepairs: ${v("repairs")}\nMax offer: ${v("max_offer")}`,
+    `🤝 *Make the offer*\nOpen at: ${v("opening_offer")}\nWhat to say: ${v("call_script")}`,
     `👤 *Agent:* ${agent || "unknown"}`,
     `✅ *Why it qualifies:* ${v("summary")}`,
     `<${link}|Open in GHL>`,

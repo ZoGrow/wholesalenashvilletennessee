@@ -23,6 +23,9 @@ something later get tagged `warm-lead` with a note, and the bot keeps the conver
   `follow-up-YYYY-MM-DD` (a date matching their timing). A cron (weekdays, hourly 10am-5pm Central, up to 5 per run)
   texts a short check-in on that date if they haven't texted since, and tags `checked-in`. At most one more
   check-in follows if they stay quiet. Any reply from them clears these tags. Remove the tag to cancel one.
+- Agents who text back get `agent-replied`; bot texts a carrier blocks get rewritten once and tagged `carrier-blocked`.
+  The "Weekly scorecard" workflow (Mondays) posts sent / replied / warm / qualified / blocked counts to Slack.
+- Qualified-lead cards include an opening offer (about 10% under max offer) and a short call script.
   Tag a contact `bot-off` to take a conversation over yourself.
 
 ## Setup

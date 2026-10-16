@@ -1,168 +1,48 @@
 {
  "matches": [
   {
-   "id": "d0ZrWm",
-   "tags": [],
-   "messages": [
-    {
-     "direction": "outbound",
-     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
-     "type": 31,
-     "status": null,
-     "dateAdded": "2025-11-11T17:16:22.641Z"
-    },
-    {
-     "direction": "outbound",
-     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
-     "type": 31,
-     "status": null,
-     "dateAdded": "2025-11-11T17:15:13.241Z"
-    },
-    {
-     "direction": "outbound",
-     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
-     "type": 31,
-     "status": null,
-     "dateAdded": "2025-11-11T16:52:15.893Z"
-    },
-    {
-     "direction": "outbound",
-     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
-     "type": 31,
-     "status": null,
-     "dateAdded": "2025-11-11T16:49:51.491Z"
-    },
-    {
-     "direction": "outbound",
-     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
-     "type": 31,
-     "status": null,
-     "dateAdded": "2025-11-10T01:07:30.971Z"
-    }
-   ]
-  },
-  {
-   "id": "LIPS4c",
-   "tags": [],
-   "messages": [
-    {
-     "direction": "outbound",
-     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
-     "type": 31,
-     "status": null,
-     "dateAdded": "2026-08-05T00:09:35.562Z"
-    },
-    {
-     "direction": "outbound",
-     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
-     "type": 31,
-     "status": null,
-     "dateAdded": "2026-08-05T00:09:35.290Z"
-    },
-    {
-     "direction": "outbound",
-     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
-     "type": 31,
-     "status": null,
-     "dateAdded": "2026-08-04T23:38:47.438Z"
-    },
-    {
-     "direction": "outbound",
-     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
-     "type": 31,
-     "status": null,
-     "dateAdded": "2026-08-04T23:22:52.456Z"
-    },
-    {
-     "direction": "outbound",
-     "messageType": "TYPE_ACTIVITY_APPOINTMENT",
-     "type": 31,
-     "status": null,
-     "dateAdded": "2026-08-04T19:15:14.503Z"
-    }
-   ]
-  },
-  {
-   "id": "0bIyRR",
+   "id": "yiLBti",
    "tags": [
-    "apify-daily-lead",
-    "hot-lead"
+    "apify-daily-lead"
    ],
    "messages": [
     {
+     "direction": "outbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "undelivered",
+     "dateAdded": "2026-10-16T01:22:43.186Z"
+    },
+    {
      "direction": "inbound",
      "messageType": "TYPE_SMS",
      "type": 2,
      "status": "delivered",
-     "dateAdded": "2026-10-15T21:49:45.337Z"
+     "dateAdded": "2026-10-16T01:22:36.919Z"
     },
     {
      "direction": "outbound",
      "messageType": "TYPE_SMS",
      "type": 2,
      "status": "delivered",
-     "dateAdded": "2026-10-15T21:23:36.771Z"
-    },
-    {
-     "direction": "inbound",
-     "messageType": "TYPE_SMS",
-     "type": 2,
-     "status": "delivered",
-     "dateAdded": "2026-10-15T21:23:27.023Z"
+     "dateAdded": "2026-10-16T01:18:10.985Z"
     },
     {
      "direction": "outbound",
      "messageType": "TYPE_SMS",
      "type": 2,
      "status": "delivered",
-     "dateAdded": "2026-10-15T21:22:14.977Z"
-    },
-    {
-     "direction": "inbound",
-     "messageType": "TYPE_SMS",
-     "type": 2,
-     "status": "delivered",
-     "dateAdded": "2026-10-15T21:22:07.871Z"
+     "dateAdded": "2026-10-15T22:18:09.728Z"
     }
    ]
   }
  ],
- "reset": [
-  "hot-lead",
-  "warm-lead",
-  "qualified-lead",
-  "not-qualified",
-  "bot-off"
- ],
- "probed": "0bIyRR",
+ "probed": "yiLBti",
  "status": 200,
  "body": "ok",
- "seconds": 46.1,
- "notes": [
-  {
-   "at": "2026-10-15T21:52:21.883Z",
-   "body": "\ud83c\udfe0 New qualified lead: 8019 Tavenor Ln, Houston, TX 77075\nAsking: $135,000 (ballpark, flexible) (~60% of Zestimate ~$225,000 (est. from nearby, Zestimate not found))\nStatus: Off-market\nCondition: Needs lots of repairs (details unknown)\nProperty: 3/2, ~1,608 sqft \u00b7 built 1979 \u00b7 unknown\nSeller: unknown \u00b7 timeline: unknown\nRough numbers: ARV ~$245k-$260k (rough) \u00b7 repairs ~$80k (heavy, $50/sqft, rough) \u00b7 max offer ~$81,500 (rough)\nAgent: Zack Olabi \u00b7 +18329177656\nWhy it qualifies: Off-market 3/2 in Skyscraper Shadows that needs a lot of work. Seller's ballpark is $135k and the agent says there's r"
-  },
-  {
-   "at": "2026-10-15T21:52:21.733Z",
-   "body": "SMS bot handoff: QUALIFIED (borderline). 8019 Tavenor Ln, Houston TX 77075. Off-market, 3/2, ~1,608 sqft, built 1979, agent says it needs lots of repairs (no details yet). Seller's ballpark is $135k and the agent says there's room on price. I couldn't find the Zestimate, so I estimated value at ~$225k from nearby homes (8023 Tavenor, 3/2 1,410 sqft, Redfin est. $223k). Asking is ~60% of that. Rough ARV is $245-260k based on renovated Skyscraper Shadows homes nearby (one listed at ~$260k), but comps are thin. Rough repairs ~$80k (heavy, $50/sqft). Rough max offer = $245k x 70% - $80k - $10k = ~"
-  },
-  {
-   "at": "2026-10-15T21:23:37.696Z",
-   "body": "SMS bot handoff: 8019 Tavenor Ln, Houston TX 77075. Off-market, so no list price. 3/2, about 1,608 sqft, built 1979. Agent says it's in bad shape and needs lots of repairs, no details yet. Seller hasn't named a price; agent says there's room and to 'send what you can'. Rough repairs, heavy at $50-70/sqft: about $80k-$113k. Haven't pulled sold comps for ARV yet, so pull them before making an offer. Max offer = ARV x 70% - repairs - $10k. All of these are rough estimates."
-  },
-  {
-   "at": "2026-10-15T21:10:46.588Z",
-   "body": "SMS bot (test mode, not sent) would reply: Thanks for sending 8019 Tavenor Ln. Looks like a 3/2, about 1,600 sqft, built in '79, and not listed right now, so off-market? What kind of shape is it in? Roof, HVAC, any foundation issues?"
-  },
-  {
-   "at": "2026-10-15T21:06:25.754Z",
-   "body": "SMS bot (test mode, not sent) would reply: Thanks for sending this. I see 8019 Tavenor Ln is a 3/2, about 1,608 sqft, built in 1979, and Zillow has it as not on the market, so it's off-market? What kind of shape is it in, and how old are the roof and HVAC?"
-  }
- ],
+ "seconds": 5.8,
+ "notes": [],
  "tags_now": [
-  "apify-daily-lead",
-  "hot-lead",
-  "qualified-lead"
+  "apify-daily-lead"
  ]
 }

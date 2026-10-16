@@ -40,12 +40,13 @@ def line(tag, label):
         return f"{label}: *+{now[tag] - int(prev[tag])}* this week ({now[tag]:,} total)"
     return f"{label}: {now[tag]:,} total"
 
-replied_rate = f"{now['agent-replied'] / now['apify-daily-lead']:.1%}" if now["apify-daily-lead"] else "n/a"
+replied_week = now["agent-replied"] - int(prev["agent-replied"]) if prev and prev.get("agent-replied") else None
+replied_rate = f"{replied_week / sent:.1%} of this week's texts" if replied_week is not None and sent else "starts next week"
 text = "\n\n".join([
     f"📈 *Weekly scorecard* (week ending {today:%b %-d})",
-    f"📤 Texts sent: *{sent:,}* (from {scraped:,} agents scraped)",
+    f"📤 Texts sent: *{sent:,}* (from {scraped:,} agents scraped, {now['apify-daily-lead']:,} agents texted all-time)",
     "\n".join(line(t, l) for t, l in TAGS[1:6]),
-    f"Reply rate so far: {replied_rate} of everyone texted",
+    f"Reply rate: {replied_rate}",
     "\n".join(line(t, l) for t, l in TAGS[6:]),
 ])
 print(text)

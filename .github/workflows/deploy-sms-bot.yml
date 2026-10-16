@@ -34,12 +34,6 @@ jobs:
           GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
           WEBHOOK_SECRET: ${{ secrets.SMS_BOT_WEBHOOK_SECRET }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      - name: Post a test message to Slack
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: |
-          curl -sS --fail -X POST -H 'Content-Type: application/json' \
-            -d '{"text":"Lead bot connected. New qualified leads will show up here."}' "$SLACK_WEBHOOK_URL"
       - name: Show the webhook URL
         run: |
           echo "### SMS bot is deployed" >> "$GITHUB_STEP_SUMMARY"

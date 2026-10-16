@@ -12,6 +12,23 @@
    "dndSettings": null,
    "messages": [
     {
+     "id": "vbZpYncL5AlOMfGFKVo5",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey David, this is Zack, a local cash investor in Nashville. I buy houses as-is and close fast. Reaching out to see if you have any listings or off-market deals where a seller needs a quick sale or the house needs work.",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-16T01:29:29.198Z",
+     "dateUpdated": "2026-10-16T01:29:36.503Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SM142c03eb0d0af7a914d47b7596ebbf81",
+     "from": "+18323451435",
+     "to": "+13212793634",
+     "messageType": "TYPE_SMS"
+    },
+    {
      "id": "wmNQpMfOTxZq9m3RnyAm",
      "direction": "outbound",
      "status": "undelivered",

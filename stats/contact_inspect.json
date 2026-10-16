@@ -1,0 +1,90 @@
+{
+ "matches": [
+  {
+   "id": "yiLBti",
+   "name": "david alan fountain",
+   "city": "Brentwood",
+   "state": "TN",
+   "tags": [
+    "apify-daily-lead"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "wmNQpMfOTxZq9m3RnyAm",
+     "direction": "outbound",
+     "status": "undelivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey David, it's Zack, a local investor here in Nashville. I buy houses for cash, as-is, and close fast. Got anything off-market or a seller who'd want a quick as-is sale?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-16T01:22:43.186Z",
+     "dateUpdated": "2026-10-16T01:22:46.830Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SMbc43f9dfa584c014b6b176b35a5a84cc",
+     "from": "+18323451435",
+     "to": "+13212793634",
+     "error": "Error 30007 - Message blocked due to carrier policies. This often happens if content violates carrier rules.",
+     "meta": {
+      "marketplace": {
+       "appId": "6ac82161cc0c50bbf18cf2ff"
+      }
+     },
+     "messageType": "TYPE_SMS",
+     "detail": "HTTP Error 401: Unauthorized"
+    },
+    {
+     "id": "A7efSgkHKMm1wkBUG7N6",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Who is this?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-16T01:22:36.919Z",
+     "dateUpdated": "2026-10-16T01:22:36.919Z",
+     "altId": "SM509b4f83598ce2ab223e6331a3918b4b",
+     "from": "+13212793634",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "LTzzGntbGp9wk9DKEErG",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-16T01:18:10.985Z",
+     "dateUpdated": "2026-10-16T01:18:20.692Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM0f0137ecc4670e831bc0228ce6e68804",
+     "from": "+18323451435",
+     "to": "+13212793634",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "shXyepyANMYKjjKUv4Vl",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey David, my name is Zack. I am in an investor here in BRENTWOOD looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-15T22:18:09.728Z",
+     "dateUpdated": "2026-10-15T22:18:27.387Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM2b8ade729a67ae004e3ecb02d44d7ef7",
+     "from": "+18323451435",
+     "to": "+13212793634",
+     "messageType": "TYPE_SMS"
+    }
+   ]
+  }
+ ]
+}

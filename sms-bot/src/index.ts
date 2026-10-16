@@ -31,6 +31,12 @@ const OPT_OUT =
 const QUALIFIED_TAG = "qualified-lead"; // asking under Zestimate, seller vetted
 const NOT_QUALIFIED_TAG = "not-qualified";
 const MAX_HISTORY = 40;
+// Check-ins: "maybe next month" / "let me see what I can find" gets a tag like follow-up-2026-10-23 (Central date).
+// A cron (wrangler.toml) texts everyone whose date has come, if they haven't texted since.
+const FOLLOW_UP_PREFIX = "follow-up-";
+const CHECKED_IN_TAG = "checked-in"; // got a check-in and hasn't replied yet; at most one more is scheduled
+const CHECKINS_PER_RUN = 5; // each check-in uses ~8 Cloudflare subrequests (50 per run on the free plan)
+const LOOKBACK_DAYS = 14; // also catch check-ins a missed or full run left behind
 
 type Sms = { direction: "inbound" | "outbound"; body: string; at: string };
 
@@ -55,7 +61,61 @@ export default {
     }
     return new Response("ok");
   },
+
+  async scheduled(_event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
+    ctx.waitUntil(runCheckIns(env));
+  },
 };
+
+/** YYYY-MM-DD in Central time, `days` from now. */
+function centralDate(days = 0): string {
+  return new Date(Date.now() + days * 86400000).toLocaleDateString("en-CA", { timeZone: "America/Chicago" });
+}
+
+async function runCheckIns(env: Env): Promise<void> {
+  let sent = 0;
+  for (let back = LOOKBACK_DAYS; back >= 0 && sent < CHECKINS_PER_RUN; back--) {
+    const tag = FOLLOW_UP_PREFIX + centralDate(-back);
+    const res = await ghl(env, "/contacts/search", "POST", {
+      locationId: env.GHL_LOCATION_ID, page: 1, pageLimit: CHECKINS_PER_RUN,
+      filters: [{ field: "tags", operator: "contains", value: tag }],
+    });
+    for (const c of res.contacts ?? []) {
+      if (sent >= CHECKINS_PER_RUN) break;
+      try {
+        if (await checkIn(c.id, tag, env)) sent++;
+      } catch (e) {
+        console.error("check-in failed", c.id, e);
+      }
+    }
+  }
+  console.log("check-ins sent:", sent);
+}
+
+/** Text a scheduled check-in to one contact. Returns true if a text went out. */
+async function checkIn(contactId: string, dueTag: string, env: Env): Promise<boolean> {
+  const contact = (await ghl(env, `/contacts/${contactId}`)).contact ?? {};
+  const tags: string[] = (contact.tags ?? []).map((t: string) => t.toLowerCase());
+  const followUps = tags.filter((t) => t.startsWith(FOLLOW_UP_PREFIX));
+  await ghl(env, `/contacts/${contactId}/tags`, "DELETE", { tags: followUps.length ? followUps : [dueTag] });
+  if (BOT_OFF_TAGS.some((t) => tags.includes(t)) || contact.dnd || contact.dndSettings?.SMS?.status === "active") return false;
+  const thread = await smsThread(contactId, env);
+  // If their last text is still unanswered, the reply webhook handles it instead.
+  if (!thread.length || thread[thread.length - 1].direction !== "outbound") return false;
+
+  const decision = await nextReply(thread, contact, env, true);
+  if (!decision?.reply.trim() || decision.optout || decision.handoff) return false;
+  if (env.DRY_RUN === "true") {
+    await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `SMS bot (test mode, not sent) check-in: ${decision.reply.trim()}` });
+  } else {
+    await ghl(env, "/conversations/messages", "POST", { type: "SMS", contactId, message: decision.reply.trim() });
+  }
+  // One more check-in at most if they stay quiet, so nobody gets chased forever.
+  const again = !tags.includes(CHECKED_IN_TAG) && decision.follow_up_days > 0;
+  const add = [CHECKED_IN_TAG, ...(again ? [FOLLOW_UP_PREFIX + centralDate(Math.min(decision.follow_up_days, 120))] : [])];
+  await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: add });
+  return true;
+}
 
 async function handleReply(contactId: string, env: Env): Promise<void> {
   const contact = (await ghl(env, `/contacts/${contactId}`)).contact ?? {};
@@ -75,6 +135,10 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
     await optOut(contactId, env, last.body);
     return;
   }
+
+  // They texted back: any planned check-in is replaced by whatever this reply decides.
+  const stale = tags.filter((t) => t.startsWith(FOLLOW_UP_PREFIX) || t === CHECKED_IN_TAG);
+  if (stale.length) await ghl(env, `/contacts/${contactId}/tags`, "DELETE", { tags: stale });
 
   const decision = await nextReply(thread, contact, env);
   if (!decision) return;
@@ -105,6 +169,9 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
   else if (decision.warm) newTags.push(WARM_TAG);
   if (decision.deal === "qualified") newTags.push(QUALIFIED_TAG);
   if (decision.deal === "not_qualified") newTags.push(NOT_QUALIFIED_TAG);
+  if (decision.follow_up_days > 0 && !decision.handoff && decision.deal !== "qualified") {
+    newTags.push(FOLLOW_UP_PREFIX + centralDate(Math.min(decision.follow_up_days, 120)));
+  }
   if (newTags.length) {
     await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: newTags });
     if (decision.note) {
@@ -155,6 +222,7 @@ function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: 
 
 type Decision = {
   reply: string; handoff: boolean; warm: boolean; optout: boolean; deal: string; note: string; lead: Lead;
+  follow_up_days: number;
 };
 
 /** They asked us to stop: no reply, tag them, and turn on SMS Do Not Disturb so nothing texts them again. */
@@ -180,6 +248,10 @@ const REPLY_FORMAT = {
         type: "boolean",
         description: "True when they ask us to stop texting, remove them, or say it's the wrong number. Then reply must be empty.",
       },
+      follow_up_days: {
+        type: "integer",
+        description: "Days until a check-in text if they don't text first, when they might have something later or need time: 'let me see what I can find' = 4, 'maybe next week' = 7, 'next month' = 30, 'after the holidays' = until then (max 120). 0 = no check-in (handed off, not interested, opted out, or nothing pending).",
+      },
       deal: {
         type: "string",
         enum: ["qualified", "not_qualified", "unknown"],
@@ -197,12 +269,12 @@ const REPLY_FORMAT = {
         description: "When handoff or warm is true: for warm, one line on what they might have and when; for handoff, one or two lines for the human with the address, listing price, condition and seller's asking price learned so far. Else empty.",
       },
     },
-    required: ["reply", "handoff", "warm", "optout", "deal", "lead", "note"],
+    required: ["reply", "handoff", "warm", "optout", "follow_up_days", "deal", "lead", "note"],
     additionalProperties: false,
   },
 };
 
-async function nextReply(thread: Sms[], contact: Record<string, any>, env: Env): Promise<Decision | null> {
+async function nextReply(thread: Sms[], contact: Record<string, any>, env: Env, checkIn = false): Promise<Decision | null> {
   const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
   const transcript = thread
     .map((m) => `${m.direction === "outbound" ? "US" : "AGENT"} (${m.at}): ${m.body}`)
@@ -217,7 +289,7 @@ async function nextReply(thread: Sms[], contact: Record<string, any>, env: Env):
 
   const userTurn: Anthropic.Beta.BetaMessageParam = {
     role: "user",
-    content: `About this agent:\n${about || "(nothing on file)"}\n\nSMS thread so far, oldest first:\n${transcript}\n\nWrite our next text.`,
+    content: `About this agent:\n${about || "(nothing on file)"}\n\nSMS thread so far, oldest first:\n${transcript}\n\n${checkIn ? CHECK_IN_ASK.replace("{{TODAY}}", centralDate()) : "Write our next text."}`,
   };
   let messages: Anthropic.Beta.BetaMessageParam[] = [userTurn];
   let response: Anthropic.Beta.BetaMessage;
@@ -243,7 +315,7 @@ async function nextReply(thread: Sms[], contact: Record<string, any>, env: Env):
 
   if (response.stop_reason === "refusal") {
     console.warn("refused", response.stop_details);
-    return { reply: "", handoff: true, warm: false, optout: false, deal: "unknown", note: "Bot could not answer this one.", lead: {} as Lead };
+    return { reply: "", handoff: true, warm: false, optout: false, follow_up_days: 0, deal: "unknown", note: "Bot could not answer this one.", lead: {} as Lead };
   }
   // The JSON answer is the last text block; earlier ones can be notes around the web lookups.
   const texts = response.content.filter((b): b is Anthropic.Beta.BetaTextBlock => b.type === "text");
@@ -251,6 +323,8 @@ async function nextReply(thread: Sms[], contact: Record<string, any>, env: Env):
   if (!last) return null;
   return JSON.parse(last.text) as Decision;
 }
+
+const CHECK_IN_ASK = `Today is {{TODAY}}. The agent hasn't texted since, and it's time for the check-in you planned. Write one short, casual follow-up that picks up on what they said (for example "Hey Sarah, checking back on that seller who was thinking about selling. Anything firm up?"). Don't repeat earlier wording or re-introduce yourself. If a check-in no longer makes sense (they said no, or nothing was pending), return an empty reply. Set follow_up_days for one more check-in only if their timing points to a later date; otherwise 0.`;
 
 function systemPrompt(env: Env): string {
   return SYSTEM_PROMPT.replaceAll("{{GOAL}}", env.BOT_GOAL)

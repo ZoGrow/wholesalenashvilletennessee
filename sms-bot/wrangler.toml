@@ -3,6 +3,10 @@ main = "src/index.ts"
 compatibility_date = "2026-09-01"
 compatibility_flags = ["nodejs_compat"]
 
+# Follow-up check-ins: hourly 10am-5pm Central on weekdays, up to 5 texts per run.
+[triggers]
+crons = ["30 15-22 * * 1-5"]
+
 [vars]
 SENDER_NAME = "Zack"
 BOT_GOAL = "When an agent sends a listing or an address, look it up online, find out what the seller is asking, why they are selling, timeline and condition. Hand Zack any lead asking under the Zestimate once the seller is vetted."

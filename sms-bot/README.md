@@ -19,6 +19,10 @@ something later get tagged `warm-lead` with a note, and the bot keeps the conver
 - Each qualified lead also gets a "New qualified lead" card (address, asking vs Zestimate, condition,
   numbers, agent, GHL link) as a note, posted to Slack when the `SLACK_WEBHOOK_URL` repo secret is set
   (a Slack Incoming Webhook URL; rerun the deploy after adding it).
+- Check-ins: when an agent says "let me see what I can find", "maybe next month" and so on, the bot tags them
+  `follow-up-YYYY-MM-DD` (a date matching their timing). A cron (weekdays, hourly 10am-5pm Central, up to 5 per run)
+  texts a short check-in on that date if they haven't texted since, and tags `checked-in`. At most one more
+  check-in follows if they stay quiet. Any reply from them clears these tags. Remove the tag to cancel one.
   Tag a contact `bot-off` to take a conversation over yourself.
 
 ## Setup

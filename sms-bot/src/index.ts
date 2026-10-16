@@ -108,13 +108,41 @@ async function checkIn(contactId: string, dueTag: string, env: Env): Promise<boo
   if (env.DRY_RUN === "true") {
     await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `SMS bot (test mode, not sent) check-in: ${decision.reply.trim()}` });
   } else {
-    await ghl(env, "/conversations/messages", "POST", { type: "SMS", contactId, message: decision.reply.trim() });
+    await sendSms(contactId, decision.reply.trim(), thread, contact, env);
   }
   // One more check-in at most if they stay quiet, so nobody gets chased forever.
   const again = !tags.includes(CHECKED_IN_TAG) && decision.follow_up_days > 0;
   const add = [CHECKED_IN_TAG, ...(again ? [FOLLOW_UP_PREFIX + centralDate(Math.min(decision.follow_up_days, 120))] : [])];
   await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: add });
   return true;
+}
+
+/** Text them, and if the carrier blocks it as spam (error 30007), rewrite it plainly and try once more. */
+async function sendSms(contactId: string, text: string, thread: Sms[], contact: Record<string, any>, env: Env): Promise<void> {
+  for (let attempt = 0; ; attempt++) {
+    const sent = await ghl(env, "/conversations/messages", "POST", { type: "SMS", contactId, message: text });
+    const status = await deliveryStatus(sent.conversationId, sent.messageId, env);
+    if (!status || !/30007|carrier/i.test(status.error ?? "")) return;
+    console.warn("carrier blocked text to", contactId, ":", text);
+    await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `SMS bot: carrier blocked this text as spam (30007): "${text}"` });
+    if (attempt >= 1) return;
+    const redo = await nextReply(thread, contact, env, false, text);
+    if (!redo?.reply.trim() || redo.optout) return;
+    text = redo.reply.trim();
+  }
+}
+
+/** Wait for the carrier's verdict on a message we just sent (it lands a few seconds later). */
+async function deliveryStatus(conversationId: string, messageId: string, env: Env): Promise<{ status: string; error?: string } | null> {
+  if (!conversationId || !messageId) return null;
+  for (let i = 0; i < 4; i++) {
+    await new Promise((r) => setTimeout(r, 3000));
+    const data = await ghl(env, `/conversations/${conversationId}/messages?limit=5`);
+    const m = (data.messages?.messages ?? data.messages ?? []).find((x: any) => x.id === messageId);
+    if (m && m.status !== "pending" && m.status !== "sent" && m.status !== "queued") return { status: m.status, error: m.error };
+    if (m?.error) return { status: m.status, error: m.error };
+  }
+  return null;
 }
 
 async function handleReply(contactId: string, env: Env): Promise<void> {
@@ -162,7 +190,7 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
       await ghl(env, `/contacts/${contactId}/notes`, "POST", {
         body: `SMS bot (test mode, not sent) would reply: ${decision.reply.trim()}`,
       });
-    } else await ghl(env, "/conversations/messages", "POST", { type: "SMS", contactId, message: decision.reply.trim() });
+    } else await sendSms(contactId, decision.reply.trim(), thread, contact, env);
   }
   const newTags: string[] = [];
   if (decision.handoff) newTags.push(HANDOFF_TAG);
@@ -274,7 +302,9 @@ const REPLY_FORMAT = {
   },
 };
 
-async function nextReply(thread: Sms[], contact: Record<string, any>, env: Env, checkIn = false): Promise<Decision | null> {
+async function nextReply(
+  thread: Sms[], contact: Record<string, any>, env: Env, checkIn = false, blocked = "",
+): Promise<Decision | null> {
   const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
   const transcript = thread
     .map((m) => `${m.direction === "outbound" ? "US" : "AGENT"} (${m.at}): ${m.body}`)
@@ -289,7 +319,7 @@ async function nextReply(thread: Sms[], contact: Record<string, any>, env: Env, 
 
   const userTurn: Anthropic.Beta.BetaMessageParam = {
     role: "user",
-    content: `About this agent:\n${about || "(nothing on file)"}\n\nSMS thread so far, oldest first:\n${transcript}\n\n${checkIn ? CHECK_IN_ASK.replace("{{TODAY}}", centralDate()) : "Write our next text."}`,
+    content: `About this agent:\n${about || "(nothing on file)"}\n\nSMS thread so far, oldest first:\n${transcript}\n\n${checkIn ? CHECK_IN_ASK.replace("{{TODAY}}", centralDate()) : "Write our next text."}${blocked ? `\n\nThe carrier just blocked this text as spam: "${blocked}". Say the same thing in different, plain everyday words. Avoid "cash", "buy houses", "as-is", "close fast", "investor", "deal" and anything that sounds like an ad.` : ""}`,
   };
   let messages: Anthropic.Beta.BetaMessageParam[] = [userTurn];
   let response: Anthropic.Beta.BetaMessage;

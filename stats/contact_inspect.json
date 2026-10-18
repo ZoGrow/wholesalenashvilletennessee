@@ -1,6 +1,166 @@
 {
  "matches": [
   {
+   "id": "5LialI",
+   "name": "alan worthy",
+   "city": "Franklin",
+   "state": "TN",
+   "tags": [
+    "apify-daily-lead",
+    "agent-replied",
+    "hot-lead"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "zuiPERLpmfLVO4kkDqjY",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Will do Alan. I'll run the numbers and get back to you shortly.",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T18:48:10.424Z",
+     "dateUpdated": "2026-10-18T18:48:19.176Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SM669557259aa85f2f37f66a93c5891cc3",
+     "from": "+18323451435",
+     "to": "+16158188771",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "y3o6T5MxKOkMAffnJLxg",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Send me an offer to present.\nalan.worthy@exprealty.com",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T18:47:50.121Z",
+     "dateUpdated": "2026-10-18T18:47:50.121Z",
+     "altId": "SM4cd614dfc94b8fb377049f52ed86f42a",
+     "from": "+16158188771",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "FkYagKl1kuklie8IyRr6",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Got it, thanks. What's the seller hoping to get after tomorrow's drop, and would they take less for a quick close with no repairs or inspections?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T18:44:01.678Z",
+     "dateUpdated": "2026-10-18T18:44:07.683Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SM2bee27e9ac67bc889d7ba05eb6cb7e93",
+     "from": "+18323451435",
+     "to": "+16158188771",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "np7m6fwhfY33bwIZDpsb",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Vacant and both are 20 years old.",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T18:43:41.316Z",
+     "dateUpdated": "2026-10-18T18:43:41.316Z",
+     "altId": "SM9ff4dab52287bef7c7ccdf14d7f55130",
+     "from": "+16158188771",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "JKNtvnys09YzjTNT2HwK",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Thanks Alan. I see 6896 Bridgewater Dr at $475k, 3/2.5 with 2,056 sqft, and back on the market after the buyer's financing fell through. Sounds like it needs updating. What's the age of the roof and HVAC, and is it vacant?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T18:42:44.285Z",
+     "dateUpdated": "2026-10-18T18:42:50.284Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SMfd01dab7000c0afc712a45a4afdd33cf",
+     "from": "+18323451435",
+     "to": "+16158188771",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "2K5OGhxi231K7l26LfNq",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "About to drop the price on this one tomorrow.\nhttps://go.realtracs.com/1mGdDBM",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T18:42:21.703Z",
+     "dateUpdated": "2026-10-18T18:42:21.703Z",
+     "altId": "SM183a3f0d0b99633008aac027ff1b10f7",
+     "from": "+16158188771",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "2Vuy5G6LVTbtxbVJRGBs",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Totally get it. Any listings that have been sitting a while or had a couple price drops? Those are usually where I can help.",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T18:40:55.330Z",
+     "dateUpdated": "2026-10-18T18:41:00.717Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SM766669b82ea9ea63fb51ae95efe59823",
+     "from": "+18323451435",
+     "to": "+16158188771",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "lD1i3l0xbJxFJbuaEEOp",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "No",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T18:40:34.792Z",
+     "dateUpdated": "2026-10-18T18:40:34.792Z",
+     "altId": "SM9444c7e110e4aeac08db247653efe4da",
+     "from": "+16158188771",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "fszX9BXUdIY1XfnKxAbl",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Alan, my name is Zack. I am in an investor here in Franklin looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T18:38:45.328Z",
+     "dateUpdated": "2026-10-18T18:40:09.754Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM4053b30af832ce71b523c8d51036f600",
+     "from": "+18323451435",
+     "to": "+16158188771",
+     "messageType": "TYPE_SMS"
+    }
+   ]
+  },
+  {
    "id": "yiLBti",
    "name": "david alan fountain",
    "city": "Brentwood",
@@ -99,6 +259,193 @@
      "altId": "SM2b8ade729a67ae004e3ecb02d44d7ef7",
      "from": "+18323451435",
      "to": "+13212793634",
+     "messageType": "TYPE_SMS"
+    }
+   ]
+  },
+  {
+   "id": "mRPY18",
+   "name": "alana smith",
+   "city": "Houston",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
+   "dndSettings": {
+    "SMS": {
+     "status": "permanent",
+     "message": "STOP_KEYWORD"
+    },
+    "RCS": {
+     "status": "permanent",
+     "message": "STOP_KEYWORD"
+    }
+   },
+   "messages": [
+    {
+     "id": "cLN65CY4odNzmtOQB9PZ",
+     "direction": "inbound",
+     "type": 25,
+     "body": "DnD enabled by customer",
+     "dateAdded": "2026-10-01T23:14:39.959Z",
+     "dateUpdated": "2026-10-01T23:14:39.959Z",
+     "from": "+17137033332",
+     "to": "Lucia - Outreach 1",
+     "activity": {
+      "data": {
+       "channel": [
+        "RCS",
+        "SMS"
+       ]
+      },
+      "title": "DND enabled by customer",
+      "type": "contact_dnd_enabled"
+     },
+     "messageType": "TYPE_ACTIVITY_CONTACT"
+    },
+    {
+     "id": "0P51cgRGKdXd0KmBjYaG",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Stop",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-01T23:14:39.132Z",
+     "dateUpdated": "2026-10-01T23:14:39.132Z",
+     "altId": "SM97891dacc63fbd8479d9c9b16b7bff89",
+     "from": "+17137033332",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "HnRNmT7GZDVpVTs0tMnc",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-30T20:15:21.008Z",
+     "dateUpdated": "2026-09-30T20:15:24.185Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SMe8b8eb02c7a696ffc9a984402020c3e0",
+     "from": "+18323451435",
+     "to": "+17137033332",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "KOLB8o22b3uPmh8RJse4",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Alana, my name is Zack. I am in an investor here in Houston looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-30T17:15:19.578Z",
+     "dateUpdated": "2026-09-30T17:15:25.008Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM23095cad2e3aac6b1337d860e24e12ed",
+     "from": "+18323451435",
+     "to": "+17137033332",
+     "messageType": "TYPE_SMS"
+    }
+   ]
+  },
+  {
+   "id": "vfFTL0",
+   "name": "alan morlan",
+   "city": "Houston",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "Mn20uj5EEnM01sHRLrBM",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-26T19:07:18.935Z",
+     "dateUpdated": "2026-09-26T19:07:23.847Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SMaf441c1e63e84cfa53ddd4baa9354a04",
+     "from": "+18323451435",
+     "to": "+18327218523",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "VQ0yL1kmG2VOh5gL34JP",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Alan, my name is Zack. I am in an investor here in pittsburgh looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-26T16:07:17.574Z",
+     "dateUpdated": "2026-09-26T16:07:24.674Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM4138eb11acc432e2eadba4352fac990d",
+     "from": "+18323451435",
+     "to": "+18327218523",
+     "messageType": "TYPE_SMS"
+    }
+   ]
+  },
+  {
+   "id": "wPSwjk",
+   "name": "alan gieb",
+   "city": "Houston",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "0puhDfwW7ESrcSKhS62F",
+     "direction": "outbound",
+     "status": "failed",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-23T00:37:00.723Z",
+     "dateUpdated": "2026-09-23T00:37:00.723Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "from": "+18323451435",
+     "to": "+12147148884",
+     "error": "Your account has reached today's opt-out/error limit. Please review your messages and try again after 2026-09-23 15:38:49 America/Mexico_City.",
+     "messageType": "TYPE_SMS",
+     "detail": "HTTP Error 401: Unauthorized"
+    },
+    {
+     "id": "5RUlhlWRV53tqVR41LvG",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Alan, my name is Zack. I am in an investor here in houston looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-22T21:36:59.069Z",
+     "dateUpdated": "2026-09-22T21:37:05.167Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SMc44889e5ad60d8ce9f74c90267bf2d71",
+     "from": "+18323451435",
+     "to": "+12147148884",
      "messageType": "TYPE_SMS"
     }
    ]

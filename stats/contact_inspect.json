@@ -1,400 +1,636 @@
 {
  "matches": [
   {
-   "id": "wTjeWL",
-   "name": "Kenneth Bargers - Pilkerton Realtors",
-   "city": "Brentwood",
+   "id": "0vJRCI",
+   "name": "pamela miller",
+   "city": "Franklin",
    "state": "TN",
    "tags": [
-    "lucia",
-    "apify-daily-lead",
-    "agent-replied",
-    "hot-lead",
-    "qualified-lead"
+    "apify-daily-lead"
    ],
    "dnd": null,
    "dndSettings": null,
    "messages": [
     {
-     "id": "M9AtZpBLpJGq6qni9Pho",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Yes, it is vacant",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-18T18:47:04.000Z",
-     "dateUpdated": "2026-10-18T18:47:04.000Z",
-     "altId": "SM6fa50fb8540bfede668642e798a72e11",
-     "from": "+16155129836",
-     "to": "+18323451435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "miLLgbtoDQhSTwTUMsDL",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Have it",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-18T18:45:54.665Z",
-     "dateUpdated": "2026-10-18T18:45:54.665Z",
-     "altId": "SMaad0b852ac702b6a74a9e6ef7eeaed2e",
-     "from": "+16155129836",
-     "to": "+18323451435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "UTLrGmS9LpTd8JBvBnht",
+     "id": "U9UvYACmkiljdQ8v6l1g",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Thanks Kenneth, appreciate the details. Since it's your own place, is it vacant now? I'll run the numbers and get back to you shortly.",
+     "body": "Hey Pamela, my name is Zack. I am in an investor here in Franklin looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-18T18:45:42.967Z",
-     "dateUpdated": "2026-10-18T18:45:49.156Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "app",
-     "altId": "SM5943c4953bea6c28db6ce832e306cfa8",
-     "from": "+18323451435",
-     "to": "+16155129836",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "EyoGuVUQmyz6e3yVPUB7",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "It is in move-in condition- it is dated in several rooms and requires updating - I believe there may be some foundation issues even though it comes with a transferable foundation warranty - I haven't listed at 375k and truly cannot go much less than that - thanks for the interest - Kenneth",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-18T18:45:17.988Z",
-     "dateUpdated": "2026-10-18T18:45:17.988Z",
-     "altId": "SM912bba60f2c10569c2595c23550a7cd0",
-     "from": "+16155129836",
-     "to": "+18323451435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "rQvtaerVkH6UNlJMB69f",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Thanks Kenneth, appreciate you sending it. I found 100 April Ln, about 2,500 sqft on almost an acre, built in 1962. What are you asking now, and what kind of shape is it in?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-18T18:43:32.134Z",
-     "dateUpdated": "2026-10-18T18:43:39.920Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "app",
-     "altId": "SM2a92d3cb737e7af3370b8282e7c8d7e0",
-     "from": "+18323451435",
-     "to": "+16155129836",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "Bkj1Re62UXbhT9zC9ZdL",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Zack - I just put back on the market a couple of days ago 100 April Lane in Shelbyville - the price point has been put back on the market way below comps so I can move it - this is a personal property that I have being sold as-is - all the best - Kenneth",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-18T18:43:11.812Z",
-     "dateUpdated": "2026-10-18T18:43:11.812Z",
-     "altId": "SMe919a9f2acd31777de6308b8d148dc14",
-     "from": "+16155129836",
-     "to": "+18323451435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "btM5t67sIJ58j2gbaWM4",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Kenneth, my name is Zack. I am in an investor here in Brentwood looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-18T18:37:14.260Z",
-     "dateUpdated": "2026-10-18T18:37:58.553Z",
+     "dateAdded": "2026-10-18T18:36:18.052Z",
+     "dateUpdated": "2026-10-18T18:36:29.465Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
      "source": "workflow",
-     "altId": "SM3bf9bb9c40f517a8d03b4f50cdc4a1c9",
+     "altId": "SMee16449ffa773387711366617a47fb34",
      "from": "+18323451435",
-     "to": "+16155129836",
+     "to": "+16154038671",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "s5LZLD",
+   "name": "pamela turley",
+   "city": "Chattanooga",
+   "state": "TN",
+   "tags": [
+    "apify-daily-lead",
+    "agent-replied",
+    "not-qualified",
+    "hot-lead"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "BP9Eetnsg9XuT1mvRO6M",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/pnNSlqN4iDVwh2s5LZLD/MEcd5668aeab1425d7d272cc2057003dac.3gpp"
+     ],
+     "body": "",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T19:28:27.508Z",
+     "dateUpdated": "2026-10-18T19:28:27.989Z",
+     "altId": "MM7e9c90aad96338f8fd2b16614dc9e827",
+     "from": "+14233162125",
+     "to": "+18323451435",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "Gkd3MrRnsoO9meBPDgcw",
+     "id": "X3jx4xiL8XCHcsU42ps0",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "I have another home.",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T19:27:01.032Z",
+     "dateUpdated": "2026-10-18T19:27:01.032Z",
+     "altId": "SM3b56c4cbd57caa140d4a1f36748fd2c8",
+     "from": "+14233162125",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "BYvKrDdDiOPyUGWGb0zf",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "bumping my last message.",
+     "body": "Sure, I'll get my info over to you shortly. To be honest, even 220k is probably still more than I can do as-is with the sheetrock and kitchen work, but I appreciate you asking him.",
      "contentType": "text/plain",
-     "dateAdded": "2023-11-10T17:26:30.000Z",
-     "dateUpdated": "2023-11-10T17:26:53.158Z",
-     "userId": "hvWkhA5JpZ4m0snh7MYy",
-     "source": "workflow",
-     "altId": "SMc38d567d96ff96a0559116abf7de45c9",
-     "from": "+18323451435",
-     "to": "+16155129836",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "RrykkZfPL4E0h8ZeUjZu",
-     "direction": "outbound",
-     "type": 28,
-     "body": "Opportunity created",
-     "dateAdded": "2023-11-10T14:26:29.064Z",
-     "dateUpdated": "2023-11-10T14:26:29.127Z",
+     "dateAdded": "2026-10-18T19:26:59.832Z",
+     "dateUpdated": "2026-10-18T19:27:12.707Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
      "source": "app",
-     "from": "Lucia - Outreach 1",
-     "to": "+16155129836",
-     "activity": {
-      "data": {
-       "pipeline": "Text Outbound",
-       "stage": {
-        "newStageName": "Started"
-       },
-       "name": "Kenneth Bargers - Pilkerton Realtors",
-       "id": "pBhgVIbtadanNtewhCXL",
-       "status": "open"
-      },
-      "title": "Opportunity created",
-      "type": "opportunity_created"
-     },
-     "messageType": "TYPE_ACTIVITY_OPPORTUNITY"
+     "altId": "SM0810cb37c49627bde79f096a2fc86603",
+     "from": "+18323451435",
+     "to": "+14233162125",
+     "messageType": "TYPE_SMS"
     },
     {
-     "id": "SdKWHpcZsUbmvtJlbR9S",
+     "id": "1pFIv98yWrxW8vQgdupW",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "I can ask about 220k because that lady wanted closing costs and realtor fees. \nCan you send me you business card?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T19:26:39.473Z",
+     "dateUpdated": "2026-10-18T19:26:39.473Z",
+     "altId": "SM2d3aa53c85c924124a4bc22597a3440b",
+     "from": "+14233162125",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "gvqqWVVpwKseQramt9mo",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Hi, hope you're doing good! Just was wondering if you handle residential sales in the Brentwood area?",
+     "body": "Honestly, with the sheetrock and kitchen work, my number would likely be well under the 220k he already passed on. Would he even look at something in that range? If not, no worries.",
      "contentType": "text/plain",
-     "dateAdded": "2023-11-10T14:26:29.000Z",
-     "dateUpdated": "2023-11-10T14:26:41.328Z",
-     "userId": "hvWkhA5JpZ4m0snh7MYy",
-     "source": "workflow",
-     "altId": "SM07948db3d9d6a7bf9a16d5305616509a",
+     "dateAdded": "2026-10-18T19:23:46.564Z",
+     "dateUpdated": "2026-10-18T19:23:51.359Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SM17bb7114297476fbb86a52344eb2ddfa",
      "from": "+18323451435",
-     "to": "+16155129836",
+     "to": "+14233162125",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "TIabX90MLgREJZWwNEl2",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "What are willing to offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T19:23:26.191Z",
+     "dateUpdated": "2026-10-18T19:23:26.191Z",
+     "altId": "SM8be7273c9e2e8b03bec76402bc8679dc",
+     "from": "+14233162125",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "OwIkCpczaXX04mnkzsiQ",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Thanks Pamela, appreciate you checking. That's more than I can do on this one with the sheetrock and kitchen work. If you come across anything where the seller needs a quick sale and is more flexible, send it my way.",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T19:15:20.455Z",
+     "dateUpdated": "2026-10-18T19:15:29.750Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SM0eae8f080cb082066d391d9596fa52e8",
+     "from": "+18323451435",
+     "to": "+14233162125",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "zmOjldJ1Ei893OJd3BNT",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "No maybe 230k no repairs no closing costs.",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T19:14:59.995Z",
+     "dateUpdated": "2026-10-18T19:14:59.995Z",
+     "altId": "SM90e44104ed8b3535b11e8ee291680ed3",
+     "from": "+14233162125",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "Xt9unPqDj52OntJeEDT0",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "It would be a great flip!",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T19:14:15.469Z",
+     "dateUpdated": "2026-10-18T19:14:15.469Z",
+     "altId": "SMe79af1713b64e15c4f8dd767100bbb43",
+     "from": "+14233162125",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "K0ErgFFzVs6ZO7jpcVvX",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Sorry to hear about his mom. Since he passed on 220k, would he be open to a good bit lower than that if I take it as-is, cover the repairs and close quickly? If not, no worries.",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T19:14:09.053Z",
+     "dateUpdated": "2026-10-18T19:14:13.769Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SM5eb5430cd84b4c639d09d9128a491b74",
+     "from": "+18323451435",
+     "to": "+14233162125",
      "messageType": "TYPE_SMS"
     }
    ],
    "notes": [
     {
-     "at": "2026-10-18T18:45:50.347Z",
-     "body": "\ud83c\udfe0 New qualified lead\n100 April Ln, Shelbyville, TN 37160\n\n\ud83d\udcb0 Asking: $375,000\n\ud83d\udcca Zestimate: No Zestimate found; Redfin est. ~$422,000 (asking is ~89% (of Redfin est.))\n\ud83d\udccd Status: Listed on MLS (relisted ~Oct 16; earlier MLS #3621410 at $339,900)\n\n\ud83d\udd27 Condition: Livable but dated, needs updating; possible foundation issues (transferable foundation warranty)\n\ud83c\udfe1 Property: ? bd / 2 ba / 2,544 sqft, ~1 acre \u00b7 built 1962 \u00b7 unknown\n\n\ud83d\ude4b Seller: Agent-owned personal property, wants it sold; reason unknown\n\u23f1\ufe0f Timeline: unknown\n\n\ud83e\uddee Rough numbers\nARV: ~$380k-$430k (rough; no sold comps pulled, based on Redfin est.)\nRepairs: ~$90k-$110k (rough, medium-heavy with foundation)\nMax offer: ~$170,000 (rough); asking is well over\n\n\ud83e\udd1d Make the offer\nOpen at: ~$153,000 (rough)\nWhat to say: Kenneth, I know you're firm near 375 but with the dated rooms and possible foundation work I have to budget heavily for repairs. I can close quickly with no inspections or repair requests, and you skip showings and buyer financing falling through. Would you look at a number in the 150s?\n\n\ud83d\udc64 Agent: Kenneth Bargers - Pilkerton Realtors \u00b7 +16155129836\n\n\u2705 Why it qualifies: Agent's own listing, relisted at $375k, says priced below comps and can't go much lower. Dated with possible foundation issues. Under the Redfin estimate, but well over rough max offer.\n\n<https://app.gohighlevel.com/v2/location/nvnsI7VgLrDYA5JeQ945/contacts/detail/tA5ROFUIhnBXUuwTjeWL|Open in GHL>"
+     "at": "2026-10-18T19:27:13.179Z",
+     "body": "\ud83d\udd25 Agent wants you on this one\n296 Hill Top Circle, Flintstone, GA 30725\n\n\ud83d\udcb0 Asking: $250,000 list; seller may take $220k-230k\n\ud83d\udcca Zestimate: unknown (asking is unknown)\n\ud83d\udccd Status: Listed\n\n\ud83d\udd27 Condition: Needs sheetrock, paint and a kitchen remodel. Wood floors, agent says good bones.\n\ud83c\udfe1 Property: 4/3, 1,602 sqft \u00b7 built 1962 \u00b7 unknown (owner's mom passed away)\n\n\ud83d\ude4b Seller: Inherited, but the seller doesn't have to sell and already turned down $220k\n\u23f1\ufe0f Timeline: unknown\n\n\ud83e\uddee Rough numbers\nARV: unknown\nRepairs: Rough estimate: about $56k (medium, $35/sqft)\nMax offer: unknown\n\n\ud83e\udd1d Make the offer\nOpen at: unknown\nWhat to say: unknown\n\n\ud83d\udc64 Agent: Pamela Turley \u00b7 Benchmark Realty LLC \u00b7 +14233162125\n\n\ud83d\udcdd What's going on: Inherited 4/3 listed at $250k. Seller turned down $220k and now says he might take $220k net with no closing costs. He's not in a hurry. The agent wants Zack's business card.\n\n<https://app.gohighlevel.com/v2/location/nvnsI7VgLrDYA5JeQ945/contacts/detail/pnNSlqN4iDVwh2s5LZLD|Open in GHL>"
     },
     {
-     "at": "2026-10-18T18:45:50.155Z",
-     "body": "SMS bot handoff: QUALIFIED (barely, under estimate). 100 April Ln, Shelbyville TN. No Zestimate found, Redfin est ~$422k. Asking $375k (~89%). Listed on MLS (earlier listed at $339,900). 2 ba, 2,544 sqft, ~1 acre, built 1962. Livable but dated, possible foundation issues (has a transferable warranty). Agent owns it, says he's firm near $375k. Rough ARV $380-430k, repairs ~$100k, max offer ~$170k, so asking is far over max. Opening offer ~$153k. All rough estimates; no sold comps pulled."
+     "at": "2026-10-18T19:27:13.079Z",
+     "body": "SMS bot handoff: NOT QUALIFIED: 296 Hill Top Circle, Flintstone GA. Listed at $250k, 4/3, 1,602 sqft, built 1962. Needs sheetrock, paint and a kitchen (rough repairs about $56k). Inherited, but the seller is in no hurry and is holding around $220k-230k. Handing off only because Pamela asked for your business card."
+    },
+    {
+     "at": "2026-10-18T19:15:30.887Z",
+     "body": "SMS bot, did not qualify: NOT QUALIFIED: 296 Hill Top Circle, Flintstone GA is listed at $250k (4/3, 1,602 sqft, built 1962). It needs sheetrock, paint and a kitchen remodel. The seller inherited it from his mom and doesn't have to sell. He turned down a $220k offer and would take about $230k (about 92% of list), which is far above the 75%-of-Zestimate line for listed homes."
     }
    ]
   },
   {
-   "id": "0bIyRR",
-   "name": "Zack Olabi",
+   "id": "s26s3s",
+   "name": "pamela king",
    "city": null,
    "state": null,
    "tags": [
-    "apify-daily-lead",
-    "hot-lead",
-    "qualified-lead"
+    "apify-daily-lead"
    ],
-   "dnd": false,
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "p3yfygIpUNpN0oPpXM46",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-09T18:51:57.650Z",
+     "dateUpdated": "2026-10-09T18:52:20.192Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM703766a31cc6d426057e200e8e66beb3",
+     "from": "+18323451435",
+     "to": "+16154032413",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "yJRXgzKzkvTxNmd5A4Im",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Pamela, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-09T15:51:55.807Z",
+     "dateUpdated": "2026-10-09T15:52:54.962Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM9ed43371962fe2400614bc45f34d5d7f",
+     "from": "+18323451435",
+     "to": "+16154032413",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "gMUUqy",
+   "name": "pamela messina",
+   "city": "Houston",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "q7pgc6YITzrsqem9Vim6",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-30T20:28:07.276Z",
+     "dateUpdated": "2026-09-30T20:28:12.438Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM485f2ddd6d0e38acabc34c42080c3396",
+     "from": "+18323451435",
+     "to": "+17138247151",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "PVClO1vrMArNXrttrdVZ",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Pamela, my name is Zack. I am in an investor here in Houston looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-30T17:28:05.905Z",
+     "dateUpdated": "2026-09-30T17:28:09.833Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM9c34f148c4b40b7bba0687c009fdd126",
+     "from": "+18323451435",
+     "to": "+17138247151",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "8jbAgx",
+   "name": "pamela hughes",
+   "city": "Houston",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "2gA7FN1Js17BErJ8UkL8",
+     "direction": "outbound",
+     "status": "failed",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-28T21:45:35.616Z",
+     "dateUpdated": "2026-09-28T21:45:35.616Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "from": "+18323451435",
+     "to": "+17137251213",
+     "error": "Your account has reached today's opt-out/error limit. Please review your messages and try again after 2026-09-29 15:36:25 America/Mexico_City.",
+     "messageType": "TYPE_SMS",
+     "detail": "HTTP Error 401: Unauthorized"
+    },
+    {
+     "id": "ofLFBTSwcFTTwYB7zwI1",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Pamela, my name is Zack. I am in an investor here in Houston looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-28T18:45:34.236Z",
+     "dateUpdated": "2026-09-28T18:45:43.075Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM2a62154e00db710a88243c6966021a26",
+     "from": "+18323451435",
+     "to": "+17137251213",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "ab1HE1",
+   "name": "pamela bubenheim",
+   "city": "Pittsburgh",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
    "dndSettings": {
     "SMS": {
-     "status": "inactive"
+     "status": "active",
+     "message": "TWILIO_ERROR_CODE: 30006"
     }
    },
    "messages": [
     {
-     "id": "tbiDDZpmDTfeg8RN8w04",
+     "id": "0gO0NoZszdCxyJckq5d8",
      "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Thank you what are you thinking?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-15T22:07:26.256Z",
-     "dateUpdated": "2026-10-15T22:07:26.256Z",
-     "altId": "SMe1789d102d9a501ed825017ac4f42db6",
-     "from": "+18329177656",
-     "to": "+18323451435",
-     "messageType": "TYPE_SMS"
+     "type": 25,
+     "body": "DnD enabled by customer",
+     "dateAdded": "2026-09-24T19:18:01.703Z",
+     "dateUpdated": "2026-09-24T19:18:01.703Z",
+     "from": "+14129300821",
+     "to": "Lucia - Outreach 1",
+     "activity": {
+      "data": {
+       "channel": [
+        "SMS"
+       ]
+      },
+      "title": "DND enabled by customer",
+      "type": "contact_dnd_enabled"
+     },
+     "messageType": "TYPE_ACTIVITY_CONTACT"
     },
     {
-     "id": "9EsBecVn0uDi9NM7YLTv",
+     "id": "8vPWGQx73loHBayDzLGl",
+     "direction": "outbound",
+     "status": "failed",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Pamela, my name is Zack. I am in an investor here in pittsburgh looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-24T19:17:58.389Z",
+     "dateUpdated": "2026-09-24T19:17:58.390Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "from": "+18323451435",
+     "to": "+14129300821",
+     "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
+     "messageType": "TYPE_SMS",
+     "detail": "HTTP Error 401: Unauthorized"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "rNQKGo",
+   "name": "pamela potts",
+   "city": "Pittsburgh",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "PJMQ6vW8vdVVhkX9MKAJ",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Thanks Zack, that helps. I'm passing this to Zack now and he'll reach out shortly.",
+     "body": "let me know",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-15T21:52:21.041Z",
-     "dateUpdated": "2026-10-15T21:52:26.072Z",
+     "dateAdded": "2026-09-24T22:17:35.570Z",
+     "dateUpdated": "2026-09-24T22:17:41.004Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "app",
-     "altId": "SM4f81f0958e065590291d8c688662a27f",
+     "source": "workflow",
+     "altId": "SM731c253bf1c85d7eeb4bdaa2f8e6688c",
      "from": "+18323451435",
-     "to": "+18329177656",
+     "to": "+14122085529",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "YfHkpcFzL2nzqgGS7qMM",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Maybe 135k",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-15T21:49:45.337Z",
-     "dateUpdated": "2026-10-15T21:49:45.337Z",
-     "altId": "SM00bb8d19cb0601aa7355429567a7af2a",
-     "from": "+18329177656",
-     "to": "+18323451435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "v1olYK070tktBvqAgdiG",
+     "id": "SsAuO996gaCj8iAGII5g",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Sounds good, thanks Zack. I'll have Zack run numbers and get back to you shortly. Does the seller have a rough number in mind, even a ballpark?",
+     "body": "Hey Pamela, my name is Zack. I am in an investor here in pittsburgh looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-15T21:23:36.771Z",
-     "dateUpdated": "2026-10-15T21:23:43.412Z",
+     "dateAdded": "2026-09-24T19:17:34.238Z",
+     "dateUpdated": "2026-09-24T19:17:39.278Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "app",
-     "altId": "SMfb47931734b51311d8aa10c0147549b0",
+     "source": "workflow",
+     "altId": "SM2b6fcac8d5f4632ffd5c05e05a39cfae",
      "from": "+18323451435",
-     "to": "+18329177656",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "qYyt1rE6Cm90pmARg6np",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "There's is send what you can",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-15T21:23:27.023Z",
-     "dateUpdated": "2026-10-15T21:23:27.023Z",
-     "altId": "SM02026538ced0e77dea82f872b1fae15f",
-     "from": "+18329177656",
-     "to": "+18323451435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "ovjn4knKjNaDgi4uiWwz",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Got it, thanks. What's the seller looking to get for it, and is there room on price for a quick as-is cash close with no inspections?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-15T21:22:14.977Z",
-     "dateUpdated": "2026-10-15T21:22:19.460Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "app",
-     "altId": "SMc04b91aa3943a6d72a23fac1b469f8a5",
-     "from": "+18323451435",
-     "to": "+18329177656",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "vARv5yAWIU08Dyq3QMFn",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "It is off market and not in good shape needs lots of repairs",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-15T21:22:07.871Z",
-     "dateUpdated": "2026-10-15T21:22:07.871Z",
-     "altId": "SM059cf99fa3fb97a86ee8b3bdd7ee86db",
-     "from": "+18329177656",
-     "to": "+18323451435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "NeCRS8vMIC1b91Rq0fVA",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Thanks Zack! Looks like 8019 Tavenor shows as a 3/2, about 1,608 sqft, built in 1979, and it's not listed on Zillow right now. Is it off-market? And what kind of shape is it in?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-15T21:21:05.043Z",
-     "dateUpdated": "2026-10-15T21:21:12.309Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "app",
-     "altId": "SM5e9558c264fe3c8851e0b7bc284885fe",
-     "from": "+18323451435",
-     "to": "+18329177656",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "vUKb0eUBYQHQWoK23fMt",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Here is one you can see",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-15T21:15:24.825Z",
-     "dateUpdated": "2026-10-15T21:15:24.825Z",
-     "altId": "SM5f24425fc67ea6398c2ddc11f4ac1051",
-     "from": "+18329177656",
-     "to": "+18323451435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "ObfAF0ixfxO6Paxrd8mo",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "https://www.zillow.com/homedetails/8019-Tavenor-Ln-Houston-TX-77075/27962403_zpid/",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-15T17:31:11.548Z",
-     "dateUpdated": "2026-10-15T17:31:11.548Z",
-     "altId": "SM330c33ac64c494da9b0ed51e254d8f8f",
-     "from": "+18329177656",
-     "to": "+18323451435",
+     "to": "+14122085529",
      "messageType": "TYPE_SMS"
     }
    ],
-   "notes": [
+   "notes": []
+  },
+  {
+   "id": "7KX3S6",
+   "name": "pamela tracy",
+   "city": "Pittsburgh",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
     {
-     "at": "2026-10-15T21:52:21.883Z",
-     "body": "\ud83c\udfe0 New qualified lead: 8019 Tavenor Ln, Houston, TX 77075\nAsking: $135,000 (ballpark, flexible) (~60% of Zestimate ~$225,000 (est. from nearby, Zestimate not found))\nStatus: Off-market\nCondition: Needs lots of repairs (details unknown)\nProperty: 3/2, ~1,608 sqft \u00b7 built 1979 \u00b7 unknown\nSeller: unknown \u00b7 timeline: unknown\nRough numbers: ARV ~$245k-$260k (rough) \u00b7 repairs ~$80k (heavy, $50/sqft, rough) \u00b7 max offer ~$81,500 (rough)\nAgent: Zack Olabi \u00b7 +18329177656\nWhy it qualifies: Off-market 3/2 in Skyscraper Shadows that needs a lot of work. Seller's ballpark is $135k and the agent says there's room on price. That's about 60% of the estimated value but over the rough max offer.\n<https://app.gohighlevel.com/v2/location/nvnsI7VgLrDYA5JeQ945/contacts/detail/FphCrQzlBmUDoe0bIyRR|Open in GHL>"
+     "id": "89hkHSHYbcZpa1UCDPYY",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hello!",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-24T22:16:52.514Z",
+     "dateUpdated": "2026-09-24T22:16:52.514Z",
+     "altId": "SMd8bd63b7e6c15ce8ed332b604122ed98",
+     "from": "+14122155717",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
     },
     {
-     "at": "2026-10-15T21:52:21.733Z",
-     "body": "SMS bot handoff: QUALIFIED (borderline). 8019 Tavenor Ln, Houston TX 77075. Off-market, 3/2, ~1,608 sqft, built 1979, agent says it needs lots of repairs (no details yet). Seller's ballpark is $135k and the agent says there's room on price. I couldn't find the Zestimate, so I estimated value at ~$225k from nearby homes (8023 Tavenor, 3/2 1,410 sqft, Redfin est. $223k). Asking is ~60% of that. Rough ARV is $245-260k based on renovated Skyscraper Shadows homes nearby (one listed at ~$260k), but comps are thin. Rough repairs ~$80k (heavy, $50/sqft). Rough max offer = $245k x 70% - $80k - $10k = ~$81.5k, so asking is OVER max by ~$53k. Occupancy and motivation unknown. All numbers are rough estimates."
+     "id": "TSOtzm0r879yyrTPNFUi",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-24T22:13:11.071Z",
+     "dateUpdated": "2026-09-24T22:13:15.747Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM079301d2c5194e107e12e4c3aa13a625",
+     "from": "+18323451435",
+     "to": "+14122155717",
+     "messageType": "TYPE_SMS"
     },
     {
-     "at": "2026-10-15T21:23:37.696Z",
-     "body": "SMS bot handoff: 8019 Tavenor Ln, Houston TX 77075. Off-market, so no list price. 3/2, about 1,608 sqft, built 1979. Agent says it's in bad shape and needs lots of repairs, no details yet. Seller hasn't named a price; agent says there's room and to 'send what you can'. Rough repairs, heavy at $50-70/sqft: about $80k-$113k. Haven't pulled sold comps for ARV yet, so pull them before making an offer. Max offer = ARV x 70% - repairs - $10k. All of these are rough estimates."
-    },
-    {
-     "at": "2026-10-15T21:10:46.588Z",
-     "body": "SMS bot (test mode, not sent) would reply: Thanks for sending 8019 Tavenor Ln. Looks like a 3/2, about 1,600 sqft, built in '79, and not listed right now, so off-market? What kind of shape is it in? Roof, HVAC, any foundation issues?"
-    },
-    {
-     "at": "2026-10-15T21:06:25.754Z",
-     "body": "SMS bot (test mode, not sent) would reply: Thanks for sending this. I see 8019 Tavenor Ln is a 3/2, about 1,608 sqft, built in 1979, and Zillow has it as not on the market, so it's off-market? What kind of shape is it in, and how old are the roof and HVAC?"
+     "id": "B6Ea8YJDXVbGQr5Cv3iU",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Pamela, my name is Zack. I am in an investor here in pittsburgh looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-24T19:13:09.227Z",
+     "dateUpdated": "2026-09-24T19:13:19.863Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM3ab76b1eff9ee7e9bc6f43e913c0ae15",
+     "from": "+18323451435",
+     "to": "+14122155717",
+     "messageType": "TYPE_SMS"
     }
-   ]
+   ],
+   "notes": []
+  },
+  {
+   "id": "ngpewe",
+   "name": "pamela auld",
+   "city": "Pittsburgh",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "1ywH35aFfyUhZh3yIlyB",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-24T21:57:14.321Z",
+     "dateUpdated": "2026-09-24T21:57:18.450Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SMf3b86b0b0e8d864326644e927dd39fcb",
+     "from": "+18323451435",
+     "to": "+14126565213",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "HtAb3r4dggEneMBe1ST9",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Pamela, my name is Zack. I am in an investor here in pittsburgh looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-24T18:57:12.740Z",
+     "dateUpdated": "2026-09-24T18:57:17.109Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SMa845d26e551937d71542c0b1112e61f0",
+     "from": "+18323451435",
+     "to": "+14126565213",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "RiBu2t",
+   "name": "pamela mcvaugh",
+   "city": "Houston",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "mBBmZsUCP2WtIGnp5tbc",
+     "direction": "outbound",
+     "status": "failed",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-23T00:40:31.756Z",
+     "dateUpdated": "2026-09-23T00:40:31.756Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "from": "+18323451435",
+     "to": "+17138186567",
+     "error": "Your account has reached today's opt-out/error limit. Please review your messages and try again after 2026-09-23 15:38:49 America/Mexico_City.",
+     "messageType": "TYPE_SMS",
+     "detail": "HTTP Error 401: Unauthorized"
+    },
+    {
+     "id": "x7hnkIoZ1MFAorfypHoB",
+     "direction": "outbound",
+     "status": "failed",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Pamela, my name is Zack. I am in an investor here in houston looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-22T21:40:29.430Z",
+     "dateUpdated": "2026-09-22T21:40:29.430Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "from": "+18323451435",
+     "to": "+17138186567",
+     "error": "Your account has reached today's opt-out/error limit. Please review your messages and try again after 2026-09-23 15:38:49 America/Mexico_City.",
+     "messageType": "TYPE_SMS",
+     "detail": "HTTP Error 401: Unauthorized"
+    }
+   ],
+   "notes": []
   }
  ]
 }

@@ -279,6 +279,14 @@ def to_lead(item, field_map, mobile_cfg=None, phone=None):
     lead["email"] = lead["email"].lower()
     if not lead["full_name"]:
         lead["full_name"] = " ".join(x for x in (lead["first_name"], lead["last_name"]) if x)
+    # Some agents have no office city; the first-text template uses {{contact.city}}, so fall
+    # back to the first area they serve ("Gallatin, TN | Hendersonville, TN | ...").
+    if not (lead.get("city") or "").strip():
+        served = str(item.get("servedAreas") or "").split("|")[0]
+        area, _, st = served.rpartition(",")
+        if area.strip() and len(st.strip()) == 2:
+            lead["city"] = area.strip()
+            lead["state"] = lead["state"] or st.strip().upper()
     # Realtor.com often gives cities in all caps ("NASHVILLE"); texts use {{contact.city}}.
     city = (lead.get("city") or "").strip()
     if city and (city.isupper() or city.islower()):

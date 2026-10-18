@@ -15,7 +15,8 @@ export interface Env {
   ARV_PERCENT: string; // max offer = ARV x this % - repairs - fee
   ASSIGNMENT_FEE: string; // our wholesale fee in dollars
   PROPERTY_TYPES: string; // what we buy
-  QUALIFY_PERCENT: string; // qualified = asking at or under this % of Zestimate
+  QUALIFY_PERCENT: string; // qualified = asking at or under this % of Zestimate (off-market)
+  LISTED_QUALIFY_PERCENT?: string; // listed on the MLS: seller must take this % of Zestimate or less
   DRY_RUN?: string; // "true" = log the reply instead of texting it
 }
 
@@ -293,7 +294,7 @@ const REPLY_FORMAT = {
       deal: {
         type: "string",
         enum: ["qualified", "not_qualified", "unknown"],
-        description: "qualified = asking under the qualify % of Zestimate and we know why they are selling; not_qualified = we know enough and it fails; unknown = still learning.",
+        description: "qualified = asking under the qualify % of Zestimate (stricter for listed houses) and we know why they are selling; not_qualified = we know enough and it fails; unknown = still learning.",
       },
       lead: {
         type: "object",
@@ -372,7 +373,8 @@ function systemPrompt(env: Env): string {
     .replaceAll("{{ARV_PERCENT}}", env.ARV_PERCENT)
     .replaceAll("{{FEE}}", Number(env.ASSIGNMENT_FEE).toLocaleString("en-US"))
     .replaceAll("{{PROPERTY_TYPES}}", env.PROPERTY_TYPES)
-    .replaceAll("{{QUALIFY_PERCENT}}", env.QUALIFY_PERCENT || "55");
+    .replaceAll("{{QUALIFY_PERCENT}}", env.QUALIFY_PERCENT || "100")
+    .replaceAll("{{LISTED_PERCENT}}", env.LISTED_QUALIFY_PERCENT || "75");
 }
 
 async function smsThread(contactId: string, env: Env): Promise<Sms[]> {

@@ -13,7 +13,7 @@ something later get tagged `warm-lead` with a note, and the bot keeps the conver
 - The bot never replies to contacts tagged `hot-lead`, `bot-off`, `dnd-skipped` or `opted-out`, or to DND contacts.
 - Opt-outs ("STOP", "remove me", "don't text me", "wrong number", or anything Claude reads as asking us to stop)
   get no reply: the contact is tagged `opted-out`, SMS Do Not Disturb is turned on, and a note is left.
-- Qualified lead = seller asking under `QUALIFY_PERCENT` (100) % of the Zestimate, after the bot tries to learn why
+- Qualified lead = off-market and asking under `QUALIFY_PERCENT` (100) % of the Zestimate, or listed and taking `LISTED_QUALIFY_PERCENT` (75) % or less, after the bot tries to learn why
   they're selling (it also asks timeline, listing/contract status, occupancy, condition). Those get
   `hot-lead` + `qualified-lead` and a note; the bot hands off. Clear misses get `not-qualified` and a note.
 - Each qualified lead also gets a "New qualified lead" card (address, asking vs Zestimate, condition,

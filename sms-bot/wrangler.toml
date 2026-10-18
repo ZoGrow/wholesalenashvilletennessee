@@ -9,10 +9,11 @@ crons = ["30 15-22 * * 1-5"]
 
 [vars]
 SENDER_NAME = "Zack"
-BOT_GOAL = "When an agent sends a listing or an address, look it up online, find out what the seller is asking, why they are selling, timeline and condition. Hand Zack any lead asking under the Zestimate once the seller is vetted."
+BOT_GOAL = "When an agent sends a listing or an address, look it up online, find out what the seller is asking, why they are selling, timeline and condition. Hand Zack off-market leads asking under the Zestimate, or listed ones at a big discount, once the seller is vetted."
 ARV_PERCENT = "70"
 ASSIGNMENT_FEE = "10000"
-QUALIFY_PERCENT = "100" # qualified lead: seller asks under this % of Zestimate (Zack: anything under Zestimate, once vetted)
+QUALIFY_PERCENT = "100" # off-market: qualified if seller asks under this % of Zestimate (Zack: anything under, once vetted)
+LISTED_QUALIFY_PERCENT = "75" # listed on MLS: seller must take this % of Zestimate or less (Zack 10-18: no small discounts on listed)
 PROPERTY_TYPES = "single-family houses in most US states (not Pennsylvania, South Carolina, Iowa, Kentucky, Nebraska, North Dakota, Oregon, Connecticut or Virginia)"
 DRY_RUN = "false"
 

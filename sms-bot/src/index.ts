@@ -65,10 +65,36 @@ export default {
     return new Response("ok");
   },
 
-  async scheduled(_event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
-    ctx.waitUntil(runCheckIns(env));
+  async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
+    ctx.waitUntil(event.cron === SWEEP_CRON ? answerMissed(env) : runCheckIns(env));
   },
 };
+
+const OUTREACH_TAG = "apify-daily-lead"; // the GHL bot workflow only fires for these contacts
+const SWEEP_CRON = "*/10 * * * *"; // must match wrangler.toml
+const SWEEP_PER_RUN = 2; // replies per sweep (stays within Cloudflare's per-run request limit)
+
+/** Safety net: answer agents whose text never reached us (GHL webhook missed or failed). */
+async function answerMissed(env: Env): Promise<void> {
+  const hour = Number(new Date().toLocaleString("en-US", { timeZone: "America/Chicago", hour: "numeric", hour12: false }));
+  if (hour < 8 || hour >= 21) return; // no texts late at night
+  const res = await ghl(env, `/conversations/search?locationId=${env.GHL_LOCATION_ID}&sortBy=last_message_date&sort=desc&limit=20`);
+  let answered = 0;
+  for (const c of res.conversations ?? []) {
+    if (answered >= SWEEP_PER_RUN) break;
+    const age = Date.now() - Number(c.lastMessageDate);
+    if (c.lastMessageDirection !== "inbound" || !/SMS/i.test(c.lastMessageType ?? "")) continue;
+    if (!(age > 3 * 60_000 && age < 24 * 3600_000)) continue; // give the live webhook time first
+    if (c.tags && !c.tags.some((t: string) => t.toLowerCase() === OUTREACH_TAG)) continue;
+    try {
+      console.log("sweep: answering missed text from", c.contactId);
+      await handleReply(c.contactId, env, true);
+      answered++;
+    } catch (e) {
+      console.error("sweep reply failed", c.contactId, e);
+    }
+  }
+}
 
 /** YYYY-MM-DD in Central time, `days` from now. */
 function centralDate(days = 0): string {
@@ -149,9 +175,11 @@ async function deliveryStatus(conversationId: string, messageId: string, env: En
   return null;
 }
 
-async function handleReply(contactId: string, env: Env): Promise<void> {
+/** Answer the agent's newest text. outreachOnly: skip anyone not in the outreach (used by the sweep). */
+async function handleReply(contactId: string, env: Env, outreachOnly = false): Promise<void> {
   const contact = (await ghl(env, `/contacts/${contactId}`)).contact ?? {};
   const tags: string[] = (contact.tags ?? []).map((t: string) => t.toLowerCase());
+  if (outreachOnly && !tags.includes(OUTREACH_TAG)) return;
   if (BOT_OFF_TAGS.some((t) => tags.includes(t)) || contact.dnd || contact.dndSettings?.SMS?.status === "active") {
     console.log("skip: bot off for", contactId);
     return;

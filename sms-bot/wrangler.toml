@@ -5,7 +5,7 @@ compatibility_flags = ["nodejs_compat"]
 
 # Follow-up check-ins: hourly 10am-5pm Central on weekdays, up to 5 texts per run.
 [triggers]
-crons = ["30 15-22 * * 1-5"]
+crons = ["30 15-22 * * 1-5", "*/10 * * * *"] # check-ins; every 10 min answer any missed agent text (8am-9pm CT)
 
 [vars]
 SENDER_NAME = "Zack"

@@ -234,7 +234,7 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
 
 type Lead = Record<(typeof LEAD_FIELDS)[number], string>;
 const LEAD_FIELDS = [
-  "address", "asking_price", "zestimate", "percent_of_zestimate", "market_status", "condition",
+  "address", "listing_url", "asking_price", "zestimate", "percent_of_zestimate", "market_status", "condition",
   "beds_baths_sqft", "year_built", "occupancy", "motivation", "timeline", "arv_range", "repairs",
   "max_offer", "opening_offer", "call_script", "summary",
 ] as const;
@@ -247,7 +247,7 @@ function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: 
   const link = `https://app.gohighlevel.com/v2/location/${env.GHL_LOCATION_ID}/contacts/detail/${contactId}`;
   // Blank lines between sections so it's easy to scan in Slack.
   return [
-    `${qualified ? "🏠 *New qualified lead*" : "🔥 *Agent wants you on this one*"}\n*${v("address")}*`,
+    `${qualified ? "🏠 *New qualified lead*" : "🔥 *Agent wants you on this one*"}\n*${v("address")}*${listingLink(lead?.listing_url)}`,
     `💰 *Asking:* ${v("asking_price")}\n📊 *Zestimate:* ${v("zestimate")} (asking is ${v("percent_of_zestimate")})\n📍 *Status:* ${v("market_status")}`,
     `🔧 *Condition:* ${v("condition")}\n🏡 *Property:* ${v("beds_baths_sqft")} · built ${v("year_built")} · ${v("occupancy")}`,
     `🙋 *Seller:* ${v("motivation")}\n⏱️ *Timeline:* ${v("timeline")}`,
@@ -257,6 +257,14 @@ function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: 
     `${qualified ? "✅ *Why it qualifies:*" : "📝 *What's going on:*"} ${v("summary")}`,
     `<${link}|Open in GHL>`,
   ].join("\n\n");
+}
+
+/** " · <url|View on Zillow>" for a real http(s) link, else nothing. */
+function listingLink(url?: string): string {
+  const u = (url || "").trim();
+  if (!/^https?:\/\/[^\s<>|]+$/i.test(u)) return "";
+  const site = /zillow\./i.test(u) ? "Zillow" : /realtor\.com/i.test(u) ? "Realtor.com" : /redfin\./i.test(u) ? "Redfin" : "listing";
+  return ` · <${u}|View on ${site}>`;
 }
 
 type Decision = {

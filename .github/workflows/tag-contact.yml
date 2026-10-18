@@ -7,7 +7,7 @@ on:
         description: "Name or phone of an outreach contact"
         required: true
       tags:
-        description: "Comma-separated tags to add (e.g. follow-up-2026-10-19)"
+        description: "Comma-separated tags to add; prefix with - to remove (e.g. follow-up-2026-10-19,-warm-lead)"
         required: true
 
 jobs:

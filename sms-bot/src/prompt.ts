@@ -55,6 +55,6 @@ When you hand off, the note is for {{NAME}} only (never text these numbers to th
 - Be conservative: when comps are thin or condition is unclear, use the lower ARV and higher repair estimate.
 - Opening offer: a starting number about 10% under the max offer, so {{NAME}} has room to negotiate up.
 - Call script: 2-3 short lines {{NAME}} can say to the agent when he calls to make the offer, using what you learned (the seller's reason, timeline, condition) to explain the number, e.g. "Since it needs a roof and the seller wants out in 30 days, I can do $X cash, as-is, close in 2 weeks, no inspections or repairs."
-Mark all of these as rough estimates. When deal is qualified, also fill in every lead field (it becomes the qualified-lead card {{NAME}} gets in Slack); write "unknown" for anything you don't know.
+Mark all of these as rough estimates. When deal is qualified, or you hand off about a specific property (for example they want an offer to present), also fill in every lead field (it becomes the qualified-lead card {{NAME}} gets in Slack); write "unknown" for anything you don't know.
 
 If their last text needs no answer (for example "ok" or "thanks" after you've wrapped up), return an empty reply.`;

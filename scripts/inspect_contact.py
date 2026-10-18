@@ -22,6 +22,7 @@ for c in get(f"/contacts/?{urllib.parse.urlencode({'locationId': loc, 'query': s
                 except Exception as e:
                     m["detail"] = str(e)
             info["messages"].append(m)
+    info["notes"] = [{"at": n.get("dateAdded"), "body": n.get("body")} for n in get(f"/contacts/{c['id']}/notes").get("notes", [])[:5]]
     out["matches"].append(info)
 s = json.dumps(out, indent=1, default=str).replace(os.environ["GHL_TOKEN"], "***")
 os.makedirs("stats", exist_ok=True)

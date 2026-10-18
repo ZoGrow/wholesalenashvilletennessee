@@ -215,8 +215,10 @@ async function handleReply(contactId: string, env: Env): Promise<void> {
       await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `${label}: ${decision.note}` });
     }
   }
-  if (decision.deal === "qualified") {
-    const card = qualifiedLeadCard(decision.lead, contact, contactId, env);
+  // Qualified leads, and any handoff about a specific house (e.g. the agent asks for an offer), go to Slack.
+  const qualified = decision.deal === "qualified";
+  if (qualified || (decision.handoff && decision.lead?.address?.trim())) {
+    const card = qualifiedLeadCard(decision.lead, contact, contactId, env, qualified);
     await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: card.replace(/[*_]/g, "") });
     if (env.SLACK_WEBHOOK_URL) {
       const res = await fetch(env.SLACK_WEBHOOK_URL, {
@@ -237,21 +239,21 @@ const LEAD_FIELDS = [
 ] as const;
 
 /** The "New qualified lead" message: posted to Slack and saved as a note on the contact. */
-function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: string, env: Env): string {
+function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: string, env: Env, qualified = true): string {
   const v = (k: keyof Lead) => (lead?.[k] || "").trim() || "unknown";
   const agent = [contact.firstName && `${contact.firstName} ${contact.lastName ?? ""}`.trim(), contact.companyName, contact.phone]
     .filter(Boolean).join(" · ");
   const link = `https://app.gohighlevel.com/v2/location/${env.GHL_LOCATION_ID}/contacts/detail/${contactId}`;
   // Blank lines between sections so it's easy to scan in Slack.
   return [
-    `🏠 *New qualified lead*\n*${v("address")}*`,
+    `${qualified ? "🏠 *New qualified lead*" : "🔥 *Agent wants you on this one*"}\n*${v("address")}*`,
     `💰 *Asking:* ${v("asking_price")}\n📊 *Zestimate:* ${v("zestimate")} (asking is ${v("percent_of_zestimate")})\n📍 *Status:* ${v("market_status")}`,
     `🔧 *Condition:* ${v("condition")}\n🏡 *Property:* ${v("beds_baths_sqft")} · built ${v("year_built")} · ${v("occupancy")}`,
     `🙋 *Seller:* ${v("motivation")}\n⏱️ *Timeline:* ${v("timeline")}`,
     `🧮 *Rough numbers*\nARV: ${v("arv_range")}\nRepairs: ${v("repairs")}\nMax offer: ${v("max_offer")}`,
     `🤝 *Make the offer*\nOpen at: ${v("opening_offer")}\nWhat to say: ${v("call_script")}`,
     `👤 *Agent:* ${agent || "unknown"}`,
-    `✅ *Why it qualifies:* ${v("summary")}`,
+    `${qualified ? "✅ *Why it qualifies:*" : "📝 *What's going on:*"} ${v("summary")}`,
     `<${link}|Open in GHL>`,
   ].join("\n\n");
 }
@@ -295,7 +297,7 @@ const REPLY_FORMAT = {
       },
       lead: {
         type: "object",
-        description: "Fill in when deal is qualified (short values, e.g. \"$145,000\", \"52%\", \"Off-market\"); otherwise empty strings.",
+        description: "Fill in when deal is qualified, or when you hand off about a specific property (e.g. they want an offer); short values, e.g. \"$145,000\", \"52%\", \"Off-market\". Otherwise empty strings.",
         properties: Object.fromEntries(LEAD_FIELDS.map((f) => [f, { type: "string" }])),
         required: [...LEAD_FIELDS],
         additionalProperties: false,

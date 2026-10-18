@@ -14,7 +14,7 @@ ARV_PERCENT = "70"
 ASSIGNMENT_FEE = "10000"
 QUALIFY_PERCENT = "100" # off-market: qualified if seller asks under this % of Zestimate (Zack: anything under, once vetted)
 LISTED_QUALIFY_PERCENT = "75" # listed on MLS: seller must take this % of Zestimate or less (Zack 10-18: no small discounts on listed)
-PROPERTY_TYPES = "single-family houses and small multifamily (duplexes, triplexes, fourplexes) in most US states (not Pennsylvania, South Carolina, Iowa, Kentucky, Nebraska, North Dakota, Oregon, Connecticut or Virginia)"
+PROPERTY_TYPES = "single-family houses only (no duplexes, triplexes or other multifamily) in most US states (not Pennsylvania, South Carolina, Iowa, Kentucky, Nebraska, North Dakota, Oregon, Connecticut or Virginia)"
 DRY_RUN = "false"
 
 # Secrets (set with `npx wrangler secret put NAME`, never put them in this file):

@@ -20,9 +20,9 @@ something later get tagged `warm-lead` with a note, and the bot keeps the conver
   numbers, agent, GHL link) as a note, posted to Slack when the `SLACK_WEBHOOK_URL` repo secret is set
   (a Slack Incoming Webhook URL; rerun the deploy after adding it).
 - Check-ins: when an agent says "let me see what I can find", "maybe next month" and so on, the bot tags them
-  `follow-up-YYYY-MM-DD` (a date matching their timing). A cron (weekdays, hourly 10am-5pm Central, up to 5 per run)
+  `follow-up-YYYY-MM-DD` (a date matching their timing). A cron (daily, hourly 10am-5pm Central, up to 5 per run)
   texts a short check-in on that date if they haven't texted since, and tags `checked-in`. At most one more
-  check-in follows if they stay quiet. Any reply from them clears these tags. Remove the tag to cancel one.
+  check-in follows if they stay quiet. Deals being vetted get a nudge the next day if the agent goes quiet. Any reply from them clears these tags. Remove the tag to cancel one.
 - Agents who text back get `agent-replied`; bot texts a carrier blocks get rewritten once and tagged `carrier-blocked`.
   The "Weekly scorecard" workflow (Mondays) posts sent / replied / warm / qualified / blocked counts to Slack.
 - Qualified-lead cards include an opening offer (about 10% under max offer) and a short call script.

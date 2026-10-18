@@ -325,7 +325,7 @@ const REPLY_FORMAT = {
       },
       follow_up_days: {
         type: "integer",
-        description: "Days until a check-in text if they don't text first, when they might have something later or need time: 'let me see what I can find' = 4, 'maybe next week' = 7, 'next month' = 30, 'after the holidays' = until then (max 120). 0 = no check-in (handed off, not interested, opted out, or nothing pending).",
+        description: "Days until a check-in text if they don't text first, when they might have something later or need time: 'let me see what I can find' = 4, 'maybe next week' = 7, 'next month' = 30, 'after the holidays' = until then (max 120). If we're vetting a specific house and are waiting on their answer to our question, 1 (follow up tomorrow). 0 = no check-in (handed off, not interested, opted out, or nothing pending).",
       },
       deal: {
         type: "string",

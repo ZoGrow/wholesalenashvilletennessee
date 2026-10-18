@@ -1,0 +1,23 @@
+name: Tag a contact
+
+on:
+  workflow_dispatch:
+    inputs:
+      contact:
+        description: "Name or phone of an outreach contact"
+        required: true
+      tags:
+        description: "Comma-separated tags to add (e.g. follow-up-2026-10-19)"
+        required: true
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
+          GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
+          CONTACT: ${{ inputs.contact }}
+          TAGS: ${{ inputs.tags }}
+        run: python scripts/tag_contact.py "$CONTACT" "$TAGS"

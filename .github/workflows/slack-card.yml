@@ -1,0 +1,21 @@
+name: Post a lead card to Slack
+
+on:
+  workflow_dispatch:
+    inputs:
+      card:
+        description: "Card file under scripts/cards/ (e.g. alan_worthy.json)"
+        required: true
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Post the card
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          CARD: ${{ inputs.card }}
+        run: |
+          case "$CARD" in */*|..*) echo "bad card name"; exit 1;; esac
+          curl -sS --fail -X POST -H 'Content-Type: application/json' --data @"scripts/cards/$CARD" "$SLACK_WEBHOOK_URL"

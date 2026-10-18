@@ -14,6 +14,23 @@
    "dndSettings": null,
    "messages": [
     {
+     "id": "XzbQkihKp1IGW3OUWjCG",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Got it, thanks Michael. Before it hits the MLS, would the seller look at a lower number if I take it in its current condition, no repairs or inspections, and close quick? And what's got them selling?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T19:53:52.210Z",
+     "dateUpdated": "2026-10-18T19:53:57.253Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SM6b81cdae58319c5853a53295f30d2157",
+     "from": "+18323451435",
+     "to": "+12057920776",
+     "messageType": "TYPE_SMS"
+    },
+    {
      "id": "yIi7rpZ10XzoqoN1OtFA",
      "direction": "inbound",
      "status": "delivered",
@@ -156,31 +173,6 @@
      "altId": "SMca4f8f4fe95395978f4fed181cfe88cb",
      "from": "+18323451435",
      "to": "+12057920776",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "HXB1S4RWOTdABOVt8Suo",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [
-      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/Frff9NRkKtqDFfLJQ4rt/ME56096941844bed467cf05a1b92e0d014.jpeg",
-      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/Frff9NRkKtqDFfLJQ4rt/ME8816e380f10712cae9d3c3036819a538.jpeg",
-      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/Frff9NRkKtqDFfLJQ4rt/MEb3bcb9e64683c528c01095683706892f.jpeg",
-      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/Frff9NRkKtqDFfLJQ4rt/ME619060c7a8e34619beeea11f8e006042.jpeg",
-      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/Frff9NRkKtqDFfLJQ4rt/ME636baf09bc04d0e6c6655397ed2e240c.jpeg",
-      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/Frff9NRkKtqDFfLJQ4rt/ME6afc0622868d94bc62d98722182e1ce4.jpeg",
-      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/Frff9NRkKtqDFfLJQ4rt/ME41548ba7133e8ea35680c9ec7cb9097f.jpeg",
-      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/Frff9NRkKtqDFfLJQ4rt/ME548c128e39d33eae1be09830771b8aa9.jpeg",
-      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/Frff9NRkKtqDFfLJQ4rt/ME3bceac4feb190e50ad2fb7688827e845.jpeg"
-     ],
-     "body": "Gallatin off market. .9 acres",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-18T19:39:10.433Z",
-     "dateUpdated": "2026-10-18T19:39:10.765Z",
-     "altId": "MM00fa7b2629941576273c4f8e0aec7c8d",
-     "from": "+12057920776",
-     "to": "+18323451435",
      "messageType": "TYPE_SMS"
     }
    ],

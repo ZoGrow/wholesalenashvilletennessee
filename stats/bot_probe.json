@@ -1,12 +1,11 @@
 {
  "matches": [
   {
-   "id": "s5LZLD",
+   "id": "LJQ4rt",
    "tags": [
+    "zack",
     "apify-daily-lead",
-    "agent-replied",
-    "not-qualified",
-    "hot-lead"
+    "agent-replied"
    ],
    "messages": [
     {
@@ -14,65 +13,46 @@
      "messageType": "TYPE_SMS",
      "type": 2,
      "status": "delivered",
-     "dateAdded": "2026-10-18T19:28:27.508Z"
+     "dateAdded": "2026-10-18T19:42:46.912Z"
     },
     {
      "direction": "inbound",
      "messageType": "TYPE_SMS",
      "type": 2,
      "status": "delivered",
-     "dateAdded": "2026-10-18T19:27:01.032Z"
+     "dateAdded": "2026-10-18T19:42:32.020Z"
     },
     {
      "direction": "outbound",
      "messageType": "TYPE_SMS",
      "type": 2,
      "status": "delivered",
-     "dateAdded": "2026-10-18T19:26:59.832Z"
+     "dateAdded": "2026-10-18T19:41:57.385Z"
     },
     {
      "direction": "inbound",
      "messageType": "TYPE_SMS",
      "type": 2,
      "status": "delivered",
-     "dateAdded": "2026-10-18T19:26:39.473Z"
+     "dateAdded": "2026-10-18T19:41:37.092Z"
     },
     {
      "direction": "outbound",
      "messageType": "TYPE_SMS",
      "type": 2,
      "status": "delivered",
-     "dateAdded": "2026-10-18T19:23:46.564Z"
+     "dateAdded": "2026-10-18T19:41:27.989Z"
     }
    ]
   }
  ],
- "reset": [
-  "hot-lead",
-  "warm-lead",
-  "qualified-lead",
-  "not-qualified",
-  "bot-off"
- ],
- "probed": "s5LZLD",
+ "probed": "LJQ4rt",
  "status": 200,
  "body": "ok",
- "seconds": 10.9,
- "notes": [
-  {
-   "at": "2026-10-18T19:27:13.179Z",
-   "body": "\ud83d\udd25 Agent wants you on this one\n296 Hill Top Circle, Flintstone, GA 30725\n\n\ud83d\udcb0 Asking: $250,000 list; seller may take $220k-230k\n\ud83d\udcca Zestimate: unknown (asking is unknown)\n\ud83d\udccd Status: Listed\n\n\ud83d\udd27 Condition: Needs sheetrock, paint and a kitchen remodel. Wood floors, agent says good bones.\n\ud83c\udfe1 Property: 4/3, 1,602 sqft \u00b7 built 1962 \u00b7 unknown (owner's mom passed away)\n\n\ud83d\ude4b Seller: Inherited, but the seller doesn't have to sell and already turned down $220k\n\u23f1\ufe0f Timeline: unknown\n\n\ud83e\uddee Rough numbers\nARV: unknown\nRepairs: Rough estimate: about $56k (medium, $35/sqft)\nMax offer: unknown\n\n\ud83e\udd1d Make the offer\nOpen at: unkn"
-  },
-  {
-   "at": "2026-10-18T19:27:13.079Z",
-   "body": "SMS bot handoff: NOT QUALIFIED: 296 Hill Top Circle, Flintstone GA. Listed at $250k, 4/3, 1,602 sqft, built 1962. Needs sheetrock, paint and a kitchen (rough repairs about $56k). Inherited, but the seller is in no hurry and is holding around $220k-230k. Handing off only because Pamela asked for your business card."
-  },
-  {
-   "at": "2026-10-18T19:15:30.887Z",
-   "body": "SMS bot, did not qualify: NOT QUALIFIED: 296 Hill Top Circle, Flintstone GA is listed at $250k (4/3, 1,602 sqft, built 1962). It needs sheetrock, paint and a kitchen remodel. The seller inherited it from his mom and doesn't have to sell. He turned down a $220k offer and would take about $230k (about 92% of list), which is far above the 75%-of-Zestimate line for listed homes."
-  }
- ],
+ "seconds": 22.1,
+ "notes": [],
  "tags_now": [
+  "zack",
   "apify-daily-lead",
   "agent-replied"
  ]

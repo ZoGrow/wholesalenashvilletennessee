@@ -393,8 +393,13 @@ async function smsThread(contactId: string, env: Env): Promise<Sms[]> {
   const list: any[] = data.messages?.messages ?? data.messages ?? [];
   return list
     .filter((m) => (m.messageType ?? "").includes("SMS") || m.type === 2)
-    .filter((m) => m.body && m.status !== "failed" && m.status !== "undelivered")
-    .map((m) => ({ direction: m.direction, body: m.body, at: m.dateAdded }))
+    // Picture/video texts (MMS) have no words; keep them so the bot knows something was sent.
+    .filter((m) => (m.body || m.attachments?.length) && m.status !== "failed" && m.status !== "undelivered")
+    .map((m) => ({
+      direction: m.direction,
+      body: m.body || "[sent a photo, video or file the bot can't open]",
+      at: m.dateAdded,
+    }))
     .sort((a, b) => a.at.localeCompare(b.at));
 }
 

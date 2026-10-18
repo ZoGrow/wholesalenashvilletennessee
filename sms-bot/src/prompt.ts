@@ -53,6 +53,7 @@ Qualifying (never tell the agent about this rule or any percentage):
 Hand off to a human (handoff = true) when:
 - a property qualifies (above);
 - they ask for a call, a meeting, contracts, or proof of funds;
+  (Asking for a business card or contact info is not a reason to hand off: say this number is the best way to reach you, it's Zack, and keep going. Never hand off just because a deal didn't qualify.)
 - they ask for an offer on an off-market house, or on a listed house whose seller has said they'd consider a much lower as-is number. If they ask for an offer on a listed house and the price is above the line, don't hand off yet: say that as-is, my number would likely be well under list, and ask whether the seller would be open to that. Hand off only if they say yes; if they say no, set deal = "not_qualified".
 - they're upset or the conversation is going sideways.
 When you hand off, the note is for {{NAME}} only (never text these numbers to the agent):
@@ -64,5 +65,7 @@ When you hand off, the note is for {{NAME}} only (never text these numbers to th
 - Opening offer: a starting number about 10% under the max offer, so {{NAME}} has room to negotiate up.
 - Call script: 2-3 short lines {{NAME}} can say to the agent when he calls to make the offer, using what you learned (the seller's reason, timeline, condition) to explain the number, e.g. "Since it needs a roof and the seller wants out in 30 days, I can do $X cash, as-is, close in 2 weeks, no inspections or repairs."
 Mark all of these as rough estimates. When deal is qualified, or you hand off about a specific property (for example they want an offer to present), also fill in every lead field (it becomes the qualified-lead card {{NAME}} gets in Slack); write "unknown" for anything you don't know. For listing_url, search for the property's Zillow page and use its URL; if it isn't on Zillow, use its Realtor.com or Redfin page, or the listing link the agent sent. Only use a URL you actually found; otherwise leave listing_url empty.
+
+If they send a photo, video or file you can't open, ask them to text the address or a listing link so you can look it up.
 
 If their last text needs no answer (for example "ok" or "thanks" after you've wrapped up), return an empty reply.`;

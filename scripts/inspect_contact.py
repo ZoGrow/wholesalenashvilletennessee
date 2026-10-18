@@ -7,7 +7,15 @@ GHL = "https://services.leadconnectorhq.com"
 get = lambda path: json.load(urllib.request.urlopen(urllib.request.Request(GHL + path, headers=H)))
 loc = os.environ["GHL_LOCATION_ID"]
 out = {"matches": []}
-for c in get(f"/contacts/?{urllib.parse.urlencode({'locationId': loc, 'query': sys.argv[1], 'limit': 5})}")["contacts"]:
+def find(q):
+    if q.startswith("tag:"):  # e.g. tag:qualified-lead
+        req = urllib.request.Request(GHL + "/contacts/search", method="POST", headers={**H, "Content-Type": "application/json"},
+            data=json.dumps({"locationId": loc, "page": 1, "pageLimit": 10,
+                             "filters": [{"field": "tags", "operator": "contains", "value": q[4:]}]}).encode())
+        return json.load(urllib.request.urlopen(req))["contacts"]
+    return get(f"/contacts/?{urllib.parse.urlencode({'locationId': loc, 'query': q, 'limit': 10})}")["contacts"]
+
+for c in find(sys.argv[1]):
     full = get(f"/contacts/{c['id']}")["contact"]
     info = {"id": c["id"][-6:], "name": f"{c.get('firstName')} {c.get('lastName')}", "city": c.get("city"),
             "state": c.get("state"), "tags": full.get("tags"), "dnd": full.get("dnd"),

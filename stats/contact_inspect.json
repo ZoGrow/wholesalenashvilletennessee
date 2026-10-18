@@ -1,381 +1,400 @@
 {
  "matches": [
   {
-   "id": "gzGEii",
-   "name": "kenneth murphy",
-   "city": "Houston",
-   "state": null,
-   "tags": [
-    "zack"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "lNriVzs7lXCm48LtzhQw",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "let me know",
-     "contentType": "text/plain",
-     "dateAdded": "2026-09-26T19:12:29.126Z",
-     "dateUpdated": "2026-09-26T19:12:49.356Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SMcb69d01db5d0ab374b915a923a8b1868",
-     "from": "+18323451435",
-     "to": "+18322287894",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "hdBBK9iIfWgxN17j3szr",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Kenneth, my name is Zack. I am in an investor here in pittsburgh looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-09-26T16:12:27.988Z",
-     "dateUpdated": "2026-09-26T16:12:39.383Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SMca25d67d71f33a3f9a52cb13ba446eee",
-     "from": "+18323451435",
-     "to": "+18322287894",
-     "messageType": "TYPE_SMS"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "92LL6L",
-   "name": "kenneth girty",
-   "city": "Pittsburgh",
-   "state": null,
-   "tags": [
-    "zack"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "npPeIpdHFKeoFrUHmaJb",
-     "direction": "outbound",
-     "status": "undelivered",
-     "type": 2,
-     "attachments": [],
-     "body": "let me know",
-     "contentType": "text/plain",
-     "dateAdded": "2026-09-24T21:52:46.425Z",
-     "dateUpdated": "2026-09-24T21:52:50.819Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SMcdf3fa70bac2ab4830065bbea306f583",
-     "from": "+18323451435",
-     "to": "+14123151315",
-     "error": "Error 30003 - Number unreachable or out of service.",
-     "messageType": "TYPE_SMS",
-     "detail": "HTTP Error 401: Unauthorized"
-    },
-    {
-     "id": "qwGCjSwK6h1Z4xEdNtWE",
-     "direction": "outbound",
-     "status": "undelivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Kenneth, my name is Zack. I am in an investor here in pittsburgh looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-09-24T18:52:44.412Z",
-     "dateUpdated": "2026-09-24T18:52:48.014Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SM47c4aa8bb3d17c3fbaf5b586e1d23978",
-     "from": "+18323451435",
-     "to": "+14123151315",
-     "error": "Error 30003 - Number unreachable or out of service.",
-     "messageType": "TYPE_SMS",
-     "detail": "HTTP Error 401: Unauthorized"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "lLDNIU",
-   "name": "kenneth adair",
-   "city": "Houston",
-   "state": null,
-   "tags": [
-    "zack"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "1nGUExvICinPZUHEwqvN",
-     "direction": "outbound",
-     "status": "failed",
-     "type": 2,
-     "attachments": [],
-     "body": "let me know",
-     "contentType": "text/plain",
-     "dateAdded": "2026-09-23T00:36:23.944Z",
-     "dateUpdated": "2026-09-23T00:36:23.944Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "from": "+18323451435",
-     "to": "+12819231989",
-     "error": "Your account has reached today's opt-out/error limit. Please review your messages and try again after 2026-09-23 15:38:49 America/Mexico_City.",
-     "messageType": "TYPE_SMS",
-     "detail": "HTTP Error 401: Unauthorized"
-    },
-    {
-     "id": "dMP00TsiCAc3MCrxxUop",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Kenneth, my name is Zack. I am in an investor here in houston looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-09-22T21:36:22.513Z",
-     "dateUpdated": "2026-09-22T21:36:33.656Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SM6d4afd892e6cca6131483286f24bcf0c",
-     "from": "+18323451435",
-     "to": "+12819231989",
-     "messageType": "TYPE_SMS"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "Usb9sK",
-   "name": "kenneth richard boyd iii, non-realtor",
-   "city": "Sugar Land",
-   "state": null,
-   "tags": [
-    "lucia"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "rdv9fw4vJnqWvQRp1cZ9",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey, are we still here?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-07-27T19:16:08.716Z",
-     "dateUpdated": "2026-07-27T19:16:14.130Z",
-     "source": "workflow",
-     "altId": "SMab1704695e9e4d644dbe30739864f325",
-     "from": "+18323451435",
-     "to": "+18324958939",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "coThG8BsNWWk2KiRDoSV",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Kenneth, I was just was wondering if you are an agent that serves residential sales in the Sugar Land area?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-07-27T17:16:06.920Z",
-     "dateUpdated": "2026-07-27T17:16:10.745Z",
-     "source": "workflow",
-     "altId": "SM8452001c644be79aa385aca99ad00e93",
-     "from": "+18323451435",
-     "to": "+18324958939",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "fTi1A23zn1MmoqratmEG",
-     "direction": "outbound",
-     "type": 28,
-     "body": "Opportunity created",
-     "dateAdded": "2026-07-27T17:16:06.161Z",
-     "dateUpdated": "2026-07-27T17:16:06.161Z",
-     "source": "app",
-     "from": "Lucia - Outreach 1",
-     "to": "+18324958939",
-     "activity": {
-      "data": {
-       "id": "n9H6bksL2TwOlKQobLt4",
-       "name": "Kenneth Richard Boyd III, Non-Realtor",
-       "status": "open",
-       "pipeline": "Text Outbound",
-       "stage": {
-        "newStageName": "Started"
-       }
-      },
-      "title": "Opportunity created",
-      "type": "opportunity_created"
-     },
-     "messageType": "TYPE_ACTIVITY_OPPORTUNITY"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "uRMLje",
-   "name": "kenneth li",
-   "city": "Houston",
-   "state": null,
+   "id": "wTjeWL",
+   "name": "Kenneth Bargers - Pilkerton Realtors",
+   "city": "Brentwood",
+   "state": "TN",
    "tags": [
     "lucia",
-    "zack"
+    "apify-daily-lead",
+    "agent-replied",
+    "hot-lead",
+    "qualified-lead"
    ],
    "dnd": null,
    "dndSettings": null,
    "messages": [
     {
-     "id": "GfjfFHCY9XmaU2NI7vJq",
-     "direction": "outbound",
-     "status": "failed",
-     "type": 2,
-     "attachments": [],
-     "body": "let me know",
-     "contentType": "text/plain",
-     "dateAdded": "2026-09-23T00:39:46.580Z",
-     "dateUpdated": "2026-09-23T00:39:46.580Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "from": "+18323451435",
-     "to": "+17138263388",
-     "error": "Your account has reached today's opt-out/error limit. Please review your messages and try again after 2026-09-23 15:38:49 America/Mexico_City.",
-     "messageType": "TYPE_SMS",
-     "detail": "HTTP Error 401: Unauthorized"
-    },
-    {
-     "id": "pb2mQzgTVzldRuIJaBme",
-     "direction": "outbound",
-     "status": "failed",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Kenneth, my name is Zack. I am in an investor here in houston looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-09-22T21:39:45.670Z",
-     "dateUpdated": "2026-09-22T21:39:45.670Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "from": "+18323451435",
-     "to": "+17138263388",
-     "error": "Your account has reached today's opt-out/error limit. Please review your messages and try again after 2026-09-23 15:38:49 America/Mexico_City.",
-     "messageType": "TYPE_SMS",
-     "detail": "HTTP Error 401: Unauthorized"
-    },
-    {
-     "id": "hQYmmeGr64TDJvFJbrUb",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Just curious if you have a few minutes today?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-07-29T21:55:12.625Z",
-     "dateUpdated": "2026-07-29T21:55:21.225Z",
-     "userId": "nziFPMuyCYoy6PXkTYFG",
-     "source": "app",
-     "altId": "SMd13a5b362269d8c4b79a25c013ad733a",
-     "from": "+18323451435",
-     "to": "+17138263388",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "efTBMvuRbIwH1VtyvcI1",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "I'm with a real estate marketing company called ZoGrow, focused on setting qualified appointments. We're looking for one realtor to exclusively connect potential buyers and sellers on a pay-per-close model here in Sugar Land. Would you be open to a brief chat? What time works best for you?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-07-28T14:01:12.355Z",
-     "dateUpdated": "2026-07-28T14:01:19.378Z",
-     "userId": "nziFPMuyCYoy6PXkTYFG",
-     "source": "app",
-     "altId": "SM16f74537821a44f9ee4b49531e77ff09",
-     "from": "+18323451435",
-     "to": "+17138263388",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "BJZGp9CJDDyIeHHk4W7w",
+     "id": "M9AtZpBLpJGq6qni9Pho",
      "direction": "inbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "In Chinatown area",
+     "body": "Yes, it is vacant",
      "contentType": "text/plain",
-     "dateAdded": "2026-07-28T03:18:07.811Z",
-     "dateUpdated": "2026-07-28T03:18:07.811Z",
-     "altId": "SMaae4184f92a4b09f1baed407292a1525",
-     "from": "+17138263388",
+     "dateAdded": "2026-10-18T18:47:04.000Z",
+     "dateUpdated": "2026-10-18T18:47:04.000Z",
+     "altId": "SM6fa50fb8540bfede668642e798a72e11",
+     "from": "+16155129836",
      "to": "+18323451435",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "XQgKe3OXH3WvumKqOlrZ",
+     "id": "miLLgbtoDQhSTwTUMsDL",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Have it",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T18:45:54.665Z",
+     "dateUpdated": "2026-10-18T18:45:54.665Z",
+     "altId": "SMaad0b852ac702b6a74a9e6ef7eeaed2e",
+     "from": "+16155129836",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "UTLrGmS9LpTd8JBvBnht",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Hey, are we still here?",
+     "body": "Thanks Kenneth, appreciate the details. Since it's your own place, is it vacant now? I'll run the numbers and get back to you shortly.",
      "contentType": "text/plain",
-     "dateAdded": "2026-07-27T19:15:46.158Z",
-     "dateUpdated": "2026-07-27T19:15:50.076Z",
-     "source": "workflow",
-     "altId": "SMad8edf506b1e72a58f1ba1ad7155ffa3",
+     "dateAdded": "2026-10-18T18:45:42.967Z",
+     "dateUpdated": "2026-10-18T18:45:49.156Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SM5943c4953bea6c28db6ce832e306cfa8",
      "from": "+18323451435",
-     "to": "+17138263388",
+     "to": "+16155129836",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "AInjZRwCFu7VDNZxlOSG",
+     "id": "EyoGuVUQmyz6e3yVPUB7",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "It is in move-in condition- it is dated in several rooms and requires updating - I believe there may be some foundation issues even though it comes with a transferable foundation warranty - I haven't listed at 375k and truly cannot go much less than that - thanks for the interest - Kenneth",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T18:45:17.988Z",
+     "dateUpdated": "2026-10-18T18:45:17.988Z",
+     "altId": "SM912bba60f2c10569c2595c23550a7cd0",
+     "from": "+16155129836",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "rQvtaerVkH6UNlJMB69f",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Hey Kenneth, I was just was wondering if you are an agent that serves residential sales in the Sugar Land area?",
+     "body": "Thanks Kenneth, appreciate you sending it. I found 100 April Ln, about 2,500 sqft on almost an acre, built in 1962. What are you asking now, and what kind of shape is it in?",
      "contentType": "text/plain",
-     "dateAdded": "2026-07-27T17:15:44.463Z",
-     "dateUpdated": "2026-07-27T17:15:48.914Z",
-     "source": "workflow",
-     "altId": "SMdf55dedd61d63192de60fd6c06bb7710",
+     "dateAdded": "2026-10-18T18:43:32.134Z",
+     "dateUpdated": "2026-10-18T18:43:39.920Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SM2a92d3cb737e7af3370b8282e7c8d7e0",
      "from": "+18323451435",
-     "to": "+17138263388",
+     "to": "+16155129836",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "m4JlpxQwtAkhV0WEjG52",
+     "id": "Bkj1Re62UXbhT9zC9ZdL",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Zack - I just put back on the market a couple of days ago 100 April Lane in Shelbyville - the price point has been put back on the market way below comps so I can move it - this is a personal property that I have being sold as-is - all the best - Kenneth",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T18:43:11.812Z",
+     "dateUpdated": "2026-10-18T18:43:11.812Z",
+     "altId": "SMe919a9f2acd31777de6308b8d148dc14",
+     "from": "+16155129836",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "btM5t67sIJ58j2gbaWM4",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Kenneth, my name is Zack. I am in an investor here in Brentwood looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-18T18:37:14.260Z",
+     "dateUpdated": "2026-10-18T18:37:58.553Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM3bf9bb9c40f517a8d03b4f50cdc4a1c9",
+     "from": "+18323451435",
+     "to": "+16155129836",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "Gkd3MrRnsoO9meBPDgcw",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "bumping my last message.",
+     "contentType": "text/plain",
+     "dateAdded": "2023-11-10T17:26:30.000Z",
+     "dateUpdated": "2023-11-10T17:26:53.158Z",
+     "userId": "hvWkhA5JpZ4m0snh7MYy",
+     "source": "workflow",
+     "altId": "SMc38d567d96ff96a0559116abf7de45c9",
+     "from": "+18323451435",
+     "to": "+16155129836",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "RrykkZfPL4E0h8ZeUjZu",
      "direction": "outbound",
      "type": 28,
      "body": "Opportunity created",
-     "dateAdded": "2026-07-27T17:15:43.603Z",
-     "dateUpdated": "2026-07-27T17:15:43.603Z",
+     "dateAdded": "2023-11-10T14:26:29.064Z",
+     "dateUpdated": "2023-11-10T14:26:29.127Z",
      "source": "app",
      "from": "Lucia - Outreach 1",
-     "to": "+17138263388",
+     "to": "+16155129836",
      "activity": {
       "data": {
-       "id": "chWbv4j4Xi7FVRSR3sPr",
-       "name": "Kenneth Li, Non-Realtor",
-       "status": "open",
        "pipeline": "Text Outbound",
        "stage": {
         "newStageName": "Started"
-       }
+       },
+       "name": "Kenneth Bargers - Pilkerton Realtors",
+       "id": "pBhgVIbtadanNtewhCXL",
+       "status": "open"
       },
       "title": "Opportunity created",
       "type": "opportunity_created"
      },
      "messageType": "TYPE_ACTIVITY_OPPORTUNITY"
+    },
+    {
+     "id": "SdKWHpcZsUbmvtJlbR9S",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hi, hope you're doing good! Just was wondering if you handle residential sales in the Brentwood area?",
+     "contentType": "text/plain",
+     "dateAdded": "2023-11-10T14:26:29.000Z",
+     "dateUpdated": "2023-11-10T14:26:41.328Z",
+     "userId": "hvWkhA5JpZ4m0snh7MYy",
+     "source": "workflow",
+     "altId": "SM07948db3d9d6a7bf9a16d5305616509a",
+     "from": "+18323451435",
+     "to": "+16155129836",
+     "messageType": "TYPE_SMS"
     }
    ],
-   "notes": []
+   "notes": [
+    {
+     "at": "2026-10-18T18:45:50.347Z",
+     "body": "\ud83c\udfe0 New qualified lead\n100 April Ln, Shelbyville, TN 37160\n\n\ud83d\udcb0 Asking: $375,000\n\ud83d\udcca Zestimate: No Zestimate found; Redfin est. ~$422,000 (asking is ~89% (of Redfin est.))\n\ud83d\udccd Status: Listed on MLS (relisted ~Oct 16; earlier MLS #3621410 at $339,900)\n\n\ud83d\udd27 Condition: Livable but dated, needs updating; possible foundation issues (transferable foundation warranty)\n\ud83c\udfe1 Property: ? bd / 2 ba / 2,544 sqft, ~1 acre \u00b7 built 1962 \u00b7 unknown\n\n\ud83d\ude4b Seller: Agent-owned personal property, wants it sold; reason unknown\n\u23f1\ufe0f Timeline: unknown\n\n\ud83e\uddee Rough numbers\nARV: ~$380k-$430k (rough; no sold comps pulled, based on Redfin est.)\nRepairs: ~$90k-$110k (rough, medium-heavy with foundation)\nMax offer: ~$170,000 (rough); asking is well over\n\n\ud83e\udd1d Make the offer\nOpen at: ~$153,000 (rough)\nWhat to say: Kenneth, I know you're firm near 375 but with the dated rooms and possible foundation work I have to budget heavily for repairs. I can close quickly with no inspections or repair requests, and you skip showings and buyer financing falling through. Would you look at a number in the 150s?\n\n\ud83d\udc64 Agent: Kenneth Bargers - Pilkerton Realtors \u00b7 +16155129836\n\n\u2705 Why it qualifies: Agent's own listing, relisted at $375k, says priced below comps and can't go much lower. Dated with possible foundation issues. Under the Redfin estimate, but well over rough max offer.\n\n<https://app.gohighlevel.com/v2/location/nvnsI7VgLrDYA5JeQ945/contacts/detail/tA5ROFUIhnBXUuwTjeWL|Open in GHL>"
+    },
+    {
+     "at": "2026-10-18T18:45:50.155Z",
+     "body": "SMS bot handoff: QUALIFIED (barely, under estimate). 100 April Ln, Shelbyville TN. No Zestimate found, Redfin est ~$422k. Asking $375k (~89%). Listed on MLS (earlier listed at $339,900). 2 ba, 2,544 sqft, ~1 acre, built 1962. Livable but dated, possible foundation issues (has a transferable warranty). Agent owns it, says he's firm near $375k. Rough ARV $380-430k, repairs ~$100k, max offer ~$170k, so asking is far over max. Opening offer ~$153k. All rough estimates; no sold comps pulled."
+    }
+   ]
+  },
+  {
+   "id": "0bIyRR",
+   "name": "Zack Olabi",
+   "city": null,
+   "state": null,
+   "tags": [
+    "apify-daily-lead",
+    "hot-lead",
+    "qualified-lead"
+   ],
+   "dnd": false,
+   "dndSettings": {
+    "SMS": {
+     "status": "inactive"
+    }
+   },
+   "messages": [
+    {
+     "id": "tbiDDZpmDTfeg8RN8w04",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Thank you what are you thinking?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-15T22:07:26.256Z",
+     "dateUpdated": "2026-10-15T22:07:26.256Z",
+     "altId": "SMe1789d102d9a501ed825017ac4f42db6",
+     "from": "+18329177656",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "9EsBecVn0uDi9NM7YLTv",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Thanks Zack, that helps. I'm passing this to Zack now and he'll reach out shortly.",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-15T21:52:21.041Z",
+     "dateUpdated": "2026-10-15T21:52:26.072Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SM4f81f0958e065590291d8c688662a27f",
+     "from": "+18323451435",
+     "to": "+18329177656",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "YfHkpcFzL2nzqgGS7qMM",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Maybe 135k",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-15T21:49:45.337Z",
+     "dateUpdated": "2026-10-15T21:49:45.337Z",
+     "altId": "SM00bb8d19cb0601aa7355429567a7af2a",
+     "from": "+18329177656",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "v1olYK070tktBvqAgdiG",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Sounds good, thanks Zack. I'll have Zack run numbers and get back to you shortly. Does the seller have a rough number in mind, even a ballpark?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-15T21:23:36.771Z",
+     "dateUpdated": "2026-10-15T21:23:43.412Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SMfb47931734b51311d8aa10c0147549b0",
+     "from": "+18323451435",
+     "to": "+18329177656",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "qYyt1rE6Cm90pmARg6np",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "There's is send what you can",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-15T21:23:27.023Z",
+     "dateUpdated": "2026-10-15T21:23:27.023Z",
+     "altId": "SM02026538ced0e77dea82f872b1fae15f",
+     "from": "+18329177656",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "ovjn4knKjNaDgi4uiWwz",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Got it, thanks. What's the seller looking to get for it, and is there room on price for a quick as-is cash close with no inspections?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-15T21:22:14.977Z",
+     "dateUpdated": "2026-10-15T21:22:19.460Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SMc04b91aa3943a6d72a23fac1b469f8a5",
+     "from": "+18323451435",
+     "to": "+18329177656",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "vARv5yAWIU08Dyq3QMFn",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "It is off market and not in good shape needs lots of repairs",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-15T21:22:07.871Z",
+     "dateUpdated": "2026-10-15T21:22:07.871Z",
+     "altId": "SM059cf99fa3fb97a86ee8b3bdd7ee86db",
+     "from": "+18329177656",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "NeCRS8vMIC1b91Rq0fVA",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Thanks Zack! Looks like 8019 Tavenor shows as a 3/2, about 1,608 sqft, built in 1979, and it's not listed on Zillow right now. Is it off-market? And what kind of shape is it in?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-15T21:21:05.043Z",
+     "dateUpdated": "2026-10-15T21:21:12.309Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SM5e9558c264fe3c8851e0b7bc284885fe",
+     "from": "+18323451435",
+     "to": "+18329177656",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "vUKb0eUBYQHQWoK23fMt",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Here is one you can see",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-15T21:15:24.825Z",
+     "dateUpdated": "2026-10-15T21:15:24.825Z",
+     "altId": "SM5f24425fc67ea6398c2ddc11f4ac1051",
+     "from": "+18329177656",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "ObfAF0ixfxO6Paxrd8mo",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "https://www.zillow.com/homedetails/8019-Tavenor-Ln-Houston-TX-77075/27962403_zpid/",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-15T17:31:11.548Z",
+     "dateUpdated": "2026-10-15T17:31:11.548Z",
+     "altId": "SM330c33ac64c494da9b0ed51e254d8f8f",
+     "from": "+18329177656",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": [
+    {
+     "at": "2026-10-15T21:52:21.883Z",
+     "body": "\ud83c\udfe0 New qualified lead: 8019 Tavenor Ln, Houston, TX 77075\nAsking: $135,000 (ballpark, flexible) (~60% of Zestimate ~$225,000 (est. from nearby, Zestimate not found))\nStatus: Off-market\nCondition: Needs lots of repairs (details unknown)\nProperty: 3/2, ~1,608 sqft \u00b7 built 1979 \u00b7 unknown\nSeller: unknown \u00b7 timeline: unknown\nRough numbers: ARV ~$245k-$260k (rough) \u00b7 repairs ~$80k (heavy, $50/sqft, rough) \u00b7 max offer ~$81,500 (rough)\nAgent: Zack Olabi \u00b7 +18329177656\nWhy it qualifies: Off-market 3/2 in Skyscraper Shadows that needs a lot of work. Seller's ballpark is $135k and the agent says there's room on price. That's about 60% of the estimated value but over the rough max offer.\n<https://app.gohighlevel.com/v2/location/nvnsI7VgLrDYA5JeQ945/contacts/detail/FphCrQzlBmUDoe0bIyRR|Open in GHL>"
+    },
+    {
+     "at": "2026-10-15T21:52:21.733Z",
+     "body": "SMS bot handoff: QUALIFIED (borderline). 8019 Tavenor Ln, Houston TX 77075. Off-market, 3/2, ~1,608 sqft, built 1979, agent says it needs lots of repairs (no details yet). Seller's ballpark is $135k and the agent says there's room on price. I couldn't find the Zestimate, so I estimated value at ~$225k from nearby homes (8023 Tavenor, 3/2 1,410 sqft, Redfin est. $223k). Asking is ~60% of that. Rough ARV is $245-260k based on renovated Skyscraper Shadows homes nearby (one listed at ~$260k), but comps are thin. Rough repairs ~$80k (heavy, $50/sqft). Rough max offer = $245k x 70% - $80k - $10k = ~$81.5k, so asking is OVER max by ~$53k. Occupancy and motivation unknown. All numbers are rough estimates."
+    },
+    {
+     "at": "2026-10-15T21:23:37.696Z",
+     "body": "SMS bot handoff: 8019 Tavenor Ln, Houston TX 77075. Off-market, so no list price. 3/2, about 1,608 sqft, built 1979. Agent says it's in bad shape and needs lots of repairs, no details yet. Seller hasn't named a price; agent says there's room and to 'send what you can'. Rough repairs, heavy at $50-70/sqft: about $80k-$113k. Haven't pulled sold comps for ARV yet, so pull them before making an offer. Max offer = ARV x 70% - repairs - $10k. All of these are rough estimates."
+    },
+    {
+     "at": "2026-10-15T21:10:46.588Z",
+     "body": "SMS bot (test mode, not sent) would reply: Thanks for sending 8019 Tavenor Ln. Looks like a 3/2, about 1,600 sqft, built in '79, and not listed right now, so off-market? What kind of shape is it in? Roof, HVAC, any foundation issues?"
+    },
+    {
+     "at": "2026-10-15T21:06:25.754Z",
+     "body": "SMS bot (test mode, not sent) would reply: Thanks for sending this. I see 8019 Tavenor Ln is a 3/2, about 1,608 sqft, built in 1979, and Zillow has it as not on the market, so it's off-market? What kind of shape is it in, and how old are the roof and HVAC?"
+    }
+   ]
   }
  ]
 }

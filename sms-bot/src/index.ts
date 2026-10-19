@@ -378,8 +378,8 @@ async function nextReply(
       fallbacks: "default",
       // Lets Claude look up a listing the agent sends (Zillow, Realtor.com, Redfin, ...) and nearby sales for ARV.
       tools: [
-        { type: "web_search_20260209", name: "web_search", max_uses: 6, user_location: { type: "approximate", city: contact.city || "Nashville", region: contact.state || "TN", country: "US" } },
-        { type: "web_fetch_20260209", name: "web_fetch", max_uses: 3 },
+        { type: "web_search_20260209", name: "web_search", max_uses: 8, user_location: { type: "approximate", city: contact.city || "Nashville", region: contact.state || "TN", country: "US" } },
+        { type: "web_fetch_20260209", name: "web_fetch", max_uses: 5 },
       ],
       output_config: { effort: "low", format: REPLY_FORMAT },
       system: systemPrompt(env),

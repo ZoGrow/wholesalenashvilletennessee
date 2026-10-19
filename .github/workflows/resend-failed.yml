@@ -1,4 +1,4 @@
-name: Resend failed first texts
+name: Resend failed texts
 
 on:
   workflow_dispatch:
@@ -9,6 +9,9 @@ on:
       limit:
         description: "Max texts to resend this run"
         default: "100"
+      days:
+        description: "Look back this many days for failed texts"
+        default: "3"
 
 permissions:
   contents: write
@@ -16,7 +19,7 @@ permissions:
 jobs:
   resend:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
       - env:
@@ -24,6 +27,7 @@ jobs:
           GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
           MODE: ${{ inputs.mode }}
           LIMIT: ${{ inputs.limit }}
+          DAYS: ${{ inputs.days }}
         run: python scripts/resend_failed.py
       - if: always()
         run: |

@@ -1,7 +1,11 @@
-"""Resend first texts that GHL failed to deliver (contacts tagged text-not-sent).
-MODE=count only counts and samples errors; MODE=send resends the same message, throttled,
-and stops early if failures keep happening. Summary saved to stats/resend_failed.json."""
+"""Resend outreach texts GHL failed to deliver because the account hit its opt-out/error limit:
+first texts and workflow follow-ups from the last few days. One text per contact (the earliest
+blocked one that never got through), skipping DND, opted-out, replied and handed-off contacts.
+MODE=count only counts; MODE=send resends, throttled, and stops as soon as the limit error returns
+or it gets late in Central time. Summary saved to stats/resend_failed.json."""
 import json, os, time, urllib.request
+from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 from collections import Counter
 
 H = {"Authorization": f"Bearer {os.environ['GHL_TOKEN']}", "Version": "2021-07-28", "Accept": "application/json",
@@ -9,6 +13,7 @@ H = {"Authorization": f"Bearer {os.environ['GHL_TOKEN']}", "Version": "2021-07-2
 GHL, loc = "https://services.leadconnectorhq.com", os.environ["GHL_LOCATION_ID"]
 MODE, LIMIT = os.environ.get("MODE", "count"), int(os.environ.get("LIMIT", "100"))
 LIMIT_ERR = "opt-out/error limit"  # only resend texts blocked by the account limit, not bad numbers
+SINCE = (datetime.now(timezone.utc) - timedelta(days=int(os.environ.get("DAYS", "3")))).isoformat()
 SKIP = {"opted-out", "dnd-skipped", "hot-lead", "bot-off", "agent-replied", "qualified-lead", "not-qualified"}
 
 def call(method, path, body=None):
@@ -32,13 +37,13 @@ def messages(cid):
 contacts, page = [], 1
 while True:
     res = call("POST", "/contacts/search", {"locationId": loc, "page": page, "pageLimit": 100,
-               "filters": [{"field": "tags", "operator": "contains", "value": "text-not-sent"}]})
+               "filters": [{"field": "tags", "operator": "contains", "value": "apify-daily-lead"}]})
     contacts += res.get("contacts", [])
     if len(res.get("contacts", [])) < 100: break
     page += 1
 
 out = {"mode": MODE, "tagged": len(contacts), "eligible": 0, "skipped": Counter(), "errors": Counter(),
-       "sent": 0, "delivered": 0, "failed_again": 0, "stopped_early": None}
+       "sent": 0, "delivered": 0, "failed_again": 0, "kinds": Counter(), "stopped_early": None}
 fails_in_row = 0
 for c in contacts:
     tags = {t.lower() for t in c.get("tags") or []}
@@ -49,14 +54,17 @@ for c in contacts:
     conv, ms = messages(c["id"])
     if not ms: out["skipped"]["no messages"] += 1; continue
     if any(m["direction"] == "inbound" for m in ms): out["skipped"]["they replied"] += 1; continue
-    if any(m["direction"] == "outbound" and m.get("status") in ("delivered", "sent") for m in ms):
-        out["skipped"]["already delivered"] += 1; continue
-    failed = [m for m in ms if m["direction"] == "outbound" and m.get("status") in ("failed", "undelivered") and m.get("body")]
-    if not failed: out["skipped"]["no failed text"] += 1; continue
-    err = failed[-1].get("error") or "none"
+    got = {m.get("body") for m in ms if m["direction"] == "outbound" and m.get("status") in ("delivered", "sent")}
+    failed = [m for m in ms if m["direction"] == "outbound" and m.get("status") in ("failed", "undelivered")
+              and m.get("body") and m["body"] not in got and m["dateAdded"] >= SINCE]
+    if not failed: continue
+    err = failed[0].get("error") or "none"
     out["errors"][err[:90]] += 1
     if LIMIT_ERR not in err.lower(): out["skipped"]["bad number (" + err[:20] + ")"] += 1; continue
-    out["eligible"] += 1
+    kind = "first text" if not got else "follow-up"
+    out["eligible"] += 1; out["kinds"][kind] += 1
+    if datetime.now(ZoneInfo("America/Chicago")).hour >= 20:
+        out["stopped_early"] = out["stopped_early"] or "8pm Central, too late to text"; continue
     if MODE != "send" or out["sent"] >= LIMIT: continue
     sent = call("POST", "/conversations/messages", {"type": "SMS", "contactId": c["id"], "message": failed[0]["body"]})
     out["sent"] += 1
@@ -72,9 +80,9 @@ for c in contacts:
     else:
         fails_in_row = 0
         out["delivered"] += 1
-        call("DELETE", f"/contacts/{c['id']}/tags", {"tags": ["text-not-sent"]})
+        if "text-not-sent" in tags: call("DELETE", f"/contacts/{c['id']}/tags", {"tags": ["text-not-sent"]})
     time.sleep(4)
-out["skipped"], out["errors"] = dict(out["skipped"]), dict(out["errors"].most_common(8))
+out["skipped"], out["errors"], out["kinds"] = dict(out["skipped"]), dict(out["errors"].most_common(8)), dict(out["kinds"])
 os.makedirs("stats", exist_ok=True)
 json.dump(out, open("stats/resend_failed.json", "w"), indent=1)
 print(json.dumps(out, indent=1))

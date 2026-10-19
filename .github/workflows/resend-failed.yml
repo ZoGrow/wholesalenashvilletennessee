@@ -1,0 +1,34 @@
+name: Resend failed first texts
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "count (just look) or send"
+        default: count
+      limit:
+        description: "Max texts to resend this run"
+        default: "100"
+
+permissions:
+  contents: write
+
+jobs:
+  resend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
+          GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
+          MODE: ${{ inputs.mode }}
+          LIMIT: ${{ inputs.limit }}
+        run: python scripts/resend_failed.py
+      - if: always()
+        run: |
+          git config user.name "lead-pipeline"
+          git config user.email "lead-pipeline@users.noreply.github.com"
+          git add stats/resend_failed.json
+          git commit -m "Resend failed texts" || exit 0
+          git pull --rebase origin main && git push origin HEAD:main

@@ -1,15 +1,15 @@
 📈 *Weekly scorecard* (week ending Oct 19)
 
-📤 Texts sent: *934* (from 1,592 agents scraped, 1,307 agents texted all-time)
+📤 Texts sent: *1,050* (from 2,652 agents scraped, 1,594 agents texted all-time)
 
-Agents who replied: *+33* this week (33 total)
+Agents who replied: *+4* this week (37 total)
 Warm (something later): *+0* this week (3 total)
-Qualified leads: *+1* this week (2 total)
-Didn't qualify: *+3* this week (5 total)
-Handed to you: *+9* this week (11 total)
+Qualified leads: *+0* this week (2 total)
+Didn't qualify: *+0* this week (5 total)
+Handed to you: *+2* this week (13 total)
 
-Reply rate: 3.5% of this week's texts
+Reply rate: 0.4% of this week's texts
 
-Opted out: *+23* this week (26 total)
-First text failed: *+13* this week (28 total)
-Bot text blocked by carrier: *+2* this week (2 total)
+Opted out: *+0* this week (26 total)
+First text failed: *+201* this week (229 total)
+Bot text blocked by carrier: *+0* this week (2 total)

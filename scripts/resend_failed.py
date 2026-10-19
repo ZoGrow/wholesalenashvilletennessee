@@ -8,6 +8,7 @@ H = {"Authorization": f"Bearer {os.environ['GHL_TOKEN']}", "Version": "2021-07-2
      "Content-Type": "application/json", "User-Agent": "Mozilla/5.0"}
 GHL, loc = "https://services.leadconnectorhq.com", os.environ["GHL_LOCATION_ID"]
 MODE, LIMIT = os.environ.get("MODE", "count"), int(os.environ.get("LIMIT", "100"))
+LIMIT_ERR = "opt-out/error limit"  # only resend texts blocked by the account limit, not bad numbers
 SKIP = {"opted-out", "dnd-skipped", "hot-lead", "bot-off", "agent-replied", "qualified-lead", "not-qualified"}
 
 def call(method, path, body=None):
@@ -43,7 +44,8 @@ for c in contacts:
     tags = {t.lower() for t in c.get("tags") or []}
     if "apify-daily-lead" not in tags: out["skipped"]["not outreach"] += 1; continue
     if tags & SKIP: out["skipped"]["tag " + sorted(tags & SKIP)[0]] += 1; continue
-    if c.get("dnd"): out["skipped"]["dnd"] += 1; continue
+    if c.get("dnd") or (c.get("dndSettings") or {}).get("SMS", {}).get("status") == "active":
+        out["skipped"]["dnd"] += 1; continue
     conv, ms = messages(c["id"])
     if not ms: out["skipped"]["no messages"] += 1; continue
     if any(m["direction"] == "inbound" for m in ms): out["skipped"]["they replied"] += 1; continue
@@ -51,7 +53,9 @@ for c in contacts:
         out["skipped"]["already delivered"] += 1; continue
     failed = [m for m in ms if m["direction"] == "outbound" and m.get("status") in ("failed", "undelivered") and m.get("body")]
     if not failed: out["skipped"]["no failed text"] += 1; continue
-    out["errors"][(failed[-1].get("error") or "none")[:90]] += 1
+    err = failed[-1].get("error") or "none"
+    out["errors"][err[:90]] += 1
+    if LIMIT_ERR not in err.lower(): out["skipped"]["bad number (" + err[:20] + ")"] += 1; continue
     out["eligible"] += 1
     if MODE != "send" or out["sent"] >= LIMIT: continue
     sent = call("POST", "/conversations/messages", {"type": "SMS", "contactId": c["id"], "message": failed[0]["body"]})
@@ -61,6 +65,8 @@ for c in contacts:
     if m.get("status") in ("failed", "undelivered"):
         out["failed_again"] += 1; fails_in_row += 1
         out["errors"]["RESEND: " + (m.get("error") or "none")[:80]] += 1
+        if LIMIT_ERR in (m.get("error") or "").lower():
+            out["stopped_early"] = "opt-out/error limit hit again"; break
         if fails_in_row >= 5:
             out["stopped_early"] = "5 resends in a row failed"; break
     else:

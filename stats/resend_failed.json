@@ -1,0 +1,18 @@
+{
+ "mode": "count",
+ "tagged": 252,
+ "eligible": 248,
+ "skipped": {
+  "already delivered": 4
+ },
+ "errors": {
+  "Your account has reached today's opt-out/error limit. Please review your messages and try ": 211,
+  "Error 30006 - Landline or non-mobile number. Cannot receive SMS.": 31,
+  "Error 30005 - The recipient's number is inactive or does not exist.": 4,
+  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 2
+ },
+ "sent": 0,
+ "delivered": 0,
+ "failed_again": 0,
+ "stopped_early": null
+}

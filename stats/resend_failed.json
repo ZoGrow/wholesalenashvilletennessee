@@ -1,19 +1,29 @@
 {
  "mode": "send",
- "tagged": 252,
- "eligible": 211,
+ "tagged": 1594,
+ "eligible": 785,
  "skipped": {
-  "dnd": 35,
-  "already delivered": 4,
-  "bad number (Error 30008 - Messag)": 2
+  "dnd": 39,
+  "tag agent-replied": 37,
+  "tag opted-out": 26,
+  "bad number (Error 30003 - Number)": 1,
+  "tag not-qualified": 2,
+  "tag hot-lead": 2,
+  "they replied": 152,
+  "tag dnd-skipped": 1
  },
  "errors": {
-  "Your account has reached today's opt-out/error limit. Please review your messages and try ": 211,
-  "RESEND: Error 30003 - Number unreachable or out of service.": 2,
-  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 2
+  "Your account has reached today's opt-out/error limit. Please review your messages and try ": 785,
+  "RESEND: Error 30003 - Number unreachable or out of service.": 7,
+  "RESEND: Error 30005 - The recipient's number is inactive or does not exist.": 2,
+  "Error 30003 - Number unreachable or out of service.": 1
  },
- "sent": 25,
- "delivered": 23,
- "failed_again": 2,
+ "sent": 500,
+ "delivered": 491,
+ "failed_again": 9,
+ "kinds": {
+  "follow-up": 589,
+  "first text": 196
+ },
  "stopped_early": null
 }

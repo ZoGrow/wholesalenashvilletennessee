@@ -1,29 +1,28 @@
 {
  "mode": "send",
- "tagged": 1594,
- "eligible": 450,
+ "tagged": 2541,
+ "eligible": 5,
  "skipped": {
-  "dnd": 41,
-  "tag agent-replied": 57,
-  "tag opted-out": 35,
-  "they replied": 160,
-  "bad number (Error 30003 - Number)": 1,
-  "tag not-qualified": 2,
-  "tag hot-lead": 2,
-  "tag dnd-skipped": 1
+  "dnd": 43,
+  "they replied": 6,
+  "tag agent-replied": 46,
+  "tag opted-out": 15,
+  "bad number (Error 30003 - Number)": 5,
+  "tag dnd-skipped": 1,
+  "bad number (Error 30007 - Messag)": 1,
+  "no messages": 1
  },
  "errors": {
-  "Your account has reached today's opt-out/error limit. Please review your messages and try ": 450,
-  "RESEND: Error 30003 - Number unreachable or out of service.": 7,
-  "Error 30003 - Number unreachable or out of service.": 1,
-  "RESEND: Error 30005 - The recipient's number is inactive or does not exist.": 1
+  "Error 30003 - Number unreachable or out of service.": 5,
+  "Your account has reached today's opt-out/error limit. Please review your messages and try ": 5,
+  "RESEND: Error 30003 - Number unreachable or out of service.": 5,
+  "Error 30007 - Message blocked due to carrier policies. This often happens if content viola": 1
  },
- "sent": 400,
- "delivered": 392,
- "failed_again": 8,
+ "sent": 5,
+ "delivered": 0,
+ "failed_again": 5,
  "kinds": {
-  "first text": 23,
-  "follow-up": 427
+  "first text": 5
  },
- "stopped_early": null
+ "stopped_early": "5 resends in a row failed"
 }

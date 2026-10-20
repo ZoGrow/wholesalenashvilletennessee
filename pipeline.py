@@ -625,7 +625,19 @@ class ZipRotation:
         return [z for z in self.zips if self.last.get(z, "") < cutoff]
 
     def next_batch(self):
-        batch = self.fresh()[: self.per_round]
+        # Spread each batch across areas (3-digit ZIP prefix ~ one metro), least-scraped areas
+        # first: agents in a metro serve all its ZIPs, so after a few ZIPs the same people come
+        # back (2026-10-20: 611 of 811 Nashville agents were already texted).
+        used = {}
+        for z in self.last:
+            used[z[:3]] = used.get(z[:3], 0) + 1
+        order = sorted(enumerate(self.fresh()), key=lambda iz: (used.get(iz[1][:3], 0), iz[0]))
+        batch, areas = [], set()
+        for _, z in order:
+            if z[:3] not in areas:
+                batch.append(z); areas.add(z[:3])
+            if len(batch) == self.per_round:
+                break
         today = dt.date.today().isoformat()
         for z in batch:
             self.last[z] = today

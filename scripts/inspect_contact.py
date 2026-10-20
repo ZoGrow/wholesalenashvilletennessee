@@ -10,7 +10,7 @@ out = {"matches": []}
 def find(q):
     if q.startswith("tag:"):  # e.g. tag:qualified-lead
         req = urllib.request.Request(GHL + "/contacts/search", method="POST", headers={**H, "Content-Type": "application/json"},
-            data=json.dumps({"locationId": loc, "page": 1, "pageLimit": 10,
+            data=json.dumps({"locationId": loc, "page": 1, "pageLimit": 10, "sort": [{"field": "dateUpdated", "direction": "desc"}],
                              "filters": [{"field": "tags", "operator": "contains", "value": q[4:]}]}).encode())
         return json.load(urllib.request.urlopen(req))["contacts"]
     return get(f"/contacts/?{urllib.parse.urlencode({'locationId': loc, 'query': q, 'limit': 10})}")["contacts"]

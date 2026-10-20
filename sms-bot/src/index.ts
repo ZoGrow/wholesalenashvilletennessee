@@ -228,6 +228,13 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
       });
     } else await sendSms(contactId, decision.reply.trim(), thread, contact, env);
   }
+  // Hard check on Zack's price rule, in case the model calls a lead qualified when it isn't
+  // (e.g. off-market asking $150k over the Zestimate).
+  if (decision.deal === "qualified" && failsPriceRule(decision.lead, env)) {
+    console.log("price rule overrides 'qualified' for", contactId, decision.lead?.asking_price, decision.lead?.zestimate);
+    decision.deal = "not_qualified";
+    decision.note = `Did not qualify on price (asking ${decision.lead?.asking_price}, value ${decision.lead?.zestimate}). ${decision.note || ""}`;
+  }
   const newTags: string[] = [];
   if (decision.handoff) newTags.push(HANDOFF_TAG);
   else if (decision.warm) newTags.push(WARM_TAG);
@@ -244,12 +251,13 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
       await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `${label}: ${decision.note}` });
     }
   }
-  // Qualified leads, and any handoff about a specific house (e.g. the agent asks for an offer), go to Slack.
+  // Only qualified leads go to Slack (Zack 2026-10-20). A handoff about a house that doesn't
+  // qualify still gets the card as a GHL note so he can see it there.
   const qualified = decision.deal === "qualified";
   if (qualified || (decision.handoff && decision.lead?.address?.trim())) {
     const card = qualifiedLeadCard(decision.lead, contact, contactId, env, qualified);
     await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: card.replace(/[*_]/g, "") });
-    if (env.SLACK_WEBHOOK_URL) {
+    if (qualified && env.SLACK_WEBHOOK_URL) {
       const res = await fetch(env.SLACK_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -258,6 +266,24 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
       if (!res.ok) console.error("slack post failed", res.status, await res.text());
     }
   }
+}
+
+/** First dollar amount in a string like "$475,000", "475k", "unknown on Zillow, Redfin Estimate $240k". */
+function dollars(s?: string): number | null {
+  const m = (s || "").replace(/,/g, "").match(/\$?\s*(\d+(?:\.\d+)?)\s*([km])?\b/i);
+  if (!m) return null;
+  const n = parseFloat(m[1]) * (m[2]?.toLowerCase() === "m" ? 1e6 : m[2]?.toLowerCase() === "k" ? 1e3 : 1);
+  return n >= 10000 ? n : null; // ignore things like "3 beds"
+}
+
+/** True when the asking price is clearly over the line: off-market must be under QUALIFY_PERCENT of
+ *  the value, listed houses at or under LISTED_QUALIFY_PERCENT. Unknown numbers never fail. */
+function failsPriceRule(lead: Lead | undefined, env: Env): boolean {
+  const asking = dollars(lead?.asking_price), value = dollars(lead?.zestimate);
+  if (!asking || !value) return false;
+  const offMarket = /off/i.test(lead?.market_status || "");
+  const pct = Number(offMarket ? env.QUALIFY_PERCENT || "100" : env.LISTED_QUALIFY_PERCENT || "75");
+  return asking > value * pct / 100;
 }
 
 type Lead = Record<(typeof LEAD_FIELDS)[number], string>;

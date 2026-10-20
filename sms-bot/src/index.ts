@@ -66,22 +66,35 @@ export default {
   },
 
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
-    ctx.waitUntil(event.cron === SWEEP_CRON ? answerMissed(env) : runCheckIns(env));
+    ctx.waitUntil(event.cron === SWEEP_CRON ? answerMissed(env) : event.cron === OFFER_CRON ? runOfferFollowUps(env) : runCheckIns(env));
   },
 };
 
 const OUTREACH_TAG = "apify-daily-lead"; // the GHL bot workflow only fires for these contacts
 const SWEEP_CRON = "*/10 * * * *"; // must match wrangler.toml
 const SWEEP_PER_RUN = 2; // replies per sweep (stays within Cloudflare's per-run request limit)
+const OFFER_CRON = "5 14-23 * * *"; // must match wrangler.toml
+// Zack's offer texts ("Offer on: ... Purchase Price: $46,500"). The bot itself never names a price.
+const OFFER_RE = /purchase price|offer on:|\b(my|our) offer\b.{0,40}\$\s?\d|\boffer(ing)? (of |is |at )?\$\s?\d|\$\s?\d[\d,.]*k?\s+(cash )?offer\b/i;
+const OFFER_TAG_PREFIX = "offer-sent-"; // offer-sent-YYYY-MM-DD: follow up if the agent goes quiet
+const OFFER_NUDGES_PER_RUN = 3;
 
 /** Safety net: answer agents whose text never reached us (GHL webhook missed or failed). */
 async function answerMissed(env: Env): Promise<void> {
   const hour = Number(new Date().toLocaleString("en-US", { timeZone: "America/Chicago", hour: "numeric", hour12: false }));
   if (hour < 8 || hour >= 21) return; // no texts late at night
-  const res = await ghl(env, `/conversations/search?locationId=${env.GHL_LOCATION_ID}&sortBy=last_message_date&sort=desc&limit=20`);
+  const res = await ghl(env, `/conversations/search?locationId=${env.GHL_LOCATION_ID}&sortBy=last_message_date&sort=desc&limit=30`);
   let answered = 0;
   for (const c of res.conversations ?? []) {
-    if (answered >= SWEEP_PER_RUN) break;
+    // Spot offers Zack just texted to a handed-off lead, so we can follow up if the agent goes quiet.
+    if (c.lastMessageDirection === "outbound" && OFFER_RE.test(c.lastMessageBody ?? "")) {
+      try {
+        await markOffer(c.contactId, env);
+      } catch (e) {
+        console.error("offer mark failed", c.contactId, e);
+      }
+    }
+    if (answered >= SWEEP_PER_RUN) continue;
     const age = Date.now() - Number(c.lastMessageDate);
     if (c.lastMessageDirection !== "inbound" || !/SMS/i.test(c.lastMessageType ?? "")) continue;
     if (!(age > 3 * 60_000 && age < 24 * 3600_000)) continue; // give the live webhook time first
@@ -94,6 +107,68 @@ async function answerMissed(env: Env): Promise<void> {
       console.error("sweep reply failed", c.contactId, e);
     }
   }
+}
+
+/** Tag a lead Zack just sent an offer to (once per offer). */
+async function markOffer(contactId: string, env: Env): Promise<void> {
+  const contact = (await ghl(env, `/contacts/${contactId}`)).contact ?? {};
+  const tags: string[] = (contact.tags ?? []).map((t: string) => t.toLowerCase());
+  if (!tags.includes(HANDOFF_TAG) && !tags.includes(QUALIFIED_TAG)) return;
+  if (tags.some((t) => t.startsWith(OFFER_TAG_PREFIX))) return;
+  await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [OFFER_TAG_PREFIX + centralDate()] });
+  console.log("offer spotted for", contactId);
+}
+
+/** Zack 2026-10-20: after he sends an offer, follow up within 24 hours if the agent doesn't answer.
+ *  A second nudge 2 days after that, then stop. Any reply from the agent hands it back to Zack. */
+async function runOfferFollowUps(env: Env): Promise<void> {
+  const hour = Number(new Date().toLocaleString("en-US", { timeZone: "America/Chicago", hour: "numeric", hour12: false }));
+  if (hour < 9 || hour >= 18) return;
+  let sent = 0;
+  for (let back = 0; back <= 7 && sent < OFFER_NUDGES_PER_RUN; back++) {
+    const tag = OFFER_TAG_PREFIX + centralDate(-back);
+    const res = await ghl(env, "/contacts/search", "POST", {
+      locationId: env.GHL_LOCATION_ID, page: 1, pageLimit: 10,
+      filters: [{ field: "tags", operator: "contains", value: tag }],
+    });
+    for (const c of res.contacts ?? []) {
+      if (sent >= OFFER_NUDGES_PER_RUN) break;
+      try {
+        if (await offerFollowUp(c.id, tag, env)) sent++;
+      } catch (e) {
+        console.error("offer follow-up failed", c.id, e);
+      }
+    }
+  }
+  console.log("offer follow-ups sent:", sent);
+}
+
+async function offerFollowUp(contactId: string, tag: string, env: Env): Promise<boolean> {
+  const contact = (await ghl(env, `/contacts/${contactId}`)).contact ?? {};
+  const tags: string[] = (contact.tags ?? []).map((t: string) => t.toLowerCase());
+  const done = () => ghl(env, `/contacts/${contactId}/tags`, "DELETE", { tags: [tag] });
+  if (["bot-off", "dnd-skipped", OPTED_OUT_TAG].some((t) => tags.includes(t)) || contact.dnd ||
+      contact.dndSettings?.SMS?.status === "active") { await done(); return false; }
+  const thread = await smsThread(contactId, env);
+  let i = thread.length - 1;
+  while (i >= 0 && !(thread[i].direction === "outbound" && OFFER_RE.test(thread[i].body))) i--;
+  if (i < 0) { await done(); return false; }
+  const after = thread.slice(i + 1);
+  if (after.some((m) => m.direction === "inbound")) { await done(); return false; } // they answered: Zack's turn
+  const nudges = after.length;
+  if (nudges >= 2) { await done(); return false; }
+  const quietFor = Date.now() - Date.parse(thread[thread.length - 1].at);
+  if (quietFor < (nudges === 0 ? 22 : 48) * 3600_000) return false;
+  const first = (contact.firstName || "").trim().split(/\s+/)[0] || "there";
+  const addr = (thread[i].body.match(/offer on:?\s*([^\n]+)/i)?.[1] || "").replace(/,?\s*[A-Z]{2}\s*\d{5}.*$/, "").trim();
+  const text = nudges === 0
+    ? `Hi ${first}, just following up on my offer${addr ? ` on ${addr}` : ""}. Has the seller had a chance to look at it?`
+    : `Hi ${first}, checking back on ${addr || "my offer"}. Is the seller open to it, or is there a number that would get it done?`;
+  if (env.DRY_RUN === "true") {
+    await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `SMS bot (test mode, not sent) offer follow-up: ${text}` });
+  } else await sendSms(contactId, text, thread, contact, env);
+  if (nudges === 1) await done();
+  return true;
 }
 
 /** YYYY-MM-DD in Central time, `days` from now. */
@@ -305,7 +380,7 @@ function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: 
   const link = `https://app.gohighlevel.com/v2/location/${env.GHL_LOCATION_ID}/contacts/detail/${contactId}`;
   // Blank lines between sections so it's easy to scan in Slack.
   return [
-    `${qualified ? "🏠 *New qualified lead*" : "🔥 *Agent wants you on this one*"}\n*${v("address")}*${listingLink(lead?.listing_url)}`,
+    `${qualified ? "🏠 *New qualified lead*" : "🔥 *Agent wants you on this one*"}\n*${v("address")}*${listingLink(lead?.listing_url, lead?.address)}`,
     `💰 *Asking:* ${v("asking_price")}\n📊 *Zestimate:* ${v("zestimate")} (asking is ${v("percent_of_zestimate")})\n📍 *Status:* ${v("market_status")}`,
     `🔧 *Condition:* ${v("condition")}\n🏡 *Property:* ${v("beds_baths_sqft")} · built ${v("year_built")} · ${v("occupancy")}`,
     `🙋 *Seller:* ${v("motivation")}\n⏱️ *Timeline:* ${v("timeline")}`,
@@ -318,11 +393,19 @@ function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: 
 }
 
 /** " · <url|View on Zillow>" for a real http(s) link, else nothing. */
-function listingLink(url?: string): string {
+/** Clickable listing link on its own line under the address (Zack 2026-10-20: always Zillow when
+ *  possible). With no Zillow URL, links a Zillow search for the address, which opens the home page. */
+function listingLink(url?: string, address?: string): string {
   const u = (url || "").trim();
-  if (!/^https?:\/\/[^\s<>|]+$/i.test(u)) return "";
-  const site = /zillow\./i.test(u) ? "Zillow" : /realtor\.com/i.test(u) ? "Realtor.com" : /redfin\./i.test(u) ? "Redfin" : "listing";
-  return ` · <${u}|View on ${site}>`;
+  const ok = /^https?:\/\/[^\s<>|]+$/i.test(u);
+  if (ok && /zillow\./i.test(u)) return `\n🔗 <${u}|Click here to view on Zillow>`;
+  const a = (address || "").trim();
+  const zillow = a && !/^unknown/i.test(a)
+    ? `\n🔗 <https://www.zillow.com/homes/${encodeURIComponent(a.replace(/[,#]/g, " ").replace(/\s+/g, "-"))}_rb/|Click here to view on Zillow>`
+    : "";
+  if (!ok) return zillow;
+  const site = /realtor\.com/i.test(u) ? "Realtor.com" : /redfin\./i.test(u) ? "Redfin" : "the listing";
+  return zillow + `\n🔗 <${u}|View on ${site}>`;
 }
 
 type Decision = {

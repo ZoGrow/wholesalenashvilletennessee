@@ -1,11 +1,116 @@
 {
- "actor": "epctex/zillow-scraper",
+ "actor": "store-search",
  "input": {
-  "startUrls": [
-   "https://www.zillow.com/homedetails/3569-Russelwood-Dr-Memphis-TN-38128/64653874_zpid/"
-  ],
-  "maxItems": 1
+  "q": "zillow zestimate"
  },
- "error": "HTTP 404",
- "body": "{\n  \"error\": {\n    \"type\": \"record-not-found\",\n    \"message\": \"Actor with this name was not found\"\n  }\n}"
+ "results": [
+  {
+   "id": "sian.agency/zillow-value-history-scraper",
+   "title": "Zillow Zestimate History API \u2014 Home Value & Tax Records",
+   "users": 25,
+   "desc": "Zestimate history API \u2014 track a home's full value history: Zestimate and rent Zestimate history, listing price, % change, plus tax-assessment and tax-paid recor"
+  },
+  {
+   "id": "titan_coder/zillow-price-watch",
+   "title": "Zillow Price & Zestimate Watch",
+   "users": 2,
+   "desc": "Zillow scrapers snapshot a listing and forget it, so you rebuild the history yourself. This one remembers the last confirmed price, Zestimate and status per lis"
+  },
+  {
+   "id": "clearfetch/zillow-scraper",
+   "title": "Zillow Scraper - Homes for Sale, Rent & Sold, No Browser",
+   "users": 1,
+   "desc": "Scrape Zillow listings without a browser: price, address, beds, baths, area, home type, days on Zillow, Zestimate, tax value and broker, for sale, for rent or s"
+  },
+  {
+   "id": "webdatatools/zillow-scraper",
+   "title": "Zillow Scraper (Homes for Sale, Rent & Sold, Zestimates)",
+   "users": 3,
+   "desc": "Scrape Zillow search results for any city, ZIP or map search: price, address, coordinates, beds, baths, square feet, lot size, home type, days on Zillow, Zestim"
+  },
+  {
+   "id": "trakk/zillow-scraper",
+   "title": "Zillow Scraper API - Listings, Zestimate, Agents & Cash Flow",
+   "users": 175,
+   "desc": "Extract Zillow listings, full property details, agent contacts, photos and price history. Compare Zestimate ranges, model rental cash flow and test lower-rent o"
+  },
+  {
+   "id": "keklik/zillow-property-listings-scraper",
+   "title": "Zillow Property Listings Scraper",
+   "users": 2,
+   "desc": "Zillow scraper: export listings from any Zillow search or listing URL. Get price, address, beds, baths, size, photos, Zestimate, and optionally agent phone, MLS"
+  },
+  {
+   "id": "nexgendata/zillow-scraper",
+   "title": "Zillow Scraper \u2014 Zillow Listings, Prices & Zestimates",
+   "users": 4,
+   "desc": "Zillow scraper for Zillow listings: US homes from search URLs or ZIP codes with price, beds, baths, square feet and Zestimates. Market data for real estate rese"
+  },
+  {
+   "id": "topapi/zillow-scraper",
+   "title": "Zillow Scraper - Listings, Zestimate, Sold & Price History",
+   "users": 3,
+   "desc": "Scrape Zillow listings by city, ZIP, map area or search URL (for sale, for rent, sold) for $0.85 per 1,000: price, Zestimate, beds, baths, sqft, photos. Optiona"
+  },
+  {
+   "id": "scrape.badger/zillow-scraper",
+   "title": "Zillow Scraper \u2014 Listings, Zestimates & Agents",
+   "users": 2,
+   "desc": "Scrape Zillow for-sale, for-rent and sold listings: search any location or map box with price, bed, bath, home-type, size, year and HOA filters. Full property d"
+  },
+  {
+   "id": "crowdpull/zillow-listings-scraper",
+   "title": "Zillow Listings Scraper -- No Login Required",
+   "users": 10,
+   "desc": "Extract Zillow property listings, Zestimates, price labels, and optional detail data. No login or cookies needed. Supports city/ZIP search, Zillow URL mode, and"
+  },
+  {
+   "id": "studioxl/zillow-detail-scraper",
+   "title": "Zillow Property Detail Scraper",
+   "users": 15,
+   "desc": "60 fields per Zillow property page, each with the measured number for how often it actually shows up. Paste a listing URL, street address, or Zillow ID. Price, "
+  },
+  {
+   "id": "sian.agency/zillow-property-scraper",
+   "title": "Zillow API + Market KPIs (Bridge Interactive Alternative)",
+   "users": 19,
+   "desc": "Zillow scraper and US real estate data API. Search by URL, address, MLS ID, polygon, coordinates, map bounds or off-market ZIP; return price, Zestimate, rent Ze"
+  },
+  {
+   "id": "thenetaji/zillow-property-scraper",
+   "title": "Zillow Property Scraper \u2014 Agent Details & Price History",
+   "users": 1,
+   "desc": "Look up any Zillow home by property ID or link. Take the whole record, including the listing agent's name, email and phone number, the Zestimate, the taxes, the"
+  },
+  {
+   "id": "zapticx/zillow-market-intelligence",
+   "title": "Zillow Listings Scraper & Price Intelligence",
+   "users": 1,
+   "desc": "Scrape current Zillow for-sale listings and compare price per sqft, Zestimate delta, and days on market against transparent active-listing comparables."
+  },
+  {
+   "id": "x_guru/zillow-property-details-scraper",
+   "title": "Zillow Property Details Scraper | from $0.80/1K | CSV",
+   "users": 1,
+   "desc": "Get Zillow property details from URLs, ZPIDs or full addresses: prices, Zestimate, photo URLs, histories and available listing contacts. Export CSV/JSON. Paid p"
+  },
+  {
+   "id": "afanasenko/zillow-property-agent-data-scraper",
+   "title": "Zillow Details Scraper \u2014 Property & Agent Data, Zestimate",
+   "users": 788,
+   "desc": "Scrape Zillow property listings and agent contacts \u2014 emails, phones, price history, Zestimate and 70+ fields. This Zillow scraper filters for FSBO, foreclosures"
+  },
+  {
+   "id": "stackrelay/zillow-scraper-pro",
+   "title": "Zillow Scraper Pro",
+   "users": 19,
+   "desc": "Scrape Zillow property listings and deep details by ZIP code or URL. Returns address, price, beds, baths, sqft, Zestimate, price history, tax records, school ra"
+  },
+  {
+   "id": "titan_coder/stealth-browser-gateway",
+   "title": "Stealth Anti-Detect Browser Gateway",
+   "users": 10,
+   "desc": "Headless Chrome gets blocked by Cloudflare, DataDome, PerimeterX, TikTok and Meta within seconds, and captcha solvers cost $1.50-$3.00 per 1,000 requests. This "
+  }
+ ]
 }

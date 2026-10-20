@@ -1,29 +1,29 @@
 {
  "mode": "send",
  "tagged": 1594,
- "eligible": 785,
+ "eligible": 450,
  "skipped": {
-  "dnd": 39,
-  "tag agent-replied": 37,
-  "tag opted-out": 26,
+  "dnd": 41,
+  "tag agent-replied": 57,
+  "tag opted-out": 35,
+  "they replied": 160,
   "bad number (Error 30003 - Number)": 1,
   "tag not-qualified": 2,
   "tag hot-lead": 2,
-  "they replied": 152,
   "tag dnd-skipped": 1
  },
  "errors": {
-  "Your account has reached today's opt-out/error limit. Please review your messages and try ": 785,
+  "Your account has reached today's opt-out/error limit. Please review your messages and try ": 450,
   "RESEND: Error 30003 - Number unreachable or out of service.": 7,
-  "RESEND: Error 30005 - The recipient's number is inactive or does not exist.": 2,
-  "Error 30003 - Number unreachable or out of service.": 1
+  "Error 30003 - Number unreachable or out of service.": 1,
+  "RESEND: Error 30005 - The recipient's number is inactive or does not exist.": 1
  },
- "sent": 500,
- "delivered": 491,
- "failed_again": 9,
+ "sent": 400,
+ "delivered": 392,
+ "failed_again": 8,
  "kinds": {
-  "follow-up": 589,
-  "first text": 196
+  "first text": 23,
+  "follow-up": 427
  },
  "stopped_early": null
 }

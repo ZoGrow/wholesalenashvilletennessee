@@ -13,6 +13,7 @@ export interface Env {
   WEBHOOK_SECRET: string; // must match ?key= on the webhook URL set in GHL
   BOT_GOAL: string; // plain-English goal, set in wrangler.toml
   SENDER_NAME: string; // the first name the bot signs as
+  SENDER_EMAIL?: string; // given only when an agent would rather email documents than text them
   ARV_PERCENT: string; // max offer = ARV x this % - repairs - fee
   ASSIGNMENT_FEE: string; // our wholesale fee in dollars
   PROPERTY_TYPES: string; // what we buy
@@ -547,6 +548,7 @@ const CHECK_IN_ASK = `Today is {{TODAY}}. The agent hasn't texted since, and it'
 function systemPrompt(env: Env): string {
   return SYSTEM_PROMPT.replaceAll("{{GOAL}}", env.BOT_GOAL)
     .replaceAll("{{NAME}}", env.SENDER_NAME)
+    .replaceAll("{{EMAIL}}", env.SENDER_EMAIL || "(no email on file: ask them to text it)")
     .replaceAll("{{ARV_PERCENT}}", env.ARV_PERCENT)
     .replaceAll("{{FEE}}", Number(env.ASSIGNMENT_FEE).toLocaleString("en-US"))
     .replaceAll("{{PROPERTY_TYPES}}", env.PROPERTY_TYPES)

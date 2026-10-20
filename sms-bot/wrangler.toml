@@ -9,6 +9,7 @@ crons = ["30 15-22 * * *", "*/3 * * * *", "5 14-23 * * *"] # check-ins (daily, h
 
 [vars]
 SENDER_NAME = "Zack"
+SENDER_EMAIL = "zackyolabi@gmail.com" # for documents only, never offers (Zack 2026-10-20)
 BOT_GOAL = "When an agent sends a listing or an address, look it up online, find out what the seller is asking, why they are selling, timeline and condition. Hand Zack off-market leads asking under the Zestimate, or listed ones at a big discount, once the seller is vetted."
 ARV_PERCENT = "70"
 ASSIGNMENT_FEE = "10000"

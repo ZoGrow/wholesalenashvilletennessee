@@ -1,170 +1,688 @@
 {
  "matches": [
   {
-   "id": "bk78jO",
-   "name": "david lorrison",
-   "city": "Memphis",
+   "id": "HABDPH",
+   "name": "danielle adkins",
+   "city": "Cordova",
    "state": "TN",
    "tags": [
     "apify-daily-lead",
-    "agent-replied"
+    "agent-replied",
+    "not-qualified",
+    "hot-lead"
    ],
    "dnd": null,
    "dndSettings": null,
    "messages": [
     {
-     "id": "uCobmSVcb22zFlYTdfIG",
+     "id": "RG7Yu90Re434cuaGywLQ",
      "direction": "inbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "It",
+     "body": "You don't mind listed? Or off market?",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-20T20:49:10.697Z",
-     "dateUpdated": "2026-10-20T20:49:10.697Z",
-     "altId": "SMb2bed1e470ba9d3f95b9ed0ffea07131",
-     "from": "+19014848663",
+     "dateAdded": "2026-10-20T22:24:27.446Z",
+     "dateUpdated": "2026-10-20T22:24:27.446Z",
+     "altId": "SM09d315828d3d800329876c9ad7754ba3",
+     "from": "+19016613443",
      "to": "+18323451435",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "EcARdwmh6fpr0BRYcaCd",
+     "id": "LYsFA1dx1xocb2I1jCgN",
      "direction": "inbound",
      "status": "delivered",
-     "type": 2,
+     "type": 45,
      "attachments": [],
-     "body": "She listed to high",
+     "body": "Liked \u201cThanks Danielle. Since you're also bringing assignment deals, I'm going to pass on this batch, including Driver St. If you ever list a house directly for a seller who needs a quick sale, feel free to send it my way.\u201d",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-20T20:49:07.672Z",
-     "dateUpdated": "2026-10-20T20:49:07.672Z",
-     "altId": "SM577b0daaea5ff0bf51b66fb657c6e3e6",
-     "from": "+19014848663",
+     "dateAdded": "2026-10-20T22:24:18.066Z",
+     "dateUpdated": "2026-10-20T22:24:18.066Z",
+     "altId": "SM1b7f5245476c88e429627263bb9bf68e",
+     "from": "+19016613443",
      "to": "+18323451435",
-     "messageType": "TYPE_SMS"
+     "messageType": "TYPE_SMS_REACTION"
     },
     {
-     "id": "iMjCgfDowEf7wg3nDue0",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Close asap",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-20T20:48:58.041Z",
-     "dateUpdated": "2026-10-20T20:48:58.041Z",
-     "altId": "SM6c00225adfc8b1bcc09a627b8266916f",
-     "from": "+19014848663",
-     "to": "+18323451435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "GA14SXT9nVoaCB0mxCfa",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "What's your email will send appraisal",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-20T20:48:47.477Z",
-     "dateUpdated": "2026-10-20T20:48:47.477Z",
-     "altId": "SMf95c27857beec01616bf1245af288c42",
-     "from": "+19014848663",
-     "to": "+18323451435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "fCaLUY5EPRCjW7W0NjQg",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Surrounded by new construction pushing 500k",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-20T20:46:52.211Z",
-     "dateUpdated": "2026-10-20T20:46:52.211Z",
-     "altId": "SM386d4618b16d64b6aaf83868060810f0",
-     "from": "+19014848663",
-     "to": "+18323451435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "RM6B1FhBlyChnnbWBSNW",
+     "id": "OoqklSlkyNoqUmzL0NCt",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Sounds like a great spot, and dated but kept up works fine for me. Since she's out on the road I'm guessing it's sitting empty. How soon is she hoping to close?",
+     "body": "How's the condition of the property In terms of work needed to be done?",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-20T20:46:51.917Z",
-     "dateUpdated": "2026-10-20T20:47:00.195Z",
+     "dateAdded": "2026-10-20T22:24:11.979Z",
+     "dateUpdated": "2026-10-20T22:24:16.878Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
      "source": "app",
-     "altId": "SM26e3d895159a03f118a1b3d00b6b2c3a",
+     "altId": "SM00b0bd486bafe7112cfda33ede1ed12b",
      "from": "+18323451435",
-     "to": "+19014848663",
+     "to": "+19016613443",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "52PvohAkH62IflVTX8ar",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Widow living the dream in her new airstream Winnebago traveling. It has a pool ext good school district huge corner lot it's just not fashionable updates very Cracker Barrel but kept up",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-20T20:46:23.729Z",
-     "dateUpdated": "2026-10-20T20:46:23.729Z",
-     "altId": "SMc3b2e836905ba41ed3f85b88d08ada0c",
-     "from": "+19014848663",
-     "to": "+18323451435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "W4jVfQ282n1Rs0jEF7dR",
+     "id": "8tmvHSiMRKdYKYiOCjXC",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Thanks David. Looks like a 4/3, about 3,150 sqft, built 1960. If they'd take around 265k there must be a reason. What shape is it in, and why are they selling?",
+     "body": "Thanks Danielle. Since you're also bringing assignment deals, I'm going to pass on this batch, including Driver St. If you ever list a house directly for a seller who needs a quick sale, feel free to send it my way.",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-20T20:44:45.695Z",
-     "dateUpdated": "2026-10-20T20:44:51.873Z",
+     "dateAdded": "2026-10-20T22:23:53.746Z",
+     "dateUpdated": "2026-10-20T22:23:59.325Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
      "source": "app",
-     "altId": "SM8d2e43c5ec472205f72d960b356adf5a",
+     "altId": "SM892353a46d121735e2474bd8b432968f",
      "from": "+18323451435",
-     "to": "+19014848663",
+     "to": "+19016613443",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "wxtKaU51syeT9ixDJQyP",
+     "id": "5DCOVNOWZM3s9mlxKneA",
      "direction": "inbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "I had this appraised last year 450k can sell I think 265k",
+     "body": "959 Driver",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-20T20:44:24.570Z",
-     "dateUpdated": "2026-10-20T20:44:24.570Z",
-     "altId": "SMff2f706b416e40a9fb055283bd2e8bc5",
-     "from": "+19014848663",
+     "dateAdded": "2026-10-20T22:23:33.386Z",
+     "dateUpdated": "2026-10-20T22:23:33.386Z",
+     "altId": "SM951825e7b8b4f44f3b259836c7ff38e4",
+     "from": "+19016613443",
      "to": "+18323451435",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "3mYhK0lkiCq8m7b9dWwl",
+     "id": "KqMCPzfBmIpL3oWjtj6u",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Which ones are through sellers?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-20T22:22:19.723Z",
+     "dateUpdated": "2026-10-20T22:22:23.161Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SM09b6c55ff69b6da25a7f7834480f2ad1",
+     "from": "+18323451435",
+     "to": "+19016613443",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "8fbg65rZqGqhU2flCOuF",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Appreciate you being upfront, Danielle. I only buy direct from sellers through their agent, not assignments or wholesale deals, so I'll pass on these. Thanks for thinking of me.",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-20T22:21:29.969Z",
+     "dateUpdated": "2026-10-20T22:21:36.320Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SM4c2c46100158654b718ea907e4696c8b",
+     "from": "+18323451435",
+     "to": "+19016613443",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "TLdBC4T8RNvN76ps5zjB",
      "direction": "inbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "https://www.realtor.com/realestateandhomes-detail/7524-3rd-Rd_Bartlett_TN_38135_M84432-00758",
+     "body": "One is assignment.... the other is sellers.... I work with the title company to close",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-20T20:44:24.527Z",
-     "dateUpdated": "2026-10-20T20:44:24.527Z",
-     "altId": "SMc8229030ddcd371a9f36b16320b8c0a1",
-     "from": "+19014848663",
+     "dateAdded": "2026-10-20T22:21:09.468Z",
+     "dateUpdated": "2026-10-20T22:21:09.468Z",
+     "altId": "SM95f20b06028a86922dad8e6f42cbc5f9",
+     "from": "+19016613443",
      "to": "+18323451435",
      "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "Pn7slfvxAOSBSy6yDkkf",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Appreciate you sending these, Danielle. Are you the listing agent working with these sellers directly, or are they under contract with someone else? I only buy direct from sellers through their agent, not assignments or wholesale deals.",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-20T22:20:27.852Z",
+     "dateUpdated": "2026-10-20T22:20:31.531Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SMc400d970d1bf29c4c578aa74d92dd0d6",
+     "from": "+18323451435",
+     "to": "+19016613443",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "VRuuqVDizX1TizVNXysa",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "https://www.dropbox.com/scl/fo/buicw1mb3hwesehlpnj2p/AOZpmbbeMUwDtasntjgBmaQ?rlkey=3rn5yp2mpvg0za079ahi1uz9m&st=rw54plkg&dl=0",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-20T22:20:06.968Z",
+     "dateUpdated": "2026-10-20T22:20:06.968Z",
+     "altId": "SMf416f59cc8541c57896a4d0c71118908",
+     "from": "+19016613443",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": [
+    {
+     "at": "2026-10-20T22:24:47.992Z",
+     "body": "\ud83d\udd25 Agent wants you on this one\n959 Driver St, Memphis, TN 38126\n\ud83d\udd17 <https://www.zillow.com/homes/959-Driver-St-Memphis-TN-38126rb/|Click here to view on Zillow>\n\n\ud83d\udcb0 Asking: $40,000\n\ud83d\udcca Zestimate: unknown (asking is unknown)\n\ud83d\udccd Status: unknown\n\n\ud83d\udd27 Condition: unknown\n\ud83c\udfe1 Property: 4/2, 1,425 sqft \u00b7 built unknown \u00b7 unknown\n\n\ud83d\ude4b Seller: unknown\n\u23f1\ufe0f Timeline: unknown\n\n\ud83e\uddee Rough numbers\nARV: unknown\nRepairs: unknown\nMax offer: unknown\n\n\ud83e\udd1d Make the offer\nOpen at: unknown\nWhat to say: unknown\n\n\ud83d\udc64 Agent: Danielle Adkins \u00b7 Harris Realty Services \u00b7 +19016613443\n\n\ud83d\udcdd What's going on: Danielle says the seller on Driver St is direct, but she also sends assignment deals. You've been texting her about it yourself.\n\n<https://app.gohighlevel.com/v2/location/nvnsI7VgLrDYA5JeQ945/contacts/detail/2BNTwhPfkdNZ67HABDPH|Open in GHL>"
+    },
+    {
+     "at": "2026-10-20T22:24:47.860Z",
+     "body": "SMS bot handoff: Handing back to you, Zack. Someone has been texting from this thread by hand: the auto-replies passed on the whole batch because Danielle brings assignment deals, but then texts went out asking about the 959 Driver St condition. She says Driver St (4/2, 1,425 sqft, asking $40k) comes direct from the seller. She's now asking if listed or off-market matters. I haven't looked up a Zestimate or condition yet. Cracklerose and Willinghurst are wholesale/assignment deals with ARVs quoted, so pass on those."
+    },
+    {
+     "at": "2026-10-20T22:24:00.606Z",
+     "body": "SMS bot, did not qualify: NOT QUALIFIED: The agent sent a wholesale-style deal sheet with ARV and comps, and said one of the houses is an assignment. She says 959 Driver St is direct from the seller, but she works with wholesale deals, so I passed on all of them."
+    },
+    {
+     "at": "2026-10-20T22:21:37.730Z",
+     "body": "SMS bot, did not qualify: NOT QUALIFIED: Passed because these are wholesale deals. Danielle sent 3 properties (2754 Cracklerose Dr Memphis, asking $95k; 2425 Willinghurst Dr Germantown, asking $377k; 959 Driver St Memphis, asking $40k) as a deal-sheet blast with her own ARVs and comps. She confirmed at least one is an assignment and said she works with the title company to close, so she's working with wholesalers."
+    }
+   ]
+  },
+  {
+   "id": "qAWjZC",
+   "name": "danielle clement",
+   "city": "Franklin",
+   "state": "TN",
+   "tags": [
+    "apify-daily-lead"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "pZne2fmzPZA1EAyaCQMZ",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "I don't have anything, but there are plenty of as is properties on the market right now",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-13T16:49:32.348Z",
+     "dateUpdated": "2026-10-13T16:49:32.348Z",
+     "altId": "SMa12af557700f9a9b926407b2590c3ef5",
+     "from": "+16156135579",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "WDGLnkygPss7VAjIV263",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Danielle, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-13T15:56:16.112Z",
+     "dateUpdated": "2026-10-13T15:57:05.974Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM0af2447b06066285cca85d6af63f93c9",
+     "from": "+18323451435",
+     "to": "+16156135579",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "Nfo74e",
+   "name": "danielle baylis",
+   "city": "Nashville",
+   "state": null,
+   "tags": [
+    "apify-daily-lead"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "Y4Dckp7gvT6ZLFECDuOO",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hi no I'm sorry",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-09T18:55:04.848Z",
+     "dateUpdated": "2026-10-09T18:55:04.848Z",
+     "altId": "SM506f735d971e1b3ace492a8f629d41dd",
+     "from": "+16159698758",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "um6XX18S6SiaNss7zHel",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-09T18:53:11.837Z",
+     "dateUpdated": "2026-10-09T18:54:44.299Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SMc2fc2a1169912d57c3399aed4c973c73",
+     "from": "+18323451435",
+     "to": "+16159698758",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "lg2UXxDEB3WyWY92pEKW",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Danielle, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-09T15:53:09.267Z",
+     "dateUpdated": "2026-10-09T15:56:13.869Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM819e1f5c9be45e1daf4007de87b9f578",
+     "from": "+18323451435",
+     "to": "+16159698758",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "ATu0kz",
+   "name": "danielle beasley",
+   "city": "Hendersonville",
+   "state": "TN",
+   "tags": [
+    "apify-daily-lead"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "U9xWGcGeo7FBt6moxYe8",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-09T18:52:33.827Z",
+     "dateUpdated": "2026-10-09T18:52:38.786Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM34ced4e7572ebbea4e0811f49ae639eb",
+     "from": "+18323451435",
+     "to": "+16154159679",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "9QgGO5dBjfwZSFv1nAMq",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Danielle, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-09T15:52:32.477Z",
+     "dateUpdated": "2026-10-09T15:54:14.415Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM1b07f3dc66b6a1b0afad33640dbdee61",
+     "from": "+18323451435",
+     "to": "+16154159679",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "VMyMR2",
+   "name": "danielle huggins",
+   "city": "Augusta",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "AnkOcb1aZ1I7UmbW94TM",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-03T22:24:00.519Z",
+     "dateUpdated": "2026-10-03T22:24:08.164Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM5818ee644aff3a2c6c1fc7ffa5885002",
+     "from": "+18323451435",
+     "to": "+17068401142",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "gMTpjo3WjplsQdzOyePh",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Danielle, my name is Zack. I am in an investor here in Augusta looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-03T19:23:58.954Z",
+     "dateUpdated": "2026-10-03T19:24:04.209Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SMc78da7f931ccf0580b89ae2989490ee8",
+     "from": "+18323451435",
+     "to": "+17068401142",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "IQyVL2",
+   "name": "danielle meikrantz",
+   "city": "Augusta",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "88cR77yn8k38DvhRLVB1",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-03T22:22:18.604Z",
+     "dateUpdated": "2026-10-03T22:22:22.354Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM7a227eaccbd5ceb561a4f5f4452d62fa",
+     "from": "+18323451435",
+     "to": "+17062848359",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "4A6U4yFTjPu84owVYjOY",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Danielle, my name is Zack. I am in an investor here in Augusta looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-03T19:22:16.838Z",
+     "dateUpdated": "2026-10-03T19:23:33.729Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SMdb03f826f1ecce773edda661d6d98cf7",
+     "from": "+18323451435",
+     "to": "+17062848359",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "uiOMJV",
+   "name": "danielle fazi",
+   "city": "Pittsburgh",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
+   "dndSettings": {
+    "SMS": {
+     "status": "active",
+     "message": "TWILIO_ERROR_CODE: 30006"
+    }
+   },
+   "messages": [
+    {
+     "id": "KUlFTwJ9t57viwh0ufCC",
+     "direction": "inbound",
+     "type": 25,
+     "body": "DnD enabled by customer",
+     "dateAdded": "2026-10-01T18:14:19.432Z",
+     "dateUpdated": "2026-10-01T18:14:19.432Z",
+     "from": "+14126259010",
+     "to": "Lucia - Outreach 1",
+     "activity": {
+      "data": {
+       "channel": [
+        "SMS"
+       ]
+      },
+      "title": "DND enabled by customer",
+      "type": "contact_dnd_enabled"
+     },
+     "messageType": "TYPE_ACTIVITY_CONTACT"
+    },
+    {
+     "id": "mk5Ql0LysYys2fldnYnj",
+     "direction": "outbound",
+     "status": "failed",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Danielle, my name is Zack. I am in an investor here in Pittsburgh looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-01T18:14:17.796Z",
+     "dateUpdated": "2026-10-01T18:14:17.796Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "from": "+18323451435",
+     "to": "+14126259010",
+     "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
+     "messageType": "TYPE_SMS",
+     "detail": "HTTP Error 401: Unauthorized"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "v4hWJ7",
+   "name": "danielle bess",
+   "city": "Houston",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "9a3r8ZyfgVYs14CNuJ5X",
+     "direction": "outbound",
+     "status": "failed",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-28T21:59:27.930Z",
+     "dateUpdated": "2026-09-28T21:59:27.931Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "from": "+18323451435",
+     "to": "+12814145726",
+     "error": "Your account has reached today's opt-out/error limit. Please review your messages and try again after 2026-09-29 15:36:25 America/Mexico_City.",
+     "messageType": "TYPE_SMS",
+     "detail": "HTTP Error 401: Unauthorized"
+    },
+    {
+     "id": "Y8g47OzjloTa95oFtJnG",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Danielle, my name is Zack. I am in an investor here in Houston looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-28T18:59:26.568Z",
+     "dateUpdated": "2026-09-28T18:59:32.428Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM8dcd0056c991fc6deebddd33ba49e8ca",
+     "from": "+18323451435",
+     "to": "+12814145726",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "2d1xwg",
+   "name": "danielle pelton",
+   "city": "Montgomery",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
+   "dndSettings": {
+    "SMS": {
+     "status": "permanent",
+     "message": "STOP_KEYWORD"
+    },
+    "RCS": {
+     "status": "permanent",
+     "message": "STOP_KEYWORD"
+    }
+   },
+   "messages": [
+    {
+     "id": "HRfdhn5GWo3zR2Ypkame",
+     "direction": "inbound",
+     "type": 25,
+     "body": "DnD enabled by customer",
+     "dateAdded": "2026-09-28T18:50:34.321Z",
+     "dateUpdated": "2026-09-28T18:50:34.321Z",
+     "from": "+18329285414",
+     "to": "Lucia - Outreach 1",
+     "activity": {
+      "data": {
+       "channel": [
+        "RCS",
+        "SMS"
+       ]
+      },
+      "title": "DND enabled by customer",
+      "type": "contact_dnd_enabled"
+     },
+     "messageType": "TYPE_ACTIVITY_CONTACT"
+    },
+    {
+     "id": "SUYV4YEynU3xhquZ46lE",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "STOP",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-28T18:50:33.230Z",
+     "dateUpdated": "2026-09-28T18:50:33.230Z",
+     "altId": "SMadb50ae0c58f78b826513878514fc8df",
+     "from": "+18329285414",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "gxjAKsGcPUy908iqSC9x",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Danielle, my name is Zack. I am in an investor here in Houston looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-28T18:47:24.259Z",
+     "dateUpdated": "2026-09-28T18:47:29.417Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SMe73e2a7753abd3aaa2914af597fc5518",
+     "from": "+18323451435",
+     "to": "+18329285414",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "tzJGyx",
+   "name": "danielle moss",
+   "city": "Katy",
+   "state": null,
+   "tags": [
+    "zack"
+   ],
+   "dnd": null,
+   "dndSettings": {
+    "SMS": {
+     "status": "active",
+     "message": "TWILIO_ERROR_CODE: 30005"
+    }
+   },
+   "messages": [
+    {
+     "id": "oOagxUaXtxxOe4eAs3El",
+     "direction": "inbound",
+     "type": 25,
+     "body": "DnD enabled by customer",
+     "dateAdded": "2026-09-26T17:11:04.876Z",
+     "dateUpdated": "2026-09-26T17:11:04.876Z",
+     "from": "+12818152897",
+     "to": "Lucia - Outreach 1",
+     "activity": {
+      "data": {
+       "channel": [
+        "SMS"
+       ]
+      },
+      "title": "DND enabled by customer",
+      "type": "contact_dnd_enabled"
+     },
+     "messageType": "TYPE_ACTIVITY_CONTACT"
+    },
+    {
+     "id": "gihVgnRTVcH3n0XMPZtF",
+     "direction": "outbound",
+     "status": "undelivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Danielle, my name is Zack. I am in an investor here in Houston looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-09-26T17:10:59.772Z",
+     "dateUpdated": "2026-09-26T17:11:04.625Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SMb885d2e34df0b886c6e6cd1f13fee97b",
+     "from": "+18323451435",
+     "to": "+12818152897",
+     "error": "Error 30005 - The recipient's number is inactive or does not exist.",
+     "messageType": "TYPE_SMS",
+     "detail": "HTTP Error 401: Unauthorized"
     }
    ],
    "notes": []

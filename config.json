@@ -1,6 +1,6 @@
 {
-  "daily_clean_leads": 500,
-  "scrape_multiplier": 1.6,
+  "daily_clean_leads": 1000,
+  "scrape_multiplier": 1.5,
   "max_scrape_ratio": 3,
   "max_scrape_rounds": 1,
   "min_topup_scrape": 10,
@@ -14,7 +14,7 @@
       "agentType": "both"
     },
     "max_wait_minutes": 60,
-    "max_cost_usd": 3,
+    "max_cost_usd": 3.5,
     "zip_rotation": {
       "_note": "Each run scrapes the next 3 ZIPs not scraped in rescrape_after_days. Order: Nashville, Middle TN, Memphis/Knoxville/Chattanooga, then big metros nationwide. Never add ZIPs in PA, SC, IA, KY, NE, ND, OR, CT or VA (Zack, 2026-10-13).",
       "per_round": 3,

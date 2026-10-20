@@ -669,9 +669,9 @@ def write_summary(target, scraped, cap, sent, removed, test=False):
                     target, scraped, len(sent), leftover] + [tally.get(r, 0) for r in REASONS])
 
     hook = os.environ.get("SLACK_WEBHOOK_URL")
-    if hook and not test:  # so Zack sees every run without asking
+    if hook and (not test or len(sent) >= 20):  # so Zack sees every run without asking
         top = ", ".join(f"{v} {k}" for k, v in sorted(tally.items(), key=lambda kv: -kv[1])[:4])
-        text = (f"📤 *Daily outreach done:* {len(sent)} texts sent to new agents\n"
+        text = (f"📤 *{'Top-up run' if test else 'Daily outreach'} done:* {len(sent)} texts sent to new agents\n"
                 f"🔎 Scraped {scraped} agents (target {target})" + (f"\n🚫 Skipped: {top}" if top else ""))
         try:
             req = urllib.request.Request(hook, data=json.dumps({"text": text}).encode(),

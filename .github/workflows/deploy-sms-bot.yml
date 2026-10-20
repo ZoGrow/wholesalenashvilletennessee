@@ -28,12 +28,14 @@ jobs:
             GHL_LOCATION_ID
             WEBHOOK_SECRET
             SLACK_WEBHOOK_URL
+            APIFY_TOKEN
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
           GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
           WEBHOOK_SECRET: ${{ secrets.SMS_BOT_WEBHOOK_SECRET }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }} # Zillow lookups (Zestimate + listing link)
       - name: Show the webhook URL
         run: |
           echo "### SMS bot is deployed" >> "$GITHUB_STEP_SUMMARY"

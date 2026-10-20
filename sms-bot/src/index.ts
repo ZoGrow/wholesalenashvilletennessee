@@ -7,6 +7,7 @@ import { SYSTEM_PROMPT } from "./prompt";
 export interface Env {
   ANTHROPIC_API_KEY: string;
   SLACK_WEBHOOK_URL?: string; // optional: qualified leads are posted to this Slack channel
+  APIFY_TOKEN?: string; // Zillow lookups through Apify (exact Zestimate + Zillow link)
   GHL_TOKEN: string;
   GHL_LOCATION_ID: string;
   WEBHOOK_SECRET: string; // must match ?key= on the webhook URL set in GHL
@@ -491,6 +492,7 @@ async function nextReply(
       fallbacks: "default",
       // Lets Claude look up a listing the agent sends (Zillow, Realtor.com, Redfin, ...) and nearby sales for ARV.
       tools: [
+        ...(env.APIFY_TOKEN ? [ZILLOW_TOOL] : []),
         { type: "web_search_20260209", name: "web_search", max_uses: 8, user_location: { type: "approximate", city: contact.city || "Nashville", region: contact.state || "TN", country: "US" } },
         { type: "web_fetch_20260209", name: "web_fetch", max_uses: 5 },
       ],
@@ -498,9 +500,19 @@ async function nextReply(
       system: systemPrompt(env),
       messages,
     });
+    if (response.stop_reason === "tool_use" && turn < 6) {
+      const results: Anthropic.Beta.BetaToolResultBlockParam[] = [];
+      for (const b of response.content) {
+        if (b.type !== "tool_use" || b.name !== "zillow_lookup") continue;
+        const out = await zillowLookup(String((b.input as any)?.address ?? ""), env);
+        results.push({ type: "tool_result", tool_use_id: b.id, content: out });
+      }
+      messages = [...messages, { role: "assistant", content: response.content }, { role: "user", content: results }];
+      continue;
+    }
     // A long lookup can pause; resend with the partial turn and the server picks up where it left off.
-    if (response.stop_reason !== "pause_turn" || turn >= 3) break;
-    messages = [userTurn, { role: "assistant", content: response.content }];
+    if (response.stop_reason !== "pause_turn" || turn >= 6) break;
+    messages = [...messages, { role: "assistant", content: response.content }];
   }
 
   if (response.stop_reason === "refusal") {
@@ -512,6 +524,38 @@ async function nextReply(
   const last = texts[texts.length - 1];
   if (!last) return null;
   return JSON.parse(last.text) as Decision;
+}
+
+const ZILLOW_TOOL: Anthropic.Beta.BetaToolUnion = {
+  name: "zillow_lookup",
+  description: "Look up a US home on Zillow by full street address (street, city, state, ZIP if known). Returns Zillow's exact Zestimate, the Zillow page URL, list price and status, beds/baths/sqft, year built, days on Zillow, last sale and tax value. Use it first for every property address; web search is the fallback.",
+  input_schema: { type: "object", properties: { address: { type: "string" } }, required: ["address"] },
+};
+
+/** Zillow data via Apify (Zillow blocks direct page reads, which is why Zestimates kept coming back unknown). */
+async function zillowLookup(address: string, env: Env): Promise<string> {
+  if (!address.trim()) return "No address given.";
+  try {
+    const res = await fetch(`https://api.apify.com/v2/acts/maxcopell~zillow-detail-scraper/run-sync-get-dataset-items?token=${env.APIFY_TOKEN}&timeout=90`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ addresses: [address], propertyStatus: "FOR_SALE" }),
+    });
+    if (!res.ok) return `Zillow lookup failed (HTTP ${res.status}); use web search instead.`;
+    const it = ((await res.json()) as any[])[0];
+    if (!it || it.isValid === false) return "Not found on Zillow; use web search instead.";
+    const money = (v: any) => (typeof v === "number" ? `$${v.toLocaleString("en-US")}` : v?.amount ? `$${Number(v.amount).toLocaleString("en-US")}` : "unknown");
+    return JSON.stringify({
+      address: it.listingAddress ?? it.addressOrUrlFromInput, zillow_url: it.propertyUrl,
+      zestimate: it.zestimate != null ? money(it.zestimate) : "Zillow shows no Zestimate for this home",
+      status: it.listingStatus, list_price: money(it.listingPrice), price_change: it.priceChange,
+      days_on_zillow: it.daysOnZillow, home_type: it.homeType, beds: it.bedrooms, baths: it.bathrooms,
+      sqft: it.livingArea, year_built: it.yearBuilt, last_sold_price: money(it.lastSoldPrice),
+      tax_assessed_value: money(it.taxAssessedValue), description: String(it.description ?? "").slice(0, 500),
+    });
+  } catch (e) {
+    return `Zillow lookup error (${e}); use web search instead.`;
+  }
 }
 
 const CHECK_IN_ASK = `Today is {{TODAY}}. The agent hasn't texted since, and it's time for the check-in you planned. Write one short, casual follow-up that picks up on what they said (for example "Hey Sarah, checking back on that seller who was thinking about selling. Anything firm up?"). Don't repeat earlier wording or re-introduce yourself. If a check-in no longer makes sense (they said no, or nothing was pending), return an empty reply. Set follow_up_days for one more check-in only if their timing points to a later date; otherwise 0.`;

@@ -50,6 +50,6 @@ json.dump({
     "sample_shapes": [mask(it) for it in items[:2]],
     # property fields (no personal data) kept as-is, for checking Zillow lookups
     "property_values": [{k: it.get(k) for k in ("address", "streetAddress", "zestimate", "price", "homeStatus",
-                         "rentZestimate", "url", "hdpUrl", "livingArea", "yearBuilt") if k in it} for it in items[:3]],
+                         "rentZestimate", "url", "hdpUrl", "livingArea", "yearBuilt", "zpid", "propertyUrl", "taxAssessedValue", "lastSoldPrice") if k in it} for it in items[:3]],
 }, open("stats/actor_test.json", "w"), indent=1)
 print(open("stats/actor_test.json").read()[:3000])

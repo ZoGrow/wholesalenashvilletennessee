@@ -1,13 +1,587 @@
 {
- "actor": "maxcopell/zillow-scraper",
+ "actor": "maxcopell/zillow-detail-scraper",
  "input": {
-  "searchUrls": [
-   {
-    "url": "https://www.zillow.com/homes/3569-Russelwood-Dr-Memphis,-TN_rb/"
-   }
+  "addresses": [
+   "3569 Russelwood Dr, Memphis, TN"
   ],
-  "extractionMethod": "PAGINATION_WITH_ZOOM_IN"
+  "propertyStatus": "FOR_SALE"
  },
- "error": "HTTP 400",
- "body": "{\n  \"error\": {\n    \"type\": \"run-failed\",\n    \"message\": \"Actor run did not succeed (run ID: 7iOYdYlJ3cM8VbpBa, status: FAILED).\"\n  }\n}"
+ "items": 1,
+ "with_any_phone": 0,
+ "phone_labels": {},
+ "fields_filled": {
+  "addressOrUrlFromInput": 1,
+  "zpid": 1,
+  "homeType": 1,
+  "priceChange": 1,
+  "lastSoldPrice": 1,
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "livingArea": 1,
+  "yearBuilt": 1,
+  "daysOnZillow": 1,
+  "pageViewCount": 1,
+  "favoriteCount": 1,
+  "description": 1,
+  "rentZestimate": 1,
+  "propertyTaxRate": 1,
+  "photoCount": 1,
+  "resoFacts": 1,
+  "attributionInfo": 1,
+  "parcelId": 1,
+  "listingPrice": 1,
+  "listingAddress": 1,
+  "coordinates": 1,
+  "listingStatus": 1,
+  "propertyUrl": 1,
+  "listingType": 1,
+  "bathroomsDetail": 1,
+  "lotArea": 1,
+  "pricePerSquareFoot": 1,
+  "taxAssessedValue": 1,
+  "datePosted": 1,
+  "onMarketDate": 1,
+  "priceChangedAt": 1,
+  "taxAnnualAmount": 1,
+  "parking": 1,
+  "agent": 1,
+  "broker": 1,
+  "mls": 1,
+  "mainImage": 1,
+  "propertyFeatures": 1,
+  "atAGlanceFacts": 1,
+  "listingPriceHistory": 1,
+  "listingTaxHistory": 1,
+  "nearbySchools": 1,
+  "nearbyProperties": 1,
+  "listingPhotos": 1,
+  "isValid": 1,
+  "scrapedAt": 1
+ },
+ "sample_shapes": [
+  {
+   "addressOrUrlFromInput": "9999 aaaaaaaaaa aa, aaaaaaa, aa",
+   "zpid": 64653874,
+   "homeType": "aaaaaa_aaaaaa",
+   "priceChange": -9000,
+   "lastSoldPrice": 55000,
+   "bedrooms": 4,
+   "bathrooms": 2,
+   "livingArea": 1227,
+   "yearBuilt": 2003,
+   "daysOnZillow": 251,
+   "pageViewCount": 92,
+   "favoriteCount": 3,
+   "description": "9 aaaaaaa, 9 aaaa aaaa aaaaaa a aaaaaaaaaa aaaaaa aaaa aaaa ",
+   "rentZestimate": 1277,
+   "propertyTaxRate": 0.96,
+   "photoCount": 13,
+   "resoFacts": {
+    "bathrooms": 2,
+    "bathroomsFull": 2,
+    "bathroomsHalf": 0,
+    "bedrooms": 4,
+    "homeType": "aaaaaaaaaaaa",
+    "lotSize": "9.99 aaaaa",
+    "pricePerSquareFoot": 81,
+    "yearBuilt": 2003,
+    "propertySubType": [
+     "aaaaaa aaaaaa aaaaaaaaa"
+    ],
+    "coveredParkingCapacity": 0,
+    "hasGarage": false,
+    "hasOpenParking": true,
+    "parkingCapacity": 0,
+    "parkingFeatures": [
+     "aaaaaaaa/aaa"
+    ],
+    "architecturalStyle": "aaaaaaaaaaa",
+    "associations": [],
+    "atAGlanceFacts": [
+     {
+      "factLabel": "aaaa",
+      "factValue": "aaaaaa aaaaaa aaaaaaaaa"
+     },
+     {
+      "factLabel": "aaaa aaaaa",
+      "factValue": "9999"
+     },
+     {
+      "factLabel": "aaaaaaa",
+      "factValue": "aaaaaaa"
+     }
+    ],
+    "bathroomsFloat": 2,
+    "canRaiseHorses": false,
+    "cityRegion": "aaaaaaa",
+    "constructionMaterials": [
+     "aaaaa aaaaaa"
+    ],
+    "cooling": [
+     "aaaaaaa aaa"
+    ],
+    "cumulativeDaysOnMarket": "999 aaaa",
+    "exteriorFeatures": [],
+    "feesAndDues": [
+     {
+      "type": "aaa"
+     }
+    ],
+    "foundationDetails": [
+     "aaaa"
+    ],
+    "furnished": false,
+    "hasAdditionalParcels": false,
+    "hasAttachedProperty": false,
+    "hasCooling": true,
+    "hasFireplace": false,
+    "hasHeating": true,
+    "hasHomeWarranty": false,
+    "hasLandLease": false,
+    "hasSpa": false,
+    "hasView": false,
+    "heating": [
+     "aaaaaaa"
+    ],
+    "interiorFeatures": [
+     "aaa aaaaaaaa aaaa",
+     "aaaaaaa aaaaaaa",
+     "aaaaaa aaaa aaaaaa: aaaaaaaa (aaaaaaaa) aa aaaaaa aaaaaaa (a"
+    ],
+    "isNewConstruction": false,
+    "lotFeatures": [
+     "aaaaa"
+    ],
+    "lotSizeDimensions": "99 a 999",
+    "livingArea": "9,999 aaaa",
+    "livingAreaRangeUnits": "aaaaaa aaaa",
+    "livingQuarters": [],
+    "media": [],
+    "onMarketDate": 1770813382000,
+    "otherFacts": [],
+    "parcelNumber": "999999  99999",
+    "poolFeatures": [
+     "aaaa"
+    ],
+    "roofType": "aaaaaaaaaaa aaaaaaaa",
+    "rooms": [
+     {
+      "roomLength": "9",
+      "roomType": "aaaaaaaaaaaaa",
+      "roomWidth": "9"
+     },
+     {
+      "roomLength": "9",
+      "roomType": "aaaaaaaaaa",
+      "roomWidth": "9"
+     },
+     {
+      "roomFeatures": [
+       "aaa-aa aaaaaaa",
+       "aaaaaa/aaaaa aaaaaaaaaaa"
+      ],
+      "roomType": "aaaaaaa"
+     }
+    ],
+    "securityFeatures": [
+     "aaaaaaa aaaa aaaaaaaa aaa"
+    ],
+    "sewer": [
+     "aaaaaa aaaaa"
+    ],
+    "stories": 1,
+    "storiesDecimal": 1,
+    "structureType": "aaaaaaa aaaaaaaaaaa",
+    "subdivisionName": "aaaaaaaaaa aaa a",
+    "taxAnnualAmount": 1008,
+    "taxAssessedValue": 110200,
+    "view": [],
+    "waterSource": [
+     "aaaaaa"
+    ]
+   },
+   "attributionInfo": {
+    "listingAgents": [
+     {
+      "associatedAgentType": "aaaaaaaaa",
+      "memberFullName": "aaaaaaaa aaaaaaaaaa"
+     }
+    ],
+    "listingOffices": [
+     {
+      "associatedOfficeType": "aaaaaaaaaa",
+      "officeName": "aaaaaa aaaaaaaa"
+     }
+    ]
+   },
+   "parcelId": "99999999999",
+   "listingPrice": {
+    "amount": 99000,
+    "currency": "aaa",
+    "formatted": "$99,999"
+   },
+   "listingAddress": {
+    "street": "9999 aaaaaaaaaa aa",
+    "city": "aaaaaaa",
+    "state": "aa",
+    "zipCode": "99999",
+    "county": "aaaaaa aaaaaa",
+    "country": "aaa",
+    "neighborhood": "aaaaaaa",
+    "subdivision": "aaaaaaaaaa aaa a",
+    "timeZone": "aaaaaaa/aaaaaaa",
+    "full": "9999 aaaaaaaaaa aa, aaaaaaa, aa 99999"
+   },
+   "coordinates": {
+    "latitude": 35.227695,
+    "longitude": -89.94444
+   },
+   "listingStatus": "aaaaaaa",
+   "propertyUrl": "aaaaa://aaa.aaaaaa.aaa/aaaaaaaaaaa/9999-aaaaaaaaaa-aa-aaaaaa",
+   "listingType": {
+    "isFSBA": true,
+    "isFSBO": false,
+    "isComingSoon": false,
+    "isPending": false,
+    "isOpenHouse": false,
+    "isNewHome": false,
+    "isForAuction": false,
+    "isForeclosure": false,
+    "isBankOwned": false
+   },
+   "bathroomsDetail": {
+    "full": 2,
+    "half": 0
+   },
+   "lotArea": {
+    "value": 0.53,
+    "unit": "aaaaa",
+    "formatted": "9.99 aaaaa"
+   },
+   "pricePerSquareFoot": 81,
+   "taxAssessedValue": 110200,
+   "datePosted": "9999-99-99",
+   "onMarketDate": "9999-99-99a99:99:99.999a",
+   "priceChangedAt": "9999-99-99a99:99:99.999a",
+   "taxAnnualAmount": 1008,
+   "parking": {
+    "totalSpaces": 0,
+    "hasGarage": false,
+    "features": [
+     "aaaaaaaa/aaa"
+    ]
+   },
+   "agent": {
+    "name": "aaaaaaaa aaaaaaaaaa",
+    "phoneNumber": "999-999-9999"
+   },
+   "broker": {
+    "name": "aaaaaa aaaaaaaa",
+    "phoneNumber": "999-999-9999"
+   },
+   "mls": {
+    "id": "99999999",
+    "name": "aaaa",
+    "disclaimer": "aaaaaaa aaaaaaa aaa aaaaaa aaaaaaaaa 9999 aaaaaaa aaaa aaaaa",
+    "lastChecked": "9999-99-99 99:99:99",
+    "lastUpdated": "9999-99-99 99:99:99"
+   },
+   "mainImage": {
+    "thumbnail": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/a99aaa9999a9a9999999999aa",
+    "hiRes": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/a99aaa9999a9a9999999999aa"
+   },
+   "propertyFeatures": {
+    "appliances": [],
+    "heating": [
+     "aaaaaaa"
+    ],
+    "cooling": [
+     "aaaaaaa aaa"
+    ],
+    "flooring": [],
+    "exteriorFeatures": [],
+    "interiorFeatures": [
+     "aaa aaaaaaaa aaaa",
+     "aaaaaaa aaaaaaa",
+     "aaaaaa aaaa aaaaaa: aaaaaaaa (aaaaaaaa) aa aaaaaa aaaaaaa (a"
+    ],
+    "view": [],
+    "waterSource": [
+     "aaaaaa"
+    ],
+    "sewer": [
+     "aaaaaa aaaaa"
+    ],
+    "utilities": [],
+    "constructionMaterials": [
+     "aaaaa aaaaaa"
+    ],
+    "roofType": "aaaaaaaaaaa aaaaaaaa",
+    "architecturalStyle": "aaaaaaaaaaa",
+    "stories": 1
+   },
+   "atAGlanceFacts": [
+    {
+     "factLabel": "aaaa",
+     "factValue": "aaaaaa aaaaaa aaaaaaaaa"
+    },
+    {
+     "factLabel": "aaaa aaaaa",
+     "factValue": "9999"
+    },
+    {
+     "factLabel": "aaaaaaa",
+     "factValue": "aaaaaaa"
+    }
+   ],
+   "specialOffers": [],
+   "listingFloorPlans": [],
+   "listingPriceHistory": [
+    {
+     "date": "9999-99-99a99:99:99.999a",
+     "event": "aaaaa aaaaaa",
+     "price": 99000,
+     "pricePerSquareFoot": 81,
+     "priceChangeRate": -0.08333333333333333,
+     "source": "aaaa"
+    },
+    {
+     "date": "9999-99-99a99:99:99.999a",
+     "event": "aaaaa aaaaaa",
+     "price": 108000,
+     "pricePerSquareFoot": 88,
+     "priceChangeRate": -0.12903225806451613,
+     "source": "aaaa"
+    },
+    {
+     "date": "9999-99-99a99:99:99.999a",
+     "event": "aaaaaa aaa aaaa",
+     "price": 124000,
+     "pricePerSquareFoot": 101,
+     "priceChangeRate": 0.6533333333333333,
+     "source": "aaaa"
+    }
+   ],
+   "listingTaxHistory": [
+    {
+     "year": 2025,
+     "time": 1760989878188,
+     "taxPaid": 1452.11,
+     "value": 27550,
+     "taxIncreaseRate": 0.33234543,
+     "valueIncreaseRate": 0.6646526
+    },
+    {
+     "year": 2024,
+     "time": 1729453878188,
+     "taxPaid": 1089.89,
+     "value": 16550,
+     "taxIncreaseRate": 0.081057794,
+     "valueIncreaseRate": 0
+    },
+    {
+     "year": 2023,
+     "time": 1697831478188,
+     "taxPaid": 1008.17,
+     "value": 16550,
+     "taxIncreaseRate": 0,
+     "valueIncreaseRate": 0
+    }
+   ],
+   "nearbySchools": [
+    {
+     "name": "aaaaaa aaaaa aaaaaaaaaa aaaaaa",
+     "rating": 3,
+     "distance": 1.6,
+     "grades": "aa-9",
+     "link": "aaaaa://aaa.aaaaaaaaaaaa.aaa/aaaaaaaaa/aaaaaaa/999-aaaaaa-aa"
+    },
+    {
+     "name": "aaaaaaa aaaaa aaaa aaaaaa",
+     "rating": 4,
+     "distance": 1.1,
+     "grades": "9-99",
+     "link": "aaaaa://aaa.aaaaaaaaaaaa.aaa/aaaaaaaaa/aaaaaaa/999-aaaaaaa-a"
+    }
+   ],
+   "nearbyProperties": [
+    {
+     "zpid": 70604704,
+     "propertyUrl": "aaaaa://aaa.aaaaaa.aaa/aaaaaaaaaaa/9999-aaaaaaaaaa-aa-aaaaaa",
+     "address": {
+      "street": "9999 aaaaaaaaaa aa",
+      "city": "aaaaaaa",
+      "state": "aa",
+      "zipCode": "99999"
+     },
+     "coordinates": {
+      "latitude": 35.22778,
+      "longitude": -89.944275
+     },
+     "price": 130000,
+     "bedrooms": 3,
+     "bathrooms": 2,
+     "livingArea": 1222,
+     "homeType": "aaaaaa_aaaaaa",
+     "homeStatus": "aaaa",
+     "mainImage": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/9a99a9999a9999a9999aa9a99"
+    },
+    {
+     "zpid": 42286096,
+     "propertyUrl": "aaaaa://aaa.aaaaaa.aaa/aaaaaaaaaaa/9999-aaaaaaaaaa-aa-aaaaaa",
+     "address": {
+      "street": "9999 aaaaaaaaaa aa",
+      "city": "aaaaaaa",
+      "state": "aa",
+      "zipCode": "99999"
+     },
+     "coordinates": {
+      "latitude": 35.227905,
+      "longitude": -89.94411
+     },
+     "price": 120000,
+     "bedrooms": 3,
+     "bathrooms": 2,
+     "livingArea": 1021,
+     "homeType": "aaaaaa_aaaaaa",
+     "homeStatus": "aaaa",
+     "mainImage": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/99a99999a9a999a9aa9a999aa"
+    },
+    {
+     "zpid": 64570860,
+     "propertyUrl": "aaaaa://aaa.aaaaaa.aaa/aaaaaaaaaaa/9999-aaaaaaaaaa-aa-aaaaaa",
+     "address": {
+      "street": "9999 aaaaaaaaaa aa",
+      "city": "aaaaaaa",
+      "state": "aa",
+      "zipCode": "99999"
+     },
+     "coordinates": {
+      "latitude": 35.227818,
+      "longitude": -89.94489
+     },
+     "price": 116100,
+     "bedrooms": 4,
+     "bathrooms": 2,
+     "homeType": "aaaaaa_aaaaaa",
+     "homeStatus": "aaaaa",
+     "mainImage": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/a9aa999999999a99aa9a9a9a9"
+    }
+   ],
+   "listingPhotos": [
+    {
+     "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/a99aaa9999a9a9999999999aa",
+     "mixedSources": {
+      "jpeg": [
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/a99aaa9999a9a9999999999aa",
+        "width": 800
+       },
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/a99aaa9999a9a9999999999aa",
+        "width": 1024
+       },
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/a99aaa9999a9a9999999999aa",
+        "width": 1344
+       }
+      ],
+      "webp": [
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/a99aaa9999a9a9999999999aa",
+        "width": 800
+       },
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/a99aaa9999a9a9999999999aa",
+        "width": 1024
+       },
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/a99aaa9999a9a9999999999aa",
+        "width": 1344
+       }
+      ]
+     }
+    },
+    {
+     "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/aa9999a9999a9a99a999a9a99",
+     "mixedSources": {
+      "jpeg": [
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/aa9999a9999a9a99a999a9a99",
+        "width": 800
+       },
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/aa9999a9999a9a99a999a9a99",
+        "width": 1024
+       },
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/aa9999a9999a9a99a999a9a99",
+        "width": 1344
+       }
+      ],
+      "webp": [
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/aa9999a9999a9a99a999a9a99",
+        "width": 800
+       },
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/aa9999a9999a9a99a999a9a99",
+        "width": 1024
+       },
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/aa9999a9999a9a99a999a9a99",
+        "width": 1344
+       }
+      ]
+     }
+    },
+    {
+     "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/9999a9aaaaaaa9a9aaa99999a",
+     "mixedSources": {
+      "jpeg": [
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/9999a9aaaaaaa9a9aaa99999a",
+        "width": 800
+       },
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/9999a9aaaaaaa9a9aaa99999a",
+        "width": 1024
+       },
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/9999a9aaaaaaa9a9aaa99999a",
+        "width": 1344
+       }
+      ],
+      "webp": [
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/9999a9aaaaaaa9a9aaa99999a",
+        "width": 800
+       },
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/9999a9aaaaaaa9a9aaa99999a",
+        "width": 1024
+       },
+       {
+        "url": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/9999a9aaaaaaa9a9aaa99999a",
+        "width": 1344
+       }
+      ]
+     }
+    }
+   ],
+   "isValid": true,
+   "scrapedAt": "9999-99-99a99:99:99.999a"
+  }
+ ],
+ "property_values": [
+  {
+   "rentZestimate": 1277,
+   "livingArea": 1227,
+   "yearBuilt": 2003,
+   "zpid": 64653874,
+   "propertyUrl": "https://www.zillow.com/homedetails/3569-Russelwood-Dr-Memphis-TN-38128/64653874_zpid/",
+   "taxAssessedValue": 110200,
+   "lastSoldPrice": 55000
+  }
+ ]
 }

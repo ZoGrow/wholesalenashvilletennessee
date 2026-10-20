@@ -668,6 +668,18 @@ def write_summary(target, scraped, cap, sent, removed, test=False):
         w.writerow([now.date().isoformat(), now.strftime("%H:%M"), "yes" if test else "no",
                     target, scraped, len(sent), leftover] + [tally.get(r, 0) for r in REASONS])
 
+    hook = os.environ.get("SLACK_WEBHOOK_URL")
+    if hook and not test:  # so Zack sees every run without asking
+        top = ", ".join(f"{v} {k}" for k, v in sorted(tally.items(), key=lambda kv: -kv[1])[:4])
+        text = (f"📤 *Daily outreach done:* {len(sent)} texts sent to new agents\n"
+                f"🔎 Scraped {scraped} agents (target {target})" + (f"\n🚫 Skipped: {top}" if top else ""))
+        try:
+            req = urllib.request.Request(hook, data=json.dumps({"text": text}).encode(),
+                                         headers={"Content-Type": "application/json"}, method="POST")
+            urllib.request.urlopen(req, timeout=30).read()  # Slack answers plain "ok", not JSON
+        except Exception as e:
+            print(f"Slack summary failed: {e}")
+
     path = os.environ.get("GITHUB_STEP_SUMMARY")
     if not path:
         return

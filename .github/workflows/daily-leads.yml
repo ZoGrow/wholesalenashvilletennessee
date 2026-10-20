@@ -57,9 +57,18 @@ jobs:
           GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
           GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
           GHL_WORKFLOW_ID: ${{ secrets.GHL_WORKFLOW_ID }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           LIMIT: ${{ inputs.limit }}
           APIFY_RUN_ID: ${{ inputs.apify_run_id }}
         run: python pipeline.py --send ${LIMIT:+--limit "$LIMIT"}
+      - name: Tell Slack the run failed
+        if: failure() && steps.clock.outputs.go == 'yes'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          [ -n "$SLACK_WEBHOOK_URL" ] && curl -s -X POST -H 'Content-Type: application/json' \
+            -d "{\"text\":\"⚠️ Daily outreach run failed. Claude is looking into it: $RUN_URL\"}" "$SLACK_WEBHOOK_URL" || true
       - name: Save today's CSV
         if: always() && steps.clock.outputs.go == 'yes'
         uses: actions/upload-artifact@v4

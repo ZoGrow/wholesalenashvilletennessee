@@ -628,14 +628,15 @@ class ZipRotation:
         # Spread each batch across areas (3-digit ZIP prefix ~ one metro), least-scraped areas
         # first: agents in a metro serve all its ZIPs, so after a few ZIPs the same people come
         # back (2026-10-20: 611 of 811 Nashville agents were already texted).
+        area = lambda z: z[:3] if z.isdigit() else z  # a "City, ST" entry is its own area
         used = {}
         for z in self.last:
-            used[z[:3]] = used.get(z[:3], 0) + 1
-        order = sorted(enumerate(self.fresh()), key=lambda iz: (used.get(iz[1][:3], 0), iz[0]))
+            used[area(z)] = used.get(area(z), 0) + 1
+        order = sorted(enumerate(self.fresh()), key=lambda iz: (used.get(area(iz[1]), 0), iz[0]))
         batch, areas = [], set()
         for _, z in order:
-            if z[:3] not in areas:
-                batch.append(z); areas.add(z[:3])
+            if area(z) not in areas:
+                batch.append(z); areas.add(area(z))
             if len(batch) == self.per_round:
                 break
         today = dt.date.today().isoformat()

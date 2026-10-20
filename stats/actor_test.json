@@ -1,116 +1,221 @@
 {
- "actor": "store-search",
+ "actor": "afanasenko/zillow-property-agent-data-scraper",
  "input": {
-  "q": "zillow zestimate"
+  "startUrls": [
+   {
+    "url": "https://www.zillow.com/homedetails/3569-Russelwood-Dr-Memphis-TN-38128/64653874_zpid/"
+   }
+  ]
  },
- "results": [
+ "items": 1,
+ "with_any_phone": 0,
+ "phone_labels": {},
+ "fields_filled": {
+  "zpid": 1,
+  "hdpUrl": 1,
+  "price": 1,
+  "status": 1,
+  "propertyDescription": 1,
+  "homeType": 1,
+  "latitude": 1,
+  "longitude": 1,
+  "lotAreaValue": 1,
+  "lotAreaUnit": 1,
+  "priceChange": 1,
+  "has3DModel": 1,
+  "hasVideo": 1,
+  "pageViewCount": 1,
+  "favoriteCount": 1,
+  "listingType": 1,
+  "streetAddress": 1,
+  "city": 1,
+  "state": 1,
+  "zipcode": 1,
+  "county": 1,
+  "neighborhood": 1,
+  "agentName": 1,
+  "agentEmail": 1,
+  "agentEmailSource": 1,
+  "cellPhone": 1,
+  "brokerName": 1,
+  "brokerPhoneNumber": 1,
+  "rentZestimate": 1,
+  "pricePerSqft": 1,
+  "propertyTax": 1,
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "bathroomsFull": 1,
+  "livingArea": 1,
+  "lotSize": 1,
+  "yearBuilt": 1,
+  "stories": 1,
+  "architecturalStyle": 1,
+  "parcelNumber": 1,
+  "heating": 1,
+  "cooling": 1,
+  "roofType": 1,
+  "hasPool": 1,
+  "hasGarage": 1,
+  "hasBasement": 1,
+  "daysOnZillow": 1,
+  "lastSoldDate": 1,
+  "lastSoldPrice": 1,
+  "lastTaxPaid": 1,
+  "lastTaxAssessedValue": 1,
+  "priceHistory": 1,
+  "schools": 1,
+  "mainPhoto": 1,
+  "photos": 1,
+  "enrichmentStatus": 1,
+  "whyNotEnriched": 1
+ },
+ "sample_shapes": [
   {
-   "id": "sian.agency/zillow-value-history-scraper",
-   "title": "Zillow Zestimate History API \u2014 Home Value & Tax Records",
-   "users": 25,
-   "desc": "Zestimate history API \u2014 track a home's full value history: Zestimate and rent Zestimate history, listing price, % change, plus tax-assessment and tax-paid recor"
-  },
+   "zpid": "99999999",
+   "hdpUrl": "aaaaa://aaa.aaaaaa.aaa/aaaaaaaaaaa/9999-aaaaaaaaaa-aa-aaaaaa",
+   "price": 99000,
+   "status": "aaa_aaaa",
+   "propertyDescription": "9 aaaaaaa, 9 aaaa aaaa aaaaaa a aaaaaaaaaa aaaaaa aaaa aaaa ",
+   "homeType": "aaaaaa_aaaaaa",
+   "latitude": 35.227695,
+   "longitude": -89.94444,
+   "lotAreaValue": "9.99 aaaaa",
+   "lotAreaUnit": "aaaa",
+   "priceChange": -9000,
+   "datePriceChanged": null,
+   "has3DModel": false,
+   "hasVideo": false,
+   "pageViewCount": 92,
+   "favoriteCount": 3,
+   "listingType": "aaaa",
+   "streetAddress": "9999 aaaaaaaaaa aa",
+   "city": "aaaaaaa",
+   "state": "aa",
+   "zipcode": "99999",
+   "county": "aaaaaa aaaaaa",
+   "neighborhood": "aaaaaaa",
+   "agentName": "aaaaaaaa aaaaaaaaaa",
+   "agentEmail": "aaaaaaaaaaaaaaaa@aaaaa.aaa",
+   "agentEmailSource": "aaaaa_aaaaaaa_aaaaaa",
+   "cellPhone": "999-999-9999",
+   "coAgentName": null,
+   "coAgentNumber": null,
+   "agentLicenseNumber": null,
+   "brokerName": "aaaaaa aaaaaaaa",
+   "brokerPhoneNumber": "999-999-9999",
+   "zestimate": null,
+   "rentZestimate": 1277,
+   "pricePerSqft": 81,
+   "hoaFee": null,
+   "propertyTax": 1008,
+   "bedrooms": 4,
+   "bathrooms": 2,
+   "bathroomsFull": 2,
+   "bathroomsHalf": null,
+   "livingArea": 1227,
+   "lotSize": "9.99 aaaaa",
+   "yearBuilt": 2003,
+   "stories": 1,
+   "architecturalStyle": "aaaaaaaaaaa",
+   "parcelNumber": "999999  99999",
+   "view": "",
+   "heating": "aaaaaaa",
+   "cooling": "aaaaaaa aaa",
+   "appliances": null,
+   "flooring": null,
+   "roofType": "aaaaaaaaaaa aaaaaaaa",
+   "laundryFeatures": null,
+   "fireplaceFeatures": null,
+   "communityFeatures": null,
+   "hasPool": true,
+   "hasGarage": false,
+   "garageSpaces": null,
+   "parking": null,
+   "hasBasement": false,
+   "daysOnZillow": "999 aaaa",
+   "openHouseSchedule": "",
+   "lastSoldDate": "9999-99-99",
+   "lastSoldPrice": 55000,
+   "lastTaxPaid": 1452.11,
+   "lastTaxAssessedValue": 27550,
+   "priceHistory": [
+    {
+     "date": "9999-99-99",
+     "price": 99000,
+     "event": "aaaaa aaaaaa",
+     "pricePerSquareFoot": 81,
+     "source": "aaaa",
+     "postingIsRental": false
+    },
+    {
+     "date": "9999-99-99",
+     "price": 108000,
+     "event": "aaaaa aaaaaa",
+     "pricePerSquareFoot": 88,
+     "source": "aaaa",
+     "postingIsRental": false
+    },
+    {
+     "date": "9999-99-99",
+     "price": 124000,
+     "event": "aaaaaa aaa aaaa",
+     "pricePerSquareFoot": 101,
+     "source": "aaaa",
+     "postingIsRental": false
+    }
+   ],
+   "schools": [
+    {
+     "distance": 1.6,
+     "name": "aaaaaa aaaaa aaaaaaaaaa aaaaaa",
+     "rating": 3,
+     "level": "aaaaaaa",
+     "studentsPerTeacher": null,
+     "assigned": null,
+     "grades": "aa-9",
+     "link": "aaaaa://aaa.aaaaaaaaaaaa.aaa/aaaaaaaaa/aaaaaaa/999-aaaaaa-aa",
+     "type": "aaaaaa",
+     "size": null,
+     "totalCount": null,
+     "isAssigned": null
+    },
+    {
+     "distance": 1.1,
+     "name": "aaaaaaa aaaaa aaaa aaaaaa",
+     "rating": 4,
+     "level": "aaaaaa",
+     "studentsPerTeacher": null,
+     "assigned": null,
+     "grades": "9-99",
+     "link": "aaaaa://aaa.aaaaaaaaaaaa.aaa/aaaaaaaaa/aaaaaaa/999-aaaaaaa-a",
+     "type": "aaaaaa",
+     "size": null,
+     "totalCount": null,
+     "isAssigned": null
+    }
+   ],
+   "mainPhoto": "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/a99aaa9999a9a9999999999aa",
+   "photos": [
+    "aaaaa://aaaaaa.aaaaaaaaaaaa.aaa/aa/a99aaa9999a9a9999999999aa"
+   ],
+   "walkScore": null,
+   "transitScore": null,
+   "bikeScore": null,
+   "enrichmentStatus": "aaaaaaaa",
+   "whyNotEnriched": "a/a"
+  }
+ ],
+ "property_values": [
   {
-   "id": "titan_coder/zillow-price-watch",
-   "title": "Zillow Price & Zestimate Watch",
-   "users": 2,
-   "desc": "Zillow scrapers snapshot a listing and forget it, so you rebuild the history yourself. This one remembers the last confirmed price, Zestimate and status per lis"
-  },
-  {
-   "id": "clearfetch/zillow-scraper",
-   "title": "Zillow Scraper - Homes for Sale, Rent & Sold, No Browser",
-   "users": 1,
-   "desc": "Scrape Zillow listings without a browser: price, address, beds, baths, area, home type, days on Zillow, Zestimate, tax value and broker, for sale, for rent or s"
-  },
-  {
-   "id": "webdatatools/zillow-scraper",
-   "title": "Zillow Scraper (Homes for Sale, Rent & Sold, Zestimates)",
-   "users": 3,
-   "desc": "Scrape Zillow search results for any city, ZIP or map search: price, address, coordinates, beds, baths, square feet, lot size, home type, days on Zillow, Zestim"
-  },
-  {
-   "id": "trakk/zillow-scraper",
-   "title": "Zillow Scraper API - Listings, Zestimate, Agents & Cash Flow",
-   "users": 175,
-   "desc": "Extract Zillow listings, full property details, agent contacts, photos and price history. Compare Zestimate ranges, model rental cash flow and test lower-rent o"
-  },
-  {
-   "id": "keklik/zillow-property-listings-scraper",
-   "title": "Zillow Property Listings Scraper",
-   "users": 2,
-   "desc": "Zillow scraper: export listings from any Zillow search or listing URL. Get price, address, beds, baths, size, photos, Zestimate, and optionally agent phone, MLS"
-  },
-  {
-   "id": "nexgendata/zillow-scraper",
-   "title": "Zillow Scraper \u2014 Zillow Listings, Prices & Zestimates",
-   "users": 4,
-   "desc": "Zillow scraper for Zillow listings: US homes from search URLs or ZIP codes with price, beds, baths, square feet and Zestimates. Market data for real estate rese"
-  },
-  {
-   "id": "topapi/zillow-scraper",
-   "title": "Zillow Scraper - Listings, Zestimate, Sold & Price History",
-   "users": 3,
-   "desc": "Scrape Zillow listings by city, ZIP, map area or search URL (for sale, for rent, sold) for $0.85 per 1,000: price, Zestimate, beds, baths, sqft, photos. Optiona"
-  },
-  {
-   "id": "scrape.badger/zillow-scraper",
-   "title": "Zillow Scraper \u2014 Listings, Zestimates & Agents",
-   "users": 2,
-   "desc": "Scrape Zillow for-sale, for-rent and sold listings: search any location or map box with price, bed, bath, home-type, size, year and HOA filters. Full property d"
-  },
-  {
-   "id": "crowdpull/zillow-listings-scraper",
-   "title": "Zillow Listings Scraper -- No Login Required",
-   "users": 10,
-   "desc": "Extract Zillow property listings, Zestimates, price labels, and optional detail data. No login or cookies needed. Supports city/ZIP search, Zillow URL mode, and"
-  },
-  {
-   "id": "studioxl/zillow-detail-scraper",
-   "title": "Zillow Property Detail Scraper",
-   "users": 15,
-   "desc": "60 fields per Zillow property page, each with the measured number for how often it actually shows up. Paste a listing URL, street address, or Zillow ID. Price, "
-  },
-  {
-   "id": "sian.agency/zillow-property-scraper",
-   "title": "Zillow API + Market KPIs (Bridge Interactive Alternative)",
-   "users": 19,
-   "desc": "Zillow scraper and US real estate data API. Search by URL, address, MLS ID, polygon, coordinates, map bounds or off-market ZIP; return price, Zestimate, rent Ze"
-  },
-  {
-   "id": "thenetaji/zillow-property-scraper",
-   "title": "Zillow Property Scraper \u2014 Agent Details & Price History",
-   "users": 1,
-   "desc": "Look up any Zillow home by property ID or link. Take the whole record, including the listing agent's name, email and phone number, the Zestimate, the taxes, the"
-  },
-  {
-   "id": "zapticx/zillow-market-intelligence",
-   "title": "Zillow Listings Scraper & Price Intelligence",
-   "users": 1,
-   "desc": "Scrape current Zillow for-sale listings and compare price per sqft, Zestimate delta, and days on market against transparent active-listing comparables."
-  },
-  {
-   "id": "x_guru/zillow-property-details-scraper",
-   "title": "Zillow Property Details Scraper | from $0.80/1K | CSV",
-   "users": 1,
-   "desc": "Get Zillow property details from URLs, ZPIDs or full addresses: prices, Zestimate, photo URLs, histories and available listing contacts. Export CSV/JSON. Paid p"
-  },
-  {
-   "id": "afanasenko/zillow-property-agent-data-scraper",
-   "title": "Zillow Details Scraper \u2014 Property & Agent Data, Zestimate",
-   "users": 788,
-   "desc": "Scrape Zillow property listings and agent contacts \u2014 emails, phones, price history, Zestimate and 70+ fields. This Zillow scraper filters for FSBO, foreclosures"
-  },
-  {
-   "id": "stackrelay/zillow-scraper-pro",
-   "title": "Zillow Scraper Pro",
-   "users": 19,
-   "desc": "Scrape Zillow property listings and deep details by ZIP code or URL. Returns address, price, beds, baths, sqft, Zestimate, price history, tax records, school ra"
-  },
-  {
-   "id": "titan_coder/stealth-browser-gateway",
-   "title": "Stealth Anti-Detect Browser Gateway",
-   "users": 10,
-   "desc": "Headless Chrome gets blocked by Cloudflare, DataDome, PerimeterX, TikTok and Meta within seconds, and captcha solvers cost $1.50-$3.00 per 1,000 requests. This "
+   "streetAddress": "3569 Russelwood Dr",
+   "zestimate": null,
+   "price": 99000,
+   "rentZestimate": 1277,
+   "hdpUrl": "https://www.zillow.com/homedetails/3569-Russelwood-Dr-Memphis-TN-38128/64653874_zpid/",
+   "livingArea": 1227,
+   "yearBuilt": 2003,
+   "zpid": "64653874",
+   "lastSoldPrice": 55000
   }
  ]
 }

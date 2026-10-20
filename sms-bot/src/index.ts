@@ -22,7 +22,7 @@ export interface Env {
 }
 
 const GHL = "https://services.leadconnectorhq.com";
-const MODEL = "claude-opus-5-5";
+const MODEL = "claude-sonnet-5-5"; // Zack 2026-10-20: keep API costs down
 const HANDOFF_TAG = "hot-lead"; // bot stops and you take over
 const WARM_TAG = "warm-lead"; // has something coming later; bot keeps talking
 const OPTED_OUT_TAG = "opted-out"; // asked us to stop: never text again
@@ -476,11 +476,12 @@ async function nextReply(
       // Lets Claude look up a listing the agent sends (Zillow, Realtor.com, Redfin, ...) and nearby sales for ARV.
       tools: [
         ...(env.APIFY_TOKEN ? [ZILLOW_TOOL] : []),
-        { type: "web_search_20260209", name: "web_search", max_uses: 8, user_location: { type: "approximate", city: contact.city || "Nashville", region: contact.state || "TN", country: "US" } },
-        { type: "web_fetch_20260209", name: "web_fetch", max_uses: 5 },
+        { type: "web_search_20260209", name: "web_search", max_uses: 4, user_location: { type: "approximate", city: contact.city || "Nashville", region: contact.state || "TN", country: "US" } },
+        { type: "web_fetch_20260209", name: "web_fetch", max_uses: 2 },
       ],
       output_config: { effort: "low", format: REPLY_FORMAT },
-      system: systemPrompt(env),
+      // The rulebook is the same on every reply, so cache it (cached input costs ~10%).
+      system: [{ type: "text", text: systemPrompt(env), cache_control: { type: "ephemeral" } }],
       messages,
     });
     if (response.stop_reason === "tool_use" && turn < 6) {

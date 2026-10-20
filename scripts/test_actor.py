@@ -1,10 +1,19 @@
 """Try an Apify actor on a small sample and save a summary of its output shape
 (field names, phone formats and labels, counts) to stats/actor_test.json.
 No names, numbers or emails are saved: digits and letters in values are masked."""
-import json, os, re, sys, urllib.error, urllib.request
+import json, os, re, sys, urllib.error, urllib.parse, urllib.request
 from collections import Counter
 
 actor, run_input = sys.argv[1], json.loads(sys.argv[2])
+if actor == "store-search":  # list Apify store actors matching run_input["q"]
+    res = json.load(urllib.request.urlopen(urllib.request.Request(
+        "https://api.apify.com/v2/store?limit=20&search=" + urllib.parse.quote(run_input["q"]),
+        headers={"User-Agent": "Mozilla/5.0"}), timeout=60))["data"]["items"]
+    os.makedirs("stats", exist_ok=True)
+    json.dump({"actor": actor, "input": run_input, "results": [
+        {"id": f"{a['username']}/{a['name']}", "title": a.get("title"), "users": (a.get("stats") or {}).get("totalUsers"),
+         "desc": (a.get("description") or "")[:160]} for a in res]}, open("stats/actor_test.json", "w"), indent=1)
+    sys.exit(0)
 url = (f"https://api.apify.com/v2/acts/{actor.replace('/', '~')}/run-sync-get-dataset-items"
        f"?token={os.environ['APIFY_TOKEN']}&timeout=280")
 req = urllib.request.Request(url, data=json.dumps(run_input).encode(),

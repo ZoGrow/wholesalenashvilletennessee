@@ -279,7 +279,11 @@ function dollars(s?: string): number | null {
 /** True when the asking price is clearly over the line: off-market must be under QUALIFY_PERCENT of
  *  the value, listed houses at or under LISTED_QUALIFY_PERCENT. Unknown numbers never fail. */
 function failsPriceRule(lead: Lead | undefined, env: Env): boolean {
-  const asking = dollars(lead?.asking_price), value = dollars(lead?.zestimate);
+  const asking = dollars(lead?.asking_price), arv = dollars(lead?.arv_range);
+  let value = dollars(lead?.zestimate);
+  // A Zestimate under half the ARV is usually stale (e.g. Gregg's $36.6k Zestimate on a ~$150k ARV
+  // house, 2026-10-20): use a rough as-is value of 70% of ARV instead.
+  if (arv && (!value || value < arv * 0.5)) value = Math.max(value || 0, arv * 0.7);
   if (!asking || !value) return false;
   const offMarket = /off/i.test(lead?.market_status || "");
   const pct = Number(offMarket ? env.QUALIFY_PERCENT || "100" : env.LISTED_QUALIFY_PERCENT || "75");

@@ -72,8 +72,8 @@ export default {
 };
 
 const OUTREACH_TAG = "apify-daily-lead"; // the GHL bot workflow only fires for these contacts
-const SWEEP_CRON = "*/10 * * * *"; // must match wrangler.toml
-const SWEEP_PER_RUN = 2; // replies per sweep (stays within Cloudflare's per-run request limit)
+const SWEEP_CRON = "*/3 * * * *"; // must match wrangler.toml
+const SWEEP_PER_RUN = 3; // replies per sweep (stays within Cloudflare's per-run request limit)
 const OFFER_CRON = "5 14-23 * * *"; // must match wrangler.toml
 // Zack's offer texts ("Offer on: ... Purchase Price: $46,500"). The bot itself never names a price.
 const OFFER_RE = /purchase price|offer on:|\b(my|our) offer\b.{0,40}\$\s?\d|\boffer(ing)? (of |is |at )?\$\s?\d|\$\s?\d[\d,.]*k?\s+(cash )?offer\b/i;
@@ -84,13 +84,15 @@ const OFFER_NUDGES_PER_RUN = 3;
 async function answerMissed(env: Env): Promise<void> {
   const hour = Number(new Date().toLocaleString("en-US", { timeZone: "America/Chicago", hour: "numeric", hour12: false }));
   if (hour < 8 || hour >= 21) return; // no texts late at night
-  const res = await ghl(env, `/conversations/search?locationId=${env.GHL_LOCATION_ID}&sortBy=last_message_date&sort=desc&limit=20`);
+  const res = await ghl(env, `/conversations/search?locationId=${env.GHL_LOCATION_ID}&sortBy=last_message_date&sort=desc&limit=40`);
   let answered = 0;
   for (const c of res.conversations ?? []) {
     if (answered >= SWEEP_PER_RUN) break;
     const age = Date.now() - Number(c.lastMessageDate);
     if (c.lastMessageDirection !== "inbound" || !/SMS/i.test(c.lastMessageType ?? "")) continue;
-    if (!(age > 3 * 60_000 && age < 24 * 3600_000)) continue; // give the live webhook time first
+    // Give the live webhook time first. A reply with Zillow and comp lookups can run past GHL's webhook
+    // timeout and get cut off (David Lorrison, 2026-10-20), so this sweep is the backstop.
+    if (!(age > 4 * 60_000 && age < 24 * 3600_000)) continue;
     if (c.tags && !c.tags.some((t: string) => t.toLowerCase() === OUTREACH_TAG)) continue;
     try {
       console.log("sweep: answering missed text from", c.contactId);

@@ -812,7 +812,12 @@ def main():
         print(f"Stopped short: hit the {cap}-agent scrape cap or ran out of new agents. "
               "Add more locations in config.json if this keeps happening.")
     write_summary(target, scraped, cap, sent_all, removed_all, test=bool(args.limit))
-    return 1 if failed_all and cfg["ghl"].get("fail_on_errors", True) else 0
+    # A handful of GHL hiccups out of ~1,000 shouldn't turn the run red and ping Slack "failed"
+    # (2026-10-21: 916 sent, run marked failed). Only fail when errors are more than a few percent.
+    too_many = failed_all > max(5, 0.03 * (len(sent_all) + failed_all))
+    if failed_all:
+        print(f"{failed_all} GoHighLevel errors this run")
+    return 1 if too_many and cfg["ghl"].get("fail_on_errors", True) else 0
 
 if __name__ == "__main__":
     sys.exit(main())

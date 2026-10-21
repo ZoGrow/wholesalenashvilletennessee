@@ -1,31 +1,28 @@
 {
  "mode": "send",
  "tagged": 3405,
- "eligible": 718,
+ "eligible": 0,
  "skipped": {
-  "tag agent-replied": 295,
+  "tag agent-replied": 342,
   "dnd": 110,
-  "tag opted-out": 100,
+  "tag opted-out": 111,
   "bad number (Error 30008 - Messag)": 2,
-  "bad number (Error 30003 - Number)": 12,
-  "they replied": 178,
+  "bad number (Error 30003 - Number)": 10,
   "tag dnd-skipped": 3,
   "bad number (Error 30007 - Messag)": 1,
   "no messages": 1,
   "tag not-qualified": 2,
-  "tag hot-lead": 2
+  "tag hot-lead": 2,
+  "they replied": 174
  },
  "errors": {
-  "Your account has reached today's opt-out/error limit. Please review your messages and try ": 718,
-  "Error 30003 - Number unreachable or out of service.": 12,
+  "Error 30003 - Number unreachable or out of service.": 10,
   "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 2,
   "Error 30007 - Message blocked due to carrier policies. This often happens if content viola": 1
  },
- "sent": 718,
- "delivered": 718,
+ "sent": 0,
+ "delivered": 0,
  "failed_again": 0,
- "kinds": {
-  "follow-up": 718
- },
+ "kinds": {},
  "stopped_early": null
 }

@@ -1,6 +1,11 @@
 name: Resend failed texts
 
 on:
+  schedule:
+    # Zack 2026-10-21: resend texts GHL blocked (opt-out/error limit) automatically.
+    # Weekdays ~9:15am and ~3:30pm Central; stops if the limit error returns or after 8pm Central.
+    - cron: "15 14 * * 1-5"
+    - cron: "30 20 * * 1-5"
   workflow_dispatch:
     inputs:
       mode:
@@ -25,9 +30,9 @@ jobs:
       - env:
           GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
           GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
-          MODE: ${{ inputs.mode }}
-          LIMIT: ${{ inputs.limit }}
-          DAYS: ${{ inputs.days }}
+          MODE: ${{ inputs.mode || 'send' }}
+          LIMIT: ${{ inputs.limit || '1000' }}
+          DAYS: ${{ inputs.days || '2' }}
         run: python scripts/resend_failed.py
       - if: always()
         run: |

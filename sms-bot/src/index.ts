@@ -610,6 +610,9 @@ async function zillowLookup(address: string, env: Env): Promise<string> {
       status: it.listingStatus, list_price: money(it.listingPrice), price_change: it.priceChange,
       days_on_zillow: it.daysOnZillow, home_type: it.homeType, beds: it.bedrooms, baths: it.bathrooms,
       sqft: it.livingArea, year_built: it.yearBuilt, last_sold_price: money(it.lastSoldPrice),
+      stories: it.resoFacts?.stories ?? it.resoFacts?.levels, style: it.resoFacts?.architecturalStyle,
+      construction: it.resoFacts?.constructionMaterials, foundation: it.resoFacts?.foundationDetails, basement: it.resoFacts?.basement,
+      lot: it.lotArea ?? it.resoFacts?.lotSize,
       tax_assessed_value: money(it.taxAssessedValue), description: String(it.description ?? "").slice(0, 500),
       nearby_sold: (it.nearbyProperties ?? []).filter((n: any) => /sold/i.test(n.homeStatus ?? "") && n.price > 10000 && n.livingArea)
         .slice(0, 6).map((n: any) => `${n.address?.street ?? "nearby"}: sold ${money(n.price)}, ${n.livingArea} sqft ($${Math.round(n.price / n.livingArea)}/sqft)`),

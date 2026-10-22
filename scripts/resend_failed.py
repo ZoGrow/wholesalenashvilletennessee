@@ -60,6 +60,10 @@ for c in contacts:
               and m.get("body") and m["body"] not in got and m["dateAdded"] >= SINCE]
     if not failed: continue
     err = failed[0].get("error") or "none"
+    # If an earlier resend of this text already bounced off a dead number, don't keep retrying it.
+    dead = [m.get("error") or "" for m in ms if m["direction"] == "outbound" and m.get("body") == failed[0]["body"]
+            and m.get("status") in ("failed", "undelivered") and LIMIT_ERR not in (m.get("error") or "").lower()]
+    if dead: err = dead[0] or err
     out["errors"][err[:90]] += 1
     if LIMIT_ERR not in err.lower(): out["skipped"]["bad number (" + err[:20] + ")"] += 1; continue
     kind = "first text" if not got else "follow-up"
@@ -80,6 +84,8 @@ for c in contacts:
         out["errors"]["RESEND: " + (m.get("error") or "none")[:80]] += 1
         if LIMIT_ERR in (m.get("error") or "").lower():
             out["stopped_early"] = "opt-out/error limit hit again"; break
+        elif any(code in (m.get("error") or "") for code in ("30003", "30005", "30006", "30008")):
+            fails_in_row -= 1  # a dead or unreachable number isn't a sign we're being blocked; keep going
         if fails_in_row >= 5:
             out["stopped_early"] = "5 resends in a row failed"; break
     else:

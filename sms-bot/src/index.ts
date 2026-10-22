@@ -43,7 +43,8 @@ const CHECKED_IN_TAG = "checked-in"; // got a check-in and hasn't replied yet; a
 const CHECKINS_PER_RUN = 5; // each check-in uses ~8 Cloudflare subrequests (50 per run on the free plan)
 const LOOKBACK_DAYS = 14; // also catch check-ins a missed or full run left behind
 
-type Sms = { direction: "inbound" | "outbound"; body: string; at: string };
+type Sms = { direction: "inbound" | "outbound"; body: string; at: string; media?: string[] };
+const MAX_PHOTOS = 6; // newest photos the bot looks at each reply (each costs ~1-2k tokens)
 
 export default {
   async fetch(req: Request, env: Env): Promise<Response> {
@@ -509,9 +510,13 @@ async function nextReply(
     .filter(Boolean)
     .join("\n");
 
+  const photos = await threadPhotos(thread);
   const userTurn: Anthropic.Beta.BetaMessageParam = {
     role: "user",
-    content: `About this agent:\n${about || "(nothing on file)"}\n\nSMS thread so far, oldest first:\n${transcript}\n\n${checkIn ? CHECK_IN_ASK.replace("{{TODAY}}", centralDate()) : "Write our next text."}${blocked ? `\n\nThe carrier just blocked this text as spam: "${blocked}". Say the same thing in different, plain everyday words. Avoid "cash", "buy houses", "as-is", "close fast", "investor", "deal" and anything that sounds like an ad.` : ""}`,
+    content: [
+      ...(photos.length ? [{ type: "text" as const, text: `Photos the agent texted (newest ${photos.length}, oldest first):` }, ...photos] : []),
+      { type: "text" as const, text: `About this agent:\n${about || "(nothing on file)"}\n\nSMS thread so far, oldest first:\n${transcript}\n\n${checkIn ? CHECK_IN_ASK.replace("{{TODAY}}", centralDate()) : "Write our next text."}${blocked ? `\n\nThe carrier just blocked this text as spam: "${blocked}". Say the same thing in different, plain everyday words. Avoid "cash", "buy houses", "as-is", "close fast", "investor", "deal" and anything that sounds like an ad.` : ""}` },
+    ],
   };
   let messages: Anthropic.Beta.BetaMessageParam[] = [userTurn];
   let response: Anthropic.Beta.BetaMessage;
@@ -556,6 +561,28 @@ async function nextReply(
   const last = texts[texts.length - 1];
   if (!last) return null;
   return JSON.parse(last.text) as Decision;
+}
+
+/** The newest photos the agent texted, as image blocks Claude can look at (Zack 2026-10-22: condition
+ *  and repair level come from photos). Downloaded here so a dead or non-image link can't break the reply. */
+async function threadPhotos(thread: Sms[]): Promise<Anthropic.Beta.BetaImageBlockParam[]> {
+  const urls = thread.filter((m) => m.direction === "inbound").flatMap((m) => m.media ?? []).slice(-MAX_PHOTOS);
+  const out: Anthropic.Beta.BetaImageBlockParam[] = [];
+  for (const url of urls) {
+    try {
+      const res = await fetch(url);
+      const type = (res.headers.get("content-type") || "").split(";")[0].trim().toLowerCase();
+      if (!res.ok || !["image/jpeg", "image/png", "image/gif", "image/webp"].includes(type)) continue;
+      const buf = new Uint8Array(await res.arrayBuffer());
+      if (buf.length > 4_500_000) continue; // over the API's 5 MB image limit once encoded
+      let bin = "";
+      for (let i = 0; i < buf.length; i += 0x8000) bin += String.fromCharCode(...buf.subarray(i, i + 0x8000));
+      out.push({ type: "image", source: { type: "base64", media_type: type as "image/jpeg", data: btoa(bin) } });
+    } catch (e) {
+      console.warn("photo fetch failed", url, e);
+    }
+  }
+  return out;
 }
 
 const ZILLOW_TOOL: Anthropic.Beta.BetaToolUnion = {
@@ -617,8 +644,9 @@ async function smsThread(contactId: string, env: Env): Promise<Sms[]> {
     .filter((m) => (m.body || m.attachments?.length) && m.status !== "failed" && m.status !== "undelivered")
     .map((m) => ({
       direction: m.direction,
-      body: m.body || "[sent a photo, video or file the bot can't open]",
+      body: [m.body, m.attachments?.length ? `[sent ${m.attachments.length} attachment(s): photos are shown below]` : ""].filter(Boolean).join(" "),
       at: m.dateAdded,
+      media: (m.attachments ?? []).map((a: any) => (typeof a === "string" ? a : a?.url)).filter((u: any) => typeof u === "string" && /^https:\/\//.test(u)),
     }))
     .sort((a, b) => a.at.localeCompare(b.at));
 }

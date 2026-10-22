@@ -312,13 +312,15 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
       await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `${label}: ${decision.note}` });
     }
   }
-  // Only qualified leads go to Slack (Zack 2026-10-20). A handoff about a house that doesn't
-  // qualify still gets the card as a GHL note so he can see it there.
+  // Qualified leads go to Slack (Zack 2026-10-20). So does any lead where the bot told the agent
+  // numbers or an offer are coming (Zack 2026-10-22: "why do you tell leads you're gonna run numbers
+  // and don't send it to Slack?"), so a promise to an agent never gets dropped.
   const qualified = decision.deal === "qualified";
-  if (qualified || (decision.handoff && decision.lead?.address?.trim())) {
-    const card = qualifiedLeadCard(decision.lead, contact, contactId, env, qualified);
+  const promised = PROMISED_NUMBERS.test(decision.reply || "");
+  if (qualified || promised || (decision.handoff && decision.lead?.address?.trim())) {
+    const card = qualifiedLeadCard(decision.lead, contact, contactId, env, qualified, promised);
     await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: card.replace(/[*_]/g, "") });
-    if (qualified && env.SLACK_WEBHOOK_URL) {
+    if ((qualified || promised) && env.SLACK_WEBHOOK_URL) {
       const res = await fetch(env.SLACK_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -328,6 +330,10 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
     }
   }
 }
+
+// "I'll run the numbers", "let me crunch numbers", "I'll get you an offer", "get back to you with a number" ...
+const PROMISED_NUMBERS =
+  /\b(run(ning)?|crunch(ing)?|work(ing)? up|put together|look(ing)? at) (the |some )?(numbers|comps|an offer|a number|figures)\b|\b(get|send|have) (you |back to you with |over )?(an offer|a number|my number|numbers|an? (cash )?offer)\b|\bget back to you (shortly |soon |today |tomorrow )?with\b/i;
 
 /** First dollar amount in a string like "$475,000", "475k", "unknown on Zillow, Redfin Estimate $240k". */
 function dollars(s?: string): number | null {
@@ -360,14 +366,14 @@ const LEAD_FIELDS = [
 ] as const;
 
 /** The "New qualified lead" message: posted to Slack and saved as a note on the contact. */
-function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: string, env: Env, qualified = true): string {
+function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: string, env: Env, qualified = true, promised = false): string {
   const v = (k: keyof Lead) => (lead?.[k] || "").trim() || "unknown";
   const agent = [contact.firstName && `${contact.firstName} ${contact.lastName ?? ""}`.trim(), contact.companyName, contact.phone]
     .filter(Boolean).join(" · ");
   const link = `https://app.gohighlevel.com/v2/location/${env.GHL_LOCATION_ID}/contacts/detail/${contactId}`;
   // Blank lines between sections so it's easy to scan in Slack.
   return [
-    `${qualified ? "🏠 *New qualified lead*" : "🔥 *Agent wants you on this one*"}\n*${v("address")}*${listingLink(lead?.listing_url, lead?.address)}`,
+    `${qualified ? "🏠 *New qualified lead*" : promised ? "⏳ *Agent is waiting on your numbers* (not fully qualified yet)" : "🔥 *Agent wants you on this one*"}\n*${v("address")}*${listingLink(lead?.listing_url, lead?.address)}`,
     `💰 *Asking:* ${v("asking_price")}\n📊 *Zestimate:* ${v("zestimate")} (asking is ${v("percent_of_zestimate")})\n📍 *Status:* ${v("market_status")}`,
     `🔧 *Condition:* ${v("condition")}\n🏡 *Property:* ${v("beds_baths_sqft")} · built ${v("year_built")} · ${v("occupancy")}`,
     `🙋 *Seller:* ${v("motivation")}\n⏱️ *Timeline:* ${v("timeline")}`,

@@ -262,8 +262,15 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
   const stale = tags.filter((t) => t.startsWith(FOLLOW_UP_PREFIX) || t === CHECKED_IN_TAG);
   if (stale.length) await ghl(env, `/contacts/${contactId}/tags`, "DELETE", { tags: stale });
 
-  const decision = await nextReply(thread, contact, env);
+  let decision = await nextReply(thread, contact, env);
   if (!decision) return;
+  // "I'll run the numbers" is only for leads that go to Zack in Slack (Zack 2026-10-22). If the bot
+  // promised numbers on anything else, have it rewrite: keep vetting or pass on the price.
+  if (decision.deal !== "qualified" && PROMISED_NUMBERS.test(decision.reply || "")) {
+    console.log("promised numbers on a non-qualified lead, rewriting", contactId, decision.reply);
+    decision = (await nextReply(thread, contact, env, false, "", NO_PROMISE_FIX.replace("{{REPLY}}", decision.reply))) ?? decision;
+    if (decision.deal !== "qualified" && PROMISED_NUMBERS.test(decision.reply || "")) decision.reply = ""; // never send an empty promise
+  }
   if (decision.optout) {
     await optOut(contactId, env, last.body);
     return;
@@ -312,15 +319,13 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
       await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `${label}: ${decision.note}` });
     }
   }
-  // Qualified leads go to Slack (Zack 2026-10-20). So does any lead where the bot told the agent
-  // numbers or an offer are coming (Zack 2026-10-22: "why do you tell leads you're gonna run numbers
-  // and don't send it to Slack?"), so a promise to an agent never gets dropped.
+  // Only qualified leads go to Slack (Zack 2026-10-20, again 2026-10-22). A handoff about a house that
+  // doesn't qualify still gets the card as a GHL note so he can see it there.
   const qualified = decision.deal === "qualified";
-  const promised = PROMISED_NUMBERS.test(decision.reply || "");
-  if (qualified || promised || (decision.handoff && decision.lead?.address?.trim())) {
-    const card = qualifiedLeadCard(decision.lead, contact, contactId, env, qualified, promised);
+  if (qualified || (decision.handoff && decision.lead?.address?.trim())) {
+    const card = qualifiedLeadCard(decision.lead, contact, contactId, env, qualified);
     await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: card.replace(/[*_]/g, "") });
-    if ((qualified || promised) && env.SLACK_WEBHOOK_URL) {
+    if (qualified && env.SLACK_WEBHOOK_URL) {
       const res = await fetch(env.SLACK_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -331,6 +336,7 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
   }
 }
 
+const NO_PROMISE_FIX = `Your draft was: "{{REPLY}}". Don't tell the agent you'll run numbers, send a number or get them an offer: that's only said on leads that qualify and go to Zack. Rewrite it. If you still need info (photos, condition, asking price, why they're selling, timeline), ask your next question. If the price or situation doesn't work, pass politely, e.g. "Appreciate it, but we can't really help near that price range. If you get one that needs work and a seller who needs out, send it my way." and set deal = "not_qualified".`;
 // "I'll run the numbers", "let me crunch numbers", "I'll get you an offer", "get back to you with a number" ...
 const PROMISED_NUMBERS =
   /\b(run(ning)?|crunch(ing)?|work(ing)? up|put together|look(ing)? at) (the |some )?(numbers|comps|an offer|a number|figures)\b|\b(get|send|have) (you |back to you with |over )?(an offer|a number|my number|numbers|an? (cash )?offer)\b|\bget back to you (shortly |soon |today |tomorrow )?with\b/i;
@@ -366,14 +372,14 @@ const LEAD_FIELDS = [
 ] as const;
 
 /** The "New qualified lead" message: posted to Slack and saved as a note on the contact. */
-function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: string, env: Env, qualified = true, promised = false): string {
+function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: string, env: Env, qualified = true): string {
   const v = (k: keyof Lead) => (lead?.[k] || "").trim() || "unknown";
   const agent = [contact.firstName && `${contact.firstName} ${contact.lastName ?? ""}`.trim(), contact.companyName, contact.phone]
     .filter(Boolean).join(" · ");
   const link = `https://app.gohighlevel.com/v2/location/${env.GHL_LOCATION_ID}/contacts/detail/${contactId}`;
   // Blank lines between sections so it's easy to scan in Slack.
   return [
-    `${qualified ? "🏠 *New qualified lead*" : promised ? "⏳ *Agent is waiting on your numbers* (not fully qualified yet)" : "🔥 *Agent wants you on this one*"}\n*${v("address")}*${listingLink(lead?.listing_url, lead?.address)}`,
+    `${qualified ? "🏠 *New qualified lead*" : "🔥 *Agent wants you on this one*"}\n*${v("address")}*${listingLink(lead?.listing_url, lead?.address)}`,
     `💰 *Asking:* ${v("asking_price")}\n📊 *Zestimate:* ${v("zestimate")} (asking is ${v("percent_of_zestimate")})\n📍 *Status:* ${v("market_status")}`,
     `🔧 *Condition:* ${v("condition")}\n🏡 *Property:* ${v("beds_baths_sqft")} · built ${v("year_built")} · ${v("occupancy")}`,
     `🙋 *Seller:* ${v("motivation")}\n⏱️ *Timeline:* ${v("timeline")}`,
@@ -502,7 +508,7 @@ const REPLY_FORMAT = {
 };
 
 async function nextReply(
-  thread: Sms[], contact: Record<string, any>, env: Env, checkIn = false, blocked = "",
+  thread: Sms[], contact: Record<string, any>, env: Env, checkIn = false, blocked = "", fix = "",
 ): Promise<Decision | null> {
   const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
   const transcript = thread
@@ -521,7 +527,7 @@ async function nextReply(
     role: "user",
     content: [
       ...(photos.length ? [{ type: "text" as const, text: `Photos the agent texted (newest ${photos.length}, oldest first):` }, ...photos] : []),
-      { type: "text" as const, text: `About this agent:\n${about || "(nothing on file)"}\n\nSMS thread so far, oldest first:\n${transcript}\n\n${checkIn ? CHECK_IN_ASK.replace("{{TODAY}}", centralDate()) : "Write our next text."}${blocked ? `\n\nThe carrier just blocked this text as spam: "${blocked}". Say the same thing in different, plain everyday words. Avoid "cash", "buy houses", "as-is", "close fast", "investor", "deal" and anything that sounds like an ad.` : ""}` },
+      { type: "text" as const, text: `About this agent:\n${about || "(nothing on file)"}\n\nSMS thread so far, oldest first:\n${transcript}\n\n${checkIn ? CHECK_IN_ASK.replace("{{TODAY}}", centralDate()) : "Write our next text."}${blocked ? `\n\nThe carrier just blocked this text as spam: "${blocked}". Say the same thing in different, plain everyday words. Avoid "cash", "buy houses", "as-is", "close fast", "investor", "deal" and anything that sounds like an ad.` : ""}${fix ? `\n\n${fix}` : ""}` },
     ],
   };
   let messages: Anthropic.Beta.BetaMessageParam[] = [userTurn];

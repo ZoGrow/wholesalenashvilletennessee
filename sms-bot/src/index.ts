@@ -353,7 +353,8 @@ function failsPriceRule(lead: Lead | undefined, env: Env): boolean {
 type Lead = Record<(typeof LEAD_FIELDS)[number], string>;
 const LEAD_FIELDS = [
   "address", "listing_url", "asking_price", "zestimate", "percent_of_zestimate", "market_status", "condition",
-  "beds_baths_sqft", "year_built", "occupancy", "motivation", "timeline", "arv_range", "repairs",
+  "beds_baths_sqft", "sqft", "year_built", "occupancy", "motivation", "timeline", "arv_range", "arv_value", "arv_comps",
+  "repair_level", "repairs",
   "max_offer", "opening_offer", "call_script", "summary",
 ] as const;
 
@@ -369,15 +370,61 @@ function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: 
     `💰 *Asking:* ${v("asking_price")}\n📊 *Zestimate:* ${v("zestimate")} (asking is ${v("percent_of_zestimate")})\n📍 *Status:* ${v("market_status")}`,
     `🔧 *Condition:* ${v("condition")}\n🏡 *Property:* ${v("beds_baths_sqft")} · built ${v("year_built")} · ${v("occupancy")}`,
     `🙋 *Seller:* ${v("motivation")}\n⏱️ *Timeline:* ${v("timeline")}`,
-    `🧮 *Rough numbers*\nARV: ${v("arv_range")}\nRepairs: ${v("repairs")}\nMax offer: ${v("max_offer")}`,
-    `🤝 *Make the offer*\nOpen at: ${v("opening_offer")}\nWhat to say: ${v("call_script")}`,
+    dealReport(lead, env),
     `👤 *Agent:* ${agent || "unknown"}`,
     `${qualified ? "✅ *Why it qualifies:*" : "📝 *What's going on:*"} ${v("summary")}`,
     `<${link}|Open in GHL>`,
   ].join("\n\n");
 }
 
-/** " · <url|View on Zillow>" for a real http(s) link, else nothing. */
+const REPAIR_PSF: Record<string, number> = { light: 15, medium: 30, heavy: 45, full_gut: 65 }; // same levels as the deal calculator
+const MY_COSTS = 500; // earnest money, title, marketing (deal calculator default)
+const CALCULATOR_URL = "https://claude.ai/artifact/N7qkPw3VY59ugckT9AhMvV";
+const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
+
+/** Zack's deal calculator, run on what the bot learned (Zack 2026-10-22): ARV = comps (never under
+ *  the Zestimate), repairs = level x sqft, buyer pays ARV x 70% - repairs, max offer = buyer - fee - costs,
+ *  open ~10% under max. Falls back to the bot's rough numbers when it doesn't have enough to calculate. */
+function dealReport(lead: Lead, env: Env): string {
+  const v = (k: keyof Lead) => (lead?.[k] || "").trim() || "unknown";
+  const num = (s?: string) => { const n = parseFloat((s || "").replace(/[$,\s]/g, "").replace(/k$/i, "000")); return isFinite(n) && n > 0 ? n : null; };
+  const zest = dollars(lead?.zestimate), comps = dollars(lead?.arv_value) ?? dollars(lead?.arv_range);
+  const sqft = num(lead?.sqft) ?? num((lead?.beds_baths_sqft || "").match(/([\d,]{3,6})\s*(sq|sf)/i)?.[1]);
+  const asking = dollars(lead?.asking_price);
+  const arv = Math.max(comps || 0, zest || 0) || null;
+  const level = (lead?.repair_level || "").toLowerCase().replace(/[\s-]+/g, "_");
+  const psf = REPAIR_PSF[level] ?? null;
+  const repairs = psf && sqft ? Math.round(psf * sqft / 500) * 500 : dollars(lead?.repairs);
+  const script = (o: string) => v("call_script").replace(/\{OFFER\}/g, o);
+  if (!arv || repairs == null) {
+    return `🧮 *Rough numbers* (not enough to run the calculator)\nARV: ${v("arv_range")}\nRepairs: ${v("repairs")}\nMax offer: ${v("max_offer")}\n\n🤝 *Make the offer*\nOpen at: ${v("opening_offer")}\nWhat to say: ${script(/^\$/.test(v("opening_offer")) ? v("opening_offer") : "[your number]")}`;
+  }
+  const pct = Number(env.ARV_PERCENT || "70"), fee = Number(env.ASSIGNMENT_FEE || "10000");
+  const buyer = arv * pct / 100 - repairs, max = buyer - fee - MY_COSTS, open = Math.floor(max * 0.9 / 500) * 500;
+  const arvHow = comps && comps >= (zest || 0) ? `from sold comps${sqft && comps ? `, ~$${Math.round(comps / sqft)}/sqft` : ""}` : "Zestimate (comps came in lower)";
+  const repHow = psf && sqft ? `${level.replace("_", " ")}, $${psf}/sqft × ${sqft.toLocaleString("en-US")} sqft` : "bot's estimate";
+  let verdict = "";
+  if (asking) {
+    const spread = buyer - asking - MY_COSTS;
+    verdict = asking <= max ? `✅ Asking ${usd(asking)} is under your max. Fee at asking: ${usd(spread)}`
+      : spread > 0 ? `⚠️ Asking ${usd(asking)} is ${usd(asking - max)} over your max. Fee at asking only ${usd(spread)}`
+      : `❌ Asking ${usd(asking)} is ${usd(asking - max)} over your max. Seller needs to come down to ${usd(max)}`;
+  }
+  return [
+    `🧮 *Deal calculator*`,
+    `ARV: ${usd(arv)} (${arvHow})`,
+    ...(lead?.arv_comps?.trim() && !/^unknown/i.test(lead.arv_comps) ? [`Comps: ${lead.arv_comps.trim()}`] : []),
+    `Repairs: ${usd(repairs)} (${repHow})`,
+    `Buyer pays: ${usd(buyer)} (${pct}% of ARV minus repairs)`,
+    `Your fee: ${usd(fee)} · costs ${usd(MY_COSTS)}`,
+    `*Max offer: ${usd(max)}*`,
+    ...(verdict ? [verdict] : []),
+    `<${CALCULATOR_URL}|Adjust in the calculator>`,
+    ``,
+    `🤝 *Pitch to the agent*\nOpen at: *${usd(open)}*\nWhat to say: ${script(usd(open))}`,
+  ].join("\n");
+}
+
 /** Clickable listing link on its own line under the address (Zack 2026-10-20: always Zillow when
  *  possible). With no Zillow URL, links a Zillow search for the address, which opens the home page. */
 function listingLink(url?: string, address?: string): string {
@@ -537,6 +584,8 @@ async function zillowLookup(address: string, env: Env): Promise<string> {
       days_on_zillow: it.daysOnZillow, home_type: it.homeType, beds: it.bedrooms, baths: it.bathrooms,
       sqft: it.livingArea, year_built: it.yearBuilt, last_sold_price: money(it.lastSoldPrice),
       tax_assessed_value: money(it.taxAssessedValue), description: String(it.description ?? "").slice(0, 500),
+      nearby_sold: (it.nearbyProperties ?? []).filter((n: any) => /sold/i.test(n.homeStatus ?? "") && n.price > 10000 && n.livingArea)
+        .slice(0, 6).map((n: any) => `${n.address?.street ?? "nearby"}: sold ${money(n.price)}, ${n.livingArea} sqft ($${Math.round(n.price / n.livingArea)}/sqft)`),
     });
   } catch (e) {
     return `Zillow lookup error (${e}); use web search instead.`;

@@ -60,7 +60,7 @@
    "bathrooms": 2,
    "livingArea": 1042,
    "yearBuilt": 1978,
-   "daysOnZillow": 7375,
+   "daysOnZillow": 7377,
    "description": "aaaa 9999 aaaaaa aaaa aaaaaa aaaaaa aaaa aaa 9 aaaaaaaa aaa ",
    "zestimate": 106100,
    "rentZestimate": 1224,
@@ -252,7 +252,7 @@
    "listingTaxHistory": [
     {
      "year": 2025,
-     "time": 1760990165845,
+     "time": 1761150567174,
      "taxPaid": 1342.74,
      "value": 25475,
      "taxIncreaseRate": 0.29048812,
@@ -260,7 +260,7 @@
     },
     {
      "year": 2024,
-     "time": 1729454165845,
+     "time": 1729614567174,
      "taxPaid": 1040.49,
      "value": 15800,
      "taxIncreaseRate": 0.081051044,
@@ -268,7 +268,7 @@
     },
     {
      "year": 2023,
-     "time": 1697831765845,
+     "time": 1697992167174,
      "taxPaid": 962.48,
      "value": 15800,
      "taxIncreaseRate": 0,
@@ -351,7 +351,7 @@
       "latitude": 35.24724,
       "longitude": -89.938225
      },
-     "price": 98500,
+     "price": 99300,
      "bedrooms": 3,
      "bathrooms": 2,
      "livingArea": 983,

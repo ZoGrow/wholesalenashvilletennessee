@@ -21,6 +21,12 @@ on:
 permissions:
   contents: write
 
+
+# One resend at a time: a second run waits and rescans, so nobody gets a text twice.
+concurrency:
+  group: resend-failed
+  cancel-in-progress: false
+
 jobs:
   resend:
     runs-on: ubuntu-latest

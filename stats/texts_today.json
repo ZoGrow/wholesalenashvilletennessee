@@ -1,0 +1,23 @@
+{
+ "date": "2026-10-22",
+ "conversations_checked": 966,
+ "texts_sent": 2986,
+ "status": {
+  "delivered": 1967,
+  "failed": 950,
+  "sent": 27,
+  "undelivered": 42
+ },
+ "errors": {
+  "Your account has reached today's opt-out/error limit. Please review your message": 930,
+  "Error 30006 - Landline or non-mobile number. Cannot receive SMS.": 26,
+  "Error 30007 - Message blocked due to carrier policies. This often happens if con": 12,
+  "Error 30003 - Number unreachable or out of service.": 12,
+  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 8,
+  "Error 30005 - The recipient's number is inactive or does not exist.": 4
+ },
+ "contacts_texted": 961,
+ "contacts_reached": 926,
+ "replies": 229,
+ "contacts_replied": 128
+}

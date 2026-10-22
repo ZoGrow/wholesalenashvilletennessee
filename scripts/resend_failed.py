@@ -3,7 +3,7 @@ first texts and workflow follow-ups from the last few days. One text per contact
 blocked one that never got through), skipping DND, opted-out, replied and handed-off contacts.
 MODE=count only counts; MODE=send resends, throttled, and stops as soon as the limit error returns
 or it gets late in Central time. Summary saved to stats/resend_failed.json."""
-import json, os, time, urllib.request
+import urllib.error, json, os, time, urllib.request
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 from collections import Counter
@@ -67,7 +67,11 @@ for c in contacts:
     if datetime.now(ZoneInfo("America/Chicago")).hour >= 20:
         out["stopped_early"] = out["stopped_early"] or "8pm Central, too late to text"; continue
     if MODE != "send" or out["sent"] >= LIMIT: continue
-    sent = call("POST", "/conversations/messages", {"type": "SMS", "contactId": c["id"], "message": failed[0]["body"]})
+    try:
+        sent = call("POST", "/conversations/messages", {"type": "SMS", "contactId": c["id"], "message": failed[0]["body"]})
+    except urllib.error.HTTPError as e:  # one contact GHL won't text (e.g. turned DND) shouldn't end the whole run
+        out["skipped"][f"GHL refused send (HTTP {e.code})"] += 1
+        continue
     out["sent"] += 1
     time.sleep(8)
     m = next((x for x in messages(c["id"])[1] if x.get("id") == sent.get("messageId")), {})

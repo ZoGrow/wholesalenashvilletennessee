@@ -378,12 +378,12 @@ function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: 
 }
 
 const REPAIR_PSF: Record<string, number> = { light: 15, medium: 30, heavy: 45, full_gut: 65 }; // same levels as the deal calculator
-const MY_COSTS = 500; // earnest money, title, marketing (deal calculator default)
+const EMD_PERCENT = 1; // earnest money deposit, % of our offer price (Zack 2026-10-22)
 const CALCULATOR_URL = "https://claude.ai/artifact/N7qkPw3VY59ugckT9AhMvV";
 const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
 
 /** Zack's deal calculator, run on what the bot learned (Zack 2026-10-22): ARV = comps (never under
- *  the Zestimate), repairs = level x sqft, buyer pays ARV x 70% - repairs, max offer = buyer - fee - costs,
+ *  the Zestimate), repairs = level x sqft, buyer pays ARV x 70% - repairs, max offer = buyer - fee - EMD (1% of offer),
  *  open ~10% under max. Falls back to the bot's rough numbers when it doesn't have enough to calculate. */
 function dealReport(lead: Lead, env: Env): string {
   const v = (k: keyof Lead) => (lead?.[k] || "").trim() || "unknown";
@@ -400,12 +400,12 @@ function dealReport(lead: Lead, env: Env): string {
     return `🧮 *Rough numbers* (not enough to run the calculator)\nARV: ${v("arv_range")}\nRepairs: ${v("repairs")}\nMax offer: ${v("max_offer")}\n\n🤝 *Make the offer*\nOpen at: ${v("opening_offer")}\nWhat to say: ${script(/^\$/.test(v("opening_offer")) ? v("opening_offer") : "[your number]")}`;
   }
   const pct = Number(env.ARV_PERCENT || "70"), fee = Number(env.ASSIGNMENT_FEE || "10000");
-  const buyer = arv * pct / 100 - repairs, max = buyer - fee - MY_COSTS, open = Math.floor(max * 0.9 / 500) * 500;
+  const buyer = arv * pct / 100 - repairs, max = (buyer - fee) / (1 + EMD_PERCENT / 100), open = Math.floor(max * 0.9 / 500) * 500;
   const arvHow = comps && comps >= (zest || 0) ? `from sold comps${sqft && comps ? `, ~$${Math.round(comps / sqft)}/sqft` : ""}` : "Zestimate (comps came in lower)";
   const repHow = psf && sqft ? `${level.replace("_", " ")}, $${psf}/sqft × ${sqft.toLocaleString("en-US")} sqft` : "bot's estimate";
   let verdict = "";
   if (asking) {
-    const spread = buyer - asking - MY_COSTS;
+    const spread = buyer - asking * (1 + EMD_PERCENT / 100);
     verdict = asking <= max ? `✅ Asking ${usd(asking)} is under your max. Fee at asking: ${usd(spread)}`
       : spread > 0 ? `⚠️ Asking ${usd(asking)} is ${usd(asking - max)} over your max. Fee at asking only ${usd(spread)}`
       : `❌ Asking ${usd(asking)} is ${usd(asking - max)} over your max. Seller needs to come down to ${usd(max)}`;
@@ -416,7 +416,7 @@ function dealReport(lead: Lead, env: Env): string {
     ...(lead?.arv_comps?.trim() && !/^unknown/i.test(lead.arv_comps) ? [`Comps: ${lead.arv_comps.trim()}`] : []),
     `Repairs: ${usd(repairs)} (${repHow})`,
     `Buyer pays: ${usd(buyer)} (${pct}% of ARV minus repairs)`,
-    `Your fee: ${usd(fee)} · costs ${usd(MY_COSTS)}`,
+    `Your fee: ${usd(fee)} · EMD ${usd(max * EMD_PERCENT / 100)} (${EMD_PERCENT}% of offer)`,
     `*Max offer: ${usd(max)}*`,
     ...(verdict ? [verdict] : []),
     `<${CALCULATOR_URL}|Adjust in the calculator>`,

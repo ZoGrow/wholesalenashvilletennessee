@@ -54,7 +54,8 @@ for c in contacts:
     conv, ms = messages(c["id"])
     if not ms: out["skipped"]["no messages"] += 1; continue
     if any(m["direction"] == "inbound" for m in ms): out["skipped"]["they replied"] += 1; continue
-    got = {m.get("body") for m in ms if m["direction"] == "outbound" and m.get("status") in ("delivered", "sent")}
+    # Anything not failed counts as got (incl. pending/queued), so a text another run just sent isn't sent again.
+    got = {m.get("body") for m in ms if m["direction"] == "outbound" and m.get("status") not in ("failed", "undelivered")}
     failed = [m for m in ms if m["direction"] == "outbound" and m.get("status") in ("failed", "undelivered")
               and m.get("body") and m["body"] not in got and m["dateAdded"] >= SINCE]
     if not failed: continue

@@ -1,7 +1,7 @@
 {
  "matches": [
   {
-   "id": "bk78jO",
+   "id": "4pXjYq",
    "tags": [
     "apify-daily-lead",
     "agent-replied"
@@ -12,57 +12,26 @@
      "messageType": "TYPE_SMS",
      "type": 2,
      "status": "delivered",
-     "dateAdded": "2026-10-20T20:49:10.697Z"
+     "dateAdded": "2026-10-23T16:13:23.771Z"
     },
     {
-     "direction": "inbound",
+     "direction": "outbound",
      "messageType": "TYPE_SMS",
      "type": 2,
      "status": "delivered",
-     "dateAdded": "2026-10-20T20:49:07.672Z"
-    },
-    {
-     "direction": "inbound",
-     "messageType": "TYPE_SMS",
-     "type": 2,
-     "status": "delivered",
-     "dateAdded": "2026-10-20T20:48:58.041Z"
-    },
-    {
-     "direction": "inbound",
-     "messageType": "TYPE_SMS",
-     "type": 2,
-     "status": "delivered",
-     "dateAdded": "2026-10-20T20:48:47.477Z"
-    },
-    {
-     "direction": "inbound",
-     "messageType": "TYPE_SMS",
-     "type": 2,
-     "status": "delivered",
-     "dateAdded": "2026-10-20T20:46:52.211Z"
+     "dateAdded": "2026-10-23T16:12:12.375Z"
     }
    ]
   }
  ],
- "probed": "bk78jO",
+ "probed": "4pXjYq",
  "status": 200,
  "body": "ok",
- "seconds": 83.5,
- "notes": [
-  {
-   "at": "2026-10-20T21:02:01.376Z",
-   "body": "\ud83c\udfe0 New qualified lead\n7524 3rd Rd, Bartlett, TN 38135\n\ud83d\udd17 <https://www.zillow.com/homedetails/7524-3rd-Rd-Bartlett-TN-38135/42293985zpid/|Click here to view on Zillow>\n\n\ud83d\udcb0 Asking: $265,000 (agent's estimate)\n\ud83d\udcca Zestimate: $385,300 (asking is 69%)\n\ud83d\udccd Status: Unclear, Zillow shows off-market/other; agent says she listed too high\n\n\ud83d\udd27 Condition: Dated but kept up, pool, big corner lot\n\ud83c\udfe1 Property: 4/3, 3,158 sqft \u00b7 built 1960 \u00b7 Likely vacant (seller traveling in RV)\n\n\ud83d\ude4b Seller: Widow, now traveling full-time in RV\n\u23f1\ufe0f Timeline: ASAP\n\n\ud83e\uddee Rough numbers\nARV: ~$380k-$450k rough (no comps pulled; appraised $450k "
-  },
-  {
-   "at": "2026-10-20T21:02:01.109Z",
-   "body": "SMS bot handoff: QUALIFIED (price-wise). 7524 3rd Rd, Bartlett TN. Zestimate $385,300. Agent thinks $265k works (69%). Market status unclear: Zillow shows other, agent says she listed too high. 4/3, 3,158 sqft, 1960. Dated but kept up, pool, corner lot. Widow traveling, close ASAP, likely vacant. Rough ARV $380-450k (no comps pulled). Rough repairs $63-110k. Rough max offer $146-193k, so $265k is OVER max; seller is flexible but expect a gap. Agent wants to send appraisal by email; I asked him to text it."
-  }
- ],
+ "seconds": 25.3,
+ "notes": [],
  "tags_now": [
   "apify-daily-lead",
   "agent-replied",
-  "hot-lead",
-  "qualified-lead"
+  "follow-up-2026-10-24"
  ]
 }

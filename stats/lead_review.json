@@ -1,16 +1,46 @@
 {
  "days": 2,
- "agents_replied": 291,
+ "agents_replied": 341,
  "buckets": {
-  "opted-out": 94,
-  "not-qualified": 43,
-  "warm-lead": 22,
-  "bot-off": 1,
-  "hot-lead": 7,
-  "qualified-lead": 2
+  "not-qualified": 47,
+  "opted-out": 107,
+  "hot-lead": 9,
+  "qualified-lead": 3,
+  "warm-lead": 27,
+  "bot-off": 1
  },
- "still_vetting": 133,
+ "still_vetting": 160,
  "unanswered": [
+  {
+   "name": "Michael Lasek",
+   "city": "Charlotte",
+   "text": "Understood and will do",
+   "at": "2026-10-23T19:47:04.388Z"
+  },
+  {
+   "name": "LePage Owens",
+   "city": "Huntsville",
+   "text": "Got it!  I'll keep you in mind. Thanks for reaching out.",
+   "at": "2026-10-23T19:42:17.629Z"
+  },
+  {
+   "name": "Andrea Fondren",
+   "city": "Huntsville",
+   "text": "Absolutely!",
+   "at": "2026-10-23T19:24:26.099Z"
+  },
+  {
+   "name": "Nykole Wyatt, MPA, ABA, SRS, GRI",
+   "city": "Charlotte",
+   "text": "Will do",
+   "at": "2026-10-23T19:23:25.222Z"
+  },
+  {
+   "name": "Lizz Baxter",
+   "city": "Charlotte",
+   "text": "I will return your email",
+   "at": "2026-10-23T19:16:58.191Z"
+  },
   {
    "name": "Tajuania Lawson",
    "city": "Huntsville",
@@ -40,24 +70,6 @@
    "city": "Kannapolis",
    "text": "I ordered and sent to D. She Loved it!!!",
    "at": "2026-10-23T17:01:17.495Z"
-  },
-  {
-   "name": "Linda Escobar",
-   "city": "Durham",
-   "text": "in Henderson NC",
-   "at": "2026-10-23T16:24:44.216Z"
-  },
-  {
-   "name": "Anna S. Terry",
-   "city": "Durham",
-   "text": "that investor fell through.",
-   "at": "2026-10-23T16:20:41.522Z"
-  },
-  {
-   "name": "Paige McGuirk",
-   "city": "Charlotte",
-   "text": "NC",
-   "at": "2026-10-23T16:18:53.070Z"
   },
   {
    "name": "Mike Owens",
@@ -106,12 +118,6 @@
    "city": "Johns Creek",
    "text": "Ok",
    "at": "2026-10-22T19:35:35.530Z"
-  },
-  {
-   "name": "Kenya Edwards",
-   "city": "San Francisco",
-   "text": "1930",
-   "at": "2026-10-22T19:28:51.097Z"
   },
   {
    "name": "Allen Jackson",
@@ -205,6 +211,26 @@
   }
  ],
  "not_qualified_reasons": [
+  {
+   "name": "Anna S. Terry",
+   "city": "Durham",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 434 Walsenburg Dr, Durham. Listed on MLS at $420k, Zestimate $417,400 (~100%). Great shape, 4/3, 2306 sqft, built 2014. Seller wants near list, no distress."
+  },
+  {
+   "name": "Michael Lasek",
+   "city": "Charlotte",
+   "note": "SMS bot, did not qualify: Agent doesn't represent sellers and sources deals through a network of agents (pass-along), so we passed. Conversation wrapped up. No reply needed."
+  },
+  {
+   "name": "Mathew Nixon",
+   "city": "Huntsville",
+   "note": "SMS bot handoff: Did not qualify on price (asking $99,900 list (seller will entertain any offer), value unknown (no Zestimate on Zillow); nearby sales $123k-$165k). QUALIFIED (borderline). 206 Richmond Dr NW, listed $99,900, no Zestimate, comps on the same street $123k-$165k. Vacant, dated and needs"
+  },
+  {
+   "name": "Shanti Holloway, RELEVATE",
+   "city": "Raleigh",
+   "note": "SMS bot, did not qualify: Agent said no thanks; not interested."
+  },
   {
    "name": "Tajuania Lawson",
    "city": "Huntsville",
@@ -422,6 +448,11 @@
   }
  ],
  "qualified": [
+  {
+   "name": "John Kurtz",
+   "city": "Charlotte",
+   "note": "SMS bot handoff: QUALIFIED (soft). 5331 Lewhaven Dr, Charlotte. Zestimate $288,300, off-market, 3/2/1355 sqft, built 1975. John is the owner. It needs a rehab, tenants leave end of month, and there are no photos. He has no asking price and keeps saying no lowballs, so expect pushback. ARV is a place"
+  },
   {
    "name": "David Lorrison",
    "city": "Memphis",

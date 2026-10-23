@@ -1,1 +1,148 @@
-[]
+[
+ {
+  "at": 1792783470564,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1792783486173,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [
+   "skip: bot off for 2VNbiC8qYsM6FT5KljTT"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1792783471527,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1792783471988,
+  "outcome": "ok",
+  "trigger": "*/3 * * * *",
+  "logs": [
+   "sweep: answering missed text from 2VNbiC8qYsM6FT5KljTT",
+   "skip: bot off for 2VNbiC8qYsM6FT5KljTT",
+   "sweep: answering missed text from rOQM5R5wBdH62zpT0WH2",
+   "carrier blocked text to rOQM5R5wBdH62zpT0WH2 : Hey Sean, sorry for the confusion. I'm Zack, I buy houses and work with agents. Do you have any clients with a house that needs work, an inherited place, or a landlord who's done? Those are the ones I can help with before they list.",
+   "sweep: answering missed text from gXmHzm4USRZcZO8OPWVe",
+   "sweep: answering missed text from tbrj2Ddf5wNKdm9UQBG8",
+   "skip: bot off for tbrj2Ddf5wNKdm9UQBG8",
+   "sweep: answering missed text from rMeTSpmH1uQ63sIOReD9",
+   "skip: bot off for rMeTSpmH1uQ63sIOReD9",
+   "sweep: answering missed text from V77fiIH8v3l7Fa9hBA96"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1792783502551,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1792783544953,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1792783573277,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1792783651623,
+  "outcome": "ok",
+  "trigger": "*/3 * * * *",
+  "logs": [
+   "sweep: answering missed text from rpoNkssG7BoiIGNZLnqr",
+   "sweep: answering missed text from 2VNbiC8qYsM6FT5KljTT",
+   "skip: bot off for 2VNbiC8qYsM6FT5KljTT",
+   "sweep: answering missed text from gXmHzm4USRZcZO8OPWVe",
+   "sweep: answering missed text from tbrj2Ddf5wNKdm9UQBG8",
+   "skip: bot off for tbrj2Ddf5wNKdm9UQBG8",
+   "sweep: answering missed text from rMeTSpmH1uQ63sIOReD9",
+   "skip: bot off for rMeTSpmH1uQ63sIOReD9",
+   "sweep: answering missed text from V77fiIH8v3l7Fa9hBA96"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1792783637416,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1792783693912,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [
+   "skip: thread moved on while writing the reply for T4au3UqNrW3aL9pWLJo2"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1792783727446,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1792783770686,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [
+   "opt-out from izbk1P8DMUjNu0p54mwp",
+   "reply failed izbk1P8DMUjNu0p54mwp Error: GHL PUT /contacts/izbk1P8DMUjNu0p54mwp: 401 {\"statusCode\":401,\"message\":\"Not authorized to update permanent dnd setting for SMS\",\"succeded\":false,\"succeeded\":false,\"traceId\":\"98b34adc-b5ad-4aa6-873c-7d2cbee304cf\"}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1792783769947,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1792783800803,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1792783827376,
+  "outcome": "ok",
+  "trigger": "30 15-22 * * *",
+  "logs": [
+   "check-ins sent: 0"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1792783831526,
+  "outcome": "ok",
+  "trigger": "*/3 * * * *",
+  "logs": [
+   "sweep: answering missed text from AjENwqOwB0ycQLQno6Sy",
+   "sweep: answering missed text from sXRzhqmQ9qKEOM08mw9r",
+   "sweep: answering missed text from rpoNkssG7BoiIGNZLnqr"
+  ],
+  "errors": []
+ }
+]

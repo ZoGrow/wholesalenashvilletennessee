@@ -1,0 +1,31 @@
+name: Review recent leads
+
+on:
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "How many days back (default 2)"
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  count:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Review leads in GHL (read-only)
+        env:
+          GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
+          GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
+          DAYS: ${{ inputs.days }}
+        run: python scripts/lead_review.py "$DAYS"
+      - name: Save the result to the repo
+        run: |
+          git config user.name "lead-pipeline"
+          git config user.email "lead-pipeline@users.noreply.github.com"
+          git add stats/lead_review.json
+          git commit -m "Lead review" || exit 0
+          git pull --rebase origin main && git push origin HEAD:main

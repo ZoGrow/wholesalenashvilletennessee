@@ -1,68 +1,59 @@
 [
  {
-  "at": 1792783470564,
+  "at": 1792783989963,
   "outcome": "ok",
   "trigger": "POST",
   "logs": [],
   "errors": []
  },
  {
-  "at": 1792783486173,
-  "outcome": "ok",
-  "trigger": "POST",
-  "logs": [
-   "skip: bot off for 2VNbiC8qYsM6FT5KljTT"
-  ],
-  "errors": []
- },
- {
-  "at": 1792783471527,
-  "outcome": "ok",
-  "trigger": "POST",
-  "logs": [],
-  "errors": []
- },
- {
-  "at": 1792783471988,
+  "at": 1792784011740,
   "outcome": "ok",
   "trigger": "*/3 * * * *",
   "logs": [
-   "sweep: answering missed text from 2VNbiC8qYsM6FT5KljTT",
-   "skip: bot off for 2VNbiC8qYsM6FT5KljTT",
-   "sweep: answering missed text from rOQM5R5wBdH62zpT0WH2",
-   "carrier blocked text to rOQM5R5wBdH62zpT0WH2 : Hey Sean, sorry for the confusion. I'm Zack, I buy houses and work with agents. Do you have any clients with a house that needs work, an inherited place, or a landlord who's done? Those are the ones I can help with before they list.",
-   "sweep: answering missed text from gXmHzm4USRZcZO8OPWVe",
-   "sweep: answering missed text from tbrj2Ddf5wNKdm9UQBG8",
-   "skip: bot off for tbrj2Ddf5wNKdm9UQBG8",
-   "sweep: answering missed text from rMeTSpmH1uQ63sIOReD9",
-   "skip: bot off for rMeTSpmH1uQ63sIOReD9",
-   "sweep: answering missed text from V77fiIH8v3l7Fa9hBA96"
+   "sweep: answering missed text from izbk1P8DMUjNu0p54mwp",
+   "skip: bot off for izbk1P8DMUjNu0p54mwp",
+   "sweep: answering missed text from T4au3UqNrW3aL9pWLJo2",
+   "sweep: answering missed text from AjENwqOwB0ycQLQno6Sy",
+   "sweep: answering missed text from sXRzhqmQ9qKEOM08mw9r"
   ],
   "errors": []
  },
  {
-  "at": 1792783502551,
+  "at": 1792784026867,
   "outcome": "ok",
   "trigger": "POST",
   "logs": [],
   "errors": []
  },
  {
-  "at": 1792783544953,
+  "at": 1792784036882,
   "outcome": "ok",
   "trigger": "POST",
   "logs": [],
   "errors": []
  },
  {
-  "at": 1792783573277,
+  "at": 1792784063838,
   "outcome": "ok",
   "trigger": "POST",
-  "logs": [],
+  "logs": [
+   "opt-out from vrm9k4rmrvMZ42sPtzty",
+   "SMS DND refused, setting DND vrm9k4rmrvMZ42sPtzty Error: GHL PUT /contacts/vrm9k4rmrvMZ42sPtzty: 401 {\"statusCode\":401,\"message\":\"Not authorized to update permanent dnd setting for SMS\",\"succeded\":false,\"succeeded\":false,\"traceId\":\"3ad549a8-4a58-4fc7-bea5-175c740f935e\"}"
+  ],
   "errors": []
  },
  {
-  "at": 1792783651623,
+  "at": 1792784072840,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [
+   "skip: bot off for izbk1P8DMUjNu0p54mwp"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1792784191548,
   "outcome": "ok",
   "trigger": "*/3 * * * *",
   "logs": [
@@ -79,69 +70,73 @@
   "errors": []
  },
  {
-  "at": 1792783637416,
-  "outcome": "ok",
-  "trigger": "POST",
-  "logs": [],
-  "errors": []
- },
- {
-  "at": 1792783693912,
+  "at": 1792784180324,
   "outcome": "ok",
   "trigger": "POST",
   "logs": [
-   "skip: thread moved on while writing the reply for T4au3UqNrW3aL9pWLJo2"
+   "price rule overrides 'qualified' for 8bykFCNvGXgyJGA5p2BO $99,900 list (seller will entertain any offer) unknown (no Zestimate on Zillow); nearby sales $123k-$165k"
   ],
   "errors": []
  },
  {
-  "at": 1792783727446,
-  "outcome": "ok",
-  "trigger": "POST",
-  "logs": [],
-  "errors": []
- },
- {
-  "at": 1792783770686,
-  "outcome": "ok",
-  "trigger": "POST",
-  "logs": [
-   "opt-out from izbk1P8DMUjNu0p54mwp",
-   "reply failed izbk1P8DMUjNu0p54mwp Error: GHL PUT /contacts/izbk1P8DMUjNu0p54mwp: 401 {\"statusCode\":401,\"message\":\"Not authorized to update permanent dnd setting for SMS\",\"succeded\":false,\"succeeded\":false,\"traceId\":\"98b34adc-b5ad-4aa6-873c-7d2cbee304cf\"}"
-  ],
-  "errors": []
- },
- {
-  "at": 1792783769947,
-  "outcome": "ok",
-  "trigger": "POST",
-  "logs": [],
-  "errors": []
- },
- {
-  "at": 1792783800803,
-  "outcome": "ok",
-  "trigger": "POST",
-  "logs": [],
-  "errors": []
- },
- {
-  "at": 1792783827376,
-  "outcome": "ok",
-  "trigger": "30 15-22 * * *",
-  "logs": [
-   "check-ins sent: 0"
-  ],
-  "errors": []
- },
- {
-  "at": 1792783831526,
+  "at": 1792784371794,
   "outcome": "ok",
   "trigger": "*/3 * * * *",
   "logs": [
-   "sweep: answering missed text from AjENwqOwB0ycQLQno6Sy",
-   "sweep: answering missed text from sXRzhqmQ9qKEOM08mw9r",
-   "sweep: answering missed text from rpoNkssG7BoiIGNZLnqr"
+   "sweep: answering missed text from vrm9k4rmrvMZ42sPtzty",
+   "skip: bot off for vrm9k4rmrvMZ42sPtzty",
+   "sweep: answering missed text from KUiGvLD1MndQzFwbPMW0",
+   "skip: bot off for KUiGvLD1MndQzFwbPMW0",
+   "sweep: answering missed text from k3eSm13hg1SQlw4Dp1Th",
+   "sweep: answering missed text from 5ChVf7MyFuwQVkzcJTDr",
+   "sweep: answering missed text from BLaQVsRwBCogSsUXhDfr",
+   "skip: bot off for BLaQVsRwBCogSsUXhDfr",
+   "sweep: answering missed text from OKxKlvfkhCEu66zpTx56",
+   "skip: bot off for OKxKlvfkhCEu66zpTx56",
+   "sweep: answering missed text from V61qd2CPJiRC3MNMSMhf",
+   "skip: bot off for V61qd2CPJiRC3MNMSMhf",
+   "sweep: answering missed text from zxypFrt817dYoK2WH295",
+   "skip: bot off for zxypFrt817dYoK2WH295",
+   "sweep: answering missed text from 5DhhOrYyjyewqAooVZv6",
+   "skip: bot off for 5DhhOrYyjyewqAooVZv6",
+   "sweep: answering missed text from b3jNZkEKPpfp8KLTReaj",
+   "skip: bot off for b3jNZkEKPpfp8KLTReaj",
+   "sweep: answering missed text from 94AYAHrLTfVmxOvfunT6",
+   "skip: bot off for 94AYAHrLTfVmxOvfunT6",
+   "sweep: answering missed text from j8ImOou0eIkTZ7oOs60s",
+   "skip: bot off for j8ImOou0eIkTZ7oOs60s",
+   "sweep: answering missed text from tU9KPwubNLD28e4pXjYq"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1792784481893,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1792784540518,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1792784552919,
+  "outcome": "ok",
+  "trigger": "*/3 * * * *",
+  "logs": [
+   "sweep: answering missed text from i3PDvbSZYumw3hXKI0gF",
+   "skip: bot off for i3PDvbSZYumw3hXKI0gF",
+   "sweep: answering missed text from 9yEztBSNmNMf7l0X1rDo",
+   "sweep: answering missed text from STduJrpfbl0QGPvFambe",
+   "skip: bot off for STduJrpfbl0QGPvFambe",
+   "sweep: answering missed text from 7TcQB4noWNhVw9KL2rU9",
+   "skip: bot off for 7TcQB4noWNhVw9KL2rU9",
+   "sweep: answering missed text from Zr8ogq7F7tMzooX1Y83l",
+   "sweep: answering missed text from k2Aiv4E80NBfSDApMISz"
   ],
   "errors": []
  }

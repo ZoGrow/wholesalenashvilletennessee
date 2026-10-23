@@ -86,15 +86,36 @@ const OFFER_NUDGES_PER_RUN = 3;
 async function answerMissed(env: Env): Promise<void> {
   const hour = Number(new Date().toLocaleString("en-US", { timeZone: "America/Chicago", hour: "numeric", hour12: false }));
   if (hour < 8 || hour >= 21) return; // no texts late at night
-  const res = await ghl(env, `/conversations/search?locationId=${env.GHL_LOCATION_ID}&sortBy=last_message_date&sort=desc&limit=40`);
+  // Ask GHL for conversations whose last message is an inbound text. The newest 40 conversations of any
+  // kind weren't enough: right after the daily blast, 1,000 outbound texts push every reply out of that
+  // window, and replies went unanswered for hours (Tajuania Lawson's off-market house, 2026-10-23).
+  const base = `/conversations/search?locationId=${env.GHL_LOCATION_ID}&sortBy=last_message_date&sort=desc&limit=100`;
+  let convs: any[] = [];
+  try {
+    convs = (await ghl(env, `${base}&lastMessageDirection=inbound`)).conversations ?? [];
+  } catch (e) {
+    console.warn("inbound filter refused, paging instead", e);
+  }
+  // If GHL ignored or refused the filter, page back through the last day of conversations instead.
+  if (!convs.length || convs.some((c) => c.lastMessageDirection !== "inbound")) {
+    convs = [];
+    let after = "";
+    for (let page = 0; page < 6; page++) {
+      const batch: any[] = (await ghl(env, base + (after ? `&startAfterDate=${after}` : ""))).conversations ?? [];
+      convs.push(...batch);
+      const last = batch[batch.length - 1];
+      if (batch.length < 100 || !last || Date.now() - Number(last.lastMessageDate) > 72 * 3600_000) break;
+      after = String(last.lastMessageDate);
+    }
+  }
   let answered = 0;
-  for (const c of res.conversations ?? []) {
+  for (const c of convs) {
     if (answered >= SWEEP_PER_RUN) break;
     const age = Date.now() - Number(c.lastMessageDate);
     if (c.lastMessageDirection !== "inbound" || !/SMS/i.test(c.lastMessageType ?? "")) continue;
     // Give the live webhook time first. A reply with Zillow and comp lookups can run past GHL's webhook
     // timeout and get cut off (David Lorrison, 2026-10-20), so this sweep is the backstop.
-    if (!(age > 4 * 60_000 && age < 24 * 3600_000)) continue;
+    if (!(age > 4 * 60_000 && age < 72 * 3600_000)) continue; // a late answer beats none; Claude skips "ok"/"thanks"
     if (c.tags && !c.tags.some((t: string) => t.toLowerCase() === OUTREACH_TAG)) continue;
     try {
       console.log("sweep: answering missed text from", c.contactId);

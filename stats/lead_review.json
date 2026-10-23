@@ -1,16 +1,28 @@
 {
  "days": 3,
- "agents_replied": 534,
+ "agents_replied": 483,
  "buckets": {
-  "not-qualified": 75,
-  "opted-out": 153,
-  "warm-lead": 54,
-  "hot-lead": 24,
+  "opted-out": 142,
+  "warm-lead": 48,
   "bot-off": 2,
-  "qualified-lead": 7
+  "not-qualified": 71,
+  "hot-lead": 19,
+  "qualified-lead": 6
  },
- "still_vetting": 252,
+ "still_vetting": 224,
  "unanswered": [
+  {
+   "name": "Charles Harris Memphis Real Estate",
+   "city": "Memphis",
+   "text": "I totally understand thanks",
+   "at": "2026-10-23T17:36:44.639Z"
+  },
+  {
+   "name": "LeTracey Tuck",
+   "city": "Harvest",
+   "text": "Will do \ud83d\udc4d",
+   "at": "2026-10-23T17:25:38.135Z"
+  },
   {
    "name": "Judy Flowe",
    "city": "Kannapolis",
@@ -346,57 +358,14 @@
    "city": "Memphis",
    "text": "Checking",
    "at": "2026-10-20T18:44:46.376Z"
-  },
-  {
-   "name": "MYRA B. SHEDDAN",
-   "city": "Memphis",
-   "text": "AND . . . both were investors.",
-   "at": "2026-10-20T18:00:21.714Z"
-  },
-  {
-   "name": "Shelia Mittlesteadt",
-   "city": "Pulaski",
-   "text": "I would appreciate this one being passed along as well. Thank you!!",
-   "at": "2026-10-20T17:53:48.903Z"
-  },
-  {
-   "name": "Cindy Garvey",
-   "city": "Franklin",
-   "text": "I can wait",
-   "at": "2026-10-20T17:47:44.540Z"
-  },
-  {
-   "name": "Jennifer Beu",
-   "city": "Hendersonville",
-   "text": "Will do!",
-   "at": "2026-10-20T17:44:54.795Z"
-  },
-  {
-   "name": "Laurie Stark",
-   "city": "Memphis",
-   "text": "Ok",
-   "at": "2026-10-20T17:39:49.471Z"
-  },
-  {
-   "name": "Jayme Edwards",
-   "city": "Nashville",
-   "text": "Take care",
-   "at": "2026-10-20T17:38:54.957Z"
-  },
-  {
-   "name": "Kathey Darnell-Keen",
-   "city": "Franklin",
-   "text": "He had no intentions of fixing things or updating things anyway",
-   "at": "2026-10-20T17:37:55.483Z"
-  },
-  {
-   "name": "Rebecca Edwards, Realtor",
-   "city": "Germantown",
-   "text": "Hey! Thanks for your message, we'll get back to you shortly.",
-   "at": "2026-10-20T17:31:14.359Z"
   }
  ],
  "not_qualified_reasons": [
+  {
+   "name": "Charles Harris Memphis Real Estate",
+   "city": "Memphis",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 5336 Rolling Oaks, Memphis. Listed at $335k, seller needs over $300k to pay off the mortgage, updated 4/2 1,800 sqft, no urgency. Priced near retail, so it doesn't fit."
+  },
   {
    "name": "Esther Carrasco",
    "city": "Cornelius",
@@ -741,31 +710,6 @@
    "name": "Billy Lanier",
    "city": "Lewisburg",
    "note": "SMS bot, did not qualify: The investor sellers who own 420 Maple St (listed at $125k, lowest they'd take is about $100k, so it didn't qualify) may start selling off other rentals as tenants move out. Check back in about a month."
-  },
-  {
-   "name": "Michelle Campbell",
-   "city": "Arlington",
-   "note": "SMS bot handoff: UNCLEAR, agent wants a number to present. 5446 Hickory Park Dr, Antioch TN, off-market 2-3/2 townhome, ~1,750 sqft, built 1985, good shape, owner-occupied. Asking ~$225k, owes ~$100k, needs to close before Thanksgiving. No Zestimate found. Rough estimates: ARV $250-270k, repairs $35"
-  },
-  {
-   "name": "Shay Payne",
-   "city": "Collierville",
-   "note": ""
-  },
-  {
-   "name": "Miki Peek",
-   "city": "Franklin",
-   "note": ""
-  },
-  {
-   "name": "Nicole Jarrett",
-   "city": "Savannah",
-   "note": "SMS bot, possible future deal: Nicole says she has a property in Salisbury (state unknown). Waiting on the address or a listing link."
-  },
-  {
-   "name": "Jayme Edwards",
-   "city": "Nashville",
-   "note": ""
   }
  ],
  "qualified": [
@@ -778,11 +722,6 @@
    "name": "Patrick Babb",
    "city": "Chattanooga",
    "note": "SMS bot handoff: QUALIFIED (rough). 10601 Quarter Horse Ln 37363. Off-market, asking ~$1M, no Zestimate found, ARV per agent $1.6-1.8M (unverified, couldn't pull comps). Reno ~$160k. Owners downsizing, live there, 60 days max. Agent says working directly with owners. Max offer ~$950k, so asking is a"
-  },
-  {
-   "name": "Lavera D Coleman",
-   "city": "Germantown",
-   "note": "SMS bot handoff: QUALIFIED (on price only, gap is tight). 3341 Seaforth Dr, Memphis TN 38127. Off-market, owner-occupied 3/1.5, sqft unknown. No Zestimate found. Neighbor 3356 Seaforth is estimated at $92-112k on Homes.com, so the $65k asking price is about 58-71% of that. Needs a roof and AC, furna"
   },
   {
    "name": "Fredrick Cunningham",
@@ -830,21 +769,6 @@
    "name": "Pamela Brewi",
    "city": "Millington",
    "note": "SMS bot handoff: NOT QUALIFIED YET (needs vetting). 2425 Willinghurst Dr, Germantown TN, off-market, 4/3/2,866, 1983, vacant, no work done. Zestimate $469,400; asking ~$377k (80%). Owner Omar 949-998-5578 bought from bank (last sale $416,901), likely an investor himself; Pamela said to text him dire"
-  },
-  {
-   "name": "Mallory Greer",
-   "city": "Memphis",
-   "note": "SMS bot handoff: Mallory (eXp Realty, Memphis) wants you to FaceTime her. She hasn't named a property yet, so no address, list price, condition or asking price so far."
-  },
-  {
-   "name": "Brittany Vogg",
-   "city": "Collierville",
-   "note": "SMS bot handoff: Brittany (BHHS McLemore, Collierville) said she 'possibly' has something but only takes on new investor clients after a Zoom or in-person meeting at her office on Collierville Towne Square. She wants to schedule one. No property, price or condition discussed yet."
-  },
-  {
-   "name": "Kimo Quance",
-   "city": "Franklin",
-   "note": "SMS bot handoff: No property yet. Kimo (eXp, Franklin) is cleaning up his investor list and wants examples of properties you've recently sold. I told him you'd send a few. Please send him real examples. I also asked him about stale listings or ones with price drops."
   }
  ]
 }

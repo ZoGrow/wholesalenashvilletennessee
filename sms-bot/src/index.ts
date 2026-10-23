@@ -83,6 +83,9 @@ const OFFER_CHECKS_PER_RUN = 12; // handed-off leads checked per hourly run (2 r
 const OFFER_NUDGES_PER_RUN = 3;
 
 /** Safety net: answer agents whose text never reached us (GHL webhook missed or failed). */
+/** Texts the sweep already handled ("contactId:lastMessageDate"), kept while this Worker instance lives. */
+const sweptTexts = new Set<string>();
+
 async function answerMissed(env: Env): Promise<void> {
   const hour = Number(new Date().toLocaleString("en-US", { timeZone: "America/Chicago", hour: "numeric", hour12: false }));
   if (hour < 8 || hour >= 21) return; // no texts late at night
@@ -108,9 +111,14 @@ async function answerMissed(env: Env): Promise<void> {
       after = String(last.lastMessageDate);
     }
   }
+  // Only texts the bot actually worked on count toward the per-run limit, and each one is worked on once.
+  // Before (2026-10-23) the newest few (an opted-out "Stop", a hot lead, an "ok" the bot lets go) used up
+  // every run's slots forever, so older real replies like Tajuania Lawson's never got answered.
   let answered = 0;
   for (const c of convs) {
     if (answered >= SWEEP_PER_RUN) break;
+    const key = `${c.contactId}:${c.lastMessageDate}`;
+    if (sweptTexts.has(key)) continue;
     const age = Date.now() - Number(c.lastMessageDate);
     if (c.lastMessageDirection !== "inbound" || !/SMS/i.test(c.lastMessageType ?? "")) continue;
     // Give the live webhook time first. A reply with Zillow and comp lookups can run past GHL's webhook
@@ -119,8 +127,9 @@ async function answerMissed(env: Env): Promise<void> {
     if (c.tags && !c.tags.some((t: string) => t.toLowerCase() === OUTREACH_TAG)) continue;
     try {
       console.log("sweep: answering missed text from", c.contactId);
-      await handleReply(c.contactId, env, true);
-      answered++;
+      if (sweptTexts.size > 5000) sweptTexts.clear();
+      sweptTexts.add(key);
+      if (await handleReply(c.contactId, env, true)) answered++;
     } catch (e) {
       console.error("sweep reply failed", c.contactId, e);
     }
@@ -258,24 +267,24 @@ async function deliveryStatus(conversationId: string, messageId: string, env: En
 }
 
 /** Answer the agent's newest text. outreachOnly: skip anyone not in the outreach (used by the sweep). */
-async function handleReply(contactId: string, env: Env, outreachOnly = false): Promise<void> {
+async function handleReply(contactId: string, env: Env, outreachOnly = false): Promise<boolean> {
   const contact = (await ghl(env, `/contacts/${contactId}`)).contact ?? {};
   const tags: string[] = (contact.tags ?? []).map((t: string) => t.toLowerCase());
-  if (outreachOnly && !tags.includes(OUTREACH_TAG)) return;
+  if (outreachOnly && !tags.includes(OUTREACH_TAG)) return false;
   if (BOT_OFF_TAGS.some((t) => tags.includes(t)) || contact.dnd || contact.dndSettings?.SMS?.status === "active") {
     console.log("skip: bot off for", contactId);
-    return;
+    return false;
   }
 
   const thread = await smsThread(contactId, env);
   const last = thread[thread.length - 1];
   if (!last || last.direction !== "inbound") {
     console.log("skip: nothing new from", contactId); // already answered (duplicate webhook)
-    return;
+    return false;
   }
   if (OPT_OUT.test(last.body)) {
     await optOut(contactId, env, last.body);
-    return;
+    return true;
   }
 
   if (!tags.includes(REPLIED_TAG)) await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [REPLIED_TAG] });
@@ -284,7 +293,7 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
   if (stale.length) await ghl(env, `/contacts/${contactId}/tags`, "DELETE", { tags: stale });
 
   let decision = await nextReply(thread, contact, env);
-  if (!decision) return;
+  if (!decision) return true;
   // "I'll run the numbers" is only for leads that go to Zack in Slack (Zack 2026-10-22). If the bot
   // promised numbers on anything else, have it rewrite: keep vetting or pass on the price.
   if (decision.deal !== "qualified" && PROMISED_NUMBERS.test(decision.reply || "")) {
@@ -294,7 +303,7 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
   }
   if (decision.optout) {
     await optOut(contactId, env, last.body);
-    return;
+    return true;
   }
   // Zack wants replies to land about 20 seconds after their text, like a person typing back.
   const wait = REPLY_DELAY_MS - (Date.now() - Date.parse(last.at));
@@ -305,7 +314,7 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
   const newest = now[now.length - 1];
   if (!newest || newest.direction !== "inbound" || newest.at !== last.at) {
     console.log("skip: thread moved on while writing the reply for", contactId);
-    return;
+    return true;
   }
 
   if (decision.reply.trim()) {
@@ -355,6 +364,7 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
       if (!res.ok) console.error("slack post failed", res.status, await res.text());
     }
   }
+  return true;
 }
 
 const NO_PROMISE_FIX = `Your draft was: "{{REPLY}}". Don't tell the agent you'll run numbers, send a number or get them an offer: that's only said on leads that qualify and go to Zack. Rewrite it. If you still need info (photos, condition, asking price, why they're selling, timeline), ask your next question. If the price or situation doesn't work, pass politely, e.g. "Appreciate it, but we can't really help near that price range. If you get one that needs work and a seller who needs out, send it my way." and set deal = "not_qualified".`;

@@ -33,15 +33,18 @@ jobs:
           mkdir -p stats
           python3 - <<'PY'
           import json
-          out = []
-          for line in open("sms-bot/tail.jsonl"):
-              try: e = json.loads(line)
-              except Exception: continue
-              ev = e.get("event") or {}
+          out, text, dec, i = [], open("sms-bot/tail.jsonl").read(), json.JSONDecoder(), 0
+          while (i := text.find("{", i)) != -1:  # wrangler prints one pretty-printed object per event
+              try: e, i = dec.raw_decode(text, i)
+              except Exception: i += 1; continue
+              if not isinstance(e, dict): continue
+              ev = e.get("event") if isinstance(e.get("event"), dict) else {}
+              req = ev.get("request") if isinstance(ev.get("request"), dict) else {}
+              msg = lambda l: " ".join(map(str, l.get("message", []))) if isinstance(l, dict) else str(l)
               out.append({"at": e.get("eventTimestamp"), "outcome": e.get("outcome"),
-                          "trigger": ev.get("cron") or (ev.get("request") or {}).get("method"),
-                          "logs": [" ".join(map(str, l.get("message", [])))[:300] for l in e.get("logs", [])],
-                          "errors": [f"{x.get('name')}: {x.get('message')}"[:300] for x in e.get("exceptions", [])]})
+                          "trigger": ev.get("cron") or req.get("method"),
+                          "logs": [msg(l)[:300] for l in e.get("logs", [])],
+                          "errors": [str(x)[:300] for x in e.get("exceptions", [])]})
           json.dump(out, open("stats/bot_tail.json", "w"), indent=1)
           print(json.dumps(out, indent=1)[:20000])
           PY

@@ -1,0 +1,50 @@
+name: Watch SMS bot logs
+
+on:
+  workflow_dispatch:          # read-only: records the bot's live logs for a few minutes (no texts sent)
+    inputs:
+      minutes:
+        description: How long to watch
+        default: "7"
+
+permissions:
+  contents: write
+
+jobs:
+  tail:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+        working-directory: sms-bot
+      - name: Tail logs
+        working-directory: sms-bot
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: timeout $(( ${{ inputs.minutes }} * 60 )) npx wrangler tail --format json > tail.jsonl || true
+      - name: Save a summary
+        run: |
+          mkdir -p stats
+          python3 - <<'PY'
+          import json
+          out = []
+          for line in open("sms-bot/tail.jsonl"):
+              try: e = json.loads(line)
+              except Exception: continue
+              ev = e.get("event") or {}
+              out.append({"at": e.get("eventTimestamp"), "outcome": e.get("outcome"),
+                          "trigger": ev.get("cron") or (ev.get("request") or {}).get("method"),
+                          "logs": [" ".join(map(str, l.get("message", [])))[:300] for l in e.get("logs", [])],
+                          "errors": [f"{x.get('name')}: {x.get('message')}"[:300] for x in e.get("exceptions", [])]})
+          json.dump(out, open("stats/bot_tail.json", "w"), indent=1)
+          print(json.dumps(out, indent=1)[:20000])
+          PY
+          git config user.name "lead-pipeline"
+          git config user.email "lead-pipeline@users.noreply.github.com"
+          git add stats/bot_tail.json
+          git commit -m "SMS bot log snapshot" || exit 0
+          git pull --rebase origin main && git push origin HEAD:main

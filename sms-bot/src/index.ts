@@ -83,9 +83,6 @@ const OFFER_CHECKS_PER_RUN = 12; // handed-off leads checked per hourly run (2 r
 const OFFER_NUDGES_PER_RUN = 3;
 
 /** Safety net: answer agents whose text never reached us (GHL webhook missed or failed). */
-/** Texts the sweep already handled ("contactId:lastMessageDate"), kept while this Worker instance lives. */
-const sweptTexts = new Set<string>();
-
 async function answerMissed(env: Env): Promise<void> {
   const hour = Number(new Date().toLocaleString("en-US", { timeZone: "America/Chicago", hour: "numeric", hour12: false }));
   if (hour < 8 || hour >= 21) return; // no texts late at night
@@ -111,14 +108,14 @@ async function answerMissed(env: Env): Promise<void> {
       after = String(last.lastMessageDate);
     }
   }
-  // Only texts the bot actually worked on count toward the per-run limit, and each one is worked on once.
+  // Only texts the bot actually worked on count toward the per-run limit, and each one is worked on once:
+  // the sweep marks the conversation read in GHL afterwards and skips read ones (a new text makes it unread).
   // Before (2026-10-23) the newest few (an opted-out "Stop", a hot lead, an "ok" the bot lets go) used up
-  // every run's slots forever, so older real replies like Tajuania Lawson's never got answered.
+  // every run's slots and were re-sent to Claude every 3 minutes, so older real replies went unanswered.
   let answered = 0;
   for (const c of convs) {
     if (answered >= SWEEP_PER_RUN) break;
-    const key = `${c.contactId}:${c.lastMessageDate}`;
-    if (sweptTexts.has(key)) continue;
+    if (c.unreadCount === 0) continue;
     const age = Date.now() - Number(c.lastMessageDate);
     if (c.lastMessageDirection !== "inbound" || !/SMS/i.test(c.lastMessageType ?? "")) continue;
     // Give the live webhook time first. A reply with Zillow and comp lookups can run past GHL's webhook
@@ -127,11 +124,14 @@ async function answerMissed(env: Env): Promise<void> {
     if (c.tags && !c.tags.some((t: string) => t.toLowerCase() === OUTREACH_TAG)) continue;
     try {
       console.log("sweep: answering missed text from", c.contactId);
-      if (sweptTexts.size > 5000) sweptTexts.clear();
-      sweptTexts.add(key);
       if (await handleReply(c.contactId, env, true)) answered++;
     } catch (e) {
       console.error("sweep reply failed", c.contactId, e);
+    }
+    try {
+      await ghl(env, `/conversations/${c.id}`, "PUT", { locationId: env.GHL_LOCATION_ID, unreadCount: 0 });
+    } catch (e) {
+      console.error("couldn't mark conversation read", c.id, e);
     }
   }
 }
@@ -493,7 +493,14 @@ type Decision = {
 async function optOut(contactId: string, env: Env, text: string): Promise<void> {
   console.log("opt-out from", contactId);
   await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [OPTED_OUT_TAG] });
-  await ghl(env, `/contacts/${contactId}`, "PUT", { dndSettings: { SMS: { status: "active", message: "Opted out by text" } } });
+  // GHL sometimes refuses the SMS DND setting (401 "permanent dnd", 2026-10-23); fall back to plain DND,
+  // and never let it stop the note. The opted-out tag alone already keeps the bot and check-ins away.
+  try {
+    await ghl(env, `/contacts/${contactId}`, "PUT", { dndSettings: { SMS: { status: "active", message: "Opted out by text" } } });
+  } catch (e) {
+    console.warn("SMS DND refused, setting DND", contactId, e);
+    await ghl(env, `/contacts/${contactId}`, "PUT", { dnd: true }).catch((e2) => console.error("DND refused", contactId, e2));
+  }
   await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `SMS bot: opted out, no more texts. They said: "${text.slice(0, 200)}"` });
 }
 

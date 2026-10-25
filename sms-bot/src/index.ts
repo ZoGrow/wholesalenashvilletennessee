@@ -294,11 +294,13 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
 
   let decision = await nextReply(thread, contact, env);
   if (!decision) return true;
+  applyDealRules(decision, contactId, env);
   // "I'll run the numbers" is only for leads that go to Zack in Slack (Zack 2026-10-22). If the bot
   // promised numbers on anything else, have it rewrite: keep vetting or pass on the price.
   if (decision.deal !== "qualified" && PROMISED_NUMBERS.test(decision.reply || "")) {
     console.log("promised numbers on a non-qualified lead, rewriting", contactId, decision.reply);
     decision = (await nextReply(thread, contact, env, false, "", NO_PROMISE_FIX.replace("{{REPLY}}", decision.reply))) ?? decision;
+    applyDealRules(decision, contactId, env);
     if (decision.deal !== "qualified" && PROMISED_NUMBERS.test(decision.reply || "")) decision.reply = ""; // never send an empty promise
   }
   if (decision.optout) {
@@ -325,13 +327,6 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
         body: `SMS bot (test mode, not sent) would reply: ${decision.reply.trim()}`,
       });
     } else await sendSms(contactId, decision.reply.trim(), thread, contact, env);
-  }
-  // Hard check on Zack's price rule, in case the model calls a lead qualified when it isn't
-  // (e.g. off-market asking $150k over the Zestimate).
-  if (decision.deal === "qualified" && failsPriceRule(decision.lead, env)) {
-    console.log("price rule overrides 'qualified' for", contactId, decision.lead?.asking_price, decision.lead?.zestimate);
-    decision.deal = "not_qualified";
-    decision.note = `Did not qualify on price (asking ${decision.lead?.asking_price}, value ${decision.lead?.zestimate}). ${decision.note || ""}`;
   }
   const newTags: string[] = [];
   if (decision.handoff) newTags.push(HANDOFF_TAG);
@@ -367,7 +362,24 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
   return true;
 }
 
-const NO_PROMISE_FIX = `Your draft was: "{{REPLY}}". Don't tell the agent you'll run numbers, send a number or get them an offer: that's only said on leads that qualify and go to Zack. Rewrite it. If you still need info (photos, condition, asking price, why they're selling, timeline), ask your next question. If the price or situation doesn't work, pass politely, e.g. "Appreciate it, but we can't really help near that price range. If you get one that needs work and a seller who needs out, send it my way." and set deal = "not_qualified".`;
+/** Hard check on Zack's rules, in case the model calls a lead qualified when it isn't. Listed houses
+ *  never qualify (Zack 2026-10-25). An off-market house priced over the Zestimate isn't a pass either:
+ *  it stays in vetting so the bot keeps negotiating on the repairs; it just doesn't go to Slack yet. */
+function applyDealRules(decision: Decision, contactId: string, env: Env): void {
+  if (decision.deal === "qualified" && isListed(decision.lead)) {
+    console.log("listed house can't qualify", contactId, decision.lead?.market_status);
+    decision.deal = "not_qualified";
+    decision.handoff = false;
+    decision.note = `Listed on the MLS, Zack only buys off-market. ${decision.note || ""}`;
+  } else if (decision.deal === "qualified" && failsPriceRule(decision.lead, env)) {
+    console.log("price rule holds back 'qualified' for", contactId, decision.lead?.asking_price, decision.lead?.zestimate);
+    decision.deal = "";
+    decision.handoff = false;
+    decision.note = `Still negotiating: asking ${decision.lead?.asking_price} is over the value (${decision.lead?.zestimate}). ${decision.note || ""}`;
+  }
+}
+
+const NO_PROMISE_FIX = `Your draft was: "{{REPLY}}". Don't tell the agent you'll run numbers, send a number or get them an offer: that's only said on leads that qualify and go to Zack. Rewrite it. If you still need info (photos, condition, asking price, why they're selling, timeline), ask your next question. If it's listed on the MLS, pass politely ("Appreciate it, but I only buy off-market...") and set deal = "not_qualified". If it's off-market and the price is high, don't pass yet: get photos and condition, and tie a lower number to the repairs. If the situation doesn't work (good shape, no reason to sell, seller won't move), pass politely, e.g. "Appreciate it, but we can't really help near that price range. If you get one that needs work and a seller who needs out, send it my way." and set deal = "not_qualified".`;
 // "I'll run the numbers", "let me crunch numbers", "I'll get you an offer", "get back to you with a number" ...
 const PROMISED_NUMBERS =
   /\b(run(ning)?|crunch(ing)?|work(ing)? up|put together|look(ing)? at) (the |some )?(numbers|comps|an offer|a number|figures)\b|\b(get|send|have) (you |back to you with |over )?(an offer|a number|my number|numbers|an? (cash )?offer)\b|\bget back to you (shortly |soon |today |tomorrow )?with\b/i;
@@ -380,8 +392,14 @@ function dollars(s?: string): number | null {
   return n >= 10000 ? n : null; // ignore things like "3 beds"
 }
 
-/** True when the asking price is clearly over the line: off-market must be under QUALIFY_PERCENT of
- *  the value, listed houses at or under LISTED_QUALIFY_PERCENT. Unknown numbers never fail. */
+/** True when the house is clearly on the MLS (active, pending, coming soon, back on market). */
+function isListed(lead: Lead | undefined): boolean {
+  const st = lead?.market_status || "";
+  return !/off/i.test(st) && /listed|active|mls|pending|coming soon|back on market|for sale/i.test(st);
+}
+
+/** True when an off-market asking price is clearly over QUALIFY_PERCENT of the value.
+ *  Unknown numbers never fail. */
 function failsPriceRule(lead: Lead | undefined, env: Env): boolean {
   const asking = dollars(lead?.asking_price), arv = dollars(lead?.arv_range);
   let value = dollars(lead?.zestimate);
@@ -389,8 +407,7 @@ function failsPriceRule(lead: Lead | undefined, env: Env): boolean {
   // house, 2026-10-20): use a rough as-is value of 70% of ARV instead.
   if (arv && (!value || value < arv * 0.5)) value = Math.max(value || 0, arv * 0.7);
   if (!asking || !value) return false;
-  const offMarket = /off/i.test(lead?.market_status || "");
-  const pct = Number(offMarket ? env.QUALIFY_PERCENT || "100" : env.LISTED_QUALIFY_PERCENT || "75");
+  const pct = Number(env.QUALIFY_PERCENT || "100");
   return asking > value * pct / 100;
 }
 

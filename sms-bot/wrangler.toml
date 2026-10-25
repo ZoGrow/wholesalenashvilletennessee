@@ -13,8 +13,8 @@ SENDER_EMAIL = "zackyolabi@gmail.com" # for documents only, never offers (Zack 2
 BOT_GOAL = "When an agent sends a listing or an address, look it up online, find out what the seller is asking, why they are selling, timeline and condition. Hand Zack off-market leads asking under the Zestimate, or listed ones at a big discount, once the seller is vetted."
 ARV_PERCENT = "70"
 ASSIGNMENT_FEE = "10000"
-QUALIFY_PERCENT = "100" # off-market: qualified if seller asks under this % of Zestimate (Zack: anything under, once vetted)
-LISTED_QUALIFY_PERCENT = "75" # listed on MLS: seller must take this % of Zestimate or less (Zack 10-18: no small discounts on listed)
+QUALIFY_PERCENT = "100" # off-market: goes to Slack once the seller is under this % of Zestimate; above it the bot keeps negotiating on repairs (Zack 2026-10-25)
+LISTED_QUALIFY_PERCENT = "75" # unused since 2026-10-25: Zack passes on every MLS-listed house
 PROPERTY_TYPES = "single-family houses only (no duplexes, triplexes or other multifamily) in most US states (not Pennsylvania, South Carolina, Iowa, Kentucky, Nebraska, North Dakota, Oregon, Connecticut or Virginia)"
 DRY_RUN = "false"
 

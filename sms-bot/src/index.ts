@@ -76,6 +76,8 @@ export default {
 const OUTREACH_TAG = "apify-daily-lead"; // the GHL bot workflow only fires for these contacts
 const SWEEP_CRON = "*/3 * * * *"; // must match wrangler.toml
 const SWEEP_PER_RUN = 3; // replies per sweep (stays within Cloudflare's per-run request limit)
+const SWEEP_LOOKUPS = 15; // contact reads per sweep, for conversations GHL returns without tags
+const SEEN_PREFIX = "bot-seen-"; // + the time of the last text the sweep handled
 const OFFER_CRON = "5 14-23 * * *"; // must match wrangler.toml
 // Zack's offer texts ("Offer on: ... Purchase Price: $46,500"). The bot itself never names a price.
 const OFFER_RE = /purchase price|offer on:|\b(my|our) offer\b.{0,40}\$\s?\d|\boffer(ing)? (of |is |at )?\$\s?\d|\$\s?\d[\d,.]*k?\s+(cash )?offer\b/i;
@@ -109,19 +111,34 @@ async function answerMissed(env: Env): Promise<void> {
     }
   }
   // Only texts the bot actually worked on count toward the per-run limit, and each one is worked on once:
-  // the sweep marks the conversation read in GHL afterwards and skips read ones (a new text makes it unread).
+  // afterwards the sweep tags the contact bot-seen-<time of that text> and skips texts it already tagged.
   // Before (2026-10-23) the newest few (an opted-out "Stop", a hot lead, an "ok" the bot lets go) used up
   // every run's slots and were re-sent to Claude every 3 minutes, so older real replies went unanswered.
+  // It used to mark the conversation read instead, but Zack uses unread to see who he hasn't answered
+  // (2026-10-26), so the sweep never touches GHL's read status.
   let answered = 0;
+  let lookups = 0;
   for (const c of convs) {
-    if (answered >= SWEEP_PER_RUN) break;
-    if (c.unreadCount === 0) continue;
+    if (answered >= SWEEP_PER_RUN || lookups >= SWEEP_LOOKUPS) break;
     const age = Date.now() - Number(c.lastMessageDate);
     if (c.lastMessageDirection !== "inbound" || !/SMS/i.test(c.lastMessageType ?? "")) continue;
     // Give the live webhook time first. A reply with Zillow and comp lookups can run past GHL's webhook
     // timeout and get cut off (David Lorrison, 2026-10-20), so this sweep is the backstop.
     if (!(age > 4 * 60_000 && age < 72 * 3600_000)) continue; // a late answer beats none; Claude skips "ok"/"thanks"
     if (c.tags && !c.tags.some((t: string) => t.toLowerCase() === OUTREACH_TAG)) continue;
+    let tags: string[] = c.tags ?? [];
+    if (!c.tags) {
+      lookups++;
+      try {
+        tags = (await ghl(env, `/contacts/${c.contactId}`)).contact?.tags ?? [];
+      } catch (e) {
+        console.error("sweep couldn't read contact", c.contactId, e);
+        continue;
+      }
+      if (!tags.some((t) => t.toLowerCase() === OUTREACH_TAG)) continue;
+    }
+    const seen = `${SEEN_PREFIX}${c.lastMessageDate}`;
+    if (tags.includes(seen)) continue;
     try {
       console.log("sweep: answering missed text from", c.contactId);
       if (await handleReply(c.contactId, env, true)) answered++;
@@ -129,9 +146,11 @@ async function answerMissed(env: Env): Promise<void> {
       console.error("sweep reply failed", c.contactId, e);
     }
     try {
-      await ghl(env, `/conversations/${c.id}`, "PUT", { locationId: env.GHL_LOCATION_ID, unreadCount: 0 });
+      const old = tags.filter((t) => t.startsWith(SEEN_PREFIX));
+      if (old.length) await ghl(env, `/contacts/${c.contactId}/tags`, "DELETE", { tags: old });
+      await ghl(env, `/contacts/${c.contactId}/tags`, "POST", { tags: [seen] });
     } catch (e) {
-      console.error("couldn't mark conversation read", c.id, e);
+      console.error("couldn't tag contact as seen", c.contactId, e);
     }
   }
 }

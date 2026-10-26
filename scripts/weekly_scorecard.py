@@ -37,6 +37,7 @@ def lead_to_offer():
         if len(batch) < 100: break
         page += 1
     offered, missing = 0, []
+    leads = [c for c in leads if (c.get("lastName") or "").lower() != "olabi"]  # Zack's own test contact
     for c in leads:
         found = False
         convs = get(f"/conversations/search?{urllib.parse.urlencode({'locationId': loc, 'contactId': c['id']})}")
@@ -69,7 +70,7 @@ with open(SNAP if not PREVIEW else os.devnull, "a", newline="") as f:
 
 def line(tag, label):
     if prev and prev.get(tag) not in (None, ""):
-        return f"{label}: *+{now[tag] - int(prev[tag])}* this week ({now[tag]:,} total)"
+        return f"{label}: *{now[tag] - int(prev[tag]):+,}* this week ({now[tag]:,} total)"
     return f"{label}: {now[tag]:,} total"
 
 replied_week = now["agent-replied"] - int(prev["agent-replied"]) if prev and prev.get("agent-replied") else None

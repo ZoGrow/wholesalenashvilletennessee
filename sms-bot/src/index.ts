@@ -663,12 +663,31 @@ async function zillowLookup(address: string, env: Env): Promise<string> {
       construction: it.resoFacts?.constructionMaterials, foundation: it.resoFacts?.foundationDetails, basement: it.resoFacts?.basement,
       lot: it.lotArea ?? it.resoFacts?.lotSize,
       tax_assessed_value: money(it.taxAssessedValue), description: String(it.description ?? "").slice(0, 500),
-      nearby_sold: (it.nearbyProperties ?? []).filter((n: any) => /sold/i.test(n.homeStatus ?? "") && n.price > 10000 && n.livingArea)
-        .slice(0, 6).map((n: any) => `${n.address?.street ?? "nearby"}: sold ${money(n.price)}, ${n.livingArea} sqft ($${Math.round(n.price / n.livingArea)}/sqft)`),
+      nearby_sold: nearbySold(it, money),
     });
   } catch (e) {
     return `Zillow lookup error (${e}); use web search instead.`;
   }
+}
+
+/** Sold homes near the subject from the Zillow scrape, closest first, same city only (Zack 2026-10-26: comps
+ *  must be nearby, never from another city). Within a mile when there are 3+, otherwise within 2. */
+function nearbySold(it: any, money: (v: any) => string): string[] {
+  const lat = it.latitude, lng = it.longitude, city = String(it.address?.city ?? it.city ?? "").toLowerCase();
+  const miles = (n: any) => {
+    if (lat == null || lng == null || n.latitude == null || n.longitude == null) return null;
+    const r = (x: number) => (x * Math.PI) / 180, dl = r(n.latitude - lat), dn = r(n.longitude - lng);
+    const h = Math.sin(dl / 2) ** 2 + Math.cos(r(lat)) * Math.cos(r(n.latitude)) * Math.sin(dn / 2) ** 2;
+    return 2 * 3958.8 * Math.asin(Math.sqrt(h));
+  };
+  const sold = (it.nearbyProperties ?? [])
+    .filter((n: any) => /sold/i.test(n.homeStatus ?? "") && n.price > 10000 && n.livingArea)
+    .filter((n: any) => !city || !n.address?.city || String(n.address.city).toLowerCase() === city)
+    .map((n: any) => ({ n, d: miles(n) }))
+    .sort((a: any, b: any) => (a.d ?? 99) - (b.d ?? 99));
+  const radius = sold.filter((x: any) => x.d != null && x.d <= 1).length >= 3 ? 1 : 2;
+  return sold.filter((x: any) => x.d == null || x.d <= radius).slice(0, 6).map(({ n, d }: any) =>
+    `${n.address?.street ?? "nearby"}${n.address?.zipcode ? ` (${n.address.zipcode})` : ""}: sold ${money(n.price)}, ${n.livingArea} sqft ($${Math.round(n.price / n.livingArea)}/sqft)${d != null ? `, ${d.toFixed(1)} mi away` : ""}`);
 }
 
 const CHECK_IN_ASK = `Today is {{TODAY}}. The agent hasn't texted since, and it's time for the check-in you planned. Write one short, casual follow-up that picks up on what they said (for example "Hey Sarah, checking back on that seller who was thinking about selling. Anything firm up?"). Don't repeat earlier wording or re-introduce yourself. If a check-in no longer makes sense (they said no, or nothing was pending), return an empty reply. Set follow_up_days for one more check-in only if their timing points to a later date; otherwise 0.`;

@@ -13,7 +13,7 @@ SNAP = "stats/scorecard.csv"
 
 def count(tag):
     req = urllib.request.Request(GHL + "/contacts/search", method="POST", headers=H, data=json.dumps(
-        {"locationId": loc, "page": 1, "pageLimit": 1,
+        {"locationId": loc, "page": 1, "pageLimit": 10,  # GHL now rejects pageLimit 1 (400, 2026-10-26)
          "filters": [{"field": "tags", "operator": "contains", "value": tag}]}).encode())
     return int(json.load(urllib.request.urlopen(req, timeout=60)).get("total") or 0)
 

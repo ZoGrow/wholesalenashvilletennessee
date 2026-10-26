@@ -2,6 +2,10 @@ name: Weekly scorecard
 
 on:
   workflow_dispatch:
+    inputs:
+      preview:
+        description: Only check the numbers (no Slack post, no snapshot)
+        default: "false"
   schedule:
     - cron: "0 14 * * 1"   # Mondays ~9am Central (the daily routine also starts it on Mondays)
 
@@ -18,11 +22,12 @@ jobs:
           GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
           GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          PREVIEW: ${{ inputs.preview }}
         run: python scripts/weekly_scorecard.py
       - name: Save the snapshot to the repo
         run: |
           git config user.name "lead-pipeline"
           git config user.email "lead-pipeline@users.noreply.github.com"
-          git add stats/scorecard.csv stats/scorecard_latest.txt
+          git add stats/scorecard.csv stats/scorecard_latest.txt stats/scorecard_preview.txt 2>/dev/null || git add stats/scorecard.csv stats/scorecard_latest.txt
           git commit -m "Weekly scorecard" || exit 0
           git pull --rebase origin main && git push origin HEAD:main

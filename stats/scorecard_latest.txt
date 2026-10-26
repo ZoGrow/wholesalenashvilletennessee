@@ -1,15 +1,18 @@
-📈 *Weekly scorecard* (week ending Oct 19)
+📈 *Weekly scorecard* (week ending Oct 26)
 
-📤 Texts sent: *1,050* (from 2,652 agents scraped, 1,594 agents texted all-time)
+📤 Texts sent: *3,237* (from 6,052 agents scraped, 5,339 agents texted all-time)
 
-Agents who replied: *+4* this week (37 total)
-Warm (something later): *+0* this week (3 total)
-Qualified leads: *+0* this week (2 total)
-Didn't qualify: *+0* this week (5 total)
-Handed to you: *+2* this week (13 total)
+Agents who replied: *+513* this week (550 total)
+Warm (something later): *+69* this week (72 total)
+Qualified leads: *+10* this week (12 total)
+Didn't qualify: *+110* this week (115 total)
+Handed to you: *+34* this week (47 total)
 
-Reply rate: 0.4% of this week's texts
+Reply rate: 15.8% of this week's texts
 
-Opted out: *+0* this week (26 total)
-First text failed: *+201* this week (229 total)
-Bot text blocked by carrier: *+0* this week (2 total)
+🎯 Qualified leads you made an offer on: *6 of 11* (55%, goal 90%)
+No offer yet: Travis Dupre, Christiana Faith Nance, Terri Jaynes, Kenneth Bargers - Pilkerton Realtors, Dawn Johnson Realtor
+
+Opted out: *+198* this week (224 total)
+First text failed: *-57* this week (172 total)
+Bot text blocked by carrier: *+30* this week (32 total)

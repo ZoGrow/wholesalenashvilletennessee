@@ -1,5 +1,127 @@
 [
  {
+  "contact_id": "j9iMFjg7pXj68menJS89",
+  "name": "Stephen Ashpaugh",
+  "city": "Noblesville",
+  "state": null,
+  "phone": "+13175233911",
+  "company": null,
+  "tags": [
+   "agent-replied",
+   "apify-daily-lead",
+   "follow-up-2026-10-27",
+   "lucia"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 05-14T18:09: Hey Stephen, I was just was wondering if you are an agent that serves residential sales in the Noblesville area?",
+   "ou 05-14T20:09: Hey, are we still here?",
+   "ou 10-26T16:04: Hey Stephen, my name is Zack. I am in an investor here in Noblesville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-26T16:22: What's your price parameters?",
+   "ou 10-26T16:22: Pretty flexible on price, it depends on the house and the shape it's in. Mostly looking for places that need work with a seller who wants out. Do you have anything like that, even before it lists?",
+   "in 10-26T17:04: Nothing except an estate where the owners would take $1.2. A house 3 doors down pended at $4.5. The property can be $1.6+ plus it has around 15,000 square feet under roof for storage but today's buyers can't see past the large horse barns.",
+   "ou 10-26T17:04: Thanks Stephen. Is the estate house on the market now or still off-market? And what's the address? Also, does it need work, and are the heirs ready to sell soon?"
+  ]
+ },
+ {
+  "contact_id": "xrrtUAnQDcUDUSJK6f0c",
+  "name": "Narissa Riley",
+  "city": "Chattanooga",
+  "state": "TN",
+  "phone": "+14235378669",
+  "company": "SVN Second Story Real Estate Management",
+  "tags": [
+   "agent-replied",
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-21T16:11: Hey Narissa, my name is Zack. I am in an investor here in Chattanooga looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "ou 10-21T19:11: let me know",
+   "ou 10-21T21:00: let me know",
+   "in 10-26T17:03: Hi Zack, I don't deal with distressed or off-market but if you are interested in a brand new condo in the Southside, let me know.",
+   "ou 10-26T17:03: Thanks Narissa, I'll pass on the new condo. Do you ever hear about a landlord who's tired of a rental, an inherited house, or a seller with a place that needs too much work to list? Those are the ones I can help with."
+  ]
+ },
+ {
+  "contact_id": "Ia8XBi7r9XcfKuWUiPBq",
+  "name": "Michael Teggart",
+  "city": "Cincinnati",
+  "state": null,
+  "phone": "+15133007644",
+  "company": null,
+  "tags": [
+   "agent-replied",
+   "apify-daily-lead",
+   "lucia",
+   "not-qualified",
+   "warm-lead"
+  ],
+  "photos": 0,
+  "notes": [
+   "SMS bot, did not qualify: NOT QUALIFIED: Agent only shares off-market homes with buyers who sign an exclusive agreement and won't work with buyers who use multiple agents. No property or address given. Wrapped up politely.",
+   "SMS bot, did not qualify: Agent requires an exclusive buyer agreement and won't work with buyers who use multiple agents. No specific property shared. Passed politely."
+  ],
+  "thread": [
+   "ou 07-11T14:51: Hey Michael, I was just was wondering if you are an agent that serves residential sales in the Cincinnati area?",
+   "in 07-11T15:07: Yes",
+   "ou 07-11T15:21: Hello my name is Lucia, I\u2019m with a real estate company called Zogrow, focused on real estate appointments. We\u2019re looking for one realtor to exclusively book potential buyers and sellers on a pay-per-close model here in Cincinnati. Would you be open to a brief chat today? What time works for you?",
+   "in 07-11T15:26: Are there any up front fees?",
+   "ou 07-11T15:35: We\u2019re only looking to profit with you when you actually close a deal. We have a couple different options with and without referral fees and we prefer to get paid 10-15% when you close a deal with us as we make more in the long run.\n\nWe can connect over the phone for a quick 5-10 minutes so we can talk this more in detail and get you set up on more ",
+   "ou 10-26T16:21: Hey Michael, my name is Zack. I am in an investor here in Cincinnati looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-26T16:33: What's your buy box?",
+   "ou 10-26T16:33: Single-family houses in the Cincinnati area, mostly ones that need work. Anything off-market where the seller wants out without fixing it up or listing. Do you have a client in a spot like that?",
+   "in 10-26T16:35: Not currently but I get off market listing information. Are you working with any other agents in the Cincinnati area?",
+   "ou 10-26T16:35: I talk with a few agents, but I'm happy to work with more. Anything that needs work or a seller who wants out quick, I'd love to see it. Do you have any clients with an inherited house or a landlord who's done?",
+   "in 10-26T16:53: I do yes if you're willing to sign an exclusive buyers agreement I can help you",
+   "ou 10-26T16:53: Thanks Michael. I don't sign exclusive agreements, I like to stay open with a few agents. If you've got a specific house, like an inherited place or a landlord who's done, send me the address and I'll take a look.",
+   "in 10-26T16:54: I appreciate that but I don't work with buyers who have multiple agents",
+   "ou 10-26T16:55: Totally understand, Michael, and I appreciate you being upfront. If you ever have a seller who wants out and you're open to sending it direct without an exclusive, I'm all ears. Take care.",
+   "in 10-26T16:56: Finding and sending off market listings is time consuming. I have investors who have signed exclusive representation agreements, they get those homes from me.",
+   "ou 10-26T16:56: Makes sense, Michael, and I get that it's work. I'm not going to sign an exclusive, so I won't waste your time. If you ever have a seller who needs out and you're fine sending it direct, I'm here. Take care."
+  ]
+ },
+ {
+  "contact_id": "7o2KVPPs1caDYSzQLq05",
+  "name": "Rick Louallen",
+  "city": "Cincinnati",
+  "state": "OH",
+  "phone": "+15132371824",
+  "company": "Coldwell Banker Realty",
+  "tags": [
+   "agent-replied",
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-26T16:22: Hey Rick, my name is Zack. I am in an investor here in Cincinnati looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-26T16:51: Nothing off Market. I rarely deal in off Market properties I will normally list them to get the seller to highest and best price",
+   "ou 10-26T16:52: Totally get it. Any clients with a house that needs a lot of work, an inherited place, or a landlord who's done? Those are the ones I can help with before they ever list."
+  ]
+ },
+ {
+  "contact_id": "UY9lpXWNHyu7jCf1RbvI",
+  "name": "Amy McIntyre",
+  "city": "Carmel",
+  "state": "IN",
+  "phone": "+13174106519",
+  "company": "CIRCLE REAL ESTATE",
+  "tags": [
+   "agent-replied",
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-26T16:04: Hey Amy, my name is Zack. I am in an investor here in Carmel looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-26T16:38: Hello, I don't do off market properties",
+   "ou 10-26T16:38: Totally get it, Amy. Any clients with a house that needs a lot of work, an inherited place, or a landlord who's done? Those are the ones I can help with before they ever list."
+  ]
+ },
+ {
   "contact_id": "6PkqVNGN9cpDeILsUIo0",
   "name": "Juan Cassella - Realtor\u00ae - Trueblood",
   "city": "Fishers",
@@ -23,32 +145,6 @@
    "ou 10-26T16:04: Hey Juan, my name is Zack. I am in an investor here in Fishers looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
    "in 10-26T16:35: No, I don't work off market.",
    "ou 10-26T16:35: Totally get it, Juan. Any clients with a house that needs a lot of work, an inherited place, or a landlord who's done? Those are the ones I can help with before they ever list."
-  ]
- },
- {
-  "contact_id": "Ia8XBi7r9XcfKuWUiPBq",
-  "name": "Michael Teggart",
-  "city": "Cincinnati",
-  "state": null,
-  "phone": "+15133007644",
-  "company": null,
-  "tags": [
-   "agent-replied",
-   "apify-daily-lead",
-   "lucia"
-  ],
-  "photos": 0,
-  "notes": [],
-  "thread": [
-   "ou 07-11T14:51: Hey Michael, I was just was wondering if you are an agent that serves residential sales in the Cincinnati area?",
-   "in 07-11T15:07: Yes",
-   "ou 07-11T15:21: Hello my name is Lucia, I\u2019m with a real estate company called Zogrow, focused on real estate appointments. We\u2019re looking for one realtor to exclusively book potential buyers and sellers on a pay-per-close model here in Cincinnati. Would you be open to a brief chat today? What time works for you?",
-   "in 07-11T15:26: Are there any up front fees?",
-   "ou 07-11T15:35: We\u2019re only looking to profit with you when you actually close a deal. We have a couple different options with and without referral fees and we prefer to get paid 10-15% when you close a deal with us as we make more in the long run.\n\nWe can connect over the phone for a quick 5-10 minutes so we can talk this more in detail and get you set up on more ",
-   "ou 10-26T16:21: Hey Michael, my name is Zack. I am in an investor here in Cincinnati looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-   "in 10-26T16:33: What's your buy box?",
-   "ou 10-26T16:33: Single-family houses in the Cincinnati area, mostly ones that need work. Anything off-market where the seller wants out without fixing it up or listing. Do you have a client in a spot like that?",
-   "in 10-26T16:35: Not currently but I get off market listing information. Are you working with any other agents in the Cincinnati area?"
   ]
  },
  {
@@ -139,29 +235,6 @@
   ]
  },
  {
-  "contact_id": "oh8aIBSzbU3SzxNvWg8w",
-  "name": "Bryan Peters",
-  "city": "Trafalgar",
-  "state": "IN",
-  "phone": "+13174909541",
-  "company": "Trusted Realty Partners of Ind",
-  "tags": [
-   "agent-replied",
-   "apify-daily-lead"
-  ],
-  "photos": 0,
-  "notes": [],
-  "thread": [
-   "ou 10-26T16:07: Hey Bryan, my name is Zack. I am in an investor here in Trafalgar looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-   "in 10-26T16:25: I have an off market property in Carlisle Indiana that burned down.",
-   "ou 10-26T16:26: Thanks Bryan. Is there still a house standing there, or is it just the lot now? What's the address, and is the owner looking to sell it as it sits?",
-   "in 10-26T16:26: House has been demolished and new footers poured, but they decided to sell. \n\nGarage still remains... unharmed by fire.",
-   "ou 10-26T16:27: Got it, thanks Bryan. Sounds like more of a rebuild project than a house right now. What's the address, and what are they asking for it?",
-   "in 10-26T16:29: 107 E. Vincennes St.\nCarlisle, IN",
-   "in 10-26T16:29: Asking $55,000"
-  ]
- },
- {
   "contact_id": "uiDW2m84BVrCguIQAFEy",
   "name": "Stephen Barton",
   "city": "Indianapolis",
@@ -246,39 +319,6 @@
    "in 12-31T23:44: The address is 2658 Harrison Ave. unit number 26. There should be a lock box on there and the code is 1610. Let me know if you have any trouble. All the best to you and I can't wait to see what you do! To a much better 2026 for you and us all!",
    "in 12-31T23:44: Not meant for you sorry",
    "ou 10-26T16:21: Hey Alex, my name is Zack. I am in an investor here in Mason looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?"
-  ]
- },
- {
-  "contact_id": "25NyNYLsgLyDBNRR3aDN",
-  "name": "Stephanie Andrew",
-  "city": "Greensboro",
-  "state": "NC",
-  "phone": "+13363626746",
-  "company": "Realty One Group Results Greensboro",
-  "tags": [
-   "agent-replied",
-   "apify-daily-lead",
-   "follow-up-2026-10-27"
-  ],
-  "photos": 1,
-  "notes": [],
-  "thread": [
-   "in 10-26T16:08: Sending details just a minute",
-   "in 10-26T16:08: [photo]",
-   "in 10-26T16:09: 3252 sq feet. \nAll exterior doors and windows replaced (they spent 45,000 on those)\nBuilt in 1995. 1.38 acres brick. Thinking it would be worth 465,000 or better fixed up",
-   "ou 10-26T16:09: Thanks Stephanie, that's a nice lot. What's the address, and what are the sellers asking for it?",
-   "in 10-26T16:11: 1300 Benton Lane, Reidsville",
-   "ou 10-26T16:11: Thanks Stephanie. Exterior looks great with the new windows and doors. What are the sellers asking, and what's the story on why they're selling?",
-   "in 10-26T16:12: Moved to Florida. She's a real estate agent and doesn't want a traditional sale",
-   "in 10-26T16:13: It needs complete updating inside",
-   "in 10-26T16:13: She is asking 320,000",
-   "ou 10-26T16:13: Got it, thanks Stephanie. Since it needs a full update inside, any chance you could text me a few interior pics, kitchen and baths especially? Is the house vacant now too?",
-   "in 10-26T16:18: Or best offer",
-   "ou 10-26T16:18: Good to know she's open to a best offer. Could you text me a few interior pics, kitchen and baths especially? Is the house vacant, and about how soon does she want to close?",
-   "in 10-26T16:20: It is vacant and yes I can",
-   "ou 10-26T16:20: Perfect, thanks Stephanie. Send those interior pics whenever you can, kitchen and baths especially. Also, about how soon does she want to close?",
-   "in 10-26T16:20: Asap",
-   "ou 10-26T16:21: Got it, ASAP helps. Whenever you have the interior pics, text them over, kitchen, baths and any rooms that need the most work. Once I see them I'll know where I stand."
   ]
  },
  {
@@ -665,38 +705,6 @@
   ]
  },
  {
-  "contact_id": "nJjPLCYvjTtfGZmaYdl4",
-  "name": "David Trueb",
-  "city": "Madison",
-  "state": "AL",
-  "phone": "+12566825797",
-  "company": "BrickDriven Realty Madison",
-  "tags": [
-   "agent-replied",
-   "apify-daily-lead"
-  ],
-  "photos": 1,
-  "notes": [],
-  "thread": [
-   "in 10-23T16:18: https://ksvc.paragon.ice.com/s/goto/KAltrZdveQF",
-   "ou 10-23T16:18: Thanks David, that helps. I couldn't open that link. What's the street address, and what are the sellers asking? Also, are you working with them directly?",
-   "in 10-23T16:19: See if this works",
-   "in 10-23T16:19: https://valleymls.paragonrels.com/CCR/collablink/f1c5d16b-f2b0-4ae5-823f-4adbdae30a4e/listings/results?&forMlsId=VALLEYMLS&sid=KAltrZdveQF",
-   "ou 10-23T16:20: Thanks David, still can't open that one on my end. Can you just text me the street address? Then I can pull it up and see what the sellers are hoping to get.",
-   "in 10-23T16:22: Here is a PDF to try...\n\n10004 Lily Flagg Circle, Huntsville. Can see it anytime with advanced coordination on day/time. Some work-from-home goes on part of the day. Future value depends on what you did with it of course. But, large project, needs a lot to bring it up. Future value about $340-$375K. Best estimate about $100K work. Asking 180k",
-   "ou 10-23T16:22: Thanks David, got it. Are you the listing agent working with the seller directly, or is someone else under contract on it? Also, what's got them wanting to sell?",
-   "in 10-23T16:24: JPEG",
-   "ou 10-23T16:24: Thanks David, that sheet came through. Just to be sure, are you working directly with the owner on this, or is someone else under contract on it? And any chance you can text a few pics of the inside and the pool?",
-   "in 10-23T16:24: Just ready to move. They purchased as a fixer upper. They have learned they are not fixer upper people.",
-   "in 10-23T16:25: directly with the owner. I am an agent I don't wholesale",
-   "in 10-23T16:26: I can get some and send them later. Don't have photos presently. We shifted left and they agreed to start from an off market position since investors are our best pathway",
-   "ou 10-23T16:26: Appreciate it, David. Send the pics when you get them, inside, the pool and the roof and HVAC if you can. Once I see them I can tell you where I'm at. Do you know how soon they want to be out?",
-   "in 10-23T16:27: faster is better for them but depends on available homes when someone says \"lets go\". They have a couple they have their eyes on now",
-   "ou 10-23T16:27: Got it, David, thanks. Send the pics whenever you have them, inside, the pool, and the roof and HVAC if you can. Once I see them I can tell you where I'm at.",
-   "ou 10-24T21:31: Hey David, any luck getting those pics of the Lily Flagg house? Inside, the pool and the roof or HVAC would be great. Once I see them I can tell you where I'm at."
-  ]
- },
- {
   "contact_id": "PzxPpoZNyo44yxjrkw15",
   "name": "Minh Le",
   "city": "Murfreesboro",
@@ -892,36 +900,6 @@
    "ou 10-22T19:32: Hey WILLIE, my name is Zack. I am in an investor here in Atlanta looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
    "in 10-23T23:01: Hi Zack, this is Willie Acree with Berkshire Hathaway HomeServices Georgia Properties. I do come across off-market and as-is opportunities around Atlanta. So I can put you first on the right ones: what's your price range, which areas do you buy in, how heavy a rehab will you take on, are you paying cash, and how fast can you close? \u2014 Willie Acree",
    "ou 10-23T23:01: Thanks Willie. I'm flexible on areas around Atlanta and can take on anything from light to heavy rehab. Mostly single-family houses, and I close quick. Do you have a specific house or seller in mind right now?"
-  ]
- },
- {
-  "contact_id": "VTRS5EFweVwbJM6kY0dr",
-  "name": "Linda Escobar",
-  "city": "Durham",
-  "state": "NC",
-  "phone": "+19197026844",
-  "company": "Movil Realty",
-  "tags": [
-   "agent-replied",
-   "apify-daily-lead",
-   "not-qualified"
-  ],
-  "photos": 4,
-  "notes": [
-   "SMS bot, did not qualify: NOT QUALIFIED. 1017 South St, Henderson NC. Zestimate $139,200, asking $107k (~77%), off-market, vacant, 3/2, 1,536 sqft, built 1955. Photos show an older roof and boarded windows, so it needs heavy work. Rough max offer is about $18k (ARV ~$139k x 70% - ~$69k repairs - $10k fee), far under the ask. The seller is moving away but not in a rush."
-  ],
-  "thread": [
-   "ou 10-23T16:19: Hey Linda, my name is Zack. I am in an investor here in Durham looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-   "in 10-23T16:24: Hi I have an off market for 107,000 right now",
-   "in 10-23T16:24: in Henderson NC",
-   "ou 10-23T19:48: Thanks Linda. What's the address in Henderson? And what shape is it in, and is it vacant or lived in?",
-   "in 10-23T21:20: It's vacant. Needs repairs inside as far as remodeling. In good shape. Asking price is negotiable $107,000.",
-   "ou 10-23T21:20: Thanks Linda. What's the address in Henderson? I'll pull it up and see what I can find. Also, any chance you could text me a few pics, inside and out?",
-   "in 10-23T21:21: 1017 South St Henderson NC \r\n3Beds 2Baths",
-   "ou 10-23T21:21: Thanks Linda, got the pics. The roof looks older and a couple windows are boarded. What's got the seller wanting to sell, and how soon do they need to be done?",
-   "in 10-23T21:38: He's moving out of the area. Will not be around to check on his properties. He's not in a rush but can close quickly if necessary.",
-   "ou 10-23T21:38: Thanks Linda, I appreciate you sending it over. With the work it needs and the seller not in a rush, we can't really help near $107k on this one. If you get one that needs work and a seller who needs out, send it my way.",
-   "in 10-23T21:40: Okay, thank you \u2705"
   ]
  },
  {
@@ -2816,30 +2794,6 @@
   ]
  },
  {
-  "contact_id": "gNTL85jp4ilQlH4es5gV",
-  "name": "Arlexus A Holmes",
-  "city": "Memphis",
-  "state": "TN",
-  "phone": "+19013046887",
-  "company": "BHHS Taliesyn Realty",
-  "tags": [
-   "agent-replied",
-   "apify-daily-lead",
-   "checked-in"
-  ],
-  "photos": 0,
-  "notes": [],
-  "thread": [
-   "ou 10-20T17:26: Hey Arlexus, my name is Zack. I am in an investor here in Memphis looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-   "in 10-20T17:39: Hey Zack , yes I do,  Are you a direct cash buyer?",
-   "ou 10-20T17:40: Yes, I buy direct and pay cash, no financing or appraisal. What do you have? Send me the address or a link and I'll take a look.",
-   "in 10-20T17:46: 6245 gillham dr Memphis 38134",
-   "in 10-20T17:46: Needs light rehab. Cosmetic only",
-   "ou 10-20T17:47: Thanks Arlexus. Looks like a 3/1, about 1,768 sqft, built in 1967. Is it off-market, and what's the seller hoping to get for it?",
-   "ou 10-21T16:30: Hey Arlexus, just checking back on the Gillham Dr house. Is it off-market, and do you know what the seller is hoping to get?"
-  ]
- },
- {
   "contact_id": "fqCQ43pZlqhMHwK2yeM2",
   "name": "Emma Hereford",
   "city": "Chattanooga",
@@ -2931,25 +2885,6 @@
    "in 10-21T16:19: You make an offer, I will give it to her. She's wanting it gone, so who knows",
    "ou 10-21T16:20: Thanks Jacki, that's what I needed. I'll run the numbers on Dogwood and get back to you shortly. I'll also come back to you on the W Strang St house.",
    "in 10-21T16:20: Okay"
-  ]
- },
- {
-  "contact_id": "0CizuSDscsnwD7BIGqSi",
-  "name": "Linitra Washington",
-  "city": "Germantown",
-  "state": "TN",
-  "phone": "+19015134779",
-  "company": "KAIZEN Realty, LLC",
-  "tags": [
-   "agent-replied",
-   "apify-daily-lead"
-  ],
-  "photos": 0,
-  "notes": [],
-  "thread": [
-   "ou 10-20T17:29: Hey Linitra, my name is Zack. I am in an investor here in Germantown looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-   "ou 10-20T20:29: let me know",
-   "in 10-21T16:06: 890 Craft Road Memphis, Tn 38116\n4bed/2bath needs work 89,900"
   ]
  },
  {
@@ -3610,38 +3545,6 @@
   ]
  },
  {
-  "contact_id": "ScLBsuyvNhp4XHHsjGqe",
-  "name": "Frank Malvezzi",
-  "city": "Memphis",
-  "state": "TN",
-  "phone": "+19016194145",
-  "company": "Cb Properties Of Memphis, Llc",
-  "tags": [
-   "agent-replied",
-   "apify-daily-lead"
-  ],
-  "photos": 0,
-  "notes": [],
-  "thread": [
-   "in 10-20T18:28: 5872 Sunny Morning 38141 \n2/2 attached unit\nRehabbed comps are 135k over there\n69k in decent shape in foreclosure is why the price is so good",
-   "in 10-20T18:28: https://www.dropbox.com/scl/fo/xsvwifv3t6ey5505wj71o/ALHzph6WH7vnt7BjqAl_Dbk?rlkey=83bt2aqpxj8ethbubr25tizw0&st=fcqhy10m&dl=0",
-   "in 10-20T18:29: 3417 Gladstone 38128 \n3/1.5 \nComps are 145k rehabbed \n55k price needs work, been vacant 2 yrs",
-   "ou 10-20T18:30: Appreciate you sending these, Frank. Let's start with Gladstone. It shows as a 3 bed, about 1,216 sqft, built in 1970. Since it's been vacant 2 years, what all does it need? Roof, HVAC, foundation, or mostly cosmetic?",
-   "in 10-20T18:31: No foundation problem \nBut it needs roof, HVAC etc.  \nI'll send some pics shortly.  Yes it shows as a 3/1 but I've walked it, it's in a cove and it's 3/1.5",
-   "ou 10-20T18:31: Thanks Frank, pics would help. With a roof and HVAC needed and it sitting vacant 2 years, would the seller consider a lower number for a quick close in its current condition, with no repairs or inspections?",
-   "in 10-20T18:34: Sure but there's not a ton of room...",
-   "in 10-20T18:34: https://app.box.com/s/ofqapv1r3hl6x701gxpqc66mtfcywfim",
-   "ou 10-20T18:35: Got it, thanks Frank. I'll go through the pics. Is Gladstone off-market, and what's the seller's situation? Inherited, tired of carrying it, something else?",
-   "in 10-20T18:39: Off market dad died just getting rid of it.  That area has other listing that need work for 79k or so, it's already discounted.  You won't get anything in the 30s over there unless it's vacant land just fyi",
-   "ou 10-20T18:40: Appreciate the straight answer, Frank. With a roof and HVAC on Gladstone, my number would likely be well under 55, so I'll pass unless they get more flexible. On Sunny Morning, is that one on the MLS or off-market, and is the bank or the owner selling it?",
-   "in 10-20T18:41: Off market we are trying to get it sold before the foreclosure date.  \n\nFor Gladstone I am not sure but he may be flexible in the 4Os somewhere that's about it",
-   "ou 10-20T18:42: Got it, thanks Frank. Gladstone in the 40s is still more than I can do with a roof and HVAC, but keep me posted if he loosens up. On Sunny Morning, when is the foreclosure date?",
-   "in 10-20T18:43: About 3 weeks out",
-   "ou 10-20T18:43: 3 weeks is tight, so a quick close could really help them. Is Sunny Morning occupied or vacant right now, and do you know roughly how old the roof and HVAC are?",
-   "in 10-20T18:44: Checking"
-  ]
- },
- {
   "contact_id": "AFQZbANXSekPFSGytl3F",
   "name": "Billy Lanier",
   "city": "Lewisburg",
@@ -3843,34 +3746,6 @@
    "ou 10-20T17:38: Appreciate you sending it, Nicole. I stick to site-built single-family houses, so I'll pass on the mobile home. If you get a house where the seller needs a quick sale, in Savannah or anywhere around, send it my way.",
    "in 10-20T17:40: Okay I will thank you. What's your last name, I'll save it in my phone",
    "ou 10-20T17:40: It's Zack, and this number is the best way to reach me. Thanks Nicole, talk soon!"
-  ]
- },
- {
-  "contact_id": "WrpxWRjRkl31oK03IAXE",
-  "name": "Kathey Darnell-Keen",
-  "city": "Franklin",
-  "state": "TN",
-  "phone": "+19316378636",
-  "company": "Realty One Group Music City",
-  "tags": [
-   "agent-replied",
-   "apify-daily-lead"
-  ],
-  "photos": 0,
-  "notes": [],
-  "thread": [
-   "ou 10-20T17:27: Hey Kathey, my name is Zack. I am in an investor here in Franklin looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-   "in 10-20T17:28: Sorry, I don't",
-   "ou 10-20T17:28: Totally get it. Any listings that have been sitting a while or had a couple price drops? Those are usually where I can help.",
-   "in 10-20T17:32: look at 3005 Ping Ct and let me know what you think. It's in Spring Hill",
-   "ou 10-20T17:33: Thanks Kathey. Looks like it's a 4/2.5, about 2,300 sqft. Is it on the MLS now, and what are they asking?",
-   "in 10-20T17:35: It has expired. He finally let me lower it to $485,000 the last week it was on the market. But it was too late. It needed updating inside, but he wouldn't let me lower the price until the last week.",
-   "ou 10-20T17:35: Got it, so it's off the market now at $485k. Is the seller still wanting to sell, and what's driving it for him? Is he moving, or is it vacant?",
-   "in 10-20T17:36: He has moved to California already and can't afford to keep the house",
-   "ou 10-20T17:36: That's tough, paying for a house across the country. Every month it sits is another mortgage, taxes and insurance. Would he consider a much lower number for a quick close where he doesn't fix or update anything and there are no inspections?",
-   "in 10-20T17:36: It is vacant",
-   "in 10-20T17:37: I doubt it but if you gave me a number I could ask",
-   "in 10-20T17:37: He had no intentions of fixing things or updating things anyway"
   ]
  },
  {
@@ -4165,6 +4040,551 @@
    "ou 10-19T15:30: Hey Natalie, checking back on the Chestnut Ridge house in Columbia. Any feel yet for how low the family might go to get it off their plate?",
    "in 10-19T15:46: Give me an offer price and I will take it to the Seller",
    "ou 10-19T15:46: Sounds good, thanks Natalie. I'll run the numbers and get back to you shortly."
+  ]
+ },
+ {
+  "contact_id": "SymmLdryozE8ayYf0LhB",
+  "name": "Nina Edmonds",
+  "city": "Rockville Centre",
+  "state": "NY",
+  "phone": "+14046491021",
+  "company": "Compass Greater NY LLC",
+  "tags": [
+   "agent-replied",
+   "apify-daily-lead",
+   "hot-lead"
+  ],
+  "photos": 0,
+  "notes": [
+   "SMS bot handoff: Emily (Windermere CDA) asked if she's texting a bot. I told her an AI assistant helps with first texts and you'll take over. No property yet. She lived in Green Hills, Nashville for 11 years and is still licensed in TN. Good rapport, just asked about stale or price-dropped listings."
+  ],
+  "thread": [
+   "ou 10-18T18:36: Hey Emily, my name is Zack. I am in an investor here in Coeur D Alene looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-18T18:57: Hi Zack! Thanks for reaching out. I\u2019m happy to connect with investors looking for opportunities in the Coeur d\u2019Alene area. Are you local to North Idaho? I\u2019d love to know a little more about your investment criteria, price range, and whether you\u2019re primarily looking to flip or hold properties.",
+   "ou 10-18T18:58: Thanks Emily! I'm based in Nashville but buy in North Idaho and a lot of other markets. Mostly single-family, flip or hold depending on the house, and price range is flexible. Best fit is a house that needs work or a seller who wants a quick, easy sale. Anything like that on your radar?",
+   "in 10-19T12:41: Small world! I actually lived in Nashville for 11 years and am still licensed in Tennessee!\n\nI\u2019d be happy to keep you in mind for opportunities here in North Idaho. What\u2019s the name of your investment company, and are you typically purchasing directly or working with other investors?",
+   "ou 10-19T12:42: Ha, small world! Where in Nashville were you? I buy under my own name, just me, purchasing directly. Got anything now that needs work or a seller who'd rather skip the repairs and showings?",
+   "in 10-19T12:43: I lived in the Green Hills area and worked in real estate throughout Nashville! Loved my time there.\n\nNothing specific comes to mind at the moment, but I\u2019m always coming across different opportunities. Have you purchased many properties here in North Idaho? I\u2019d love to get a better feel for what you\u2019ve been buying.",
+   "ou 10-19T12:43: Green Hills is a great area! North Idaho is a market I'm actively looking to grow in. Got any listings that have been sitting a while or had a couple price drops? Those are usually where I can help.",
+   "in 10-19T12:45: Quick question \u2014 am I actually texting with you, or is this an automated outreach system?",
+   "ou 10-19T12:46: Fair question. An AI assistant helps me with first texts, but I'll pick this up personally from here. Talk soon, Emily."
+  ]
+ },
+ {
+  "contact_id": "Frff9NRkKtqDFfLJQ4rt",
+  "name": "Michael Giles",
+  "city": null,
+  "state": null,
+  "phone": "+12057920776",
+  "company": "Chamberlain Realty",
+  "tags": [
+   "agent-replied",
+   "apify-daily-lead",
+   "not-qualified",
+   "zack"
+  ],
+  "photos": 10,
+  "notes": [
+   "SMS bot, did not qualify: NOT QUALIFIED: 1023 Hidden Woods Trl, Gallatin TN. Off-market, asking $275k, B- condition, 1,224 sqft on 0.9 acre. Seller already has a $265k offer, the house is good enough for a conventional loan, and it's going on the MLS soon, so the seller isn't motivated. Zestimate not checked. 1416 10th Ave N is a triplex, so I passed on it."
+  ],
+  "thread": [
+   "ou 10-18T18:36: Hey Michael, my name is Zack. I am in an investor here in  looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-18T19:39: Gallatin off market. .9 acres",
+   "ou 10-18T19:39: Nice, Gallatin works for me. What's the address, and is there a house on it or is it just land?",
+   "in 10-18T19:39: Germantown area triplex off market",
+   "ou 10-18T19:40: Got it. I mostly stick to single-family, but send the triplex address too and I'll take a look. Do you have the address on the Gallatin one, and is there a house on it?",
+   "in 10-18T19:41: 1023 hidden woods Trl in Gallatin, 1224sf & .9 acre",
+   "ou 10-18T19:41: Thanks Michael. Nice size lot for that area. What's the seller hoping to get for it, and what kind of shape is the house in?",
+   "in 10-18T19:41: 1416 10th Ave N, please don't approach the property without me. There are renters in 2 of the 3 units",
+   "ou 10-18T19:41: Understood, I won't go by without you. Thanks for the triplex address. On the Gallatin house, what's the seller hoping to get, and what shape is it in?",
+   "in 10-18T19:42: $275k. It's a B- property. Don't have a condition disclosure as it's not listed.",
+   "in 10-18T19:42: It'll go on the mls soon",
+   "ou 10-18T19:53: Got it, thanks Michael. Before it hits the MLS, would the seller look at a lower number if I take it in its current condition, no repairs or inspections, and close quick? And what's got them selling?",
+   "in 10-18T22:22: Sorry, I've been out with some clients looking at a couple properties this afternoon. He was walking somebody through it when I called. He got an offer for 265 earlier today. The property is in good enough shape to go conventional. So it might not be the property for you.",
+   "ou 10-18T22:22: No worries Michael, appreciate the update. Sounds like he's in good shape on that one. On the triplex, I stick to single-family so I'll pass, but if you get a house where the seller needs a quick sale or it needs work, send it my way.",
+   "in 10-18T22:25: You and everybody else \ud83d\ude02",
+   "ou 10-18T22:25: Ha, fair enough, I know everyone's asking. I'm easy to work with though, and I don't need a perfect house. Anything that's been sitting a while or had a couple price drops? Those are usually where I can help."
+  ]
+ },
+ {
+  "contact_id": "Stz2DK4RwGtXXG8cKrN5",
+  "name": "Pat Skow",
+  "city": null,
+  "state": null,
+  "phone": "+16159696188",
+  "company": "PARKS",
+  "tags": [
+   "agent-replied",
+   "apify-daily-lead",
+   "hot-lead",
+   "zack"
+  ],
+  "photos": 0,
+  "notes": [
+   "\ud83d\udd25 Agent wants you on this one\n1622 Vineland Dr, Brentwood, TN 37027\n\n\ud83d\udcb0 Asking: $674,000 list (seller's bottom line unknown)\n\ud83d\udcca Zestimate: unknown (not found) (asking is unknown)\n\ud83d\udccd Status: Listed on MLS\n\n\ud83d\udd27 Condition: HOA covers exterior; agent says units in excellent shape, serviced regularly; interior updates unknown\n\ud83c\udfe1 Property: 5/3.5/2,798 \u00b7 built 1978 \u00b7 Vacant\n\n\ud83d\ude4b Seller: Sellers need to get rid of it; unhappy about possibly sitting until spring; HOA recently banned rentals\n\u23f1\ufe0f Timeline: Wants out before spring; exact timing unknown\n\n\ud83e\uddee Rough numbers\nARV: ~$675k-$750k (rough guess, comps not verified)\nRepairs: ~$98k (rough, medium $35/sqft, interior unknown)\nMax offer: ~$365k (rough)\n\n\ud83e\udd1d Make t",
+   "SMS bot handoff: NOT QUALIFIED YET: 1622 Vineland Dr, Brentwood TN. Listed $674k, no Zestimate found. 5/3.5, 2,798 sqft, built 1978, vacant. The HOA covers the exterior and now bans rentals. Sellers are motivated (they don't want to sit until spring) and the agent asked for a reasonable offer. Rough max offer is about $365k against the $674k list, so a big gap. ARV and repairs are rough guesses because comps weren't verified."
+  ],
+  "thread": [
+   "ou 10-18T18:36: Hey Pat, my name is Zack. I am in an investor here in  looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-18T18:41: Not at this time.",
+   "ou 10-18T18:41: Totally get it. Any listings that have been sitting a while or had a couple price drops? Those are usually where I can help.",
+   "in 10-18T21:03: I do have one that's on the market at 1622 Vineland Dr., Brentwood. I'm not sure my sellers will wholesale it but they do need to get rid of it. It is vacant. Take a look.",
+   "ou 10-18T21:03: Thanks Pat. I see it's listed around $674k, 5 bed 3.5 bath, about 2,800 sqft, built in 1978. Since it's vacant and they need to sell, what kind of shape is it in? Roof, HVAC, and has the kitchen or baths been updated?",
+   "in 10-18T21:05: Exterior is taken care of by the HOA. Units are in excellent shape serviced regularly. If you're thinking of purchasing this and renting it the HOA does not allow Rentals.",
+   "ou 10-18T21:05: Good to know, thanks Pat. What are the sellers hoping to net, and would they consider a much lower number for a quick close with no repairs or inspections?",
+   "in 10-18T21:05: I did not know the HOA had voted in no rentals until recently.",
+   "ou 10-18T21:06: Got it, thanks for the heads up. Since they need to get rid of it, would the sellers consider a much lower number for a quick close with no repairs or inspections?",
+   "in 10-18T21:06: I'm not sure how low they will go, but I've told them we may be sitting on this property until spring and they are not happy. Bring us something reasonable if you can.",
+   "ou 10-18T21:07: Will do, Pat. Just so you know up front, buying it as-is my number would likely come in well under list. Would the sellers be open to that if it meant a quick, clean close?",
+   "in 10-18T21:30: Perhaps.",
+   "ou 10-18T21:31: Sounds good, Pat. I'll run the numbers and get back to you shortly.",
+   "in 10-18T21:33: Thank You!"
+  ]
+ },
+ {
+  "contact_id": "RlvgU5u0pukCoFBMAYvt",
+  "name": "AMBER NESTOR REAL ESTATE AGENT PRINCIPAL BROKER FIRM OWNER FIRM FOUNDER REALTOR",
+  "city": "Kingston",
+  "state": "TN",
+  "phone": "+18656174783",
+  "company": "AMBER NESTOR REAL ESTATE",
+  "tags": [
+   "agent-replied",
+   "apify-daily-lead",
+   "hot-lead"
+  ],
+  "photos": 1,
+  "notes": [
+   "SMS bot handoff: Agent Amber (Amber Nestor Real Estate, Kingston) tried calling right after our first text. No property info yet. Please call her back."
+  ],
+  "thread": [
+   "ou 10-18T18:37: Hey AMBER, my name is Zack. I am in an investor here in Kingston looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-18T18:54: Trying to call now.",
+   "ou 10-18T18:54: Hey Amber, thanks for getting back to me. I can't pick up right now, but I'll have Zack give you a call shortly. Anything you can tell me by text in the meantime?",
+   "in 10-18T20:57: [photo]"
+  ]
+ },
+ {
+  "contact_id": "cYujgzPAftJ0zxIEA9en",
+  "name": "Dan Elam",
+  "city": "Murfreesboro",
+  "state": "TN",
+  "phone": "+16156429401",
+  "company": "Elam Real Estate",
+  "tags": [
+   "agent-replied",
+   "apify-daily-lead",
+   "not-qualified"
+  ],
+  "photos": 0,
+  "notes": [
+   "SMS bot, possible future deal: Dan Elam (Elam Real Estate) has nothing right now. He's building a seller cash offer platform that should launch in 45-60 days and wants Zack's full name and email so he can give him access. Zack needs to send his email.",
+   "SMS bot, possible future deal: Dan has nothing off-market right now. His brokerage is launching a seller cash offer platform in 45-60 days and offered me access. Check back then."
+  ],
+  "thread": [
+   "ou 10-18T18:37: Hey Dan, my name is Zack. I am in an investor here in Murfreesboro looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-18T20:32: Hello - Not at the moment. That said, we are building a \" Seller Cash Offer Platform \" this platform should be up and running within the next 45-60 days .. Would you like to be offered access to this platform ?",
+   "ou 10-18T20:32: Yeah, I'd definitely like access when it's live, thanks Dan. In the meantime, any listings that have been sitting a while or had a couple price drops? Those are usually where I can help.",
+   "in 10-18T20:34: What is your best contact info ? \nFull name\nEmail address \nBest call phone number ( that accepts text ) \n\nThanks, \nDan Elam / Elam Real Estate",
+   "ou 10-18T20:34: It's Zack, and this number is the best way to reach me for calls and texts. I'll get you my email shortly. Any listings sitting a while that I could take a look at in the meantime?"
+  ]
+ },
+ {
+  "contact_id": "ZBDFFgSUDNFses5LialI",
+  "name": "Alan Worthy",
+  "city": "Franklin",
+  "state": "TN",
+  "phone": "+16158188771",
+  "company": "eXp Realty, LLC",
+  "tags": [
+   "agent-replied",
+   "apify-daily-lead",
+   "hot-lead"
+  ],
+  "photos": 0,
+  "notes": [
+   "SMS bot handoff: NOT QUALIFIED YET (handing off because Alan asked for an offer). 6896 Bridgewater Dr, Franklin TN. Listed on the MLS at $475k. Alan plans a price drop tomorrow, but the new price is unknown. The Zestimate is unknown because my search only returned a different Bridgewater Dr in California, so I couldn't get the % of Zestimate or nearby sold comps for ARV. It's a 3/2.5 with 2,056 sqft, vacant, and needs updating. Roof and HVAC are both about 20 years old. It came back on the market after the buyer's financing fell through. Seller's reason for selling is unknown. Rough repairs if heavy (roof and HVAC plus updates): about $50-60/sqft, or $103k-$123k. Pull comps before making an "
+  ],
+  "thread": [
+   "ou 10-18T18:38: Hey Alan, my name is Zack. I am in an investor here in Franklin looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-18T18:40: No",
+   "ou 10-18T18:40: Totally get it. Any listings that have been sitting a while or had a couple price drops? Those are usually where I can help.",
+   "in 10-18T18:42: About to drop the price on this one tomorrow.\nhttps://go.realtracs.com/1mGdDBM",
+   "ou 10-18T18:42: Thanks Alan. I see 6896 Bridgewater Dr at $475k, 3/2.5 with 2,056 sqft, and back on the market after the buyer's financing fell through. Sounds like it needs updating. What's the age of the roof and HVAC, and is it vacant?",
+   "in 10-18T18:43: Vacant and both are 20 years old.",
+   "ou 10-18T18:44: Got it, thanks. What's the seller hoping to get after tomorrow's drop, and would they take less for a quick close with no repairs or inspections?",
+   "in 10-18T18:47: Send me an offer to present.\nalan.worthy@exprealty.com",
+   "ou 10-18T18:48: Will do Alan. I'll run the numbers and get back to you shortly."
+  ]
+ },
+ {
+  "contact_id": "7YznO2xfxOlvQt8fJeYv",
+  "name": "Phyllis Turpen",
+  "city": "Franklin",
+  "state": "TN",
+  "phone": "+16155699232",
+  "company": "Haus Keyz Real Estate",
+  "tags": [
+   "agent-replied",
+   "apify-daily-lead",
+   "hot-lead"
+  ],
+  "photos": 0,
+  "notes": [
+   "SMS bot handoff: Phyllis Turpen (Haus Keyz, Franklin) has asked twice for your last name. I don't have it, so I didn't reply. Please answer her yourself. She has nothing right now and we don't have a property, price or condition yet. I asked about her listings that have been sitting or had price drops, and she hasn't answered that yet."
+  ],
+  "thread": [
+   "ou 10-18T18:38: Hey Phyllis, my name is Zack. I am in an investor here in Franklin looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-18T18:49: Thanks for your message.  Don't have anything right now.  \nTell me more about what your looking for and your last name. \nPhyllis Turpen Real Estate Broker",
+   "ou 10-18T18:49: Thanks Phyllis, it's Zack. I buy single-family houses that need work or where the seller wants a quick, easy sale with no repairs. Any listings of yours that have been sitting a while or had a couple price drops? Those are usually where I can help.",
+   "in 10-18T18:50: What is your last nane?"
+  ]
+ },
+ {
+  "contact_id": "PgLRWjTi5U6WrFhbr0Xr",
+  "name": "Colleen Marquez - Tennessee",
+  "city": null,
+  "state": null,
+  "phone": "+16292769797",
+  "company": "Haus Realty & Management LLC",
+  "tags": [
+   "apify-daily-lead",
+   "warm-lead"
+  ],
+  "photos": 0,
+  "notes": [
+   "SMS bot, possible future deal: Colleen asked us to check back with her on 10/20. Her latest text is an automated homebuyer promo, so no reply needed now. Follow up on 10/20."
+  ],
+  "thread": [
+   "ou 10-09T15:52: Hey Colleen, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "ou 10-09T18:52: let me know",
+   "in 10-09T18:53: Check back with me 10/20\nReply STOP to unsubscribe.\nThanks, Homes on the Rock Real Estate Team by Colleen Marquez",
+   "in 10-16T15:52: Quick tip for first-time homebuyers: Start exploring your options early! Reply 'GUIDE', 'VA GUIDE', or 'RELOCATION' to get your personalized homebuyer guide instantly or schedule a call with Colleen and the team to get started."
+  ]
+ },
+ {
+  "contact_id": "mtlbmkYok9ogk0UbK44E",
+  "name": "Tammy Herrin",
+  "city": "Brentwood",
+  "state": "TN",
+  "phone": "+19316372992",
+  "company": "Synergy Realty Network, Llc",
+  "tags": [
+   "apify-daily-lead",
+   "not-qualified"
+  ],
+  "photos": 0,
+  "notes": [
+   "SMS bot, did not qualify: NOT QUALIFIED: 301 Kingwood Ave, Shelbyville TN 37160 is a bank foreclosure listed on the MLS (#3118253) at $139k as an auction listing, 2bd/1ba, 965 sqft. Not off-market. Zestimate not found."
+  ],
+  "thread": [
+   "ou 10-15T22:18: Hey Tammy, my name is Zack. I am in an investor here in BRENTWOOD looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-15T22:22: I just listed 301 kingwood ave in Shelbyville tn.  Its a bank foreclosure",
+   "ou 10-15T22:23: Thanks Tammy, appreciate you sending it. Saw it's on the MLS as a 2/1, 965 sqft at $139k. Since it's already listed I'll pass on this one. If you get anything off-market that needs work, or a seller who wants a quick cash sale, send it my way."
+  ]
+ },
+ {
+  "contact_id": "iFKHs9OavySItxk6P0lL",
+  "name": "Lorie Layman",
+  "city": "Franklin",
+  "state": "TN",
+  "phone": "+16154792222",
+  "company": "Crye-Leike, Inc., Realtors",
+  "tags": [
+   "apify-daily-lead",
+   "not-qualified"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-15T22:18: Hey Lorie, my name is Zack. I am in an investor here in FRANKLIN looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-15T22:22: I have a lot for sale. It is vacant lot. The seller bought it with a old home on it. He has torn the home down and hauled it off. It is a vacant lot. That's ready to build on in Columbia Tennessee 705 W. 12th St., Columbia, TN.",
+   "ou 10-15T22:22: Thanks Lorie, appreciate you thinking of me. I'm only buying houses right now though, not vacant land. If you come across any single-family homes that need work or a seller who wants a quick as-is cash sale, I'd love to hear about it."
+  ]
+ },
+ {
+  "contact_id": "MnUNOlfZELcyu5tBHCQT",
+  "name": "Allyson Woosley",
+  "city": "Nashville",
+  "state": "Tn",
+  "phone": "+16154292123",
+  "company": "Compass",
+  "tags": [
+   "apify-daily-lead",
+   "lucia"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 05-04T19:44: Hey, are we still here?",
+   "in 05-04T21:42: Yes it do.",
+   "ou 05-04T21:48: Hello my name is Lucia, I\u2019m with a real estate company called Zogrow, focused on real estate appointments. We\u2019re looking for one realtor to exclusively book potential buyers and sellers on a pay-per-close model here in Franklin. Would you be open to a brief chat today? What time works for you?",
+   "ou 05-05T14:15: Just curious if you have a few minutes?",
+   "ou 05-06T19:15: Do you have 5-10 mins to jump on a quick phone call? What time works for you?",
+   "ou 05-12T21:22: Let's connect, what date and time works for you?",
+   "ou 10-09T15:52: Hey Allyson, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "ou 10-09T18:52: let me know",
+   "in 10-09T19:34: I have a off market property if interested- Allyson Woosley, Compass RE",
+   "in 10-09T19:44: Fixer in Madison!\n\n-824 Due West Ave N, Madison, TN 37115\n\n3/2. 1,440 sqft. 4.57 acres. 1948 build. \n\nPics:\n\nhttps://drive.google.com/drive/folders/18rDLpXhCTRZKOeSZ5DNKGCDb34zKzRsX\n\nAsking: $285k",
+   "in 10-09T19:45: 509 N Graycroft ave madison tn",
+   "in 10-09T19:45: They have a offer of 290k",
+   "in 10-09T19:46: Allyson.woosley@compass.com",
+   "ou 10-09T23:49: Hey Allyson, who is Kevin? Just was curious next to the person uploading the photos.",
+   "in 10-09T23:50: He is the person who told\nMe about it trying to sell it as an assigned property",
+   "in 10-15T19:37: Hi Zack,\n\nAre you still\nInterested in this property in Madison I had a call\nEarlier the contract did not work out let me know. Ty \nAllyson Woosley"
+  ]
+ },
+ {
+  "contact_id": "X3VGfavY6fyS8SG7YCjk",
+  "name": "Amy Cannon",
+  "city": "Brentwood",
+  "state": "TN",
+  "phone": "+16153003296",
+  "company": "Cannontown Real Estate",
+  "tags": [
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-13T15:55: Hey Amy, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "ou 10-13T18:55: let me know",
+   "in 10-13T18:59: I don't have any distressed properties in my pocket"
+  ]
+ },
+ {
+  "contact_id": "T5fQX9JXvCx5njqAWjZC",
+  "name": "Danielle Clement",
+  "city": "Franklin",
+  "state": "TN",
+  "phone": "+16156135579",
+  "company": "Keller Williams Realty",
+  "tags": [
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-13T15:56: Hey Danielle, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-13T16:49: I don't have anything, but there are plenty of as is properties on the market right now"
+  ]
+ },
+ {
+  "contact_id": "8Fp4c4Rp7EzGFaVrJhJw",
+  "name": "DONNA S SHELL",
+  "city": null,
+  "state": null,
+  "phone": "+16153474122",
+  "company": "Crye-Leike, Inc., REALTORS",
+  "tags": [
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-09T15:52: Hey DONNA, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "ou 10-09T18:52: let me know",
+   "in 10-09T18:54: Yes I do one is in Pegram the be other will be in Davidson soon goodlettsville",
+   "ou 10-10T18:02: Great can you send address over?",
+   "in 10-10T22:53: It is a 3 bedroom address 149 Alexander lane",
+   "ou 10-12T21:11: Thanks how's the condition of the property?"
+  ]
+ },
+ {
+  "contact_id": "S00lXSGTSY4fWVxtwN3m",
+  "name": "Lisa Eden",
+  "city": null,
+  "state": null,
+  "phone": "+16158183105",
+  "company": "Marshall Reddick Real Estate",
+  "tags": [
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-09T15:52: Hey Lisa, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-09T15:54: 1284 Cotton Harris Rd Joelton",
+   "ou 10-09T23:46: Thanks for this Lisa, how's the condition of the property and what's the seller looking to get out of it ?",
+   "in 10-10T14:52: It needs work it was a rental property. Kitchen, bathrooms, flooring. The roof, gutters, HVAC is all 4 years old. 150k",
+   "ou 10-10T17:47: Can run some numbers and get back to you",
+   "ou 10-10T17:56: Offer on 1284 Cotton Harris Rd Joelton\nPurchase Price: $85,000\nFunding: cash or Hard Money - No financial contingency\nAs-is. No seller repairs\nBuyer pays all closing cost\nClosing date: 21 business days or sooner depending on if title is free and clear\nDue diligence: 5 business days\nEMD: $1,000\nTitle company: Patten Title\nEmail: sam@covent.sh\nBuyer'",
+   "ou 10-12T20:45: Any updates on this Lisa?",
+   "in 10-12T20:46: Their going to pass"
+  ]
+ },
+ {
+  "contact_id": "Zn6v7eBuJ8sXNNhMlId6",
+  "name": "Karen Hoff",
+  "city": "Nashville",
+  "state": "TN",
+  "phone": "+16152283723",
+  "company": "Historic & Distinctive Homes LLC",
+  "tags": [
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-09T15:51: Hey Karen, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-09T15:58: a 5 plex in Lewisburg $345,000",
+   "ou 10-10T17:45: Great do you have a address?",
+   "in 10-10T19:10: 517-519 Haynes Ave Lewisburg TN"
+  ]
+ },
+ {
+  "contact_id": "kJWZfbXeWaNqWLUtc3NU",
+  "name": "Lisa Stigliano",
+  "city": "Brentwood",
+  "state": "TN",
+  "phone": "+16153108661",
+  "company": "Nashville On The Market Real Estate",
+  "tags": [
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-09T15:51: Hey Lisa, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-09T15:54: This one!",
+   "in 10-09T15:54: https://go.realtracs.com/1m3gK5d",
+   "ou 10-10T17:50: Is the seller stuck on listing price, or is open for a fast cash as is? And how's the condition?",
+   "in 10-10T17:51: They are open to offers and condition is okay for an older house 1940s new hvac roof is like 9 years. The bathroom was updated - great yard/lot",
+   "in 10-10T17:52: But would love cash offer/as-is offer",
+   "ou 10-10T17:54: I can run some numbers and get back to you.",
+   "in 10-10T17:55: Thanks!",
+   "ou 10-10T18:14: Offer on 105 30th st old hickory\nPurchase Price: $165,000\nFunding: cash or Hard Money - No financial contingency\nAs-is. No seller repairs\nBuyer pays all closing cost\nClosing date: 21 business days or sooner depending on if title is free and clear\nDue diligence: 5 business days\nEMD: $1,600\nTitle company: Patten Title\nEmail: sam@covent.sh\nBuyer's nam",
+   "in 10-10T18:35: We had a higher offer thank you though!"
+  ]
+ },
+ {
+  "contact_id": "QmICl2AmKX5F9dvZCPtU",
+  "name": "Sharon Wayman",
+  "city": "Nashville",
+  "state": "TN",
+  "phone": "+16152896502",
+  "company": "Crye-Leike, Inc., REALTORS",
+  "tags": [
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-09T15:51: Hey Sharon, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-09T15:55: Duplex??",
+   "in 10-09T15:56: I have 4884 Whittier dr old hickory tn 37138 single family needs exterior updates low 300s ??",
+   "ou 10-10T17:46: Thanks for this Sharon, how low is the seller looking to get for this one?",
+   "in 10-10T17:47: Whittier dr 325k as is possibly"
+  ]
+ },
+ {
+  "contact_id": "SjTaatyaM6GfveCO8Sgc",
+  "name": "Tracey Shifflett",
+  "city": "Bowling Green",
+  "state": "KY",
+  "phone": "+12708475837",
+  "company": "Keller Williams First Choice Realty",
+  "tags": [
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-09T15:52: Hey Tracey, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "ou 10-09T18:52: let me know",
+   "in 10-09T20:31: Good afternoon, Zacc! I don't have any off market opportunities coming right at the moment in Tennessee. Do you also purchase in Kentucky? Do you mind sharing your last name?"
+  ]
+ },
+ {
+  "contact_id": "PEtqvQxk1prNKI51KLII",
+  "name": "Amanda Bell",
+  "city": "Ashland City",
+  "state": "TN",
+  "phone": "+16154069988",
+  "company": "At Home Realty",
+  "tags": [
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-09T15:51: Hey Amanda, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "ou 10-09T18:51: let me know",
+   "in 10-09T18:55: I'm sorry I don't have anything off market"
+  ]
+ },
+ {
+  "contact_id": "gHiMW1ATi7N8UEhIr4wy",
+  "name": "Sarah Beth Paul",
+  "city": null,
+  "state": null,
+  "phone": "+16153980832",
+  "company": "Studio Real Estate",
+  "tags": [
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-09T15:53: Hey Sarah, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-09T15:54: 2603 Sunset Place, Nashville\n2108 Billingsham Ct, Mt Juliet",
+   "in 10-09T15:54: https://go.realtracs.com/1m3gD2W",
+   "in 10-09T15:54: https://go.realtracs.com/1m3gH7I",
+   "ou 10-09T15:58: Hey Sarah, thanks for these. What's the condition like on Billngsham, and what's the seller willing to take right now for a as is?",
+   "in 10-09T15:59: Seller has passed. Kids are selling. Needs flooring, cosmetics throughout. Systems are newer.",
+   "in 10-09T15:59: We are likely listing at 399k.",
+   "ou 10-09T17:03: Are you free for a couple minutes so I can get more details? Thank you"
+  ]
+ },
+ {
+  "contact_id": "LHa6Iuku78U1ncj37PsM",
+  "name": "Leah Watson",
+  "city": null,
+  "state": null,
+  "phone": "+16155167746",
+  "company": "List It Realty LLC",
+  "tags": [
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-09T15:52: Hey Leah, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-09T16:13: Nothing off market"
+  ]
+ },
+ {
+  "contact_id": "yeAdzaAcfJqB9xYV2KSa",
+  "name": "Stewart Halcomb",
+  "city": "Hendersonville",
+  "state": "TN",
+  "phone": "+16155452298",
+  "company": "Remax Choice Properties",
+  "tags": [
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-09T15:52: Hey Stewart, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-09T15:55: I don't currently have any off market or distressed properties. I'll keep you in the loop when I have another one"
+  ]
+ },
+ {
+  "contact_id": "3MVgPbRJljTCRg5ERJgP",
+  "name": "Michael Gomez",
+  "city": "franklin",
+  "state": "TN",
+  "phone": "+16156134461",
+  "company": "Hive Nashville LLC",
+  "tags": [
+   "apify-daily-lead"
+  ],
+  "photos": 0,
+  "notes": [],
+  "thread": [
+   "ou 10-08T23:52: Hey Michael, my name is Zack. I am in an investor here in Nashville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+   "in 10-08T23:55: 4035 Kings ln\nNashville\n\nKey near front door under round rock\n\n$495k\n\nMust be end buyer"
   ]
  }
 ]

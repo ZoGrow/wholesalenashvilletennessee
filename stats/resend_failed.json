@@ -1,24 +1,24 @@
 {
  "mode": "send",
- "tagged": 6346,
+ "tagged": 7333,
  "eligible": 0,
  "skipped": {
-  "tag agent-replied": 661,
-  "dnd": 211,
-  "tag opted-out": 238,
-  "bad number (Error 21211 - Invali)": 1,
-  "bad number (Error 30003 - Number)": 3,
-  "bad number (Error 30008 - Messag)": 1,
-  "tag dnd-skipped": 4,
+  "tag opted-out": 256,
+  "they replied": 340,
+  "dnd": 233,
+  "tag agent-replied": 712,
+  "bad number (Error 30003 - Number)": 6,
+  "tag dnd-skipped": 6,
+  "bad number (Error 30008 - Messag)": 2,
+  "bad number (Error 21211 - Invali)": 2,
   "no messages": 1,
   "tag not-qualified": 2,
-  "tag hot-lead": 4,
-  "they replied": 267
+  "tag hot-lead": 4
  },
  "errors": {
-  "Error 30003 - Number unreachable or out of service.": 3,
-  "Error 21211 - Invalid \"To\" number format. Please check and try again.": 1,
-  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 1
+  "Error 30003 - Number unreachable or out of service.": 6,
+  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 2,
+  "Error 21211 - Invalid \"To\" number format. Please check and try again.": 2
  },
  "sent": 0,
  "delivered": 0,

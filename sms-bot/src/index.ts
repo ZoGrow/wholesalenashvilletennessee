@@ -385,12 +385,17 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
  *  never qualify (Zack 2026-10-25). Off-market price never blocks a lead: Zack offers at the card's max
  *  offer (Zack 2026-10-26: "I need leads so I can make offers"). */
 function applyDealRules(decision: Decision, contactId: string, env: Env): void {
-  // No hard code gates on qualified leads anymore (Zack 2026-10-27, "stop DQ so hard": listed houses
-  // with an agent open to offers go to him). Kept as the hook for any future rule.
-  void decision; void contactId; void env;
+  // Zack 2026-10-27 evening: "don't send me stuff that's on market anymore". Listed houses never qualify.
+  void env;
+  if (decision.deal === "qualified" && isListed(decision.lead)) {
+    console.log("listed house can't qualify", contactId, decision.lead?.market_status);
+    decision.deal = "not_qualified";
+    decision.handoff = false;
+    decision.note = `Listed on the MLS, Zack only buys off-market. ${decision.note || ""}`;
+  }
 }
 
-const NO_PROMISE_FIX = `Your draft was: "{{REPLY}}". Don't tell the agent you'll run numbers, send a number or get them an offer: that's only said on leads that qualify and go to Zack. Rewrite it. If you still need info (photos, condition, asking price, why they're selling, timeline), ask your next question. If there's a real house with an address and the seller might take less (off-market, needs work, motivated, or listed with the agent open to offers), it qualifies: set deal = "qualified" and say you're running the numbers. Otherwise ask your next question, or if it's junk (wholesaler, multifamily, auction, no property) end with a short thanks and no "send it my way".`;
+const NO_PROMISE_FIX = `Your draft was: "{{REPLY}}". Don't tell the agent you'll run numbers, send a number or get them an offer: that's only said on leads that qualify and go to Zack. Rewrite it. If you still need info (photos, condition, asking price, why they're selling, timeline), ask your next question. If there's a real house with an address and the seller might take less and it is OFF-MARKET (off-market with a price or reason, needs work, or motivated), it qualifies. A house listed on the MLS never qualifies: pass with a short thanks: set deal = "qualified" and say you're running the numbers. Otherwise ask your next question, or if it's junk (wholesaler, multifamily, auction, no property) end with a short thanks and no "send it my way".`;
 // "I'll run the numbers", "let me crunch numbers", "I'll get you an offer", "get back to you with a number" ...
 const PROMISED_NUMBERS =
   /\b(run(ning)?|crunch(ing)?|work(ing)? up|put together|look(ing)? at) (the |some )?(numbers|comps|an offer|a number|figures)\b|\b(get|send|have) (you |back to you with |over )?(an offer|a number|my number|numbers|an? (cash )?offer)\b|\bget back to you (shortly |soon |today |tomorrow )?with\b/i;

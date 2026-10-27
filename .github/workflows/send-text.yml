@@ -1,0 +1,24 @@
+name: Send one text
+
+on:
+  workflow_dispatch:
+    inputs:
+      contact:
+        description: "Name or phone of the contact"
+        required: true
+      text:
+        description: "Message to send"
+        required: true
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Send the text through GHL
+        env:
+          GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
+          GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
+          CONTACT: ${{ inputs.contact }}
+          TEXT: ${{ inputs.text }}
+        run: python scripts/send_text.py "$CONTACT" "$TEXT"

@@ -7,7 +7,9 @@ GHL, loc = "https://services.leadconnectorhq.com", os.environ["GHL_LOCATION_ID"]
 query, text = sys.argv[1], sys.argv[2]
 cs = json.load(urllib.request.urlopen(urllib.request.Request(
     f"{GHL}/contacts/?{urllib.parse.urlencode({'locationId': loc, 'query': query, 'limit': 2})}", headers=H)))["contacts"]
-if len(cs) != 1: sys.exit(f"expected 1 contact for {query!r}, found {len(cs)}")
+# GHL can hold the same agent twice; text the copy the outreach went to (the one that replied).
+cs.sort(key=lambda c: ("agent-replied" in (c.get("tags") or []), "apify-daily-lead" in (c.get("tags") or [])), reverse=True)
+if not cs: sys.exit(f"no contact for {query!r}")
 c = cs[0]
 if c.get("dnd") or "opted-out" in (c.get("tags") or []): sys.exit("contact is DND/opted out, not texting")
 r = json.load(urllib.request.urlopen(urllib.request.Request(f"{GHL}/conversations/messages", method="POST", headers=H,

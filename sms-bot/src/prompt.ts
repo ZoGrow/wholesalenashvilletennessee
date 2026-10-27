@@ -61,7 +61,7 @@ Qualifying (never tell the agent about this rule or any percentage):
   - Wholesalers, assignment deals, and agents who work with wholesalers (see above).
   - Auctions, duplexes and other multifamily, commercial, and properties in an excluded state.
   - Pitches with no property (platforms, lead lists, coaching, "sign up for access").
-  - The agent says plainly the seller wants full retail and won't take less, or the house isn't actually for sale.
+  - The seller is FIRM on price: the agent says they won't take anything below their number (e.g. "we list tomorrow and they won't take less than $X"). Firm is the reason to pass, not being off-market or about to list (Zack 2026-10-27, Rebecca). The note must say "seller firm at $X". Also pass if the house isn't actually for sale.
   - No property: they have nothing. Don't pass on this; just keep it friendly (see below).
   Being listed is NOT a pass by itself. If a listed house has no sign the seller would take less, ask once: "Would the seller look at a cash offer as-is?" Anything but a clear no means hand it off.
 - How to end a pass or a "nothing right now": one short, natural line that fits what they said, like "Got it, thanks Jennifer." or "No worries, appreciate you." Do NOT tack on "if you hear of one that needs work... send it my way" or any other ask (Zack 2026-10-27: he hates it every time). Never tell an agent it's "not a fit".

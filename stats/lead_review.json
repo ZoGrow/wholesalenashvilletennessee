@@ -1,677 +1,228 @@
 {
- "days": 7,
- "agents_replied": 747,
+ "days": 1,
+ "agents_replied": 173,
  "buckets": {
-  "opted-out": 223,
-  "not-qualified": 123,
-  "warm-lead": 72,
-  "hot-lead": 36,
-  "qualified-lead": 10,
-  "bot-off": 2
+  "opted-out": 45,
+  "bot-off": 1,
+  "warm-lead": 23,
+  "not-qualified": 23,
+  "qualified-lead": 9,
+  "hot-lead": 11
  },
- "still_vetting": 329,
+ "still_vetting": 79,
  "unanswered": [
   {
-   "name": "Robyn Roller - RE/MAX Advanced Realty",
-   "city": "Greenwood",
-   "text": "Ok",
-   "at": "2026-10-26T16:13:42.482Z"
+   "name": "Elaine Maisel",
+   "city": "Jackson",
+   "text": "Keep me in mind if you come across any that are too much for you. I also renovate homes and am willing to do major work ",
+   "at": "2026-10-27T16:37:20.096Z"
   },
   {
-   "name": "Louisa Matthews",
-   "city": "Greensboro",
-   "text": "And I'm not looking to work for free - so I'll send the information to the investors who are already committed to workin",
-   "at": "2026-10-26T16:11:30.119Z"
+   "name": "Mark Flowers",
+   "city": "Jonesboro",
+   "text": "Will do",
+   "at": "2026-10-27T16:30:46.800Z"
   },
   {
-   "name": "Kelly Lavengood",
+   "name": "Cindy Allwine, Executive Broker, Ausum Realty",
+   "city": "Little Rock",
+   "text": "Thanks I will",
+   "at": "2026-10-27T16:25:39.543Z"
+  },
+  {
+   "name": "Jason Justak",
+   "city": "Carmel, IN",
+   "text": "Bummer",
+   "at": "2026-10-27T13:46:30.204Z"
+  },
+  {
+   "name": "Christine Robbins",
+   "city": "Carmel",
+   "text": "Sounds good, thanks!",
+   "at": "2026-10-27T00:30:51.173Z"
+  },
+  {
+   "name": "Katrini Goshay",
+   "city": "Huntsville",
+   "text": "Thanks for your time.",
+   "at": "2026-10-26T20:39:58.926Z"
+  },
+  {
+   "name": "Cheryl Niemeier",
    "city": "Indianapolis",
-   "text": "No thanks",
-   "at": "2026-10-26T16:10:59.400Z"
-  },
-  {
-   "name": "Demetrius Leonard",
-   "city": "Chattanooga",
-   "text": "Ok",
-   "at": "2026-10-25T23:14:24.922Z"
-  },
-  {
-   "name": "Roxanne Howell",
-   "city": "Florence",
-   "text": "Ok, I will.",
-   "at": "2026-10-25T20:02:44.324Z"
-  },
-  {
-   "name": "Jack Bowman",
-   "city": "Arlington",
-   "text": "Understand",
-   "at": "2026-10-25T16:36:37.391Z"
-  },
-  {
-   "name": "Janice Buckman",
-   "city": "College Grove",
-   "text": "Okay \ud83d\udc4d",
-   "at": "2026-10-24T22:32:23.034Z"
-  },
-  {
-   "name": "Connie Shrieves",
-   "city": "Columbia",
-   "text": "Ok thanks",
-   "at": "2026-10-24T21:56:10.131Z"
-  },
-  {
-   "name": "Linda Escobar",
-   "city": "Durham",
-   "text": "Okay, thank you \u2705",
-   "at": "2026-10-23T21:40:39.966Z"
-  },
-  {
-   "name": "Tamika Hawkins",
-   "city": "Raleigh",
-   "text": "I sure will.  Have a great weekend!",
-   "at": "2026-10-23T21:02:42.346Z"
-  },
-  {
-   "name": "Daphne Fletcher",
-   "city": "Huntsville",
-   "text": "I sure will",
-   "at": "2026-10-23T21:02:08.379Z"
-  },
-  {
-   "name": "Allen Jackson",
-   "city": "Hoover",
-   "text": "Will do",
-   "at": "2026-10-23T20:29:46.961Z"
-  },
-  {
-   "name": "SHERRI DYER",
-   "city": "Burlington",
-   "text": "You as well!",
-   "at": "2026-10-23T20:20:04.241Z"
-  },
-  {
-   "name": "Michael Calabrese",
-   "city": "lake wylie",
-   "text": "Ok",
-   "at": "2026-10-23T20:13:43.526Z"
-  },
-  {
-   "name": "Lynette McClendon",
-   "city": "lake wylie",
-   "text": "My pleasure",
-   "at": "2026-10-23T20:06:13.994Z"
-  },
-  {
-   "name": "Michael Lasek",
-   "city": "Charlotte",
-   "text": "Understood and will do",
-   "at": "2026-10-23T19:47:04.388Z"
-  },
-  {
-   "name": "LePage Owens",
-   "city": "Huntsville",
-   "text": "Got it!  I'll keep you in mind. Thanks for reaching out.",
-   "at": "2026-10-23T19:42:17.629Z"
-  },
-  {
-   "name": "Andrea Fondren",
-   "city": "Huntsville",
-   "text": "Absolutely!",
-   "at": "2026-10-23T19:24:26.099Z"
-  },
-  {
-   "name": "Nykole Wyatt, MPA, ABA, SRS, GRI",
-   "city": "Charlotte",
-   "text": "Will do",
-   "at": "2026-10-23T19:23:25.222Z"
-  },
-  {
-   "name": "Lizz Baxter",
-   "city": "Charlotte",
-   "text": "I will return your email",
-   "at": "2026-10-23T19:16:58.191Z"
-  },
-  {
-   "name": "Tajuania Lawson",
-   "city": "Huntsville",
-   "text": "Ok. Thank you",
-   "at": "2026-10-23T18:43:50.714Z"
-  },
-  {
-   "name": "Kristen Haynes",
-   "city": "Charlotte",
-   "text": "I have a hundred of you in a database, LOL you're in a very competitive market. Thx",
-   "at": "2026-10-23T18:15:58.063Z"
-  },
-  {
-   "name": "Charles Harris Memphis Real Estate",
-   "city": "Memphis",
-   "text": "I totally understand thanks",
-   "at": "2026-10-23T17:36:44.639Z"
-  },
-  {
-   "name": "LeTracey Tuck",
-   "city": "Harvest",
-   "text": "Will do \ud83d\udc4d",
-   "at": "2026-10-23T17:25:38.135Z"
-  },
-  {
-   "name": "Judy Flowe",
-   "city": "Kannapolis",
-   "text": "I ordered and sent to D. She Loved it!!!",
-   "at": "2026-10-23T17:01:17.495Z"
-  },
-  {
-   "name": "Mike Owens",
-   "city": "Cullman",
-   "text": "All right \ud83d\udc4d",
-   "at": "2026-10-23T16:18:50.742Z"
-  },
-  {
-   "name": "Greg Macaluso",
-   "city": "Charlotte",
-   "text": "This phone number is no longer in service.",
-   "at": "2026-10-23T16:13:24.302Z"
-  },
-  {
-   "name": "Tarra Kalonzo",
-   "city": "Dunwoody",
-   "text": "Awesome! Have a great night!",
-   "at": "2026-10-22T22:24:50.935Z"
-  },
-  {
-   "name": "Melissa Holley",
-   "city": "Braselton",
-   "text": "ok",
-   "at": "2026-10-22T22:20:05.204Z"
-  },
-  {
-   "name": "Upscale Properties Atlanta",
-   "city": "Atlanta",
-   "text": "No need",
-   "at": "2026-10-22T20:13:43.625Z"
-  },
-  {
-   "name": "Cass R Connor",
-   "city": "Sandy springs",
-   "text": "Okay",
-   "at": "2026-10-22T20:07:04.053Z"
-  },
-  {
-   "name": "Cindy's Realty Group",
-   "city": "Atlanta",
-   "text": "I definitely will!",
-   "at": "2026-10-22T19:56:18.725Z"
-  },
-  {
-   "name": "Cheryl Butler",
-   "city": "Johns Creek",
-   "text": "Ok",
-   "at": "2026-10-22T19:35:35.530Z"
-  },
-  {
-   "name": "Martin Home Group",
-   "city": "Atlanta",
-   "text": "Not interested in real estate promotions",
-   "at": "2026-10-22T19:15:32.247Z"
-  },
-  {
-   "name": "Sharon E. Black",
-   "city": "Richmond Hill",
-   "text": "Thanks, Zack. We'll keep your criteria in mind and reach out by text if a fitting property comes up. Anything else you w",
-   "at": "2026-10-22T19:13:11.792Z"
-  },
-  {
-   "name": "Spencer T. Peterson",
-   "city": "stone mountain",
-   "text": "Who is this?",
-   "at": "2026-10-22T19:10:00.097Z"
-  },
-  {
-   "name": "Linda Sneed",
-   "city": "Hixson",
-   "text": "Okay",
-   "at": "2026-10-22T02:33:29.567Z"
-  },
-  {
-   "name": "Harriett Whitaker",
-   "city": "Chattanooga",
-   "text": "K",
-   "at": "2026-10-22T01:57:32.147Z"
-  },
-  {
-   "name": "Tamara Moon",
-   "city": "Sevierville",
-   "text": "K",
-   "at": "2026-10-21T22:52:28.065Z"
-  },
-  {
-   "name": "Sam Winterbotham",
-   "city": "Knoxville",
-   "text": "Fair enough. Remember if you need to unload a property because you got yourself into trouble give me a call. Maybe i can",
-   "at": "2026-10-21T22:45:10.292Z"
-  },
-  {
-   "name": "Mitchell Blair",
-   "city": "rome",
-   "text": "I sure will. Thank you so much for reaching out.",
-   "at": "2026-10-21T22:25:15.189Z"
-  },
-  {
-   "name": "Taylor Clark",
-   "city": "Cleveland",
-   "text": "Will do!",
-   "at": "2026-10-21T21:40:14.741Z"
-  },
-  {
-   "name": "WAYNE SHERLIN",
-   "city": "Athens",
-   "text": "You're welcome",
-   "at": "2026-10-21T21:20:39.328Z"
-  },
-  {
-   "name": "R. Scott Smith",
-   "city": "Franklin",
-   "text": "Sure",
-   "at": "2026-10-21T21:09:24.927Z"
-  },
-  {
-   "name": "Christy Ratcliff",
-   "city": "Bean Station",
-   "text": "Sure will do",
-   "at": "2026-10-21T20:54:15.807Z"
-  },
-  {
-   "name": "Thomas DeMoss",
-   "city": "Franklin",
-   "text": "Our deals are better than what an agent can do.",
-   "at": "2026-10-21T17:21:00.428Z"
-  },
-  {
-   "name": "Kristy Clements",
-   "city": "Chattanooga",
-   "text": "Okay I will",
-   "at": "2026-10-21T17:14:11.230Z"
-  },
-  {
-   "name": "Carol Movre",
-   "city": "Dayton",
-   "text": "Ideally they would like to close by Nov 20",
-   "at": "2026-10-21T17:02:14.360Z"
-  },
-  {
-   "name": "Deana Luedtke",
-   "city": "Chattanooga",
-   "text": "Ok !!",
-   "at": "2026-10-21T16:58:15.922Z"
-  },
-  {
-   "name": "Machaskee Team",
-   "city": "Chattanooga",
-   "text": "And he would be paying my commission",
-   "at": "2026-10-21T16:45:33.731Z"
-  },
-  {
-   "name": "Bonnie Harris",
-   "city": "Gatlinburg",
-   "text": "Will do \ud83d\udc4d",
-   "at": "2026-10-21T16:39:11.437Z"
-  },
-  {
-   "name": "Sarah Goins",
-   "city": "Lenoir City",
-   "text": "Absolutely!",
-   "at": "2026-10-21T16:36:21.265Z"
-  },
-  {
-   "name": "Emma Hereford",
-   "city": "Chattanooga",
-   "text": "My apologies on the typo!",
-   "at": "2026-10-21T16:30:09.770Z"
-  },
-  {
-   "name": "The Collard Team/David & Jill Collard",
-   "city": "Sevierville",
-   "text": "Hi Zack,\r\n\r\nThis would be a great opportunity, in our opinion.\r\n\r\nIt's Chalet Village with high-demand neighboring cabin",
-   "at": "2026-10-21T16:22:38.213Z"
-  },
-  {
-   "name": "Dawn Noah",
-   "city": "Franklin",
-   "text": "Unfortunately, we buy those ourselves",
-   "at": "2026-10-21T16:22:11.399Z"
-  },
-  {
-   "name": "Dawn Maynor",
-   "city": "Chattanooga",
-   "text": "I'm actually looking for my next flip also",
-   "at": "2026-10-21T16:12:59.458Z"
-  },
-  {
-   "name": "Jeffrey Dealejandro",
-   "city": "Maryville",
-   "text": "This phone number is no longer in service.",
-   "at": "2026-10-21T16:10:27.206Z"
-  },
-  {
-   "name": "Linitra Washington",
-   "city": "Germantown",
-   "text": "890 Craft Road Memphis, Tn 38116\n4bed/2bath needs work 89,900",
-   "at": "2026-10-21T16:06:46.382Z"
-  },
-  {
-   "name": "Tjuania L. Mack Redmond",
-   "city": "Memphis",
-   "text": "\ud83d\udc4d\ud83c\udffe",
-   "at": "2026-10-21T13:30:27.171Z"
-  },
-  {
-   "name": "Kim Lewis",
-   "city": "Germantown",
-   "text": "I will do.",
-   "at": "2026-10-21T00:32:55.083Z"
-  },
-  {
-   "name": "Marissa Hertzog",
-   "city": "Nashville",
-   "text": "Will make note of that!",
-   "at": "2026-10-20T21:43:26.888Z"
-  },
-  {
-   "name": "Marty Bradley",
-   "city": "Spring Hill",
-   "text": "Ok, Thank you!",
-   "at": "2026-10-20T21:23:57.148Z"
-  },
-  {
-   "name": "Dana Chapman",
-   "city": "lebanon",
-   "text": "\ud83d\udc4d",
-   "at": "2026-10-20T21:04:53.475Z"
-  },
-  {
-   "name": "Devarrio \"Dee\" Lakes, MMDC Member",
-   "city": "Southaven",
-   "text": "Ok",
-   "at": "2026-10-20T20:57:16.012Z"
-  },
-  {
-   "name": "Megan Hodges",
-   "city": "Memphis",
-   "text": "He does want to sell. But he won't kill the comps over there if you know what I mean",
-   "at": "2026-10-20T20:47:07.165Z"
-  },
-  {
-   "name": "John C. Cornes",
-   "city": "Memphis",
-   "text": "No deep discounts",
-   "at": "2026-10-20T20:34:39.822Z"
-  },
-  {
-   "name": "Nikki & Michael Mosteller",
-   "city": "Germantown",
-   "text": "10/4",
-   "at": "2026-10-20T20:31:40.957Z"
-  },
-  {
-   "name": "DOT NORMAN",
-   "city": "Franklin",
-   "text": "Motivated seller",
-   "at": "2026-10-20T20:29:44.600Z"
-  },
-  {
-   "name": "Kathy Mills",
-   "city": "Germantown",
-   "text": "Will do!",
-   "at": "2026-10-20T19:51:06.932Z"
-  },
-  {
-   "name": "Christy Utterback",
-   "city": "Collierville",
-   "text": "Will do",
-   "at": "2026-10-20T19:07:27.061Z"
-  },
-  {
-   "name": "Dianne Person",
-   "city": "Marion",
-   "text": "Ok",
-   "at": "2026-10-20T19:01:59.475Z"
-  },
-  {
-   "name": "Frank Malvezzi",
-   "city": "Memphis",
-   "text": "Checking",
-   "at": "2026-10-20T18:44:46.376Z"
-  },
-  {
-   "name": "MYRA B. SHEDDAN",
-   "city": "Memphis",
-   "text": "AND . . . both were investors.",
-   "at": "2026-10-20T18:00:21.714Z"
-  },
-  {
-   "name": "Shelia Mittlesteadt",
-   "city": "Pulaski",
-   "text": "I would appreciate this one being passed along as well. Thank you!!",
-   "at": "2026-10-20T17:53:48.903Z"
-  },
-  {
-   "name": "Cindy Garvey",
-   "city": "Franklin",
-   "text": "I can wait",
-   "at": "2026-10-20T17:47:44.540Z"
-  },
-  {
-   "name": "Jennifer Beu",
-   "city": "Hendersonville",
-   "text": "Will do!",
-   "at": "2026-10-20T17:44:54.795Z"
-  },
-  {
-   "name": "Laurie Stark",
-   "city": "Memphis",
-   "text": "Ok",
-   "at": "2026-10-20T17:39:49.471Z"
-  },
-  {
-   "name": "Jayme Edwards",
-   "city": "Nashville",
-   "text": "Take care",
-   "at": "2026-10-20T17:38:54.957Z"
-  },
-  {
-   "name": "Kathey Darnell-Keen",
-   "city": "Franklin",
-   "text": "He had no intentions of fixing things or updating things anyway",
-   "at": "2026-10-20T17:37:55.483Z"
-  },
-  {
-   "name": "Rebecca Edwards, Realtor",
-   "city": "Germantown",
-   "text": "Hey! Thanks for your message, we'll get back to you shortly.",
-   "at": "2026-10-20T17:31:14.359Z"
-  },
-  {
-   "name": "Rachael Nieves",
-   "city": "Spring Hill",
-   "text": "Okay",
-   "at": "2026-10-20T00:16:22.977Z"
-  },
-  {
-   "name": "Susan Gregory",
-   "city": "Franklin",
    "text": "Will do.",
-   "at": "2026-10-19T23:33:27.573Z"
+   "at": "2026-10-26T20:05:02.063Z"
   },
   {
-   "name": "Bridget Hobbs",
-   "city": "Brentwood",
-   "text": "Perfect you got it",
-   "at": "2026-10-19T23:22:46.843Z"
+   "name": "Lisa Isley",
+   "city": "Burlington",
+   "text": "Okay",
+   "at": "2026-10-26T19:27:55.412Z"
   },
   {
-   "name": "Cassie Lee",
-   "city": "Hendersonville",
-   "text": "Probate right now",
-   "at": "2026-10-19T23:19:24.310Z"
+   "name": "Jon Stamper - Realtor",
+   "city": "West Chester",
+   "text": "Will do. Love to help you out.",
+   "at": "2026-10-26T19:24:42.349Z"
   },
   {
-   "name": "Debbie Meyers",
-   "city": "Hendersonville",
-   "text": "I sure will",
-   "at": "2026-10-19T23:17:28.003Z"
+   "name": "Susan Brandon",
+   "city": "Carmel",
+   "text": "Thanks! Will do.",
+   "at": "2026-10-26T19:16:35.980Z"
   },
   {
-   "name": "Christa Swartz",
-   "city": "Seymour",
-   "text": "Thanks",
-   "at": "2026-10-19T22:55:29.640Z"
+   "name": "Elizabeth Nannery, BHHS Broker",
+   "city": "Winston-Salem",
+   "text": "Got it. Thanks!",
+   "at": "2026-10-26T19:16:28.622Z"
   },
   {
-   "name": "Kathy Anderson",
-   "city": "Hendersonville",
-   "text": "I will\ud83d\udc4d",
-   "at": "2026-10-19T22:52:46.614Z"
-  },
-  {
-   "name": "Camile Caraway",
-   "city": "Hendersonville",
-   "text": "Perfect and I sure will.",
-   "at": "2026-10-19T22:19:37.706Z"
-  },
-  {
-   "name": "Nancy Herrick",
-   "city": "Gallatin",
-   "text": "Thanks for checking",
-   "at": "2026-10-19T21:52:05.612Z"
-  },
-  {
-   "name": "Tom Gravely",
-   "city": "Hendersonville",
+   "name": "Christopher Johnson",
+   "city": "Fishers",
    "text": "Sure",
-   "at": "2026-10-19T21:29:46.019Z"
+   "at": "2026-10-26T19:13:37.370Z"
+  },
+  {
+   "name": "Donna Steutermann",
+   "city": "Cincinnati",
+   "text": "Will do, Zack all the best to you",
+   "at": "2026-10-26T17:30:01.043Z"
+  },
+  {
+   "name": "Sherri Bryant",
+   "city": "Carmel, IN",
+   "text": "I will",
+   "at": "2026-10-26T16:59:26.671Z"
   }
  ],
  "not_qualified_reasons": [
   {
-   "name": "Heather Dunn",
-   "city": "Grandview Heights",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: both properties (1022 E 17th Columbus, 224 N Main Sidney) appeared to be listed on the MLS. Agent says off-market doesn't benefit her sellers and isn't interested."
+   "name": "Joel Tvedten",
+   "city": "little rock",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED. Agent distrusts us, asked for a driver's license, and said he's passing. No property was discussed."
   },
   {
-   "name": "Marla Sewell",
-   "city": "Burlington",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED. 728 Rainbow, Burlington: off-market, 2/1, 784 sqft, built 1955, rough shape, asking $80k. Being sold by an investor who is closing on it today and reselling, which looks like a wholesale or double-close deal. Passed. No photos received."
+   "name": "Mark Flowers",
+   "city": "Jonesboro",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 910 Alan St, Manila AR is listed at $174,900. Seller is not desperate and has no stated 60% of Zestimate price. Agent suggested about $120k, which is a long shot. Pass."
   },
   {
-   "name": "Niki Fuller, agent",
-   "city": "Jeffersontown",
-   "note": "SMS bot, did not qualify: Agent says she is not in our market. No property."
+   "name": "Caroline Pittman",
+   "city": "little rock",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: Pine Bluff package (duplex plus two homes, $110k total, fair condition) owned by her Rabbi. No addresses given, bundled with a duplex, and she handed off to the owner Yosef Kramer 347-327-2100 instead of acting as the agent. Not pursuing."
   },
   {
-   "name": "Michele Snyder Realtor",
-   "city": "Fishers",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 2948 Highland Pl, Indianapolis is actively listed on the MLS at $169,900 (agent said $150k). No Zestimate. Listed properties are an automatic pass."
+   "name": "Danielle Wolbert",
+   "city": "St. augustine",
+   "note": "SMS bot, did not qualify: Agent mentioned a possible duplex in Riverside, Jacksonville in about two weeks. Multifamily is a pass, so no follow-up set."
   },
   {
-   "name": "Lori Davis Smith",
-   "city": "Greencastle",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 62 Scarborough Ln, Lafayette IN. Actively listed on MLS through 10/31 (short sale, agent's own listing), plans to pull for a week to test investor interest. Appraisal as-is $471k, agent hints about $420k. Listed, so pass."
-  },
-  {
-   "name": "Ryan Radecki",
-   "city": "Indianapolis",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 13063 E 131st St, Fishers. Actively listed on MLS at $334,900 (Zestimate $332,600), updated move-in ready with new roof. Seller has financial difficulties but it is listed."
-  },
-  {
-   "name": "Stacie Kidwell Sandoval",
+   "name": "Ryan Rominger",
    "city": "Carmel, IN",
-   "note": "SMS bot, did not qualify: Agent only works MLS listings and never recommends off-market to sellers. Asked about off-market situations once already; no property sent."
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: agent is pitching a platform/email list (mls.intriguepm.com), no property provided."
   },
   {
-   "name": "Craig DeBoor",
+   "name": "Christi Marret",
+   "city": "haskell",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 23 Rita Drive, Sherwood is listed on the MLS per the agent (needs foundation work). Passed because we only buy off-market."
+  },
+  {
+   "name": "Jill Cram",
+   "city": "St. augustine",
+   "note": "SMS bot, did not qualify: Jill is retired and has no property. She referred us to her former broker, The Legends of Real Estate."
+  },
+  {
+   "name": "Ethel Bell",
+   "city": "Madison",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 316 Lexington Ave, Jackson is listed on the MLS (agent says price just lowered to $24,900). We only buy off-market."
+  },
+  {
+   "name": "Jason Justak",
    "city": "Carmel, IN",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 919 Queensbury Dr, Noblesville. Zillow shows it as pending, listed at $439,900 (agent said $403k), updated and move-in ready, no Zestimate. Listed on the MLS, so it's an automatic pass."
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 2008 N College Ave, Indianapolis is listed on the MLS (agent says it needs only paint). Already passed twice. Agent's last text was just 'Bummer', so no reply needed."
   },
   {
-   "name": "Louisa Matthews",
-   "city": "Greensboro",
-   "note": "SMS bot, did not qualify: Agent wants an agency agreement and buyer info before sharing any address, and ended the conversation. The house sounds MLS-listed. No address, nothing to vet."
-  },
-  {
-   "name": "Tad Aschliman",
-   "city": "Indianapolis",
-   "note": "SMS bot, did not qualify: Agent says clients want fair market value and has nothing off-market; skeptical of wholesalers. No property."
-  },
-  {
-   "name": "Kelly Lavengood",
-   "city": "Indianapolis",
-   "note": "SMS bot, did not qualify: Agent declined twice and said no thanks; no property. Ending conversation."
-  },
-  {
-   "name": "Dana Thompson",
-   "city": "Indianapolis",
+   "name": "Christine Robbins",
+   "city": "Carmel",
    "note": ""
   },
   {
-   "name": "Ernest Hanohano",
+   "name": "Jade Utley",
+   "city": "Franklin",
+   "note": "SMS bot handoff: NOT QUALIFIED (big gap). 2404 Buchanan St, Nashville 37208. Off-market, asking $310k. No Zestimate found; Redfin est. $338k (~92%) is based on the old 1,148 sqft finished record. Now a framed shell with a new roof, ~2,000 sqft claimed, all mechanicals and finishes still needed. Sell"
+  },
+  {
+   "name": "Natasha Nelson",
+   "city": "Browns Summit",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 2308 Leeds Ave, High Point is listed on the MLS per the agent (on market, entertaining investor offers). Listed means an automatic pass."
+  },
+  {
+   "name": "Crystal Rierson-Villeneuve",
+   "city": "Greensboro",
+   "note": "SMS bot, did not qualify: Agent has no off-market or distressed properties. Offered 2 listed rental-hold properties, which are not off-market, so passed."
+  },
+  {
+   "name": "Chuck Pennington(Team)",
    "city": "Carmel, IN",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 1001 E 30th St Indianapolis is a commercial property on two parcels, not single-family. Passed politely."
+   "note": "SMS bot, did not qualify: Agent was testing whether I'm local, said best of luck. No property offered."
   },
   {
-   "name": "Demetrius Leonard",
-   "city": "Chattanooga",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 206 S Collins St, Tullahoma. Zestimate $177,700, seller asking $179,900 (~101%). Off-market, about to list. 3/2, 1,252 sqft, built 1952. Vacant, newer roof, new HVAC, so it's in good shape. Seller is moving in with his fianc\u00e9 and has no stated urgency. The as"
-  },
-  {
-   "name": "Roxanne Howell",
-   "city": "Florence",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED. 205 Ouida Lane, Columbia TN, listed on MLS at $499,900, agent counter about $450k (about 90% of list). Home is in good shape, only minor repairs, and the sellers are not desperate. No Zestimate was checked, but the price is nowhere near the 75% line for a lis"
-  },
-  {
-   "name": "Andrea Drake",
+   "name": "Len Johnson",
    "city": "Huntsville",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 5108 Ortega Cir, Huntsville. Seller decided to keep the house, no longer selling. Mortgage about $136k."
+   "note": "SMS bot, possible future deal: Len may have a house after the first of the year; no details yet. He only has 4-plexes now (pass). Gave him the email for details; he just liked the text."
   },
   {
-   "name": "Chantal Jones",
-   "city": "Atlanta",
-   "note": "SMS bot, did not qualify: Agent is a lender looking for borrowers, no properties right now."
+   "name": "David Allen",
+   "city": "Carmel, IN",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 36 South Jefferson St, Knightstown IN is a fourplex (multifamily). Landlord wants out, but we pass on multifamily. Asked David to send any single-family."
   },
   {
-   "name": "Jack Bowman",
-   "city": "Arlington",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 3759 Oak Forest, Bartlett TN, MLS listed (just went live), great shape, priced under comps per agent, only a little room on price. Seller already built a new home but not in a rush."
+   "name": "Laura Wright",
+   "city": "Greenwood",
+   "note": "SMS bot, did not qualify: Agent said she is not interested in working with off-market investors. Polite sign-off, no push."
   },
   {
-   "name": "Summer Shelkey",
-   "city": "Huntsville",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 1023 Sandy Springs Rd NW, Huntsville. Listed on MLS around $240k, 1,663 sqft. Livable, cosmetic work only, roof and HVAC about 10 years old. Seller will only look at an offer, with no stated motivation and no urgency. Agent would not share the reason for sell"
+   "name": "Eric W Cooper",
+   "city": "Carmel, IN",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 1033 Randolph (Indianapolis) is an MLS listing with multiple price reductions and buy-down incentive. Listed, so pass."
   },
   {
-   "name": "Nicole Gardner",
-   "city": "Springfield",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 403 Martin St Clarksville, MLS listed at $175k (reduced from $189,900), vacant, good condition, freshly painted. Seller is not under pressure and the price drop is small."
+   "name": "Ashley Howard",
+   "city": "Carmel",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 8200 W Lone Beech Dr, Muncie IN is actively listed on the MLS (agent confirmed, sent Tucker app link). Pass, listed."
   },
   {
-   "name": "Minh Le",
-   "city": "Murfreesboro",
-   "note": "SMS bot handoff: NOT QUALIFIED so far. Agent Minh is not the listing agent. She sent listed properties: 3041 and 3027 Newport Valley Cir (Thompsons Station townhomes) and 7009 Whisperwood Ave, Spring Hill (listed $614k). No asking prices or seller flexibility learned. She now wants a phone call and "
+   "name": "KAREN WEIDT",
+   "city": "Greensboro",
+   "note": ""
   },
   {
-   "name": "Teresa Mustar",
-   "city": "Chattanooga",
-   "note": "SMS bot, did not qualify: 130 County Rd 136, Athens TN (estate, mold remediation, off-market): family decided to fix it and keep it, so it's not a lead now. Check back in a month for other estate or distressed houses."
+   "name": "Stephen Barton",
+   "city": "Indianapolis",
+   "note": "SMS bot: opted out, no more texts. They said: \"Absolutely. I got started wholesaling back in 2013 here in Indy. I would say 90% of my deals came from tired landlords. We will be in touch!\""
   },
   {
-   "name": "Paige McGuirk",
-   "city": "Charlotte",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED. 1733 Verdict Ridge Dr, Denver NC. Listed at $699k (Zestimate $684,100, about 102%). Seller is on a clock because they're under contract on another house, but the listing is near the Zestimate and the house is in decent shape. It needs counters, carpet, bath r"
+   "name": "Merissa Houston",
+   "city": "Greenfield",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: agent offered a listed turn-key duplex in Greenwood (multifamily and MLS-listed). No off-market inventory."
   },
   {
-   "name": "Pat Serkedakis",
-   "city": "Pittsboro",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED. 803 Branch St, Chapel Hill. Listed on the MLS at $250k against a $237.3k Zestimate (about 105%). 2/1, 805 sqft, built 1947. Owner-occupied and dated but livable. Agent says the seller is only open to some negotiation, with no urgency shown."
+   "name": "Michael Teggart",
+   "city": "Cincinnati",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: Agent only shares off-market homes with buyers who sign an exclusive agreement and won't work with buyers who use multiple agents. No property or address given. Wrapped up politely."
+  }
+ ],
+ "qualified": [
+  {
+   "name": "Dani Blair",
+   "city": "haskell",
+   "note": "SMS bot handoff: QUALIFIED (rough). 301 S Harding, Haskell. Zillow lookup failed, so no Zestimate. Off-market pre-foreclosure owned by the agent's son, so she's direct with the seller. 3/2, 1970 sqft, built 1979. Needs a lot of work and the door is open. Asking ~$140k (lien plus ~$15k arrears), far "
+  },
+  {
+   "name": "Stephanie Andrew",
+   "city": "Greensboro",
+   "note": ""
   },
   {
    "name": "Linda Escobar",
@@ -679,608 +230,41 @@
    "note": "SMS bot, did not qualify: NOT QUALIFIED. 1017 South St, Henderson NC. Zestimate $139,200, asking $107k (~77%), off-market, vacant, 3/2, 1,536 sqft, built 1955. Photos show an older roof and boarded windows, so it needs heavy work. Rough max offer is about $18k (ARV ~$139k x 70% - ~$69k repairs - $10"
   },
   {
-   "name": "Melanie Brooks, RENE, ABR, CCPM, Certified Real Estate Instructor",
-   "city": "Huntsville",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 518 Cleermont, Huntsville. Listed at $499k (4/2, 2,590 sqft), agent's minimum is $450k, about 90% of list. Vacant, pre-foreclosure and divorce, but the price is too close to list. Zillow lookup found nothing and I did not get a Zestimate. No photos, only a li"
+   "name": "Brit Jackson",
+   "city": "Greensboro",
+   "note": "SMS bot handoff: QUALIFIED (off-market, heavily gutted). 3200 Old Greensboro Rd, Winston Salem. No Zestimate. Zillow shows an old $58k list price and a last sale of $23k. Asking $75k. Photos show a partway gut. 5/3, 2002 sqft, built 1920. Motivation and timeline unknown. Rough calculator max offer i"
   },
   {
-   "name": "Daphne Fletcher",
-   "city": "Huntsville",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 2816 Hilltop Terrace, Huntsville. Seller wants $50k net and owes about $80k. The house needs a full remodel, HVAC, roof and kitchen floor joists. The seller is not in a rush and may list next year. Three investors have already passed."
+   "name": "Christi Coffey",
+   "city": "Greenwood",
+   "note": "SMS bot handoff: QUALIFIED. 12933 N Waters Edge Dr, Camby IN. Zestimate $505,900, asking unknown. Zillow shows not listed, agent says going live soon, so confirm it hasn't hit the MLS. 7/4, 4524 sqft, built 2000. Estate, needs quite a bit of work. Photos pending. Estimates are rough; ARV comps not p"
   },
   {
-   "name": "Holly McDonald",
-   "city": "Huntsville",
+   "name": "David Trueb",
+   "city": "Madison",
    "note": ""
   },
   {
-   "name": "Carrie Rivera",
-   "city": "lake wylie",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: off-market 3/2 townhome, about 5 years old, only needs paint. Townhome (not single-family) and good condition. No address, price or motivation given."
+   "name": "John Farmer",
+   "city": "McCordsville",
+   "note": "SMS bot handoff: QUALIFIED (weak): 4916 Carrollton Ave, Indianapolis. Zestimate $235,500, asking $328k (139%), off-market, 3/0.5/1112 sqft, built 1921, owner-occupied, agent says good shape, photos pending. Seller wants to move soon, but may list in 4 months. Asking is far above max offer. Reason fo"
   },
   {
-   "name": "Kenya Edwards",
-   "city": "San Francisco",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED. 1930 King George Ln SW, Atlanta 30331, off-market, 3/2.5, 1,908 sqft, built 1970. Zestimate $212k. POA seller asks $265k (~125% of Zestimate). Above the Zestimate, no motivation or condition info shared."
+   "name": "Sylvia Phillips",
+   "city": "Dunn",
+   "note": "SMS bot handoff: QUALIFIED: 1220 Fayetteville St, Dunn NC. Off-market, owner-occupied, small brick house, seller wants to sell as is. Zillow lookup failed, so no Zestimate, sqft or comps. Asking price and photos pending."
   },
   {
-   "name": "Anna S. Terry",
-   "city": "Durham",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 434 Walsenburg Dr, Durham. Listed on MLS at $420k, Zestimate $417,400 (~100%). Great shape, 4/3, 2306 sqft, built 2014. Seller wants near list, no distress."
-  },
-  {
-   "name": "Michael Lasek",
-   "city": "Charlotte",
-   "note": "SMS bot, did not qualify: Agent doesn't represent sellers and sources deals through a network of agents (pass-along), so we passed. Conversation wrapped up. No reply needed."
-  },
-  {
-   "name": "Mathew Nixon",
-   "city": "Huntsville",
-   "note": "SMS bot handoff: Did not qualify on price (asking $99,900 list (seller will entertain any offer), value unknown (no Zestimate on Zillow); nearby sales $123k-$165k). QUALIFIED (borderline). 206 Richmond Dr NW, listed $99,900, no Zestimate, comps on the same street $123k-$165k. Vacant, dated and needs"
-  },
-  {
-   "name": "Shanti Holloway, RELEVATE",
-   "city": "Raleigh",
-   "note": "SMS bot, did not qualify: Agent said no thanks; not interested."
-  },
-  {
-   "name": "Tajuania Lawson",
-   "city": "Huntsville",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED. 3500 Leroy Dr NW, Huntsville. Off-market, asking $180k vs Zestimate $167.8k (107%). 3/1, 1,605 sqft, built 1958. Decent shape (updated bath, fresh paint). Tenant moving out next month. No real motivation shown."
-  },
-  {
-   "name": "Kristen Haynes",
-   "city": "Charlotte",
-   "note": "SMS bot, did not qualify: Agent has nothing off-market and prefers renovating and listing on MLS for multiple offers. Not a fit; polite sign-off."
-  },
-  {
-   "name": "Charles Harris Memphis Real Estate",
-   "city": "Memphis",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 5336 Rolling Oaks, Memphis. Listed at $335k, seller needs over $300k to pay off the mortgage, updated 4/2 1,800 sqft, no urgency. Priced near retail, so it doesn't fit."
-  },
-  {
-   "name": "Esther Carrasco",
-   "city": "Cornelius",
-   "note": "SMS bot, did not qualify: Agent only has a condo in Mooresville, which is not single-family. Nothing else available."
-  },
-  {
-   "name": "Meghann Delashaw",
-   "city": "Huntsville",
-   "note": "SMS bot, did not qualify: Agent says she is not in production and has nothing. Nothing pending."
-  },
-  {
-   "name": "DEBI and GARY SALEEBY",
-   "city": "Chapel Hill",
-   "note": ""
-  },
-  {
-   "name": "Judy Flowe",
-   "city": "Kannapolis",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 1690 Old Harmony Dr (off Weddington), about $475k, not listed yet, nice condition, seller not in a rush."
-  },
-  {
-   "name": "Janet Novak",
-   "city": "Raleigh",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED. 5083 NC Highway 56, Franklinton: listed at $245k, 4/2, 1.27 acres, built 1946, vacant, partly updated. Seller is an investor, price already lowered multiple times, and the agent says they are near their threshold at $245k. The alternative is going back to ren"
-  },
-  {
-   "name": "Robbie Wasenuis",
-   "city": "Huntsville",
-   "note": "SMS bot handoff: NOT QUALIFIED. 423 Jasmine Dr is listed at $284,900, 4/3, in good shape, and it's a retail-priced listing. The agent wants a verification call before going further and won't share the other house. Handing off because Robbie insists on a call and may be worth a personal call from Zac"
-  },
-  {
-   "name": "Kimberly Price",
-   "city": "Mooresville",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED. 2400 Rice Planters Rd, Charlotte. Listed on MLS at $350k, which is about 101% of the $347.5k Zestimate. 4/3, 2,521 sqft, built 1979. Needs heavy work and the back addition may not be to code. Roof and HVAC are 3-5 years old. Sellers are downsizing and already"
-  },
-  {
-   "name": "Veronica Hiley-Conklin",
-   "city": "Charlotte",
-   "note": "SMS bot, did not qualify: Agent has nothing and isn't interested after two asks. Polite sign-off."
-  },
-  {
-   "name": "Kristen Coulter",
-   "city": "lake wylie",
-   "note": "SMS bot, did not qualify: Agent says she has no off-market houses and is annoyed by the texts. She sent a Facebook link only, with no property. Polite sign-off, no push."
-  },
-  {
-   "name": "Erika Goltz",
-   "city": "Kannapolis",
-   "note": ""
-  },
-  {
-   "name": "Nina Soden",
-   "city": "Huntsville",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 2bd/2.5ba townhome in Madison, not single-family. Not distressed. No address given."
-  },
-  {
-   "name": "Stephanie George",
-   "city": "Decatur",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 3418 Sumter Pl, Decatur. Coming soon next week at ~$315k, seller won't take less than $290k. Vacant, remodeled, no urgency shown. Retail price, no Zestimate lookup done."
-  },
-  {
-   "name": "Marcus Shannon",
-   "city": "Atlanta",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: Agent only has a tenant-occupied condo in Midtown Atlanta about to list. We only buy single-family houses. Asked him to send any houses."
-  },
-  {
-   "name": "Melissa Holley",
-   "city": "Braselton",
-   "note": ""
-  },
-  {
-   "name": "Haddy Cham",
-   "city": "Conyers",
-   "note": "SMS bot, did not qualify: Agent works in new construction and has no off-market or distressed leads. Wrapped up politely."
-  },
-  {
-   "name": "TIM LENNON",
-   "city": "Atlanta",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: Agent has no property and is taking us off his list over funding question. Mentioned he has a list of investors, so no deal."
-  },
-  {
-   "name": "Upscale Properties Atlanta",
-   "city": "Atlanta",
-   "note": "SMS bot: carrier blocked this text as spam (30007): \"Sorry, that was a poor follow-up on my part. I'm Zack, and I buy houses in the Atlanta area and work with agents. If you ever have a seller who needs to sell quick, feel free to send it my way. If not, no worries.\""
-  },
-  {
-   "name": "Cindy's Realty Group",
-   "city": "Atlanta",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 338 Sugarview Rd, Sugar Hill GA. Search shows it as a luxury townhouse (4bd, elevator, HOA) with a past MLS listing around $900k. We only buy single-family houses. It's a vacant short sale, and Zillow shows no Zestimate."
-  },
-  {
-   "name": "Michelle Brown",
-   "city": "Atlanta",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 5748 Northfield Dr, Ellenwood. Off-market, asking $189,900 against a Zillow estimate of about $163k. The seller is in no rush and the agent calls it 'offer has to make sense'. No photos."
-  },
-  {
-   "name": "Stephen Clark",
-   "city": "acworth",
-   "note": "SMS bot handoff: NOT QUALIFIED on price so far, but agent is getting upset and asking for our number. 3229 Shirley Dr NW, Kennesaw: off-market, vacant, dated 1954 ranch, ask $225k (~84% of ~$267k Zestimate). Seller paid $240k, needs quick sale. Agent claims $400k comps. Zack should decide whether to"
-  },
-  {
-   "name": "Gildra Hearns",
-   "city": "Fairfield",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: agent offered a $79k duplex needing total rehab. We only buy single-family, so I passed. No address given."
-  },
-  {
-   "name": "Laurie Miller",
-   "city": "acworth",
-   "note": "SMS bot: carrier blocked this text as spam (30007): \"Stone Mountain, GA area. I buy houses there and work with agents. Do you ever come across sellers who need to sell quick, or houses that need a lot of work?\""
-  },
-  {
-   "name": "Susan Corley",
-   "city": "conyers",
-   "note": ""
-  },
-  {
-   "name": "Clyde Brigman, Agent",
-   "city": "Alpharetta",
-   "note": "SMS bot, did not qualify: Agent does rental property management only and has no off-market or distressed houses. Asked twice and answered no both times."
-  },
-  {
-   "name": "Tosha Thornton",
-   "city": "Fairburn",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: Agent only shares off-market deals through a paid Investor List subscription (INSIDER/VIP). No property offered. Already passed twice; no further reply needed."
-  },
-  {
-   "name": "Shynna McCown",
-   "city": "Atlanta",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED. 5110 Hill Rd, Powder Springs GA. Zestimate $362,900, asking $360k (~99%), off-market (delisted). Seller relocating but not distressed and doesn't have to move. Not motivated."
-  },
-  {
-   "name": "Mike Russell",
-   "city": "Atlanta",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: agent sent a condo at 1445 Monroe Dr 30324, not a single-family house. Passed politely, no lookup done."
-  },
-  {
-   "name": "Natalie Martinez",
-   "city": "Decatur",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: Both Decatur listings (538 S Candler, 2847 Hollywood Dr) are listed on the MLS, updated homes. Agent says sellers aren't distressed and just want offers on paper, so there is no urgency."
-  },
-  {
-   "name": "RICK KOLB",
-   "city": "Atlanta",
-   "note": "SMS bot, did not qualify: Agent was rude and not interested. No property discussed."
-  },
-  {
-   "name": "Andrew Malloy",
-   "city": "Nashville",
-   "note": "SMS bot handoff: PROBABLY NOT QUALIFIED unless the seller moves a lot. 1011 Matthew Ave, Nashville TN 37216. Listed at $365k, 3/1, ~1,227 sqft. Needs a full gut or tear down. House sits at the back of the lot. The agent thinks $325-330k would get it done, and the seller turned down $300k about 2 mon"
-  },
-  {
-   "name": "Pamela Turley",
-   "city": "Chattanooga",
-   "note": "SMS bot handoff: Pamela asked what we'd offer on 3774 Mount Pisgah Rd, Ringgold GA (listed $249k after a price drop, 3/1, 1,388 sqft, occupied by niece, needs carpet). I didn't confirm the Zestimate or the seller's real price, and there's no sign of urgency. Probably not a fit, since it's listed and"
-  },
-  {
-   "name": "Harriett Whitaker",
-   "city": "Chattanooga",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 5703 River Glade Dr, Chattanooga. Zestimate $323,400, seller wants upwards of $300K (~93%). Temporarily off market, 1,762 sqft, 2 baths, built 1983, well-maintained, no motivation or urgency shown."
-  },
-  {
-   "name": "Tamara Moon",
-   "city": "Sevierville",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: Spencer Hill Rd, Morristown TN (no house number). Off-market, owner-occupied, poor condition (termites, floors caving). Seller firm at $175k, was listed at $199k then canceled. Not in a rush, waiting for the right buyer. No Zestimate pulled."
-  },
-  {
-   "name": "Sam Winterbotham",
-   "city": "Knoxville",
-   "note": "SMS bot: carrier blocked this text as spam (30007): \"Sorry Sam, I should've been clearer. I'm looking for houses in the Knoxville area, ideally ones that need work or have a seller who wants out quick. Do you have any clients like that, even before it gets listed?\""
-  },
-  {
-   "name": "Mitchell Blair",
-   "city": "rome",
-   "note": "SMS bot, did not qualify: Agent offered a storage facility (not single-family), then said he's a flipper himself. He is likely a competing investor and not a source of listings. Passed politely."
-  },
-  {
-   "name": "Brandi Crass",
-   "city": "Andersonville",
-   "note": ""
-  },
-  {
-   "name": "Taylor Clark",
-   "city": "Cleveland",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 253 HWY 108 Whitwell, TN. Former restaurant on about half an acre, zoned residential but used commercially. It's not a single-family house. Asking $80k, possibly expired listing, vacant, seller motivated. Passed because it isn't a single-family home."
-  },
-  {
-   "name": "Sean Bradke",
-   "city": "Knoxville",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED. 2004 Kerr Rd, Sevierville is listed at $529,900 and the agent says it's priced close to value, with retail comps of $900K-$1M. The Strawberry Plains Victorian has no asking price and is a top-offer-wins bidding situation. The agent doesn't want low-ball offer"
-  },
-  {
-   "name": "Desiree Tombul",
-   "city": "Signal Mountain",
-   "note": "SMS bot, did not qualify: Two upcoming listings on Signal Mountain are in excellent condition, so they aren't a fit. Desiree will text if she hears of a fixer on the Mountain. Check back in about a month."
-  },
-  {
-   "name": "Jennifer Smith",
-   "city": "Knoxville",
-   "note": ""
-  },
-  {
-   "name": "Glenda Johnson Broker Agent",
-   "city": "Kingston",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED. 317 Woodlawn Dr, Kingston TN. Listed on MLS at $179,900, 2/1, 1,460 sqft, built 1955. Zillow shows no Zestimate (tax value $237k, last sold $125k). Needs a roof; the rest is in better shape than the listing says. The agent says there is some room on price but"
-  },
-  {
-   "name": "Thomas DeMoss",
-   "city": "Franklin",
-   "note": "SMS bot, did not qualify: Agent runs a wholesale business (wholesalehouseschattanooga.com). Already passed politely. No property discussed. No further reply needed."
-  },
-  {
-   "name": "Lisa M. Robinson",
-   "city": "Germantown",
-   "note": "SMS bot: opted out, no more texts. They said: \"You can remove me from your list. I'll reach out if I run across anything you may want to purchase.  Thanks so much.  Have a great day!!\""
-  },
-  {
-   "name": "Carol Movre",
-   "city": "Dayton",
-   "note": ""
-  },
-  {
-   "name": "Deana Luedtke",
-   "city": "Chattanooga",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 60 Mountain View Ln, Ringgold GA. Listed on the MLS at $210k, 2/2, 1,440 sqft. The seller is living there and wants to roughly break even on the sale. They have no timeline and haven't started looking for a new home. The sun room and siding need work, but the"
-  },
-  {
-   "name": "Sarah Goins",
-   "city": "Lenoir City",
-   "note": "SMS bot, did not qualify: 5801 Outer Dr not qualified: listed $355k, seller not in a hurry and won't go much lower. Sarah has a separate coming-soon house; the seller wants an as-is offer once they find a replacement home. Check back in about 2 weeks."
-  },
-  {
-   "name": "Bryan Ralls",
-   "city": "Knoxville",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 699 Lakeview Dr, Sharps Chapel. Listed at $650k, 3/2 log home on 16 acres. Seller (widow) says she's at her floor and needs the money for a smaller home. She is occupying it, and the roof and HVAC are newer. Agent gave a vague \"No worries\" when asked about a "
-  },
-  {
-   "name": "Dawn Noah",
-   "city": "Franklin",
-   "note": "SMS bot, did not qualify: Agent works wholesale deals through her investment business and buys those herself. Passed. No property was sent."
-  },
-  {
-   "name": "Jacki Hill",
-   "city": "Kingston",
-   "note": "SMS bot handoff: Did not qualify on price (asking $150,000 (reduced from $199,900), value unknown (no Zestimate on Zillow); tax assessed $186,200). QUALIFIED (borderline, low confidence). 414 Dogwood Ln, Rockwood: manufactured 3/2, 1,848 sqft, about 7 acres, built 2009. Listed, asking $150k (down fr"
-  },
-  {
-   "name": "Tjuania L. Mack Redmond",
-   "city": "Memphis",
-   "note": "SMS bot, did not qualify: 862 Mosby: listed at $50k, needs full gut, seller won't go way low and no real motivation shown. Not qualified. Agent has nothing else right now."
-  },
-  {
-   "name": "Kim Lewis",
-   "city": "Germantown",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 511 Rae Dr, Munford. Listed at $310k, short sale target $290k (needs lender approval). Roof is about 11-12 years old, water heater replaced last year, and the house looks good with minor carpet and paint touch-ups. The seller is vacant and lost income. Asking"
-  },
-  {
-   "name": "Katie R. Mclemore",
-   "city": "Collierville",
-   "note": "SMS bot handoff: Handing off because the agent invited an offer submission. I did not pull the Zestimate or comps, so the Zestimate and the percent of Zestimate are unknown. The deal is NOT QUALIFIED on motivation: the listing is 119 days old at $569,900, and the seller is vacant but not in a rush, "
-  },
-  {
-   "name": "Kenneth Woods",
-   "city": "Franklin",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 7874 Sycamore Dr, Southaven MS is listed at $255k. It appraised at $270k and is a move-in ready 2017 3/2 with 1,549 sqft. The seller will only go down to $245k, which is about 91% of the $270k appraisal. That's well above the 75% line, and the agent says ther"
-  },
-  {
-   "name": "Danielle Adkins",
-   "city": "Cordova",
-   "note": "SMS bot handoff: Handing back to you, Zack. Someone has been texting from this thread by hand: the auto-replies passed on the whole batch because Danielle brings assignment deals, but then texts went out asking about the 959 Driver St condition. She says Driver St (4/2, 1,425 sqft, asking $40k) come"
-  },
-  {
-   "name": "My Agent Eddie Mann",
-   "city": "Murfreesboro",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 5056 Tabitha St, Murfreesboro TN is listed at $329,900 (3/2, about 1,100 sqft, built 2004, about 105 days on market). The agent says the seller won't take a much lower number because that price is close to break even for them, so they can't get near 75% of th"
-  },
-  {
-   "name": "Jimmy D Dugger - Crye-Leike Realtors",
-   "city": "Columbia",
-   "note": "SMS bot, possible future deal: Jimmy (Columbia/Mt Pleasant TN) said he'd look for single-family leads and get back to us. We passed on his brick duplex in Mt Pleasant. Check back in about a week."
-  },
-  {
-   "name": "Marissa Hertzog",
-   "city": "Nashville",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 5593 Yale Rd, Bartlett TN 38134. Listed at $225k, Zestimate $215,700. Seller turned down $161k (about 75% of the Zestimate) and wants more. Needs about $13k in floors, paint and small items. Seller is tired of owning it but in no hurry. Rough max offer is abo"
-  },
-  {
-   "name": "Marty Bradley",
-   "city": "Spring Hill",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 6638 Hwy 64 E, Lawrenceburg TN. Listed at $292k, Zestimate $285,100. Seller will only drop about $30k (to roughly $262k, about 92% of the Zestimate), and listed houses need 75% or less. She needs the money to live on, so she's not flexible."
-  },
-  {
-   "name": "Dana Chapman",
-   "city": "lebanon",
-   "note": ""
-  },
-  {
-   "name": "Javanha Davis - Crye-Leike Real Estate Services",
-   "city": "Atoka",
-   "note": ""
-  },
-  {
-   "name": "Devarrio \"Dee\" Lakes, MMDC Member",
-   "city": "Southaven",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 3208 Priors Ferry Ln, Southaven MS. Off-market, asking $250k vs Zestimate $261,600 (~96%). 4/2, 1,653 sqft, built 2015, good condition. Seller wants more space after marriage and has no urgency. She'd take less, but 'not crazy low'. Rough max offer ~$140k, so"
-  },
-  {
-   "name": "Yvonne M Spencer",
-   "city": "Memphis",
-   "note": ""
-  },
-  {
-   "name": "Megan Hodges",
-   "city": "Memphis",
-   "note": ""
-  },
-  {
-   "name": "Silvana Piadade, Realtor",
-   "city": "Franklin",
-   "note": ""
-  },
-  {
-   "name": "Gregg Bybee",
-   "city": "Centerville",
-   "note": "SMS bot handoff: Did not qualify on price (asking $59,000, value $36,600 (likely stale, agent says tax record is off)). QUALIFIED (borderline): 144 Columbia Ave, Centerville TN. Zillow shows $36.6k, likely stale (agent says tax data is wrong), so asking $59k is ~161% of that. Off-market, agent has a"
-  },
-  {
-   "name": "Christy Utterback",
-   "city": "Collierville",
-   "note": "SMS bot, did not qualify: Passed: Germantown 4/2.5 bank foreclosure (off-market, asking $377k, claimed ARV $517k) is under contract with someone else, so it's a wholesale/assignment deal."
-  },
-  {
-   "name": "Dianne Person",
-   "city": "Marion",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 208 Delta Dr, Marion. Listed at $360k (cut from $425k), 4/4, about 3,063 sqft, updated. Agent says there's not much room on price and there's already a contingent offer. No real motivation, and the price is nowhere near the 75% line."
-  },
-  {
-   "name": "Patty Everitt",
-   "city": "Collierville",
-   "note": ""
-  },
-  {
-   "name": "Billy Lanier",
-   "city": "Lewisburg",
-   "note": "SMS bot, did not qualify: The investor sellers who own 420 Maple St (listed at $125k, lowest they'd take is about $100k, so it didn't qualify) may start selling off other rentals as tenants move out. Check back in about a month."
-  },
-  {
-   "name": "Michelle Campbell",
-   "city": "Arlington",
-   "note": "SMS bot handoff: UNCLEAR, agent wants a number to present. 5446 Hickory Park Dr, Antioch TN, off-market 2-3/2 townhome, ~1,750 sqft, built 1985, good shape, owner-occupied. Asking ~$225k, owes ~$100k, needs to close before Thanksgiving. No Zestimate found. Rough estimates: ARV $250-270k, repairs $35"
-  },
-  {
-   "name": "Shay Payne",
-   "city": "Collierville",
-   "note": ""
-  },
-  {
-   "name": "Miki Peek",
-   "city": "Franklin",
-   "note": ""
-  },
-  {
-   "name": "Nicole Jarrett",
-   "city": "Savannah",
-   "note": "SMS bot, possible future deal: Nicole says she has a property in Salisbury (state unknown). Waiting on the address or a listing link."
-  },
-  {
-   "name": "Jayme Edwards",
-   "city": "Nashville",
-   "note": ""
-  },
-  {
-   "name": "Dominica Cotham",
-   "city": "Clarksville",
-   "note": "SMS bot, possible future deal: Dominica is a wholesaler with nothing in Clarksville right now. She says she'll look for single-family houses in any Clarksville zip that have room under value."
-  },
-  {
-   "name": "Sara Gooch",
-   "city": "Franklin",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 1827 Hillsboro Rd, Franklin TN 37069, planned $1.2M as-is (coming soon), owner-occupied, family in no rush, declined a much lower number. Price firm, no motivation."
-  },
-  {
-   "name": "Rhonda Smart",
-   "city": "Nashville",
-   "note": "SMS bot, did not qualify: 9092 E 40 (Hwy 70), Bon Aqua TN: listed at $450k, renovated 3/2, about 2,150 sqft on 2 acres. It's been on the market a couple of months. Seller is only 'somewhat motivated' (family change), and the agent didn't take up the idea of a much lower price. It's a retail-priced l"
-  },
-  {
-   "name": "Rachael Nieves",
-   "city": "Spring Hill",
-   "note": "SMS bot, did not qualify: Not qualified: 617 Green Farm Way is listed at $644,990. It's a 2020 build in excellent condition, and the sellers are downsizing with no rush, so there's no sign they'd take a big discount."
-  },
-  {
-   "name": "Susan Gregory",
-   "city": "Franklin",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 9510 Eldwick Rd, Brentwood TN. Listed at about $2.0M after price drops, 6bd/6ba, about 7,000 sqft. Seller won't go much lower because it's already under the $2.05M they paid in 2024. Nowhere near 75% of value, and no real motivation."
-  },
-  {
-   "name": "Stephen Durski",
-   "city": null,
-   "note": ""
-  },
-  {
-   "name": "Tiffany DePriest",
-   "city": "Franklin",
-   "note": ""
-  },
-  {
-   "name": "Tom Gravely",
-   "city": "Hendersonville",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 4896 Benders Ferry Rd, Mt Juliet. Listed at $1.698M, and the seller won't go much lower. They want retail value, so there's no discount and no motivation."
-  },
-  {
-   "name": "Audrey Lane",
-   "city": "Nashville",
-   "note": ""
-  },
-  {
-   "name": "Jade Utley",
-   "city": "Franklin",
-   "note": "SMS bot handoff: NOT QUALIFIED (big gap). 2404 Buchanan St, Nashville 37208. Off-market, asking $310k. No Zestimate found; Redfin est. $338k (~92%) is based on the old 1,148 sqft finished record. Now a framed shell with a new roof, ~2,000 sqft claimed, all mechanicals and finishes still needed. Sell"
-  }
- ],
- "qualified": [
-  {
-   "name": "Dawn Johnson Realtor",
-   "city": "Charlotte",
-   "note": "SMS bot handoff: QUALIFIED (rough). 1125 Neely Rd / 469 Mountain Rd, Cleveland NC. Zestimate $188,100, ask $125k (66%), off-market, 4/2/1680, manufactured, owner-occupied, leaking tarped roof and interior work. Seller downsizing and can move quickly. Agent open to a lower offer. Rough max offer abou"
-  },
-  {
-   "name": "John Kurtz",
-   "city": "Charlotte",
-   "note": "SMS bot handoff: QUALIFIED (soft). 5331 Lewhaven Dr, Charlotte. Zestimate $288,300, off-market, 3/2/1355 sqft, built 1975. John is the owner. It needs a rehab, tenants leave end of month, and there are no photos. He has no asking price and keeps saying no lowballs, so expect pushback. ARV is a place"
-  },
-  {
-   "name": "David Lorrison",
-   "city": "Memphis",
-   "note": "SMS bot handoff: QUALIFIED (price-wise). 7524 3rd Rd, Bartlett TN. Zestimate $385,300. Agent thinks $265k works (69%). Market status unclear: Zillow shows other, agent says she listed too high. 4/3, 3,158 sqft, 1960. Dated but kept up, pool, corner lot. Widow traveling, close ASAP, likely vacant. Ro"
-  },
-  {
-   "name": "Patrick Babb",
-   "city": "Chattanooga",
-   "note": "SMS bot handoff: QUALIFIED (rough). 10601 Quarter Horse Ln 37363. Off-market, asking ~$1M, no Zestimate found, ARV per agent $1.6-1.8M (unverified, couldn't pull comps). Reno ~$160k. Owners downsizing, live there, 60 days max. Agent says working directly with owners. Max offer ~$950k, so asking is a"
-  },
-  {
-   "name": "Lavera D Coleman",
-   "city": "Germantown",
-   "note": "SMS bot handoff: QUALIFIED (on price only, gap is tight). 3341 Seaforth Dr, Memphis TN 38127. Off-market, owner-occupied 3/1.5, sqft unknown. No Zestimate found. Neighbor 3356 Seaforth is estimated at $92-112k on Homes.com, so the $65k asking price is about 58-71% of that. Needs a roof and AC, furna"
-  },
-  {
-   "name": "Fredrick Cunningham",
-   "city": "Memphis",
-   "note": "SMS bot handoff: QUALIFIED (borderline). 3781 Walsingham Dr, Memphis 38128. No Zestimate found; Redfin Estimate ~$116,874. Asking $65k = ~56%, off-market, 3/2 ~1,000 sqft, vacant, older roof (no leaks), older working HVAC, cosmetic rehab. Motivation unknown, agent says 'it's about the numbers'. Roug"
-  },
-  {
-   "name": "Cynthia Brooks",
-   "city": "Niota",
-   "note": "SMS bot handoff: QUALIFIED (rough). 143 Low Brook Trail, Cleveland TN. No Zestimate found. Agent RVM $218k. Seller needs up to $110k including fee (~50% of RVM), off-market. 2/1, 816 sf, needs roof, HVAC age unknown, owner-occupied. Motivated: elderly, downsizing to family land. Timeline unknown. Ne"
-  },
-  {
-   "name": "Travis Dupre",
-   "city": "Franklin",
-   "note": "SMS bot handoff: UNCERTAIN: Agent says seller open to offers but gave no number. Address 693 Hassler Mill Rd, Harriman. Listed at $160k, full gut, vacant, 4 bd, 4.1 acres, possible subdivide. Zestimate and comps not checked, so qualification is unverified. Seller is an active investor, in no hurry. "
-  },
-  {
-   "name": "Christiana Faith Nance",
-   "city": "Centerville",
-   "note": "SMS bot handoff: QUALIFIED (asking unknown, offer requested). 112 Goode Dr, Columbia TN. Zestimate $159,100, off-market, 0.75 bath, 632 sqft, 1950, owner-occupied, livable, metal roof. Possible relocation, not in a hurry, open to offers. Rough ARV $150-165k, repairs about $22k, max offer about $73k,"
-  },
-  {
-   "name": "Terri Jaynes",
-   "city": "lebanon",
-   "note": "SMS bot handoff: QUALIFIED (marginal). 252 High Cliff Dr, Hendersonville TN. No Zestimate found; Redfin Est. $398,447. Asking $375k (94% of Redfin Est.). Off-market, vacant, 2,744 sqft, built 1976, 1.6 ac. New roof and HVAC; basement down to studs, needs kitchen, flooring, paint and baths. Seller is"
+   "name": "Kika James",
+   "city": "kure beach",
+   "note": "SMS bot handoff: QUALIFIED. 187 Blanco Peak Dr, Kernersville NC. Zestimate $365k, asking unknown. Off-market but about to list. 3/2, 2675 sqft, built 1980. Potential divorce. The seller found earlier investor offers too low, so price expectations may be high. Asked for photos, asking price and timel"
   }
  ],
  "handed_off_not_qualified": [
   {
-   "name": "Regina Simpson",
-   "city": "Graham",
-   "note": "SMS bot handoff: Regina (Southern Exposure Realty, Graham) says she has a property but the seller requires proof of funds before sharing any info. No address, price or condition yet. She asked for POF, so Zack should take over the thread."
-  },
-  {
-   "name": "Al Brown",
-   "city": "Knoxville",
-   "note": "SMS bot handoff: Agent asked if I'm AI, so I disclosed it and handed off. 227 E Burwell Ave is listed at $284,900, 3/1, about 1,490 sqft. Agent says it needs cosmetic work and the seller is motivated with some room on price. Zestimate was not pulled, so check whether it's at 75% or less. Agent wants"
-  },
-  {
-   "name": "Chelsa Vasquez",
-   "city": "Chattanooga",
-   "note": "SMS bot handoff: Agent asked for an offer on the listed house at 4705 Treemont Circle NE, Cleveland TN. List $289,400, 3/2 with finished basement, updated, vacant, sellers moved to Birmingham, hoping to be done by year end. I haven't pulled the Zestimate or comps, so please check whether it fits bef"
-  },
-  {
-   "name": "Steph Buell",
-   "city": "College Grove",
-   "note": "SMS bot handoff: NOT QUALIFIED YET: 1005 Calvert St, Nashville 37216, coming soon at $539,999. 4/2, 2,024 sqft, 0.71 ac. Possible foundation issue, upstairs AC out, upstairs bath needs a redo. Seller is moving out of state to be near family, flexible close, and says it depends on terms. The agent wa"
-  },
-  {
-   "name": "Lisa Alford",
-   "city": "Indianapolis",
-   "note": "SMS bot handoff: Virginia (eXp Realty, Bartlett/Memphis) wants a phone call. She says she works with several investors in the Memphis area. She hasn't sent a property yet. On the call, check that she brings sellers' houses directly and not wholesale or assignment deals."
-  },
-  {
-   "name": "Pamela Brewi",
-   "city": "Millington",
-   "note": "SMS bot handoff: NOT QUALIFIED YET (needs vetting). 2425 Willinghurst Dr, Germantown TN, off-market, 4/3/2,866, 1983, vacant, no work done. Zestimate $469,400; asking ~$377k (80%). Owner Omar 949-998-5578 bought from bank (last sale $416,901), likely an investor himself; Pamela said to text him dire"
-  },
-  {
-   "name": "Mallory Greer",
-   "city": "Memphis",
-   "note": "SMS bot handoff: Mallory (eXp Realty, Memphis) wants you to FaceTime her. She hasn't named a property yet, so no address, list price, condition or asking price so far."
-  },
-  {
-   "name": "Brittany Vogg",
-   "city": "Collierville",
-   "note": "SMS bot handoff: Brittany (BHHS McLemore, Collierville) said she 'possibly' has something but only takes on new investor clients after a Zoom or in-person meeting at her office on Collierville Towne Square. She wants to schedule one. No property, price or condition discussed yet."
-  },
-  {
-   "name": "Kimo Quance",
-   "city": "Franklin",
-   "note": "SMS bot handoff: No property yet. Kimo (eXp, Franklin) is cleaning up his investor list and wants examples of properties you've recently sold. I told him you'd send a few. Please send him real examples. I also asked him about stale listings or ones with price drops."
-  },
-  {
-   "name": "Michelle Foley",
-   "city": "Brentwood",
-   "note": "SMS bot handoff: NOT QUALIFIED YET (can't vet). Off-market 3/2, 1,345 sqft in SE Nashville 37211. Asking $259k plus 3% commission. Needs roof, HVAC and electrical, no foundation issues. Michelle won't share the address until Zack signs an exclusive buyer rep agreement for this house, and she asked f"
-  },
-  {
-   "name": "Josh Jennette",
-   "city": "Pegram",
-   "note": "SMS bot handoff: UNKNOWN QUALIFICATION: 5201 Kentucky Ave, Nashville 37209. Off-market / pre-market teardown (2/1, 999 sqft, built 1930) on a corner lot that may fit 2 builds. Seller wants ~$460k, highest and best due EOD Friday, offers go to jennetterealtors@gmail.com. I couldn't find a Zestimate, "
-  },
-  {
-   "name": "Patty Johnston",
-   "city": "Hendersonville",
-   "note": "SMS bot handoff: NOT QUALIFIED YET (gap unknown): 107 Camden Ct N, Hendersonville. Listed at $449,900, 3/2.5, 2,013 sqft, built 2003, needs a light refresh, vacant. Zestimate not found. Seller moved out of state, needs the money ASAP, open to a lower offer. Rough max is about $251k, way under list. "
-  },
-  {
-   "name": "Peter Noble",
-   "city": "Brentwood",
-   "note": "SMS bot handoff: Peter (Crye-Leike, Brentwood) is skeptical and wants addresses of 1-2 properties you own so he can check tax records before he'll work with you. You'll need to send him owned addresses or call him. No property discussed yet."
-  },
-  {
-   "name": "Jake Crum",
-   "city": "Greenbrier",
-   "note": "SMS bot handoff: NOT QUALIFIED YET (agent wants an offer): 4049 Grays Point Rd, Joelton TN. Listed at $500k on MLS, about 5 days on market. 4/3, 2,397 sqft, built 1966, freshly renovated turnkey. Zestimate not found. Seller 'probably' open to a much lower number, motivation unknown. Rough ARV ~$480-"
+   "name": "BETSY AREY, Agent",
+   "city": "haskell",
+   "note": "SMS bot handoff: Betsy asked for a phone call and told us to look at 330 Gathering House. I haven't looked it up and don't know whether it's listed. Check the MLS status first. If it's listed, pass. If it's off-market, get the asking price, the seller's reason and photos."
   }
  ]
 }

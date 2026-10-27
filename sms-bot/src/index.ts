@@ -318,7 +318,7 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
   // promised numbers on anything else, have it rewrite: keep vetting or pass on the price.
   if (decision.deal !== "qualified" && PROMISED_NUMBERS.test(decision.reply || "")) {
     console.log("promised numbers on a non-qualified lead, rewriting", contactId, decision.reply);
-    decision = (await nextReply(thread, contact, env, false, "", NO_PROMISE_FIX.replace("{{REPLY}}", decision.reply))) ?? decision;
+    decision = (await nextReply(thread, contact, env, false, "", NO_PROMISE_FIX.replace("{{REPLY}}", decision.reply).replace("{{LISTED_PERCENT}}", env.LISTED_QUALIFY_PERCENT || "60"))) ?? decision;
     applyDealRules(decision, contactId, env);
     if (decision.deal !== "qualified" && PROMISED_NUMBERS.test(decision.reply || "")) decision.reply = ""; // never send an empty promise
   }
@@ -385,15 +385,20 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
  *  never qualify (Zack 2026-10-25). Off-market price never blocks a lead: Zack offers at the card's max
  *  offer (Zack 2026-10-26: "I need leads so I can make offers"). */
 function applyDealRules(decision: Decision, contactId: string, env: Env): void {
+  // Listed houses only go to Zack when they're a steal (Zack 2026-10-27): a motivated seller who'll take
+  // LISTED_QUALIFY_PERCENT of the Zestimate or less. The bot puts the seller's number in asking_price.
   if (decision.deal === "qualified" && isListed(decision.lead)) {
-    console.log("listed house can't qualify", contactId, decision.lead?.market_status);
-    decision.deal = "not_qualified";
+    const asking = dollars(decision.lead?.asking_price), zest = dollars(decision.lead?.zestimate);
+    const limit = Number(env.LISTED_QUALIFY_PERCENT || "60") / 100;
+    if (asking && zest && asking <= zest * limit) return;
+    console.log("listed house isn't a steal", contactId, decision.lead?.market_status, asking, zest);
+    decision.deal = "unknown";
     decision.handoff = false;
-    decision.note = `Listed on the MLS, Zack only buys off-market. ${decision.note || ""}`;
+    decision.note = `Listed on the MLS and not a steal yet (seller must take ${Math.round(limit * 100)}% of Zestimate or less). ${decision.note || ""}`;
   }
 }
 
-const NO_PROMISE_FIX = `Your draft was: "{{REPLY}}". Don't tell the agent you'll run numbers, send a number or get them an offer: that's only said on leads that qualify and go to Zack. Rewrite it. If you still need info (photos, condition, asking price, why they're selling, timeline), ask your next question. If it's listed on the MLS, pass politely ("Appreciate it, but I only buy off-market...") and set deal = "not_qualified". If it's an off-market house with a reason to sell or work needed, it qualifies: set deal = "qualified". If it's a good-shape house with no reason to sell, pass politely, e.g. "Appreciate it, but we can't really help near that price range. If you get one that needs work and a seller who needs out, send it my way." and set deal = "not_qualified".`;
+const NO_PROMISE_FIX = `Your draft was: "{{REPLY}}". Don't tell the agent you'll run numbers, send a number or get them an offer: that's only said on leads that qualify and go to Zack. Rewrite it. If you still need info (photos, condition, asking price, why they're selling, timeline), ask your next question. If it's listed on the MLS, it only qualifies if the seller is motivated and will take {{LISTED_PERCENT}}% of the Zestimate or less; otherwise ask if the seller would take a deep cash discount, or pass politely and set deal = "not_qualified". If it's an off-market house with a reason to sell or work needed, it qualifies: set deal = "qualified". If it's a good-shape house with no reason to sell, pass politely, e.g. "Appreciate it, but we can't really help near that price range. If you get one that needs work and a seller who needs out, send it my way." and set deal = "not_qualified".`;
 // "I'll run the numbers", "let me crunch numbers", "I'll get you an offer", "get back to you with a number" ...
 const PROMISED_NUMBERS =
   /\b(run(ning)?|crunch(ing)?|work(ing)? up|put together|look(ing)? at) (the |some )?(numbers|comps|an offer|a number|figures)\b|\b(get|send|have) (you |back to you with |over )?(an offer|a number|my number|numbers|an? (cash )?offer)\b|\bget back to you (shortly |soon |today |tomorrow )?with\b/i;
@@ -719,7 +724,7 @@ function systemPrompt(env: Env): string {
     .replaceAll("{{FEE}}", Number(env.ASSIGNMENT_FEE).toLocaleString("en-US"))
     .replaceAll("{{PROPERTY_TYPES}}", env.PROPERTY_TYPES)
     .replaceAll("{{QUALIFY_PERCENT}}", env.QUALIFY_PERCENT || "100")
-    .replaceAll("{{LISTED_PERCENT}}", env.LISTED_QUALIFY_PERCENT || "75");
+    .replaceAll("{{LISTED_PERCENT}}", env.LISTED_QUALIFY_PERCENT || "60");
 }
 
 async function smsThread(contactId: string, env: Env): Promise<Sms[]> {

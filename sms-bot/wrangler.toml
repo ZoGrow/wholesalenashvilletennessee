@@ -14,7 +14,7 @@ BOT_GOAL = "When an agent sends a listing or an address, look it up online, find
 ARV_PERCENT = "70"
 ASSIGNMENT_FEE = "10000"
 QUALIFY_PERCENT = "100" # off-market: goes to Slack once the seller is under this % of Zestimate; above it the bot keeps negotiating on repairs (Zack 2026-10-25)
-LISTED_QUALIFY_PERCENT = "75" # unused since 2026-10-25: Zack passes on every MLS-listed house
+LISTED_QUALIFY_PERCENT = "60" # listed houses go to Slack only as a steal: motivated seller at or under this % of Zestimate (Zack 2026-10-27)
 PROPERTY_TYPES = "any off-market property: houses, damaged or burned houses, teardowns, lots (no duplexes or other multifamily) (Zack 2026-10-26), in most US states (not Pennsylvania, South Carolina, Iowa, Kentucky, Nebraska, North Dakota, Oregon, Connecticut or Virginia)"
 DRY_RUN = "false"
 

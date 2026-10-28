@@ -3,20 +3,20 @@
  "tagged": 7333,
  "eligible": 0,
  "skipped": {
-  "tag opted-out": 268,
-  "tag agent-replied": 752,
+  "tag agent-replied": 781,
+  "tag opted-out": 279,
   "dnd": 233,
-  "bad number (Error 30003 - Number)": 6,
+  "bad number (Error 30003 - Number)": 7,
   "tag dnd-skipped": 6,
   "bad number (Error 30008 - Messag)": 2,
-  "they replied": 334,
   "bad number (Error 21211 - Invali)": 2,
   "no messages": 1,
   "tag not-qualified": 2,
-  "tag hot-lead": 4
+  "tag hot-lead": 4,
+  "they replied": 319
  },
  "errors": {
-  "Error 30003 - Number unreachable or out of service.": 6,
+  "Error 30003 - Number unreachable or out of service.": 7,
   "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 2,
   "Error 21211 - Invalid \"To\" number format. Please check and try again.": 2
  },

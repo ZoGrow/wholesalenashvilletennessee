@@ -1,30 +1,33 @@
 {
  "mode": "send",
  "tagged": 8329,
- "eligible": 0,
+ "eligible": 792,
  "skipped": {
+  "tag opted-out": 323,
   "dnd": 250,
-  "tag opted-out": 309,
-  "tag agent-replied": 805,
-  "bad number (Error 30008 - Messag)": 3,
-  "they replied": 433,
+  "tag agent-replied": 818,
+  "bad number (Error 30008 - Messag)": 2,
   "no messages": 3,
-  "bad number (Error 30003 - Number)": 7,
+  "they replied": 426,
+  "bad number (Error 30003 - Number)": 3,
   "tag dnd-skipped": 6,
-  "bad number (Error 21211 - Invali)": 2,
+  "bad number (Error 21211 - Invali)": 1,
   "tag not-qualified": 2,
   "tag hot-lead": 4,
   "bad number (Error 21610 - DND En)": 1
  },
  "errors": {
-  "Error 30003 - Number unreachable or out of service.": 7,
-  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 3,
-  "Error 21211 - Invalid \"To\" number format. Please check and try again.": 2,
+  "Your account has reached today's opt-out/error limit. Please review your messages and try ": 792,
+  "Error 30003 - Number unreachable or out of service.": 3,
+  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 2,
+  "Error 21211 - Invalid \"To\" number format. Please check and try again.": 1,
   "Error 21610 - DND Enabled or user has unsubscribed by replying STOP": 1
  },
- "sent": 0,
- "delivered": 0,
+ "sent": 792,
+ "delivered": 792,
  "failed_again": 0,
- "kinds": {},
+ "kinds": {
+  "follow-up": 792
+ },
  "stopped_early": null
 }

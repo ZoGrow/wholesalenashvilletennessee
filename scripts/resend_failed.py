@@ -34,13 +34,17 @@ def messages(cid):
     return convs[0]["id"], sorted([x for x in m if x.get("messageType") == "TYPE_SMS" or x.get("type") == 2],
                                   key=lambda x: x["dateAdded"])
 
-contacts, page = [], 1
+# Page with searchAfter: plain page numbers stop working past a few thousand contacts (HTTP 400 on
+# 2026-10-28, once ~8,300 contacts carried the outreach tag).
+contacts, after = [], None
 while True:
-    res = call("POST", "/contacts/search", {"locationId": loc, "page": page, "pageLimit": 100,
-               "filters": [{"field": "tags", "operator": "contains", "value": "apify-daily-lead"}]})
-    contacts += res.get("contacts", [])
-    if len(res.get("contacts", [])) < 100: break
-    page += 1
+    body = {"locationId": loc, "pageLimit": 100, "sort": [{"field": "dateAdded", "direction": "desc"}],
+            "filters": [{"field": "tags", "operator": "contains", "value": "apify-daily-lead"}]}
+    if after: body["searchAfter"] = after
+    batch = call("POST", "/contacts/search", body).get("contacts", [])
+    contacts += batch
+    if len(batch) < 100 or not batch[-1].get("searchAfter"): break
+    after = batch[-1]["searchAfter"]
 
 out = {"mode": MODE, "tagged": len(contacts), "eligible": 0, "skipped": Counter(), "errors": Counter(),
        "sent": 0, "delivered": 0, "failed_again": 0, "kinds": Counter(), "stopped_early": None}

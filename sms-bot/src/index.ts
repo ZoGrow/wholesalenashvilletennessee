@@ -74,12 +74,14 @@ export default {
   },
 
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
-    ctx.waitUntil(event.cron === SWEEP_CRON ? answerMissed(env) : event.cron === OFFER_CRON ? runOfferFollowUps(env) : runCheckIns(env));
+    ctx.waitUntil(event.cron === SLACK_CRON ? pollSlackOffers(env) : event.cron === SWEEP_CRON ? answerMissed(env)
+      : event.cron === OFFER_CRON ? runOfferFollowUps(env) : runCheckIns(env));
   },
 };
 
 const OUTREACH_TAG = "apify-daily-lead"; // the GHL bot workflow only fires for these contacts
 const SWEEP_CRON = "*/3 * * * *"; // must match wrangler.toml
+const SLACK_CRON = "* * * * *"; // must match wrangler.toml: checks Zack's Slack replies for offers
 const SWEEP_PER_RUN = 3; // replies per sweep (stays within Cloudflare's per-run request limit)
 const SWEEP_LOOKUPS = 15; // contact reads per sweep, for conversations GHL returns without tags
 const SEEN_PREFIX = "bot-seen-"; // + the time of the last text the sweep handled
@@ -795,16 +797,7 @@ async function slackEvent(req: Request, env: Env, ctx: ExecutionContext): Promis
   }
   const body = JSON.parse(raw || "{}");
   if (body.type === "url_verification") return new Response(body.challenge ?? "");
-  if (req.headers.get("x-slack-retry-num")) return new Response("ok"); // already handling the first try
-  const ev = body.event ?? {};
-  const fromZack = !env.SLACK_ZACK_USER || ev.user === env.SLACK_ZACK_USER;
-  if (ev.type === "message" && !ev.subtype && !ev.bot_id && ev.thread_ts && ev.thread_ts !== ev.ts && fromZack) {
-    const price = offerPrice(ev.text || "");
-    if (price !== null) ctx.waitUntil(offerFromSlack(ev.channel, ev.thread_ts, ev.ts, price, env).catch(async (e) => {
-      console.error("slack offer failed", e);
-      await slack(env, "chat.postMessage", { channel: ev.channel, thread_ts: ev.thread_ts, text: `⚠️ Offer not sent: ${String(e).slice(0, 300)}` });
-    }));
-  }
+  // Offers are picked up by pollSlackOffers (Slack events didn't arrive reliably, 2026-10-29).
   return new Response("ok");
 }
 
@@ -828,6 +821,40 @@ function offerPrice(text: string): number | null {
   return price >= 10000 ? price : null;
 }
 
+const OFFER_CHANNEL = "C0C9A8D6AS2"; // #wholesaling-hot-lead
+const DONE_MARKS = ["eyes", "white_check_mark", "warning", "fast_forward"]; // our reactions = already handled
+
+/** Every minute: Zack's "yes" / number replies on lead cards in the last hour that the bot hasn't marked yet.
+ *  Only the newest one per card is sent; older ones get ⏩ so a card never gets two offers from one batch. */
+async function pollSlackOffers(env: Env): Promise<void> {
+  if (!env.SLACK_BOT_TOKEN) return;
+  const me = (await slackGet(env, "auth.test", {})).user_id;
+  const since = Date.now() / 1000 - 3600;
+  const cards: any[] = (await slackGet(env, "conversations.history", { channel: OFFER_CHANNEL, oldest: String(Date.now() / 1000 - 30 * 86400), limit: "200" })).messages ?? [];
+  for (const card of cards.filter((m) => Number(m.latest_reply || 0) > since)) {
+    const replies: any[] = (await slackGet(env, "conversations.replies", { channel: OFFER_CHANNEL, ts: card.ts, oldest: String(since), limit: "100" })).messages ?? [];
+    const todo = replies.filter((r) => r.ts !== card.ts && !r.bot_id && (!env.SLACK_ZACK_USER || r.user === env.SLACK_ZACK_USER) &&
+      offerPrice(r.text || "") !== null && !(r.reactions ?? []).some((x: any) => DONE_MARKS.includes(x.name) && (x.users ?? []).includes(me)));
+    if (!todo.length) continue;
+    const last = todo[todo.length - 1];
+    for (const r of todo.slice(0, -1)) await slack(env, "reactions.add", { channel: OFFER_CHANNEL, timestamp: r.ts, name: "fast_forward" });
+    try {
+      await offerFromSlack(OFFER_CHANNEL, card.ts, last.ts, offerPrice(last.text || "")!, env);
+    } catch (e) {
+      console.error("slack offer failed", e);
+      await slack(env, "reactions.add", { channel: OFFER_CHANNEL, timestamp: last.ts, name: "warning" });
+      await slack(env, "chat.postMessage", { channel: OFFER_CHANNEL, thread_ts: card.ts, text: `⚠️ Offer not sent: ${String(e).slice(0, 300)}` });
+    }
+  }
+}
+
+async function slackGet(env: Env, method: string, params: Record<string, string>): Promise<any> {
+  const res = await fetch(`https://slack.com/api/${method}?${new URLSearchParams(params)}`, { headers: { Authorization: `Bearer ${env.SLACK_BOT_TOKEN}` } });
+  const out: any = await res.json();
+  if (!out.ok) throw new Error(`Slack ${method}: ${out.error}`);
+  return out;
+}
+
 async function slack(env: Env, method: string, body: Record<string, unknown>): Promise<any> {
   const res = await fetch(`https://slack.com/api/${method}`, {
     method: "POST",
@@ -841,7 +868,7 @@ async function slack(env: Env, method: string, body: Record<string, unknown>): P
 
 async function offerFromSlack(channel: string, threadTs: string, ts: string, price: number, env: Env): Promise<void> {
   await slack(env, "reactions.add", { channel, timestamp: ts, name: "eyes" });
-  const card: string = (await slack(env, "conversations.replies", { channel, ts: threadTs, limit: 1 })).messages?.[0]?.text ?? "";
+  const card: string = (await slackGet(env, "conversations.replies", { channel, ts: threadTs, limit: "1" })).messages?.[0]?.text ?? "";
   const contactId = card.match(/contacts\/detail\/([A-Za-z0-9]+)/)?.[1];
   const address = card.match(/lead\*\n\*([^*\n]+)\*/)?.[1]?.trim();
   if (!contactId || !address) throw new Error("couldn't find the lead's address and GHL contact on this card");

@@ -55,6 +55,9 @@ export default {
     const url = new URL(req.url);
     if (req.method === "GET") return new Response("sms bot ok");
     if (url.pathname === "/slack") return slackEvent(req, env, ctx);
+    if (url.pathname === "/slack-poll" && url.searchParams.get("key") === env.WEBHOOK_SECRET) {
+      try { return new Response(JSON.stringify(await pollSlackOffers(env))); } catch (e) { return new Response(`error: ${e}`, { status: 500 }); }
+    }
     if (req.method !== "POST" || url.searchParams.get("key") !== env.WEBHOOK_SECRET) {
       return new Response("not found", { status: 404 });
     }
@@ -74,7 +77,7 @@ export default {
   },
 
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
-    ctx.waitUntil(event.cron === SLACK_CRON ? pollSlackOffers(env) : event.cron === SWEEP_CRON ? answerMissed(env)
+    ctx.waitUntil(event.cron === SLACK_CRON ? pollSlackOffers(env).then((r) => console.log("slack poll", JSON.stringify(r))) : event.cron === SWEEP_CRON ? answerMissed(env)
       : event.cron === OFFER_CRON ? runOfferFollowUps(env) : runCheckIns(env));
   },
 };
@@ -826,11 +829,13 @@ const DONE_MARKS = ["eyes", "white_check_mark", "warning", "fast_forward"]; // o
 
 /** Every minute: Zack's "yes" / number replies on lead cards in the last hour that the bot hasn't marked yet.
  *  Only the newest one per card is sent; older ones get ⏩ so a card never gets two offers from one batch. */
-async function pollSlackOffers(env: Env): Promise<void> {
-  if (!env.SLACK_BOT_TOKEN) return;
+async function pollSlackOffers(env: Env): Promise<Record<string, unknown>> {
+  if (!env.SLACK_BOT_TOKEN) return { error: "no SLACK_BOT_TOKEN" };
+  const seen: Record<string, unknown> = {};
   const me = (await slackGet(env, "auth.test", {})).user_id;
   const since = Date.now() / 1000 - 3600;
   const cards: any[] = (await slackGet(env, "conversations.history", { channel: OFFER_CHANNEL, oldest: String(Date.now() / 1000 - 30 * 86400), limit: "200" })).messages ?? [];
+  seen.cards = cards.length; seen.active = cards.filter((m) => Number(m.latest_reply || 0) > since).length; seen.sent = [];
   for (const card of cards.filter((m) => Number(m.latest_reply || 0) > since)) {
     const replies: any[] = (await slackGet(env, "conversations.replies", { channel: OFFER_CHANNEL, ts: card.ts, oldest: String(since), limit: "100" })).messages ?? [];
     const todo = replies.filter((r) => r.ts !== card.ts && !r.bot_id && (!env.SLACK_ZACK_USER || r.user === env.SLACK_ZACK_USER) &&
@@ -839,13 +844,16 @@ async function pollSlackOffers(env: Env): Promise<void> {
     const last = todo[todo.length - 1];
     for (const r of todo.slice(0, -1)) await slack(env, "reactions.add", { channel: OFFER_CHANNEL, timestamp: r.ts, name: "fast_forward" });
     try {
+      (seen.sent as string[]).push(last.ts);
       await offerFromSlack(OFFER_CHANNEL, card.ts, last.ts, offerPrice(last.text || "")!, env);
     } catch (e) {
       console.error("slack offer failed", e);
       await slack(env, "reactions.add", { channel: OFFER_CHANNEL, timestamp: last.ts, name: "warning" });
       await slack(env, "chat.postMessage", { channel: OFFER_CHANNEL, thread_ts: card.ts, text: `⚠️ Offer not sent: ${String(e).slice(0, 300)}` });
+      seen.error = String(e);
     }
   }
+  return seen;
 }
 
 async function slackGet(env: Env, method: string, params: Record<string, string>): Promise<any> {

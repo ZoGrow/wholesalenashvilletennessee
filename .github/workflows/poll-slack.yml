@@ -1,0 +1,13 @@
+name: Check Slack offer replies now
+
+on:
+  workflow_dispatch:
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask the bot to check #wholesaling-hot-lead now
+        env:
+          KEY: ${{ secrets.SMS_BOT_WEBHOOK_SECRET }}
+        run: curl -sS --max-time 120 "https://nashville-sms-bot.holy-resonance-dc00.workers.dev/slack-poll?key=$(printf %s "$KEY" | tr -d '[:space:]')"

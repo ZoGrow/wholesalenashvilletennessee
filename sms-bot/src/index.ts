@@ -194,6 +194,11 @@ async function offerFollowUp(contact: any, env: Env): Promise<boolean> {
   let i = thread.length - 1;
   while (i >= 0 && !(thread[i].direction === "outbound" && OFFER_RE.test(thread[i].body))) i--;
   if (i < 0) return false; // no offer yet
+  // Offers Zack types in GHL himself get starred too (Zack 2026-10-29: only offers from now on).
+  if (!tags.includes(OFFER_TAG) && thread[i].at >= STAR_FROM) {
+    await starConversation(contact.id, env);
+    await ghl(env, `/contacts/${contact.id}/tags`, "POST", { tags: [OFFER_TAG] });
+  }
   const after = thread.slice(i + 1);
   if (after.some((m) => m.direction === "inbound")) return false; // they answered: Zack's turn
   const nudges = after.length;
@@ -778,6 +783,7 @@ async function ghl(env: Env, path: string, method = "GET", body?: unknown): Prom
 // #wholesaling-hot-lead and the bot sends his offer template to the agent by text (and email when we
 // have one), with an investor-friendly title company it looks up near the house.
 const OFFER_TAG = "offer-sent";
+const STAR_FROM = "2026-10-29T05:30"; // offers before this aren't starred
 const PENDING_TAG = "offer-pending"; // decided after 8pm CT: the text goes out at 9am
 const PENDING_NOTE = "PENDING OFFER TEXT";
 const POF_URL = "http://api.leadconnectorhq.com/l/yE-UDeUgJ";

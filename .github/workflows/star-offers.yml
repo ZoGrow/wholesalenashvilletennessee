@@ -1,0 +1,16 @@
+name: Star offer conversations
+
+on:
+  workflow_dispatch:
+
+jobs:
+  star:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Star every conversation in stats/offers_all.json
+        env:
+          GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
+          GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
+        run: python scripts/star_offers.py

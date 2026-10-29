@@ -9,7 +9,7 @@ permissions:
 jobs:
   count:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - name: Review leads in GHL (read-only)

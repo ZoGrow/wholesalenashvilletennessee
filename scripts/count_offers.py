@@ -20,16 +20,40 @@ def get(path):
                 time.sleep(2 ** attempt); continue
             raise
 
-convs, after = [], None
-while True:
-    q = {"locationId": loc, "limit": 100, "sortBy": "last_message_date", "sort": "desc"}
-    if after: q["startAfterDate"] = after
-    batch = get("/conversations/search?" + urllib.parse.urlencode(q)).get("conversations", [])
-    if not batch: break
-    convs += batch
-    after = batch[-1].get("lastMessageDate")
-    if not after or len(batch) < 100: break
-print(len(convs), "conversations")
+# Offers only go to agents who wrote back, so only those contacts are scanned (all of them is too slow).
+TAGS = ["agent-replied", "hot-lead", "qualified-lead", "warm-lead", "not-qualified", "offer-sent"]
+
+def post(path, body):
+    for attempt in range(6):
+        try:
+            req = urllib.request.Request(GHL + path, method="POST", data=json.dumps(body).encode(),
+                                         headers={**H, "Content-Type": "application/json"})
+            return json.load(urllib.request.urlopen(req, timeout=60))
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 500, 502, 503) and attempt < 5:
+                time.sleep(2 ** attempt); continue
+            raise
+
+people = {}
+for tag in TAGS:
+    after = None
+    while True:
+        body = {"locationId": loc, "pageLimit": 100, "sort": [{"field": "dateAdded", "direction": "desc"}],
+                "filters": [{"field": "tags", "operator": "contains", "value": tag}]}
+        if after: body["searchAfter"] = after
+        batch = post("/contacts/search", body).get("contacts", [])
+        for c in batch: people[c["id"]] = c
+        if len(batch) < 100 or not batch[-1].get("searchAfter"): break
+        after = batch[-1]["searchAfter"]
+    print(tag, len(people), flush=True)
+convs = []
+def convs_for(c):
+    q = urllib.parse.urlencode({"locationId": loc, "contactId": c["id"]})
+    name = " ".join(filter(None, [c.get("firstName"), c.get("lastName")])).title()
+    return [{**x, "fullName": name, "contactId": c["id"]} for x in get(f"/conversations/search?{q}").get("conversations", [])]
+with ThreadPoolExecutor(6) as ex:
+    for cs in ex.map(convs_for, people.values()): convs += cs
+print(len(convs), "conversations", flush=True)
 
 def scan(c):
     m = get(f"/conversations/{c['id']}/messages?limit=100").get("messages", {})

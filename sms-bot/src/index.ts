@@ -53,11 +53,11 @@ const MAX_PHOTOS = 6; // newest photos the bot looks at each reply (each costs ~
 export default {
   async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(req.url);
-    if (req.method === "GET") return new Response("sms bot ok");
     if (url.pathname === "/slack") return slackEvent(req, env, ctx);
     if (url.pathname === "/slack-poll" && url.searchParams.get("key") === env.WEBHOOK_SECRET) {
       try { return new Response(JSON.stringify(await pollSlackOffers(env))); } catch (e) { return new Response(`error: ${e}`, { status: 500 }); }
     }
+    if (req.method === "GET") return new Response("sms bot ok");
     if (req.method !== "POST" || url.searchParams.get("key") !== env.WEBHOOK_SECRET) {
       return new Response("not found", { status: 404 });
     }

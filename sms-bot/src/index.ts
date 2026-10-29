@@ -20,6 +20,9 @@ export interface Env {
   QUALIFY_PERCENT: string; // qualified = asking at or under this % of Zestimate (off-market)
   LISTED_QUALIFY_PERCENT?: string; // listed on the MLS: seller must take this % of Zestimate or less
   DRY_RUN?: string; // "true" = log the reply instead of texting it
+  SLACK_BOT_TOKEN?: string; // Slack app "Offer Bot": reads Zack's replies on lead cards (Zack 2026-10-29)
+  SLACK_SIGNING_SECRET?: string;
+  SLACK_ZACK_USER?: string; // only this Slack user's "yes" / number sends an offer
 }
 
 const GHL = "https://services.leadconnectorhq.com";
@@ -48,9 +51,10 @@ type Sms = { direction: "inbound" | "outbound"; body: string; at: string; media?
 const MAX_PHOTOS = 6; // newest photos the bot looks at each reply (each costs ~1-2k tokens)
 
 export default {
-  async fetch(req: Request, env: Env): Promise<Response> {
+  async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(req.url);
     if (req.method === "GET") return new Response("sms bot ok");
+    if (url.pathname === "/slack") return slackEvent(req, env, ctx);
     if (req.method !== "POST" || url.searchParams.get("key") !== env.WEBHOOK_SECRET) {
       return new Response("not found", { status: 404 });
     }
@@ -162,6 +166,7 @@ async function answerMissed(env: Env): Promise<void> {
 async function runOfferFollowUps(env: Env): Promise<void> {
   const hour = Number(new Date().toLocaleString("en-US", { timeZone: "America/Chicago", hour: "numeric", hour12: false }));
   if (hour < 9 || hour >= 18) return;
+  await sendPendingOffers(env).catch((e) => console.error("pending offers failed", e));
   const res = await ghl(env, "/contacts/search", "POST", {
     locationId: env.GHL_LOCATION_ID, page: 1, pageLimit: 100,
     filters: [{ field: "tags", operator: "contains", value: HANDOFF_TAG }],
@@ -441,6 +446,7 @@ function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: 
     `👤 *Agent:* ${agent || "unknown"}`,
     `${qualified ? "✅ *Why it qualifies:*" : "📝 *What's going on:*"} ${v("summary")}`,
     `<${link}|Open in GHL>`,
+    ...(qualified ? ["💬 Reply *yes* in this thread to send the opening offer, or reply a number (like 150k) to offer that instead."] : []),
   ].join("\n\n");
 }
 
@@ -488,7 +494,8 @@ function dealReport(lead: Lead, env: Env): string {
     ...(verdict ? [verdict] : []),
     `<${CALCULATOR_URL}|Adjust in the calculator>`,
     ``,
-    `🤝 *Pitch to the agent*\nOpen at: *${usd(open)}*\nWhat to say: ${script(usd(open))}`,
+    open > 0 ? `🤝 *Pitch to the agent*\nOpen at: *${usd(open)}*\nWhat to say: ${script(usd(open))}`
+      : `🤝 *Pitch to the agent*\nThe numbers come out under $0 at this ARV and repair level, so pick your own number.`,
   ].join("\n");
 }
 
@@ -764,5 +771,166 @@ async function ghl(env: Env, path: string, method = "GET", body?: unknown): Prom
     }
     if (!res.ok) throw new Error(`GHL ${method} ${path}: ${res.status} ${await res.text()}`);
     return res.json();
+  }
+}
+
+// ---- Offers from Slack (Zack 2026-10-29): Zack replies "yes" or a number in a lead card's thread in
+// #wholesaling-hot-lead and the bot sends his offer template to the agent by text (and email when we
+// have one), with an investor-friendly title company it looks up near the house.
+const OFFER_TAG = "offer-sent";
+const PENDING_TAG = "offer-pending"; // decided after 8pm CT: the text goes out at 9am
+const PENDING_NOTE = "PENDING OFFER TEXT";
+const POF_URL = "http://api.leadconnectorhq.com/l/yE-UDeUgJ";
+
+async function slackEvent(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+  const raw = await req.text();
+  if (!env.SLACK_SIGNING_SECRET || !(await slackSigned(req, raw, env.SLACK_SIGNING_SECRET))) {
+    return new Response("bad signature", { status: 401 });
+  }
+  const body = JSON.parse(raw || "{}");
+  if (body.type === "url_verification") return new Response(body.challenge ?? "");
+  if (req.headers.get("x-slack-retry-num")) return new Response("ok"); // already handling the first try
+  const ev = body.event ?? {};
+  const fromZack = !env.SLACK_ZACK_USER || ev.user === env.SLACK_ZACK_USER;
+  if (ev.type === "message" && !ev.subtype && !ev.bot_id && ev.thread_ts && ev.thread_ts !== ev.ts && fromZack) {
+    const price = offerPrice(ev.text || "");
+    if (price !== null) ctx.waitUntil(offerFromSlack(ev.channel, ev.thread_ts, ev.ts, price, env).catch(async (e) => {
+      console.error("slack offer failed", e);
+      await slack(env, "chat.postMessage", { channel: ev.channel, thread_ts: ev.thread_ts, text: `⚠️ Offer not sent: ${String(e).slice(0, 300)}` });
+    }));
+  }
+  return new Response("ok");
+}
+
+async function slackSigned(req: Request, raw: string, secret: string): Promise<boolean> {
+  const ts = req.headers.get("x-slack-request-timestamp") || "", sig = req.headers.get("x-slack-signature") || "";
+  if (Math.abs(Date.now() / 1000 - Number(ts)) > 300) return false;
+  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  const mac = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(`v0:${ts}:${raw}`));
+  const hex = [...new Uint8Array(mac)].map((b) => b.toString(16).padStart(2, "0")).join("");
+  return sig === `v0=${hex}`;
+}
+
+/** "yes" = 0 (use the card's opening offer); "150k", "$152,500", "152500" = that price; anything else = null. */
+function offerPrice(text: string): number | null {
+  const t = text.replace(/<[^>]*>/g, "").trim();
+  if (/^(yes|yep|yeah|y|send( it)?|go|do it)\b/i.test(t) && !/\d/.test(t)) return 0;
+  const m = t.match(/^(?:yes,?\s*)?(?:send|offer|do)?\s*\$?\s*(\d[\d,]*(?:\.\d+)?)\s*(k)?\b/i);
+  if (!m || !/^[\s.!,]*((cash|offer|send( it)?|please|pls|on (this|it)|for (this|it))[\s.!,]*)*$/i.test(t.slice(m[0].length))) return null;
+  const n = parseFloat(m[1].replace(/,/g, "")) * (m[2] ? 1000 : 1);
+  const price = Math.round(n < 1000 ? n * 1000 : n); // "150" means 150k
+  return price >= 10000 ? price : null;
+}
+
+async function slack(env: Env, method: string, body: Record<string, unknown>): Promise<any> {
+  const res = await fetch(`https://slack.com/api/${method}`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${env.SLACK_BOT_TOKEN}`, "Content-Type": "application/json; charset=utf-8" },
+    body: JSON.stringify(body),
+  });
+  const out: any = await res.json();
+  if (!out.ok) console.error("slack", method, out.error);
+  return out;
+}
+
+async function offerFromSlack(channel: string, threadTs: string, ts: string, price: number, env: Env): Promise<void> {
+  await slack(env, "reactions.add", { channel, timestamp: ts, name: "eyes" });
+  const card: string = (await slack(env, "conversations.replies", { channel, ts: threadTs, limit: 1 })).messages?.[0]?.text ?? "";
+  const contactId = card.match(/contacts\/detail\/([A-Za-z0-9]+)/)?.[1];
+  const address = card.match(/lead\*\n\*([^*\n]+)\*/)?.[1]?.trim();
+  if (!contactId || !address) throw new Error("couldn't find the lead's address and GHL contact on this card");
+  if (!price) price = dollars(card.match(/Open at: \*(\$[\d,]+)\*/)?.[1]) ?? 0;
+  if (!price) throw new Error("this card has no opening offer, reply with a number instead");
+  const contact = (await ghl(env, `/contacts/${contactId}`)).contact ?? {};
+  const email = (contact.email || card.match(/mailto:([^|>\s]+)/)?.[1] || "").trim();
+  const title = await findTitleCompany(address, env);
+  const first = (contact.firstName || "").trim().split(/\s+/)[0] || "there";
+  const name = first.charAt(0).toUpperCase() + first.slice(1).toLowerCase();
+  const terms = offerTerms(address, price, title);
+  const text = `Hi ${name}, here's my offer:\n\n${terms}\n\nLet me know if you have any questions.\n\nThanks,\nZack Olabi\nZoGrow Media LLC`;
+
+  const done: string[] = [];
+  if (email) {
+    if (!contact.email) await ghl(env, `/contacts/${contactId}`, "PUT", { email });
+    try {
+      await ghl(env, "/conversations/messages", "POST", {
+        type: "Email", contactId, subject: `Offer on ${address}`, emailFrom: `Zack Olabi <${env.SENDER_EMAIL || "zack@zogrowmedia.com"}>`,
+        html: text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\n/g, "<br>"),
+      });
+      done.push(`emailed ${email}`);
+    } catch (e) {
+      done.push(`email failed (${String(e).slice(0, 120)})`);
+    }
+  }
+  const hour = Number(new Date().toLocaleString("en-US", { timeZone: "America/Chicago", hour: "numeric", hour12: false }));
+  const tags: string[] = (contact.tags ?? []).map((t: string) => t.toLowerCase());
+  const noText = tags.includes(OPTED_OUT_TAG) || contact.dnd || contact.dndSettings?.SMS?.status === "active";
+  if (noText) done.push("no text (opted out / DND)");
+  else if (hour < 8 || hour >= 20) {
+    await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `${PENDING_NOTE} [${channel} ${threadTs}]\n${text}` });
+    await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [PENDING_TAG] });
+    done.push("text goes out at 9am CT (it's after hours)");
+  } else {
+    await ghl(env, "/conversations/messages", "POST", { type: "SMS", contactId, message: text });
+    done.push(`texted ${contact.phone || "the agent"}`);
+  }
+  await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [OFFER_TAG, HANDOFF_TAG] });
+  await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `Offer ${usd(price)} on ${address} (from Slack). Title: ${title}. ${done.join(", ")}` });
+  await slack(env, "reactions.remove", { channel, timestamp: ts, name: "eyes" });
+  await slack(env, "reactions.add", { channel, timestamp: ts, name: "white_check_mark" });
+  await slack(env, "chat.postMessage", { channel, thread_ts: threadTs,
+    text: `✅ Offer ${usd(price)} on ${address} to ${name}: ${done.join(", ")}.\nTitle company: ${title} · EMD ${usd(price / 100)}` });
+}
+
+function offerTerms(address: string, price: number, title: string): string {
+  return [
+    `Offer on: ${address}`,
+    `Purchase Price: ${usd(price)}`,
+    `Funding: Cash or Hard Money - No financing contingency`,
+    `As-is. No seller repairs`,
+    `Buyer pays all closing costs`,
+    `Closing date: 21 business days or sooner`,
+    `Due diligence: 5 business days`,
+    `EMD: ${usd(price * EMD_PERCENT / 100)}`,
+    `Title company: ${title}`,
+    `Email: zack@zogrowmedia.com`,
+    `Buyer's name: ZoGrow Media LLC`,
+    ``,
+    `Special Stips:`,
+    `Buyer will not request a price drop unless there is a major issue that would cost more than $10,000 to repair.`,
+    `Property to be delivered vacant.`,
+    ``,
+    `Proof of funds: ${POF_URL}`,
+  ].join("\n");
+}
+
+/** An investor-friendly title company near the house (Zack: "find the title info for that state"). Name only. */
+async function findTitleCompany(address: string, env: Env): Promise<string> {
+  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
+  const res = await client.beta.messages.create({
+    model: MODEL, max_tokens: 2000,
+    tools: [{ type: "web_search_20260209", name: "web_search", max_uses: 3 }],
+    messages: [{ role: "user", content: `Find a real, currently operating title company near ${address} that is investor-friendly (handles cash/investor and wholesale or assignment closings). Prefer one in the same city or county. Answer with only the company name and its city, like: Southeast Professional Title (Orlando). No other words.` }],
+  });
+  const texts = res.content.filter((b): b is Anthropic.Beta.BetaTextBlock => b.type === "text");
+  const out = (texts[texts.length - 1]?.text || "").trim().split("\n").pop()!.replace(/^[*\s]+|[*\s.]+$/g, "");
+  return out && out.length < 120 ? out : "TBD (buyer's choice of local title company)";
+}
+
+/** Morning: send the offer texts Zack approved after 8pm. */
+async function sendPendingOffers(env: Env): Promise<void> {
+  const res = await ghl(env, "/contacts/search", "POST", {
+    locationId: env.GHL_LOCATION_ID, page: 1, pageLimit: 20, filters: [{ field: "tags", operator: "contains", value: PENDING_TAG }],
+  });
+  for (const c of res.contacts ?? []) {
+    const notes: any[] = (await ghl(env, `/contacts/${c.id}/notes`)).notes ?? [];
+    const note = notes.find((n) => (n.body || "").startsWith(PENDING_NOTE));
+    await ghl(env, `/contacts/${c.id}/tags`, "DELETE", { tags: [PENDING_TAG] });
+    if (!note) continue;
+    const [head, ...rest] = note.body.split("\n");
+    await ghl(env, "/conversations/messages", "POST", { type: "SMS", contactId: c.id, message: rest.join("\n") });
+    await ghl(env, `/contacts/${c.id}/notes/${note.id}`, "DELETE");
+    const [, channel, threadTs] = head.match(/\[(\S+) (\S+)\]/) ?? [];
+    if (channel && env.SLACK_BOT_TOKEN) await slack(env, "chat.postMessage", { channel, thread_ts: threadTs, text: `📤 Morning: offer text sent to ${c.phone || "the agent"}.` });
   }
 }

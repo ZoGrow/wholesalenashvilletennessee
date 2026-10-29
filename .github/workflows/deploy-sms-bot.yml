@@ -36,6 +36,18 @@ jobs:
           WEBHOOK_SECRET: ${{ secrets.SMS_BOT_WEBHOOK_SECRET }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }} # Zillow lookups (Zestimate + listing link)
+      - name: Slack Offer Bot secrets (only once Zack has added them)
+        working-directory: sms-bot
+        run: |
+          for k in SLACK_BOT_TOKEN SLACK_SIGNING_SECRET; do
+            v="${!k}"
+            if [ -n "$v" ]; then printf %s "$v" | npx wrangler secret put "$k"; else echo "$k not set yet"; fi
+          done
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }}
       - name: Show the webhook URL
         run: |
           echo "### SMS bot is deployed" >> "$GITHUB_STEP_SUMMARY"

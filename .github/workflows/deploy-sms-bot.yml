@@ -39,8 +39,10 @@ jobs:
       - name: Slack Offer Bot secrets (only once Zack has added them)
         working-directory: sms-bot
         run: |
+          export CLOUDFLARE_ACCOUNT_ID="$(printf %s "$CLOUDFLARE_ACCOUNT_ID" | tr -d '[:space:]')"
+          export CLOUDFLARE_API_TOKEN="$(printf %s "$CLOUDFLARE_API_TOKEN" | tr -d '[:space:]')"
           for k in SLACK_BOT_TOKEN SLACK_SIGNING_SECRET; do
-            v="${!k}"
+            v="$(printf %s "${!k}" | tr -d '[:space:]')"
             if [ -n "$v" ]; then printf %s "$v" | npx wrangler secret put "$k"; else echo "$k not set yet"; fi
           done
         env:

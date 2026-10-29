@@ -875,6 +875,7 @@ async function offerFromSlack(channel: string, threadTs: string, ts: string, pri
     done.push(`texted ${contact.phone || "the agent"}`);
   }
   await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [OFFER_TAG, HANDOFF_TAG] });
+  await starConversation(contactId, env);
   await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `Offer ${usd(price)} on ${address} (from Slack). Title: ${title}. ${done.join(", ")}` });
   await slack(env, "reactions.remove", { channel, timestamp: ts, name: "eyes" });
   await slack(env, "reactions.add", { channel, timestamp: ts, name: "white_check_mark" });
@@ -902,6 +903,18 @@ function offerTerms(address: string, price: number, title: string): string {
     ``,
     `Proof of funds: ${POF_URL}`,
   ].join("\n");
+}
+
+/** Zack 2026-10-29: star every conversation an offer went to, so offers are easy to find in GHL. */
+async function starConversation(contactId: string, env: Env): Promise<void> {
+  try {
+    const q = new URLSearchParams({ locationId: env.GHL_LOCATION_ID, contactId });
+    for (const c of (await ghl(env, `/conversations/search?${q}`)).conversations ?? []) {
+      await ghl(env, `/conversations/${c.id}`, "PUT", { locationId: env.GHL_LOCATION_ID, starred: true });
+    }
+  } catch (e) {
+    console.error("star failed", contactId, e);
+  }
 }
 
 /** An investor-friendly title company near the house (Zack: "find the title info for that state"). Name only. */

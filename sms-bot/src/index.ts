@@ -840,6 +840,7 @@ async function pollSlackOffers(env: Env): Promise<Record<string, unknown>> {
     const replies: any[] = (await slackGet(env, "conversations.replies", { channel: OFFER_CHANNEL, ts: card.ts, oldest: String(since), limit: "100" })).messages ?? [];
     const todo = replies.filter((r) => r.ts !== card.ts && !r.bot_id && (!env.SLACK_ZACK_USER || r.user === env.SLACK_ZACK_USER) &&
       offerPrice(r.text || "") !== null && !(r.reactions ?? []).some((x: any) => DONE_MARKS.includes(x.name) && (x.users ?? []).includes(me)));
+    (seen.replies ??= [] as unknown[]) && (seen.replies as unknown[]).push(replies.map((r) => ({ ts: r.ts, user: r.user, bot: r.bot_id, text: (r.text || "").slice(0, 20), price: offerPrice(r.text || ""), re: (r.reactions ?? []).map((x: any) => x.name) })));
     if (!todo.length) continue;
     const last = todo[todo.length - 1];
     for (const r of todo.slice(0, -1)) await slack(env, "reactions.add", { channel: OFFER_CHANNEL, timestamp: r.ts, name: "fast_forward" });

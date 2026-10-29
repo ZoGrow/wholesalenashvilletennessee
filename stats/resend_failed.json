@@ -1,37 +1,28 @@
 {
  "mode": "send",
- "tagged": 8856,
- "eligible": 373,
+ "tagged": 9495,
+ "eligible": 0,
  "skipped": {
-  "dnd": 265,
-  "tag opted-out": 335,
-  "tag agent-replied": 861,
-  "bad number (Error 30008 - Messag)": 2,
+  "dnd": 288,
+  "tag agent-replied": 926,
+  "tag opted-out": 352,
+  "bad number (Error 30003 - Number)": 10,
+  "they replied": 506,
+  "bad number (Error 30008 - Messag)": 1,
   "no messages": 3,
-  "bad number (Error 30003 - Number)": 3,
   "tag dnd-skipped": 6,
-  "bad number (Error 21211 - Invali)": 1,
   "tag not-qualified": 2,
   "tag hot-lead": 4,
-  "they replied": 476,
   "bad number (Error 21610 - DND En)": 1
  },
  "errors": {
-  "Your account has reached today's opt-out/error limit. Please review your messages and try ": 373,
-  "RESEND: Error 30003 - Number unreachable or out of service.": 3,
-  "Error 30003 - Number unreachable or out of service.": 3,
-  "RESEND: Error 30006 - Landline or non-mobile number. Cannot receive SMS.": 2,
-  "RESEND: Error 30005 - The recipient's number is inactive or does not exist.": 2,
-  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 2,
-  "Error 21211 - Invalid \"To\" number format. Please check and try again.": 1,
+  "Error 30003 - Number unreachable or out of service.": 10,
+  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 1,
   "Error 21610 - DND Enabled or user has unsubscribed by replying STOP": 1
  },
- "sent": 373,
- "delivered": 366,
- "failed_again": 7,
- "kinds": {
-  "first text": 243,
-  "follow-up": 130
- },
+ "sent": 0,
+ "delivered": 0,
+ "failed_again": 0,
+ "kinds": {},
  "stopped_early": null
 }

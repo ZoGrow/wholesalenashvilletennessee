@@ -1,0 +1,14 @@
+{
+ "{\"originId\": \"nvnsI7VgLrDYA5JeQ945\"}": {
+  "error": 401,
+  "body": "{\"statusCode\":401,\"message\":\"The token is not authorized for this scope.\"}"
+ },
+ "{\"originId\": \"nvnsI7VgLrDYA5JeQ945\", \"type\": \"sms\"}": {
+  "error": 401,
+  "body": "{\"statusCode\":401,\"message\":\"The token is not authorized for this scope.\"}"
+ },
+ "{\"originId\": \"nvnsI7VgLrDYA5JeQ945\", \"type\": \"email\"}": {
+  "error": 401,
+  "body": "{\"statusCode\":401,\"message\":\"The token is not authorized for this scope.\"}"
+ }
+}

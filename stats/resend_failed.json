@@ -4,19 +4,19 @@
  "eligible": 0,
  "skipped": {
   "dnd": 288,
-  "tag agent-replied": 926,
-  "tag opted-out": 352,
-  "bad number (Error 30003 - Number)": 10,
-  "they replied": 506,
+  "tag agent-replied": 966,
+  "tag opted-out": 361,
+  "bad number (Error 30003 - Number)": 11,
   "bad number (Error 30008 - Messag)": 1,
   "no messages": 3,
   "tag dnd-skipped": 6,
   "tag not-qualified": 2,
   "tag hot-lead": 4,
+  "they replied": 500,
   "bad number (Error 21610 - DND En)": 1
  },
  "errors": {
-  "Error 30003 - Number unreachable or out of service.": 10,
+  "Error 30003 - Number unreachable or out of service.": 11,
   "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 1,
   "Error 21610 - DND Enabled or user has unsubscribed by replying STOP": 1
  },

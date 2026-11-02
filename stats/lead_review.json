@@ -1,270 +1,133 @@
 {
  "days": 1,
- "agents_replied": 173,
+ "agents_replied": 78,
  "buckets": {
-  "opted-out": 45,
-  "bot-off": 1,
-  "warm-lead": 23,
-  "not-qualified": 23,
-  "qualified-lead": 9,
-  "hot-lead": 11
+  "warm-lead": 15,
+  "opted-out": 16,
+  "not-qualified": 10,
+  "hot-lead": 3,
+  "qualified-lead": 2
  },
- "still_vetting": 79,
+ "still_vetting": 35,
  "unanswered": [
   {
-   "name": "Elaine Maisel",
-   "city": "Jackson",
-   "text": "Keep me in mind if you come across any that are too much for you. I also renovate homes and am willing to do major work ",
-   "at": "2026-10-27T16:37:20.096Z"
+   "name": "Lori D Palmer",
+   "city": "Baton Rouge",
+   "text": "Understand your position.",
+   "at": "2026-11-02T18:46:22.698Z"
   },
   {
-   "name": "Mark Flowers",
-   "city": "Jonesboro",
-   "text": "Will do",
-   "at": "2026-10-27T16:30:46.800Z"
+   "name": "Micheala Dixon",
+   "city": "Montgomery",
+   "text": "1600 old orrville rd",
+   "at": "2026-11-02T18:29:50.705Z"
   },
   {
-   "name": "Cindy Allwine, Executive Broker, Ausum Realty",
-   "city": "Little Rock",
-   "text": "Thanks I will",
-   "at": "2026-10-27T16:25:39.543Z"
+   "name": "Donna H. Cox ~ Make it Personal",
+   "city": "Wetumpka",
+   "text": "Wonderful I will keep in touch",
+   "at": "2026-11-02T18:26:42.304Z"
   },
   {
-   "name": "Jason Justak",
-   "city": "Carmel, IN",
-   "text": "Bummer",
-   "at": "2026-10-27T13:46:30.204Z"
+   "name": "Kara Horne, Agent",
+   "city": "denham springs",
+   "text": "Sure will",
+   "at": "2026-11-02T18:19:18.667Z"
   },
   {
-   "name": "Christine Robbins",
-   "city": "Carmel",
-   "text": "Sounds good, thanks!",
-   "at": "2026-10-27T00:30:51.173Z"
+   "name": "Caroline Makin",
+   "city": "Atlanta",
+   "text": "Ok",
+   "at": "2026-11-02T18:10:03.669Z"
   },
   {
-   "name": "Katrini Goshay",
-   "city": "Huntsville",
-   "text": "Thanks for your time.",
-   "at": "2026-10-26T20:39:58.926Z"
+   "name": "Daequan R. Whaley",
+   "city": "Hoover",
+   "text": "Okay. Will do",
+   "at": "2026-11-02T18:05:21.159Z"
   },
   {
-   "name": "Cheryl Niemeier",
-   "city": "Indianapolis",
-   "text": "Will do.",
-   "at": "2026-10-26T20:05:02.063Z"
+   "name": "Patricia Halley Conaghan",
+   "city": "kenner",
+   "text": "Let me go back and check",
+   "at": "2026-11-02T18:02:32.785Z"
   },
   {
-   "name": "Lisa Isley",
-   "city": "Burlington",
-   "text": "Okay",
-   "at": "2026-10-26T19:27:55.412Z"
-  },
-  {
-   "name": "Jon Stamper - Realtor",
-   "city": "West Chester",
-   "text": "Will do. Love to help you out.",
-   "at": "2026-10-26T19:24:42.349Z"
-  },
-  {
-   "name": "Susan Brandon",
-   "city": "Carmel",
-   "text": "Thanks! Will do.",
-   "at": "2026-10-26T19:16:35.980Z"
-  },
-  {
-   "name": "Elizabeth Nannery, BHHS Broker",
-   "city": "Winston-Salem",
-   "text": "Got it. Thanks!",
-   "at": "2026-10-26T19:16:28.622Z"
-  },
-  {
-   "name": "Christopher Johnson",
-   "city": "Fishers",
-   "text": "Sure",
-   "at": "2026-10-26T19:13:37.370Z"
-  },
-  {
-   "name": "Donna Steutermann",
-   "city": "Cincinnati",
-   "text": "Will do, Zack all the best to you",
-   "at": "2026-10-26T17:30:01.043Z"
-  },
-  {
-   "name": "Sherri Bryant",
-   "city": "Carmel, IN",
-   "text": "I will",
-   "at": "2026-10-26T16:59:26.671Z"
+   "name": "Damon Matthews",
+   "city": "Baton Rouge",
+   "text": "Will do thanks",
+   "at": "2026-11-02T17:50:53.878Z"
   }
  ],
  "not_qualified_reasons": [
   {
-   "name": "Joel Tvedten",
-   "city": "little rock",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED. Agent distrusts us, asked for a driver's license, and said he's passing. No property was discussed."
+   "name": "Micheala Dixon",
+   "city": "Montgomery",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: property is actively listed on the MLS (no address given). Only buying off-market."
   },
   {
-   "name": "Mark Flowers",
-   "city": "Jonesboro",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 910 Alan St, Manila AR is listed at $174,900. Seller is not desperate and has no stated 60% of Zestimate price. Agent suggested about $120k, which is a long shot. Pass."
+   "name": "Karyn Thomas",
+   "city": "Richmond Hill",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: agent says all four properties (72 Bonnie Reed Passage, 601 Tupelo, 747 Elaine, 1692 Lee Place, 139 Saddleclub Way) are on the MLS. Listed, so passed."
   },
   {
-   "name": "Caroline Pittman",
-   "city": "little rock",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: Pine Bluff package (duplex plus two homes, $110k total, fair condition) owned by her Rabbi. No addresses given, bundled with a duplex, and she handed off to the owner Yosef Kramer 347-327-2100 instead of acting as the agent. Not pursuing."
+   "name": "Susan Emory",
+   "city": "denham springs",
+   "note": "SMS bot, did not qualify: Agent has nothing off-market and said no to the distressed-situation follow-up. No property."
   },
   {
-   "name": "Danielle Wolbert",
-   "city": "St. augustine",
-   "note": "SMS bot, did not qualify: Agent mentioned a possible duplex in Riverside, Jacksonville in about two weeks. Multifamily is a pass, so no follow-up set."
+   "name": "Linda Barbay",
+   "city": "Baton Rouge",
+   "note": "SMS bot, did not qualify: Agent requires a signed buyer broker agreement before sharing any property; broker won't allow otherwise. No property shared."
   },
   {
-   "name": "Ryan Rominger",
-   "city": "Carmel, IN",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: agent is pitching a platform/email list (mls.intriguepm.com), no property provided."
+   "name": "Sally Hodges",
+   "city": "Montgomery",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 466 Hillabee Dr is listed on the MLS (agent said it's on the market, sent a Matrix link). Seller somewhat motivated, but we only buy off-market."
   },
   {
-   "name": "Christi Marret",
-   "city": "haskell",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 23 Rita Drive, Sherwood is listed on the MLS per the agent (needs foundation work). Passed because we only buy off-market."
+   "name": "Michelle Edwards",
+   "city": "Pooler",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 33 Bearing Circle, Pooler is still actively listed on the MLS (about $210k), so it doesn't go to Zack."
   },
   {
-   "name": "Jill Cram",
-   "city": "St. augustine",
-   "note": "SMS bot, did not qualify: Jill is retired and has no property. She referred us to her former broker, The Legends of Real Estate."
+   "name": "SHERRY SIMOICH",
+   "city": "Baton Rouge",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 4849 Tulane Dr is actively listed on the MLS, and it's her only listing. Nothing off-market."
   },
   {
-   "name": "Ethel Bell",
-   "city": "Madison",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 316 Lexington Ave, Jackson is listed on the MLS (agent says price just lowered to $24,900). We only buy off-market."
+   "name": "Margie Casey",
+   "city": "Bon Secour",
+   "note": "SMS bot, did not qualify: Agent has nothing and says she is retired."
   },
   {
-   "name": "Jason Justak",
-   "city": "Carmel, IN",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 2008 N College Ave, Indianapolis is listed on the MLS (agent says it needs only paint). Already passed twice. Agent's last text was just 'Bummer', so no reply needed."
+   "name": "Heather OShea",
+   "city": "orange beach",
+   "note": "SMS bot, did not qualify: Agent only reacted with a like to our pass on a listed property (16389 The Loop, Gulf Shores). No reply needed."
   },
   {
-   "name": "Christine Robbins",
-   "city": "Carmel",
-   "note": ""
-  },
-  {
-   "name": "Jade Utley",
-   "city": "Franklin",
-   "note": "SMS bot handoff: NOT QUALIFIED (big gap). 2404 Buchanan St, Nashville 37208. Off-market, asking $310k. No Zestimate found; Redfin est. $338k (~92%) is based on the old 1,148 sqft finished record. Now a framed shell with a new roof, ~2,000 sqft claimed, all mechanicals and finishes still needed. Sell"
-  },
-  {
-   "name": "Natasha Nelson",
-   "city": "Browns Summit",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 2308 Leeds Ave, High Point is listed on the MLS per the agent (on market, entertaining investor offers). Listed means an automatic pass."
-  },
-  {
-   "name": "Crystal Rierson-Villeneuve",
-   "city": "Greensboro",
-   "note": "SMS bot, did not qualify: Agent has no off-market or distressed properties. Offered 2 listed rental-hold properties, which are not off-market, so passed."
-  },
-  {
-   "name": "Chuck Pennington(Team)",
-   "city": "Carmel, IN",
-   "note": "SMS bot, did not qualify: Agent was testing whether I'm local, said best of luck. No property offered."
-  },
-  {
-   "name": "Len Johnson",
-   "city": "Huntsville",
-   "note": "SMS bot, possible future deal: Len may have a house after the first of the year; no details yet. He only has 4-plexes now (pass). Gave him the email for details; he just liked the text."
-  },
-  {
-   "name": "David Allen",
-   "city": "Carmel, IN",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 36 South Jefferson St, Knightstown IN is a fourplex (multifamily). Landlord wants out, but we pass on multifamily. Asked David to send any single-family."
-  },
-  {
-   "name": "Laura Wright",
-   "city": "Greenwood",
-   "note": "SMS bot, did not qualify: Agent said she is not interested in working with off-market investors. Polite sign-off, no push."
-  },
-  {
-   "name": "Eric W Cooper",
-   "city": "Carmel, IN",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 1033 Randolph (Indianapolis) is an MLS listing with multiple price reductions and buy-down incentive. Listed, so pass."
-  },
-  {
-   "name": "Ashley Howard",
-   "city": "Carmel",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: 8200 W Lone Beech Dr, Muncie IN is actively listed on the MLS (agent confirmed, sent Tucker app link). Pass, listed."
-  },
-  {
-   "name": "KAREN WEIDT",
-   "city": "Greensboro",
-   "note": ""
-  },
-  {
-   "name": "Stephen Barton",
+   "name": "Heather Bottorff Harmon",
    "city": "Indianapolis",
-   "note": "SMS bot: opted out, no more texts. They said: \"Absolutely. I got started wholesaling back in 2013 here in Indy. I would say 90% of my deals came from tired landlords. We will be in touch!\""
-  },
-  {
-   "name": "Merissa Houston",
-   "city": "Greenfield",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: agent offered a listed turn-key duplex in Greenwood (multifamily and MLS-listed). No off-market inventory."
-  },
-  {
-   "name": "Michael Teggart",
-   "city": "Cincinnati",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED: Agent only shares off-market homes with buyers who sign an exclusive agreement and won't work with buyers who use multiple agents. No property or address given. Wrapped up politely."
+   "note": ""
   }
  ],
  "qualified": [
   {
-   "name": "Dani Blair",
-   "city": "haskell",
-   "note": "SMS bot handoff: QUALIFIED (rough). 301 S Harding, Haskell. Zillow lookup failed, so no Zestimate. Off-market pre-foreclosure owned by the agent's son, so she's direct with the seller. 3/2, 1970 sqft, built 1979. Needs a lot of work and the door is open. Asking ~$140k (lien plus ~$15k arrears), far "
+   "name": "Chad Green",
+   "city": "blue springs",
+   "note": "SMS bot handoff: QUALIFIED (rough): off-market 3/2 ranch, ~1300 sqft, unfinished basement, near 87th & James A Reed Rd, Blue Springs. Address withheld, so no Zestimate. Seller owes $166,415.21 and wants to break even. Owner-occupied, rough shape, but roof and HVAC under 1 yr old. No photos. Need add"
   },
   {
-   "name": "Stephanie Andrew",
-   "city": "Greensboro",
-   "note": ""
-  },
-  {
-   "name": "Linda Escobar",
-   "city": "Durham",
-   "note": "SMS bot, did not qualify: NOT QUALIFIED. 1017 South St, Henderson NC. Zestimate $139,200, asking $107k (~77%), off-market, vacant, 3/2, 1,536 sqft, built 1955. Photos show an older roof and boarded windows, so it needs heavy work. Rough max offer is about $18k (ARV ~$139k x 70% - ~$69k repairs - $10"
-  },
-  {
-   "name": "Brit Jackson",
-   "city": "Greensboro",
-   "note": "SMS bot handoff: QUALIFIED (off-market, heavily gutted). 3200 Old Greensboro Rd, Winston Salem. No Zestimate. Zillow shows an old $58k list price and a last sale of $23k. Asking $75k. Photos show a partway gut. 5/3, 2002 sqft, built 1920. Motivation and timeline unknown. Rough calculator max offer i"
-  },
-  {
-   "name": "Christi Coffey",
-   "city": "Greenwood",
-   "note": "SMS bot handoff: QUALIFIED. 12933 N Waters Edge Dr, Camby IN. Zestimate $505,900, asking unknown. Zillow shows not listed, agent says going live soon, so confirm it hasn't hit the MLS. 7/4, 4524 sqft, built 2000. Estate, needs quite a bit of work. Photos pending. Estimates are rough; ARV comps not p"
-  },
-  {
-   "name": "David Trueb",
-   "city": "Madison",
-   "note": ""
-  },
-  {
-   "name": "John Farmer",
-   "city": "McCordsville",
-   "note": "SMS bot handoff: QUALIFIED (weak): 4916 Carrollton Ave, Indianapolis. Zestimate $235,500, asking $328k (139%), off-market, 3/0.5/1112 sqft, built 1921, owner-occupied, agent says good shape, photos pending. Seller wants to move soon, but may list in 4 months. Asking is far above max offer. Reason fo"
-  },
-  {
-   "name": "Sylvia Phillips",
-   "city": "Dunn",
-   "note": "SMS bot handoff: QUALIFIED: 1220 Fayetteville St, Dunn NC. Off-market, owner-occupied, small brick house, seller wants to sell as is. Zillow lookup failed, so no Zestimate, sqft or comps. Asking price and photos pending."
-  },
-  {
-   "name": "Kika James",
-   "city": "kure beach",
-   "note": "SMS bot handoff: QUALIFIED. 187 Blanco Peak Dr, Kernersville NC. Zestimate $365k, asking unknown. Off-market but about to list. 3/2, 2675 sqft, built 1980. Potential divorce. The seller found earlier investor offers too low, so price expectations may be high. Asked for photos, asking price and timel"
+   "name": "Katrini Goshay",
+   "city": "Huntsville",
+   "note": "SMS bot handoff: QUALIFIED (workable, asking is above Zestimate). 4208 Bishop Cir NW, Huntsville. Zestimate $107.7k, ask $125k (116%). Off-market, occupied, 2/1.5, 945 sqft, 1964. Decent, dated kitchen and bath, new panel. Motivation: wants to sell ASAP with the right offer. Rough numbers only, no c"
   }
  ],
  "handed_off_not_qualified": [
   {
-   "name": "BETSY AREY, Agent",
-   "city": "haskell",
-   "note": "SMS bot handoff: Betsy asked for a phone call and told us to look at 330 Gathering House. I haven't looked it up and don't know whether it's listed. Check the MLS status first. If it's listed, pass. If it's off-market, get the asking price, the seller's reason and photos."
+   "name": "Jenny Rutherford",
+   "city": "Richmond Hill",
+   "note": "SMS bot handoff: Jenny asked if she's talking to a bot, and I told her an AI assistant helps with first texts. 7 Linton Ave is sold as is. We don't know the MLS status or the asking price. She gave office numbers for Liz: 912-388-2828 and 912-388-3828. Please take over."
   }
  ]
 }

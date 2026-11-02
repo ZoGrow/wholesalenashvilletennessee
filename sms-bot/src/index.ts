@@ -840,8 +840,15 @@ async function pollSlackOffers(env: Env): Promise<Record<string, unknown>> {
   seen.cards = cards.length; seen.active = cards.filter((m) => Number(m.latest_reply || 0) > since).length; seen.sent = [];
   for (const card of cards.filter((m) => Number(m.latest_reply || 0) > since)) {
     const replies: any[] = (await slackGet(env, "conversations.replies", { channel: OFFER_CHANNEL, ts: card.ts, oldest: String(since), limit: "100" })).messages ?? [];
-    const todo = replies.filter((r) => r.ts !== card.ts && !r.bot_id && (!env.SLACK_ZACK_USER || r.user === env.SLACK_ZACK_USER) &&
-      offerPrice(r.text || "") !== null && !(r.reactions ?? []).some((x: any) => DONE_MARKS.includes(x.name) && (x.users ?? []).includes(me)));
+    const mine = replies.filter((r) => r.ts !== card.ts && !r.bot_id && (!env.SLACK_ZACK_USER || r.user === env.SLACK_ZACK_USER) &&
+      !(r.reactions ?? []).some((x: any) => DONE_MARKS.includes(x.name) && (x.users ?? []).includes(me)));
+    // Looks like an offer but has extra instructions the bot can't follow: say so instead of staying silent.
+    for (const r of mine.filter((r) => offerPrice(r.text || "") === null && /\d/.test(r.text || "") && /\boffer\b|\d\s*k\b|\$/i.test(r.text || ""))) {
+      await slack(env, "reactions.add", { channel: OFFER_CHANNEL, timestamp: r.ts, name: "warning" });
+      await slack(env, "chat.postMessage", { channel: OFFER_CHANNEL, thread_ts: card.ts,
+        text: "⚠️ Not sent. I can only auto-send a plain *yes* or a number like *90k* here. For custom terms (email only, different closing, expiry), ask Claude in the project and it'll send it." });
+    }
+    const todo = mine.filter((r) => offerPrice(r.text || "") !== null);
     if (!todo.length) continue;
     const last = todo[todo.length - 1];
     for (const r of todo.slice(0, -1)) await slack(env, "reactions.add", { channel: OFFER_CHANNEL, timestamp: r.ts, name: "fast_forward" });

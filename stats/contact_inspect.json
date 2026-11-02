@@ -1,131 +1,84 @@
 {
  "matches": [
   {
-   "id": "7E2C3d",
-   "name": "micheala dixon",
-   "city": "Montgomery",
-   "state": "AL",
+   "id": "Zy950f",
+   "name": "ceegee hilton",
+   "city": "Baton Rouge",
+   "state": "LA",
    "tags": [
     "apify-daily-lead",
     "agent-replied",
-    "not-qualified"
+    "bot-seen-1793652754928"
    ],
    "dnd": null,
    "dndSettings": null,
    "messages": [
     {
-     "id": "B6TbXpKO4Li1uXADr468",
+     "id": "eCnBKeS10sdd8mPglCTP",
      "direction": "inbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "1600 old orrville rd",
+     "body": "One of them is not necessarily distressed, but you could get a good deal on it",
      "contentType": "text/plain",
-     "dateAdded": "2026-11-02T18:29:50.705Z",
-     "dateUpdated": "2026-11-02T18:29:50.705Z",
-     "altId": "SM03e868f0e3726bb310499fa2a835b3f8",
-     "from": "+13348017351",
+     "dateAdded": "2026-11-02T20:52:34.992Z",
+     "dateUpdated": "2026-11-02T20:52:34.992Z",
+     "altId": "SM529a84754fced6db17cb2673aa6ee86b",
+     "from": "+12258030218",
      "to": "+18323451435",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "VgPYIGRJEgDO2SPXfy6g",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Got it, I'm only buying off-market right now. Thanks Micheala!",
-     "contentType": "text/plain",
-     "dateAdded": "2026-11-02T18:29:50.252Z",
-     "dateUpdated": "2026-11-02T18:29:56.601Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "app",
-     "altId": "SMdf1887f2b3d4f58ff36108c07822f8c8",
-     "from": "+18323451435",
-     "to": "+13348017351",
-     "meta": {
-      "marketplace": {
-       "appId": "6ac82161cc0c50bbf18cf2ff"
-      }
-     },
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "KtQhhPPLuNIodSX0U5bX",
+     "id": "ztugx52VHbOY90WbW4WK",
      "direction": "inbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "No its still active on the MLS",
+     "body": "I have 2 \nWhat kind of budget?",
      "contentType": "text/plain",
-     "dateAdded": "2026-11-02T18:29:29.480Z",
-     "dateUpdated": "2026-11-02T18:29:29.480Z",
-     "altId": "SM976a6911c33c5ce7028025d92ec72ee0",
-     "from": "+13348017351",
+     "dateAdded": "2026-11-02T20:52:17.099Z",
+     "dateUpdated": "2026-11-02T20:52:17.099Z",
+     "altId": "SM2a627847843b4713b3d49052f2c7046c",
+     "from": "+12258030218",
      "to": "+18323451435",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "WR7eNMZUgvcYu6ueCf0P",
+     "id": "9IjqIqR0jAQxBFLCwbAt",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Great, thanks Micheala. What's the address, and is it off the MLS right now?",
+     "body": "let me know",
      "contentType": "text/plain",
-     "dateAdded": "2026-11-02T17:53:32.211Z",
-     "dateUpdated": "2026-11-02T17:53:37.908Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "app",
-     "altId": "SMb451f1ddc511c625dbce00ae04cc2302",
-     "from": "+18323451435",
-     "to": "+13348017351",
-     "meta": {
-      "marketplace": {
-       "appId": "6ac82161cc0c50bbf18cf2ff"
-      }
-     },
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "7L4hl6WjDXIk5izLFAdL",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Yes",
-     "contentType": "text/plain",
-     "dateAdded": "2026-11-02T17:53:11.691Z",
-     "dateUpdated": "2026-11-02T17:53:11.691Z",
-     "altId": "SM2e97350d6fec65bb6125188f7539a4f1",
-     "from": "+13348017351",
-     "to": "+18323451435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "dQdWVxRbTF06utq1rdWA",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Micheala, my name is Zack. I am in an investor here in Montgomery looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-11-02T17:43:21.047Z",
-     "dateUpdated": "2026-11-02T17:43:27.623Z",
+     "dateAdded": "2026-11-02T20:42:02.950Z",
+     "dateUpdated": "2026-11-02T20:42:41.474Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
      "source": "workflow",
-     "altId": "SMd690ed75009f11b1edc145fd420f672c",
+     "altId": "SM0a28fa790e51887d9a4d7e3d16ed3f0a",
      "from": "+18323451435",
-     "to": "+13348017351",
+     "to": "+12258030218",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "qMmqeMrFzErHOuPDxZeu",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey CEEGEE, my name is Zack. I am in an investor here in Baton Rouge looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-02T17:42:00.960Z",
+     "dateUpdated": "2026-11-02T17:44:40.762Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM9d3de55a733fcba41aebc5271ff50a2d",
+     "from": "+18323451435",
+     "to": "+12258030218",
      "messageType": "TYPE_SMS"
     }
    ],
-   "notes": [
-    {
-     "at": "2026-11-02T18:29:57.213Z",
-     "body": "SMS bot, did not qualify: NOT QUALIFIED: property is actively listed on the MLS (no address given). Only buying off-market."
-    }
-   ]
+   "notes": []
   }
  ]
 }

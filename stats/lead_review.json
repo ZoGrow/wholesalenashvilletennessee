@@ -1,15 +1,81 @@
 {
- "days": 1,
- "agents_replied": 78,
+ "days": 2,
+ "agents_replied": 158,
  "buckets": {
-  "warm-lead": 15,
-  "opted-out": 16,
-  "not-qualified": 10,
-  "hot-lead": 3,
-  "qualified-lead": 2
+  "not-qualified": 30,
+  "warm-lead": 32,
+  "opted-out": 22,
+  "qualified-lead": 6,
+  "hot-lead": 7
  },
- "still_vetting": 35,
+ "still_vetting": 74,
  "unanswered": [
+  {
+   "name": "Andrew Medine",
+   "city": "denham springs",
+   "text": "Let me know",
+   "at": "2026-11-02T21:26:57.532Z"
+  },
+  {
+   "name": "Danielle Stephens",
+   "city": "Baton Rouge",
+   "text": "I'm taking off today",
+   "at": "2026-11-02T21:17:03.195Z"
+  },
+  {
+   "name": "Susan Emory",
+   "city": "denham springs",
+   "text": "Oh sorry I sent this to the wrong perons.  Excuse me!\ud83d\ude0a",
+   "at": "2026-11-02T21:11:22.354Z"
+  },
+  {
+   "name": "Ruthie Golden",
+   "city": "Baton Rouge",
+   "text": "kk",
+   "at": "2026-11-02T21:03:58.303Z"
+  },
+  {
+   "name": "Travis Steinemann",
+   "city": "Baton Rouge",
+   "text": "Good luck!",
+   "at": "2026-11-02T21:03:53.486Z"
+  },
+  {
+   "name": "CEEGEE HILTON",
+   "city": "Baton Rouge",
+   "text": "One of them is not necessarily distressed, but you could get a good deal on it",
+   "at": "2026-11-02T20:52:34.992Z"
+  },
+  {
+   "name": "Steven Dillard",
+   "city": "Prattville",
+   "text": "Absolutely",
+   "at": "2026-11-02T20:52:13.631Z"
+  },
+  {
+   "name": "Jonathan Morales",
+   "city": "Houston",
+   "text": "So I understand the logic",
+   "at": "2026-11-02T20:50:55.310Z"
+  },
+  {
+   "name": "Helene Kurtz, Realtor, Keller Williams Realty Red Stick Partners",
+   "city": "Baton Rouge",
+   "text": "Thank you.",
+   "at": "2026-11-02T20:47:05.030Z"
+  },
+  {
+   "name": "Lewis H. Bryant",
+   "city": "orange beach",
+   "text": "Ok\nThanx",
+   "at": "2026-11-02T20:46:55.281Z"
+  },
+  {
+   "name": "Stuart A Kahn",
+   "city": "Solon",
+   "text": "OK",
+   "at": "2026-11-02T19:49:53.623Z"
+  },
   {
    "name": "Lori D Palmer",
    "city": "Baton Rouge",
@@ -61,6 +127,106 @@
  ],
  "not_qualified_reasons": [
   {
+   "name": "Royal Ross",
+   "city": "denham springs",
+   "note": "SMS bot, possible future deal: Royal said he'll find direct-to-seller off-market single-family houses. Earlier sends were a duplex, a house under contract with someone else, and a non-direct off-market house (Alabama St). Check back in about a week."
+  },
+  {
+   "name": "Joanne Kondreck Realtor\u00ae",
+   "city": "Augusta",
+   "note": "SMS bot, did not qualify: Agent has nothing now and will keep me in mind. Only property mentioned is a rented as-is listing in SC (excluded state), so passed on it. Check back in 2 weeks for GA off-market."
+  },
+  {
+   "name": "The Presnell Partners",
+   "city": "Atlanta",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 104 Myrtlewood Ct, Guyton GA is actively listed on the MLS (Zillow: $439,900, 82 days on market, Zestimate $437,900). 4/3, 2,426 sqft, built 2008. Listed houses don't go to Zack."
+  },
+  {
+   "name": "Danielle Stephens",
+   "city": "Baton Rouge",
+   "note": "SMS bot, did not qualify: 6721 Myrtlewood is listed on the MLS, so passed. Agent said she is taking off today, so no reply needed."
+  },
+  {
+   "name": "Amy Mitchell",
+   "city": "Savannah",
+   "note": "SMS bot, did not qualify: Agent has no off-market listings and always recommends listing. Asked once, declined twice."
+  },
+  {
+   "name": "Susan Emory",
+   "city": "denham springs",
+   "note": "SMS bot, did not qualify: Agent has nothing; her closing question was a wrong-number text meant for someone else. No property."
+  },
+  {
+   "name": "Travis Baker",
+   "city": "Pride",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: Travis has no off-market properties. He asked for wholesale deals from us, so he wants to buy and flip, not list. No property to vet."
+  },
+  {
+   "name": "Travis Steinemann",
+   "city": "Baton Rouge",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: Travis sold his business, has no properties, and passes leads to his wholesaler/investor network. Conversation wrapped up, no reply needed."
+  },
+  {
+   "name": "Ana L. Delgadillo",
+   "city": "Savannah",
+   "note": ""
+  },
+  {
+   "name": "Jonathan Morales",
+   "city": "Houston",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: Dalton Trail, Missouri City 77459 (4/3.5, 3,266 sf, built 2019, asking $399,999). Agent confirmed it is an assignment sale by the brokerage. It also quotes an ARV and says turnkey, which is wholesale-style."
+  },
+  {
+   "name": "Evelyn Greenwood",
+   "city": "Baton Rouge",
+   "note": "SMS bot, did not qualify: Both properties (2604 Jackson, 702 N 29th, Baton Rouge) are active on the MLS, so passed. Asked once about off-market situations."
+  },
+  {
+   "name": "Deborah Janicek",
+   "city": "Baton Rouge",
+   "note": "SMS bot, did not qualify: Agent has nothing off-market. The foreclosure in Batchelor is listed on the MLS at $150k, so it's a pass. Asked once about off-market situations."
+  },
+  {
+   "name": "Helene Kurtz, Realtor, Keller Williams Realty Red Stick Partners",
+   "city": "Baton Rouge",
+   "note": "SMS bot, did not qualify: Agent moved to Alabama and is retiring. No property. Conversation wrapped up with her 'Thank you', so no reply needed."
+  },
+  {
+   "name": "Lewis H. Bryant",
+   "city": "orange beach",
+   "note": "SMS bot, did not qualify: Agent has nothing off-market and wrapped up the conversation. Earlier in the thread (2025) he was hostile to a different pitch."
+  },
+  {
+   "name": "ANDREA WARDSWORTH BEASLEY",
+   "city": "Alexandria",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 1311 Turner is 4 single units on 2 lots, FSBO. It's multifamily, so I passed."
+  },
+  {
+   "name": "Aimee Terito",
+   "city": "denham springs",
+   "note": "SMS bot, did not qualify: Agent said no thanks, not interested. No property."
+  },
+  {
+   "name": "Stuart A Kahn",
+   "city": "Solon",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 3179 E 118th St is still listed on the MLS (active $79.5k, under contract and pending mutual release). It goes back on the MLS if the interested parties don't offer. Seller took $65k. 14809 Pepper Ave is listed. Passed already, and the agent's last 'OK' needs"
+  },
+  {
+   "name": "Marcus Mckay",
+   "city": "Montgomery",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 106 W Delano, Montgomery. Seller firm at $27k (agent confirmed). Off-market now, listing end of week. Seller is liquidating a portfolio; needs a full flip besides the roof."
+  },
+  {
+   "name": "Diane Smith",
+   "city": "Evans",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 3139 W Lake Forest Drive, Evans is listed on the MLS per agent. Only buying off-market."
+  },
+  {
+   "name": "PAULA KNODEL",
+   "city": "Daphne",
+   "note": "SMS bot, did not qualify: NOT QUALIFIED: 160 Dexter Ave, Mobile is actively listed on the MLS (#393637) at $295,000. Zack only buys off-market."
+  },
+  {
    "name": "Micheala Dixon",
    "city": "Montgomery",
    "note": "SMS bot, did not qualify: NOT QUALIFIED: property is actively listed on the MLS (no address given). Only buying off-market."
@@ -69,11 +235,6 @@
    "name": "Karyn Thomas",
    "city": "Richmond Hill",
    "note": "SMS bot, did not qualify: NOT QUALIFIED: agent says all four properties (72 Bonnie Reed Passage, 601 Tupelo, 747 Elaine, 1692 Lee Place, 139 Saddleclub Way) are on the MLS. Listed, so passed."
-  },
-  {
-   "name": "Susan Emory",
-   "city": "denham springs",
-   "note": "SMS bot, did not qualify: Agent has nothing off-market and said no to the distressed-situation follow-up. No property."
   },
   {
    "name": "Linda Barbay",
@@ -113,6 +274,21 @@
  ],
  "qualified": [
   {
+   "name": "Michelle Ruston",
+   "city": "Baton Rouge",
+   "note": "SMS bot handoff: QUALIFIED: 11022 Old Hammond Hwy, Baton Rouge. Zestimate $164,200, asking $145k (88%). Off-market, owner about to list. 3/2, 1300 sqft. Roof 10-11 yrs, HVAC old but works, kitchen and baths updated, new tenant Dec 1. Motivation unknown. Photos pending. Agent said the key is in the o"
+  },
+  {
+   "name": "Cindy Allwine, Executive Broker, Ausum Realty",
+   "city": "Little Rock",
+   "note": "SMS bot handoff: QUALIFIED: 1005 Flametree Dr, Bryant AR. Zestimate $231,200, planned list $125k (54%), off-market per agent, 3/2/1700, built 1989, vacant, rough, roof 10-15 yrs, water heater 2016, HVAC unknown. Investor owners, no repairs, quick cash close. Zillow text mentions old auction terms, p"
+  },
+  {
+   "name": "Scott Gasaway And Haylee Powders",
+   "city": "Tulsa",
+   "note": "SMS bot handoff: QUALIFIED: 417 N 14th St, Broken Arrow. Zestimate $170,600. Off-market, no asking price yet (agent will back out ~$40k repairs from comps). 3/2, 1,083 sqft, 1968. Tenant out mid-Nov, no photos until she gets keys. Seller is the agent's corp with her brother-in-law, selling a small r"
+  },
+  {
    "name": "Chad Green",
    "city": "blue springs",
    "note": "SMS bot handoff: QUALIFIED (rough): off-market 3/2 ranch, ~1300 sqft, unfinished basement, near 87th & James A Reed Rd, Blue Springs. Address withheld, so no Zestimate. Seller owes $166,415.21 and wants to break even. Owner-occupied, rough shape, but roof and HVAC under 1 yr old. No photos. Need add"
@@ -121,6 +297,11 @@
    "name": "Katrini Goshay",
    "city": "Huntsville",
    "note": "SMS bot handoff: QUALIFIED (workable, asking is above Zestimate). 4208 Bishop Cir NW, Huntsville. Zestimate $107.7k, ask $125k (116%). Off-market, occupied, 2/1.5, 945 sqft, 1964. Decent, dated kitchen and bath, new panel. Motivation: wants to sell ASAP with the right offer. Rough numbers only, no c"
+  },
+  {
+   "name": "Kesia Samborski",
+   "city": "Edmond",
+   "note": "SMS bot handoff: QUALIFIED: 300 N Fretz Ave, Edmond OK. Zestimate $228.8k, asking $250k (109%). Off-market, lived in, 4/2, 1,248 sqft, 1965. Good shape, baths and kitchen dated, HVAC 2024. Agent says some room on price. Earlier she sent 624 Rail Dr, which is her own MLS listing, so I passed on it. P"
   }
  ],
  "handed_off_not_qualified": [

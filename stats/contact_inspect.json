@@ -1,34 +1,95 @@
 {
  "matches": [
   {
-   "id": "cE7zQF",
-   "name": "staci jo schwittay",
-   "city": "New Orleans",
+   "id": "lzFBk7",
+   "name": "cindy leblanc",
+   "city": "Baton Rouge",
    "state": "LA",
+   "tags": [
+    "apify-daily-lead"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "PSd9SlBjwoMJKvU8zgmX",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Cindy, my name is Zack. I am in an investor here in Baton Rouge looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-02T17:42:55.236Z",
+     "dateUpdated": "2026-11-02T17:44:51.945Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM1be9163269262cb2174247edf1970666",
+     "from": "+18323451435",
+     "to": "+12254055580",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "J7FKch",
+   "name": "cindy moore",
+   "city": "Mobile",
+   "state": "AL",
+   "tags": [
+    "apify-daily-lead"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "36Nqv0jOzbn9NfuqThqc",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Cindy, my name is Zack. I am in an investor here in Mobile looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-02T17:40:48.536Z",
+     "dateUpdated": "2026-11-02T17:41:25.062Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SMdc5719645f074c0336646a5b512f2949",
+     "from": "+18323451435",
+     "to": "+12512579104",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "AYBXQm",
+   "name": "cindy kerr",
+   "city": "Arcadia",
+   "state": "OK",
    "tags": [
     "apify-daily-lead",
     "agent-replied",
-    "warm-lead",
     "follow-up-2026-11-06"
    ],
    "dnd": null,
    "dndSettings": null,
    "messages": [
     {
-     "id": "P5zvymRVNbaTl9wKcHVw",
+     "id": "l5iEE539aDOU6sOvKDv8",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Nice, what do you have in mind? Even a rough idea helps, like the area, the type of house, or what's making the seller want to move.",
+     "body": "Totally get it, Cindy. Any clients with a house that needs a lot of work, an inherited place, or a landlord who's done? Those are the ones I can help with before they ever list.",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-30T18:21:24.790Z",
-     "dateUpdated": "2026-10-30T18:21:30.238Z",
+     "dateAdded": "2026-10-30T16:13:44.689Z",
+     "dateUpdated": "2026-10-30T16:13:51.071Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
      "source": "app",
-     "altId": "SMf368f7ad18e0c18b50405a7bd201e52e",
+     "altId": "SM52be955264b6c3d2bc6e1bc0f3b33101",
      "from": "+18323451435",
-     "to": "+16013376944",
+     "to": "+14054127360",
      "meta": {
       "marketplace": {
        "appId": "6ac82161cc0c50bbf18cf2ff"
@@ -37,49 +98,298 @@
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "X1WhmBAnB08NNYeo6d0l",
+     "id": "VFGe7UVi3dJOkiMwDNU4",
      "direction": "inbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "I may",
+     "body": "We already have an investor pool we serve",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-30T18:21:04.171Z",
-     "dateUpdated": "2026-10-30T18:21:04.171Z",
-     "altId": "SM1a94f998a95d369b3de0e1598aa417dd",
-     "from": "+16013376944",
+     "dateAdded": "2026-10-30T16:13:24.125Z",
+     "dateUpdated": "2026-10-30T16:13:24.125Z",
+     "altId": "SM558473592fda19a316f362fb1b254e05",
+     "from": "+14054127360",
      "to": "+18323451435",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "wZRE0lT1DwwmNewaSks4",
+     "id": "oiAU7118FQzttT4zQhuH",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Hey Staci, my name is Zack. I am in an investor here in New Orleans looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "body": "Hey Cindy, my name is Zack. I am in an investor here in Arcadia looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-30T16:08:38.603Z",
-     "dateUpdated": "2026-10-30T16:14:18.242Z",
+     "dateAdded": "2026-10-30T16:06:54.716Z",
+     "dateUpdated": "2026-10-30T16:08:34.361Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
      "source": "workflow",
-     "altId": "SM7c5c558f712d3b3e4188bdbb22dc9061",
+     "altId": "SMd964e30575838e0ee82f7cf02b426413",
      "from": "+18323451435",
-     "to": "+16013376944",
+     "to": "+14054127360",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "wAXULY",
+   "name": "cindy and keeli hand",
+   "city": "Owasso",
+   "state": "OK",
+   "tags": [
+    "apify-daily-lead"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "c8C2LaOOcaTlURl518VX",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-30T19:06:56.294Z",
+     "dateUpdated": "2026-10-30T19:07:05.526Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SMcaa48b1f32190cc0445f82054a5e2b60",
+     "from": "+18323451435",
+     "to": "+19187241089",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "nCSF2pdAgjLm6prX9PAJ",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Cindy, my name is Zack. I am in an investor here in Owasso looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-30T16:06:54.704Z",
+     "dateUpdated": "2026-10-30T16:07:00.335Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SMc5dd169543e48a791361a91639d78dfb",
+     "from": "+18323451435",
+     "to": "+19187241089",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "B8pFaF",
+   "name": "cindy rupp",
+   "city": "Blue Springs",
+   "state": "MO",
+   "tags": [
+    "apify-daily-lead"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "FksWHDwUSZ7srAP0RPLG",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-29T21:44:31.237Z",
+     "dateUpdated": "2026-10-29T21:45:10.521Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM093943cd679456afaffd0dcac9a72a4e",
+     "from": "+18323451435",
+     "to": "+18152002124",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "zLWZQ8QQWk803lC2LUyk",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Cindy, my name is Zack. I am in an investor here in Blue Springs looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-29T18:44:29.523Z",
+     "dateUpdated": "2026-10-29T18:47:42.839Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SMa78c1808162c9df08ad8bbe503cf9f47",
+     "from": "+18323451435",
+     "to": "+18152002124",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "Q9f231",
+   "name": "cindy case",
+   "city": "Bellaire",
+   "state": "TX",
+   "tags": [
+    "apify-daily-lead",
+    "text-not-sent"
+   ],
+   "dnd": null,
+   "dndSettings": {
+    "SMS": {
+     "status": "active",
+     "message": "TWILIO_ERROR_CODE: 30006"
+    }
+   },
+   "messages": [
+    {
+     "id": "sdPX44VpBlR4YQD336Gu",
+     "direction": "inbound",
+     "type": 25,
+     "body": "DnD enabled by customer",
+     "dateAdded": "2026-10-29T16:14:41.287Z",
+     "dateUpdated": "2026-10-29T16:14:41.287Z",
+     "from": "+17135581949",
+     "to": "Lucia - Outreach 1",
+     "activity": {
+      "data": {
+       "channel": [
+        "SMS"
+       ]
+      },
+      "title": "DND enabled by customer",
+      "type": "contact_dnd_enabled"
+     },
+     "messageType": "TYPE_ACTIVITY_CONTACT"
+    },
+    {
+     "id": "bVft4MCaRR7hwf5jq70H",
+     "direction": "outbound",
+     "status": "failed",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Cindy, my name is Zack. I am in an investor here in Bellaire looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-29T16:14:39.694Z",
+     "dateUpdated": "2026-10-29T16:14:39.695Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "from": "+18323451435",
+     "to": "+17135581949",
+     "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
+     "messageType": "TYPE_SMS",
+     "detail": "HTTP Error 401: Unauthorized"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "y8iXVi",
+   "name": "cindy ochoa",
+   "city": "Orlando",
+   "state": "FL",
+   "tags": [
+    "apify-daily-lead",
+    "opted-out",
+    "bot-seen-1793375657676"
+   ],
+   "dnd": true,
+   "dndSettings": {
+    "SMS": {
+     "status": "permanent",
+     "message": "STOP_KEYWORD"
+    },
+    "RCS": {
+     "status": "permanent",
+     "message": "STOP_KEYWORD"
+    }
+   },
+   "messages": [
+    {
+     "id": "RsoxhlfJqkqmaKmKSCBQ",
+     "direction": "inbound",
+     "type": 25,
+     "body": "DnD enabled by customer",
+     "dateAdded": "2026-10-30T15:54:18.631Z",
+     "dateUpdated": "2026-10-30T15:54:18.631Z",
+     "from": "+14074515780",
+     "to": "Lucia - Outreach 1",
+     "activity": {
+      "data": {
+       "channel": [
+        "RCS",
+        "SMS"
+       ]
+      },
+      "title": "DND enabled by customer",
+      "type": "contact_dnd_enabled"
+     },
+     "messageType": "TYPE_ACTIVITY_CONTACT"
+    },
+    {
+     "id": "4G5n17k0OzMghPN9pMm5",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Stop",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-30T15:54:17.765Z",
+     "dateUpdated": "2026-10-30T15:54:17.765Z",
+     "altId": "SM29bcfff0156921309b129b1e56db4b18",
+     "from": "+14074515780",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "HNQfWRwyCnw8tU88bFTE",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "let me know",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-27T19:40:45.593Z",
+     "dateUpdated": "2026-10-27T19:40:50.315Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SMf79fe2ca933171766c32e6c36cdcc211",
+     "from": "+18323451435",
+     "to": "+14074515780",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "Xs8ZzNYO7WO2caoLwLHX",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Cindy, my name is Zack. I am in an investor here in Orlando looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-27T16:40:44.265Z",
+     "dateUpdated": "2026-10-27T16:41:07.072Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "workflow",
+     "altId": "SM49ceb070bc6527d3ec8636f1720a07f5",
+     "from": "+18323451435",
+     "to": "+14074515780",
      "messageType": "TYPE_SMS"
     }
    ],
    "notes": [
     {
-     "at": "2026-10-30T18:21:31.910Z",
-     "body": "SMS bot, possible future deal: Staci replied 'I may' to the first text. She might have something off-market. Asking for details."
+     "at": "2026-10-30T15:54:21.691Z",
+     "body": "SMS bot: opted out, no more texts. They said: \"Stop\""
     }
    ]
   },
   {
-   "id": "doXmUT",
-   "name": "stacie garcia",
-   "city": "Clearwater",
+   "id": "oYoe1s",
+   "name": "cindy jenkins",
+   "city": "Fl",
    "state": "FL",
    "tags": [
     "apify-daily-lead"
@@ -88,474 +398,134 @@
    "dndSettings": null,
    "messages": [
     {
-     "id": "CHPbvYUPyVBijbxzDuQR",
+     "id": "y9CoMfANFxA07HNhXiKi",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
      "body": "let me know",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-27T19:39:56.597Z",
-     "dateUpdated": "2026-10-27T19:40:02.646Z",
+     "dateAdded": "2026-10-27T19:14:31.413Z",
+     "dateUpdated": "2026-10-27T19:14:40.153Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
      "source": "workflow",
-     "altId": "SMfb58a6b6603f7414f7109ace4e986195",
+     "altId": "SM45b1327033bc7e6d7b733d8e376f6b2b",
      "from": "+18323451435",
-     "to": "+18135505331",
+     "to": "+19046217492",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "3UBrQ6t5VCde45MGEogW",
+     "id": "MB2tsrqdkTOMOxd7PUq1",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Hey Stacie, my name is Zack. I am in an investor here in Clearwater looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "body": "Hey Cindy, my name is Zack. I am in an investor here in Fl looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-27T16:39:54.786Z",
-     "dateUpdated": "2026-10-27T16:40:04.806Z",
+     "dateAdded": "2026-10-27T16:14:30.201Z",
+     "dateUpdated": "2026-10-27T16:15:51.584Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
      "source": "workflow",
-     "altId": "SM95fe949b8f927e299bf8f5af78498de1",
+     "altId": "SMe9d2f7c7a53bea8ddc92bb00f7b15460",
      "from": "+18323451435",
-     "to": "+18135505331",
+     "to": "+19046217492",
      "messageType": "TYPE_SMS"
     }
    ],
    "notes": []
   },
   {
-   "id": "R7fnc5",
-   "name": "stacie young",
-   "city": "Augusta",
-   "state": null,
+   "id": "CSJ8lv",
+   "name": "cindy holt",
+   "city": "Huntsville",
+   "state": "AL",
    "tags": [
-    "zack"
+    "apify-daily-lead"
    ],
    "dnd": null,
    "dndSettings": null,
    "messages": [
     {
-     "id": "Ln4rWyDbObjF5AFKFXlg",
+     "id": "gWk0ZK9Pa3PVj24mxRn1",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
      "body": "let me know",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-03T22:22:51.254Z",
-     "dateUpdated": "2026-10-03T22:22:55.977Z",
+     "dateAdded": "2026-10-23T19:12:39.306Z",
+     "dateUpdated": "2026-10-23T19:13:09.744Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
      "source": "workflow",
-     "altId": "SM72c494a873b01063e4e3a5eb458d5e70",
+     "altId": "SMa3d66668d657e5369374fbb2d7e20c7b",
      "from": "+18323451435",
-     "to": "+17068333682",
+     "to": "+12566036435",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "Gqm2sPzj27D7h1skTkOm",
+     "id": "Bx0aaBumyB0GosQCcpKN",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Hey Stacie, my name is Zack. I am in an investor here in Augusta looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "body": "Hey CINDY, my name is Zack. I am in an investor here in Huntsville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-03T19:22:47.376Z",
-     "dateUpdated": "2026-10-03T19:22:53.959Z",
+     "dateAdded": "2026-10-23T16:12:37.770Z",
+     "dateUpdated": "2026-10-23T16:14:45.004Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
      "source": "workflow",
-     "altId": "SMb1a88a1b2000ce8aa8841306e82a7a33",
+     "altId": "SM77c61dd456981cf38d73a9df4f338a03",
      "from": "+18323451435",
-     "to": "+17068333682",
+     "to": "+12566036435",
      "messageType": "TYPE_SMS"
     }
    ],
    "notes": []
   },
   {
-   "id": "kTgMfE",
-   "name": "staci russell",
-   "city": "Spring",
-   "state": null,
+   "id": "I4GH6f",
+   "name": "cindy kennamer",
+   "city": "Guntersville",
+   "state": "AL",
    "tags": [
-    "zack"
+    "apify-daily-lead"
    ],
    "dnd": null,
    "dndSettings": null,
    "messages": [
     {
-     "id": "W5ZA29VmzT7RsFKlaXYt",
+     "id": "SluaMQK15wzvESk8Y8T8",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
      "body": "let me know",
      "contentType": "text/plain",
-     "dateAdded": "2026-09-26T19:09:35.548Z",
-     "dateUpdated": "2026-09-26T19:09:40.795Z",
+     "dateAdded": "2026-10-23T19:12:26.826Z",
+     "dateUpdated": "2026-10-23T19:12:52.575Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
      "source": "workflow",
-     "altId": "SM042993d2506470f8f8ee6483c64c6f87",
+     "altId": "SM0e0b56e08b767148686df3f1ec3a3b0d",
      "from": "+18323451435",
-     "to": "+12819171418",
+     "to": "+12565068349",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "7rPkgA9r7BYndButKZre",
+     "id": "Ko3TqYeeLbKfNKzjMeGM",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Hey Staci, my name is Zack. I am in an investor here in pittsburgh looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "body": "Hey Cindy, my name is Zack. I am in an investor here in Guntersville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
      "contentType": "text/plain",
-     "dateAdded": "2026-09-26T16:09:33.977Z",
-     "dateUpdated": "2026-09-26T16:09:50.754Z",
+     "dateAdded": "2026-10-23T16:12:25.168Z",
+     "dateUpdated": "2026-10-23T16:15:41.342Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
      "source": "workflow",
-     "altId": "SMf147e252a784d5ab99b5bfb5c7a59f0e",
+     "altId": "SM22805de26c51932de0a308f6c1206571",
      "from": "+18323451435",
-     "to": "+12819171418",
+     "to": "+12565068349",
      "messageType": "TYPE_SMS"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "7ByZtF",
-   "name": "staci rullo",
-   "city": "Pgh",
-   "state": null,
-   "tags": [
-    "zack"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "5QzjWmN3jr3QeNLv5dyZ",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "let me know",
-     "contentType": "text/plain",
-     "dateAdded": "2026-09-24T22:14:21.607Z",
-     "dateUpdated": "2026-09-24T22:14:27.039Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SM2e3cb623c1d0fb202ede7ea7ac3fa62c",
-     "from": "+18323451435",
-     "to": "+14128898929",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "CsYOx9Gi07CpCW5ZjZfL",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Staci, my name is Zack. I am in an investor here in pittsburgh looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-09-24T19:14:19.903Z",
-     "dateUpdated": "2026-09-24T19:14:25.154Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SM9e8111289b5e572857625556468bfe45",
-     "from": "+18323451435",
-     "to": "+14128898929",
-     "messageType": "TYPE_SMS"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "fjd7nt",
-   "name": "stacie kidwell sandoval, agent",
-   "city": "Chicago",
-   "state": null,
-   "tags": [
-    "lucia"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "MHc5nKi0toEJ6LajyqfW",
-     "direction": "outbound",
-     "status": "failed",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey, are we still here?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-07-31T19:32:37.024Z",
-     "dateUpdated": "2026-07-31T19:32:37.024Z",
-     "source": "workflow",
-     "from": "+18323451435",
-     "to": "+13129489209",
-     "error": "Your account has reached today's opt-out/error limit. Please review your messages and try again after 2026-08-01 11:31:14 America/Mexico_City.",
-     "messageType": "TYPE_SMS",
-     "detail": "HTTP Error 401: Unauthorized"
-    },
-    {
-     "id": "x05kFp0UAUP3g6POXX66",
-     "direction": "outbound",
-     "status": "failed",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Stacie, I was just was wondering if you are an agent that serves residential sales in the Chicago area?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-07-31T17:32:35.759Z",
-     "dateUpdated": "2026-07-31T17:32:35.760Z",
-     "source": "workflow",
-     "from": "+18323451435",
-     "to": "+13129489209",
-     "error": "Your account has reached today's opt-out/error limit. Please review your messages and try again after 2026-08-01 11:31:14 America/Mexico_City.",
-     "messageType": "TYPE_SMS",
-     "detail": "HTTP Error 401: Unauthorized"
-    },
-    {
-     "id": "twscVnUVIhmQmJyoSReg",
-     "direction": "outbound",
-     "type": 28,
-     "body": "Opportunity created",
-     "dateAdded": "2026-07-31T17:32:34.981Z",
-     "dateUpdated": "2026-07-31T17:32:34.981Z",
-     "source": "app",
-     "from": "Lucia - Outreach 1",
-     "to": "+13129489209",
-     "activity": {
-      "data": {
-       "id": "3cWSUiARn9HY9sYngJfN",
-       "name": "Stacie Kidwell Sandoval, Agent",
-       "status": "open",
-       "pipeline": "Text Outbound",
-       "stage": {
-        "newStageName": "Started"
-       }
-      },
-      "title": "Opportunity created",
-      "type": "opportunity_created"
-     },
-     "messageType": "TYPE_ACTIVITY_OPPORTUNITY"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "VrbESA",
-   "name": "staci carter",
-   "city": null,
-   "state": null,
-   "tags": [],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "OItrb4fKjZgExLcqtcaj",
-     "direction": "outbound",
-     "type": 31,
-     "body": "Staci  Carter <> Growth Consultation",
-     "dateAdded": "2026-07-28T15:48:18.456Z",
-     "dateUpdated": "2026-07-28T15:48:18.456Z",
-     "source": "app",
-     "from": "Lucia - Outreach 1",
-     "to": "Staci Carter",
-     "activity": {
-      "data": {
-       "appointmentTitle": "Staci  Carter <> Growth Consultation",
-       "timestamp": "2026-07-28T19:00:00.000Z",
-       "members": {},
-       "id": "GhKsP4YdXrIkx9wapWqe",
-       "serviceBookingId": null,
-       "industryType": null
-      },
-      "title": "New appointment created",
-      "type": "appointment_created"
-     },
-     "messageType": "TYPE_ACTIVITY_APPOINTMENT"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "KJhULR",
-   "name": "stacie rich, agent",
-   "city": "Connecticut",
-   "state": null,
-   "tags": [
-    "lucia"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "gSiymRLdvI9BY6gon7hf",
-     "direction": "outbound",
-     "type": 28,
-     "body": "Opportunity created",
-     "dateAdded": "2026-07-20T18:36:28.916Z",
-     "dateUpdated": "2026-07-20T18:36:28.916Z",
-     "source": "app",
-     "from": "Lucia - Outreach 1",
-     "to": "Stacie Rich, agent",
-     "activity": {
-      "data": {
-       "id": "sLDOxhJ7hWPA5UFYv7Ig",
-       "name": "Stacie Rich, Agent",
-       "status": "open",
-       "pipeline": "Text Outbound",
-       "stage": {
-        "newStageName": "Started"
-       }
-      },
-      "title": "Opportunity created",
-      "type": "opportunity_created"
-     },
-     "messageType": "TYPE_ACTIVITY_OPPORTUNITY"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "aDhKTW",
-   "name": "stacie rocco, agent",
-   "city": "Lansdale",
-   "state": null,
-   "tags": [
-    "lucia"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "6xhHBRNy1t37oIuBdOgk",
-     "direction": "outbound",
-     "status": "failed",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey, are we still here?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-06-24T20:30:32.712Z",
-     "dateUpdated": "2026-06-24T20:30:32.712Z",
-     "source": "workflow",
-     "from": "+18323451435",
-     "to": "+12158824982",
-     "error": "Your account has reached today's opt-out/error limit. Please review your messages and try again after 2026-06-25 12:28:16 America/Mexico_City.",
-     "messageType": "TYPE_SMS",
-     "detail": "HTTP Error 401: Unauthorized"
-    },
-    {
-     "id": "eisFzOH97cBYbi3czkY3",
-     "direction": "outbound",
-     "type": 28,
-     "body": "Opportunity created",
-     "dateAdded": "2026-06-24T18:30:15.014Z",
-     "dateUpdated": "2026-06-24T18:30:15.014Z",
-     "source": "app",
-     "from": "Lucia - Outreach 1",
-     "to": "+12158824982",
-     "activity": {
-      "data": {
-       "id": "tZeOC5ybo5WqkSUgVYCd",
-       "name": "Stacie Rocco, Agent",
-       "status": "open",
-       "pipeline": "Text Outbound",
-       "stage": {
-        "newStageName": "Started"
-       }
-      },
-      "title": "Opportunity created",
-      "type": "opportunity_created"
-     },
-     "messageType": "TYPE_ACTIVITY_OPPORTUNITY"
-    },
-    {
-     "id": "YVd9kf3t2XdO5rYH4AhQ",
-     "direction": "outbound",
-     "status": "failed",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Stacie, I was just was wondering if you are an agent that serves residential sales in the Willow Grove area?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-06-24T18:30:14.304Z",
-     "dateUpdated": "2026-06-24T18:30:14.305Z",
-     "source": "workflow",
-     "from": "+18323451435",
-     "to": "+12158824982",
-     "error": "Your account has reached today's opt-out/error limit. Please review your messages and try again after 2026-06-25 12:28:16 America/Mexico_City.",
-     "messageType": "TYPE_SMS",
-     "detail": "HTTP Error 401: Unauthorized"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "ckmLLS",
-   "name": "staci aquilante, agent",
-   "city": "Pottstown",
-   "state": null,
-   "tags": [
-    "lucia"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "v4NGF9R8ka4sGKBa8PrQ",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey, are we still here?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-06-23T22:47:59.377Z",
-     "dateUpdated": "2026-06-23T22:48:04.849Z",
-     "source": "workflow",
-     "altId": "SMc628bd3e68cb1653477f53e8412e29ce",
-     "from": "+18323451435",
-     "to": "+16109066732",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "kZ1Zadw78K304eF0eDY1",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Staci, I was just was wondering if you are an agent that serves residential sales in the Pottstown area?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-06-23T20:47:58.316Z",
-     "dateUpdated": "2026-06-23T20:48:01.038Z",
-     "source": "workflow",
-     "altId": "SMaf44dc5798b3f568a4b52e41f16b8002",
-     "from": "+18323451435",
-     "to": "+16109066732",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "c0SsusxudP8kUb8epBc5",
-     "direction": "outbound",
-     "type": 28,
-     "body": "Opportunity created",
-     "dateAdded": "2026-06-23T20:47:57.663Z",
-     "dateUpdated": "2026-06-23T20:47:57.663Z",
-     "source": "app",
-     "from": "Lucia - Outreach 1",
-     "to": "+16109066732",
-     "activity": {
-      "data": {
-       "id": "48HXUJqFYzhceS3Cpj7F",
-       "name": "Staci Aquilante, Agent",
-       "status": "open",
-       "pipeline": "Text Outbound",
-       "stage": {
-        "newStageName": "Started"
-       }
-      },
-      "title": "Opportunity created",
-      "type": "opportunity_created"
-     },
-     "messageType": "TYPE_ACTIVITY_OPPORTUNITY"
     }
    ],
    "notes": []

@@ -1,95 +1,204 @@
 {
  "matches": [
   {
-   "id": "lzFBk7",
-   "name": "cindy leblanc",
-   "city": "Baton Rouge",
-   "state": "LA",
+   "id": "0tqDxk",
+   "name": "cindy allwine, executive broker, ausum realty",
+   "city": "Little Rock",
+   "state": "AR",
    "tags": [
-    "apify-daily-lead"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "PSd9SlBjwoMJKvU8zgmX",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Cindy, my name is Zack. I am in an investor here in Baton Rouge looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-11-02T17:42:55.236Z",
-     "dateUpdated": "2026-11-02T17:44:51.945Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SM1be9163269262cb2174247edf1970666",
-     "from": "+18323451435",
-     "to": "+12254055580",
-     "messageType": "TYPE_SMS"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "J7FKch",
-   "name": "cindy moore",
-   "city": "Mobile",
-   "state": "AL",
-   "tags": [
-    "apify-daily-lead"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "36Nqv0jOzbn9NfuqThqc",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Cindy, my name is Zack. I am in an investor here in Mobile looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-11-02T17:40:48.536Z",
-     "dateUpdated": "2026-11-02T17:41:25.062Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SMdc5719645f074c0336646a5b512f2949",
-     "from": "+18323451435",
-     "to": "+12512579104",
-     "messageType": "TYPE_SMS"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "AYBXQm",
-   "name": "cindy kerr",
-   "city": "Arcadia",
-   "state": "OK",
-   "tags": [
+    "lucia",
     "apify-daily-lead",
     "agent-replied",
-    "follow-up-2026-11-06"
+    "warm-lead",
+    "hot-lead",
+    "qualified-lead",
+    "bot-seen-1793648356537"
    ],
    "dnd": null,
    "dndSettings": null,
    "messages": [
     {
-     "id": "l5iEE539aDOU6sOvKDv8",
+     "id": "iSNOWDsa65B0c2KzktRR",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Please send future correspondence via my email Cindyallwine@gmail.com",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-02T19:39:16.609Z",
+     "dateUpdated": "2026-11-02T19:39:16.609Z",
+     "altId": "SM0d6c390a115d741fafaa22030a7a38bd",
+     "from": "+15019513330",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "iP6Gsv9krwOHop9mVifB",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEf7907457cf116c6e345349f889171463.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME7ca34e614d4b2c011b8af3d95d13892f.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME1ea3c82d30389794e7d0dd41184e5b23.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME0264c1abb7a53911d4c92851fd9c2ebb.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME5b857deff80a6bb328b9e5123e8e36e4.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME2a5784088fbb9016209212be9fad46d3.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEe0917b5b1b7c29f0d08841e548079024.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEf2a281e4d397e837c0650a329af7fcfc.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEca9b83bc2a2ef287c086053bceb3407a.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME4e80ad779393931dea089e9ee2795b65.jpeg"
+     ],
+     "body": "",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-02T19:31:32.563Z",
+     "dateUpdated": "2026-11-02T19:31:33.230Z",
+     "altId": "MM786c95249fd3768c3a1a38352ddc9096",
+     "from": "+15019513330",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "h6X5dXomtEuqlcTTM7gO",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEdf2eaa78057a7e4aa26ff63023446855.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEcd192092923480a7ca5794816eb43189.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEdd25443d0be42f8dac958d01f00c5652.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEe363a75cb1ffb5c9c93436e80cc76c39.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEaf3825aed30e1568d96deee03bf9c43a.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME2869acb636ca38695d42b2a87e875ff1.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEd94fc7e4e92d3f0693ceaaf093e8b6a2.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEdbcd9dc97782cd67b03f2383913a982a.jpeg"
+     ],
+     "body": "",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-02T19:29:28.506Z",
+     "dateUpdated": "2026-11-02T19:29:29.017Z",
+     "altId": "MM2ccd81c65bcc8035d8b93c5a07f19508",
+     "from": "+15019513330",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "ngFoAE73HgafWh4iejHB",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME31fcdfc3c2e9040319ec0ae8529eb37c.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEd61270490a06dc74bd0ba50d095e4742.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME45ff79989b61568f1c809ddd621eef1a.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME967ad706c816088dc79bb43c288bfff3.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME2ef8bd2c348f4a4d0d0b7626a5a2459b.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME63039825c40b8003c71cadb16026d31c.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME7ca6fbe8500ab8c992baadc978ce3ecb.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME5289dfce48ddc0a9a99781938f45afce.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEa525c492e2f582dd458328b641a1ce74.jpeg"
+     ],
+     "body": "",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-02T19:28:42.451Z",
+     "dateUpdated": "2026-11-02T19:28:42.958Z",
+     "altId": "MM2c3b9f3eec729c77590b05140e568c9d",
+     "from": "+15019513330",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "szv5ooYBeL9CBn1yzzEi",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME16a33f1d0959661afddb69ab3b789328.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEa17cc7369e9d80b4dc7e268bd740cf56.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME85435f3e77ddf97b6da2ffc2a1efc5a3.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEb30f9f94ea6fcf7819f54f3fc2f00828.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME5930adb66b2006dbb3424a3a16b5a21f.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME82ca7e4f16098a2406bcadcbcd067f0b.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME4f2cb6ad8a22063667e623620bc3c0a6.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEafbf588dd1afe53bbdf15f8a0fe5b2cb.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEab091e8a9b65d51bd517e5ddc1610e64.jpeg"
+     ],
+     "body": "",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-02T19:26:30.574Z",
+     "dateUpdated": "2026-11-02T19:26:31.315Z",
+     "altId": "MMc1b26d879a595be0a095d2bc2b3cd31f",
+     "from": "+15019513330",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "skvhKCFDMCkzTXk1yWrU",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEbe08f8848317658932fc418f7c7f10ee.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEa4ce391a5562df2049bca6b08c51dc63.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEc6008848b66f00854a2bd22350feea5c.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME015689deb8a2433e527f578fec7537b1.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/MEcb429714c27e3a48798702263cef42e1.jpeg",
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/WeuXKFimdnHyzM0tqDxk/ME6bdc846fe9bdc0ad0d1ba220addc9665.jpeg"
+     ],
+     "body": "",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-02T19:26:06.372Z",
+     "dateUpdated": "2026-11-02T19:26:07.002Z",
+     "altId": "MMd310b522f83ce55174a25a8564ef9a16",
+     "from": "+15019513330",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "ONSaOCFs9TytiRnSoxIN",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "\"It was in the house when we bought it. \nWe just put a new heater in the air conditioner part \nIf that makes sense\"\n\nThis was her reply about HVAC",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-02T19:20:40.250Z",
+     "dateUpdated": "2026-11-02T19:20:40.250Z",
+     "altId": "SM249303f420988e9b715978e4bc44aa9c",
+     "from": "+15019513330",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "e12j3t9WaRsq1Yf8PP1e",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "They do not want to be contacted directly, so please don't try reach out to them. Pics coming soon....",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-02T19:18:49.864Z",
+     "dateUpdated": "2026-11-02T19:18:49.864Z",
+     "altId": "SM307d2c06d8cd32fb56c35b6738f8f544",
+     "from": "+15019513330",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "Z9C8WZbaprRVD1NrDq9F",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Totally get it, Cindy. Any clients with a house that needs a lot of work, an inherited place, or a landlord who's done? Those are the ones I can help with before they ever list.",
+     "body": "Thanks Cindy, got it. I'm running the numbers now and I'll get back to you with an offer. Any pics you can text, inside and out? And let me know what you hear on the HVAC.",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-30T16:13:44.689Z",
-     "dateUpdated": "2026-10-30T16:13:51.071Z",
+     "dateAdded": "2026-11-02T19:18:05.999Z",
+     "dateUpdated": "2026-11-02T19:18:11.309Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
      "source": "app",
-     "altId": "SM52be955264b6c3d2bc6e1bc0f3b33101",
+     "altId": "SM9d2f5b56ad12ee6b05a429c6157222c1",
      "from": "+18323451435",
-     "to": "+14054127360",
+     "to": "+15019513330",
      "meta": {
       "marketplace": {
        "appId": "6ac82161cc0c50bbf18cf2ff"
@@ -98,437 +207,43 @@
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "VFGe7UVi3dJOkiMwDNU4",
+     "id": "PRpzh6lO5QrVSu4OVeoU",
      "direction": "inbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "We already have an investor pool we serve",
+     "body": "It is vacant. Water heater installed 2016, Seller believes the roof to be 10 to 15 years old. I'm checking with them on the HVAC. The address is 1005 Flametree Dr in Bryant.",
      "contentType": "text/plain",
-     "dateAdded": "2026-10-30T16:13:24.125Z",
-     "dateUpdated": "2026-10-30T16:13:24.125Z",
-     "altId": "SM558473592fda19a316f362fb1b254e05",
-     "from": "+14054127360",
+     "dateAdded": "2026-11-02T19:17:37.984Z",
+     "dateUpdated": "2026-11-02T19:17:37.984Z",
+     "altId": "SMe86bbe125622121e057ced34de5141c9",
+     "from": "+15019513330",
      "to": "+18323451435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "oiAU7118FQzttT4zQhuH",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Cindy, my name is Zack. I am in an investor here in Arcadia looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-30T16:06:54.716Z",
-     "dateUpdated": "2026-10-30T16:08:34.361Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SMd964e30575838e0ee82f7cf02b426413",
-     "from": "+18323451435",
-     "to": "+14054127360",
-     "messageType": "TYPE_SMS"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "wAXULY",
-   "name": "cindy and keeli hand",
-   "city": "Owasso",
-   "state": "OK",
-   "tags": [
-    "apify-daily-lead"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "c8C2LaOOcaTlURl518VX",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "let me know",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-30T19:06:56.294Z",
-     "dateUpdated": "2026-10-30T19:07:05.526Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SMcaa48b1f32190cc0445f82054a5e2b60",
-     "from": "+18323451435",
-     "to": "+19187241089",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "nCSF2pdAgjLm6prX9PAJ",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Cindy, my name is Zack. I am in an investor here in Owasso looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-30T16:06:54.704Z",
-     "dateUpdated": "2026-10-30T16:07:00.335Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SMc5dd169543e48a791361a91639d78dfb",
-     "from": "+18323451435",
-     "to": "+19187241089",
-     "messageType": "TYPE_SMS"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "B8pFaF",
-   "name": "cindy rupp",
-   "city": "Blue Springs",
-   "state": "MO",
-   "tags": [
-    "apify-daily-lead"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "FksWHDwUSZ7srAP0RPLG",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "let me know",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-29T21:44:31.237Z",
-     "dateUpdated": "2026-10-29T21:45:10.521Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SM093943cd679456afaffd0dcac9a72a4e",
-     "from": "+18323451435",
-     "to": "+18152002124",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "zLWZQ8QQWk803lC2LUyk",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Cindy, my name is Zack. I am in an investor here in Blue Springs looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-29T18:44:29.523Z",
-     "dateUpdated": "2026-10-29T18:47:42.839Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SMa78c1808162c9df08ad8bbe503cf9f47",
-     "from": "+18323451435",
-     "to": "+18152002124",
-     "messageType": "TYPE_SMS"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "Q9f231",
-   "name": "cindy case",
-   "city": "Bellaire",
-   "state": "TX",
-   "tags": [
-    "apify-daily-lead",
-    "text-not-sent"
-   ],
-   "dnd": null,
-   "dndSettings": {
-    "SMS": {
-     "status": "active",
-     "message": "TWILIO_ERROR_CODE: 30006"
-    }
-   },
-   "messages": [
-    {
-     "id": "sdPX44VpBlR4YQD336Gu",
-     "direction": "inbound",
-     "type": 25,
-     "body": "DnD enabled by customer",
-     "dateAdded": "2026-10-29T16:14:41.287Z",
-     "dateUpdated": "2026-10-29T16:14:41.287Z",
-     "from": "+17135581949",
-     "to": "Lucia - Outreach 1",
-     "activity": {
-      "data": {
-       "channel": [
-        "SMS"
-       ]
-      },
-      "title": "DND enabled by customer",
-      "type": "contact_dnd_enabled"
-     },
-     "messageType": "TYPE_ACTIVITY_CONTACT"
-    },
-    {
-     "id": "bVft4MCaRR7hwf5jq70H",
-     "direction": "outbound",
-     "status": "failed",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Cindy, my name is Zack. I am in an investor here in Bellaire looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-29T16:14:39.694Z",
-     "dateUpdated": "2026-10-29T16:14:39.695Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "from": "+18323451435",
-     "to": "+17135581949",
-     "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
-     "messageType": "TYPE_SMS",
-     "detail": "HTTP Error 401: Unauthorized"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "y8iXVi",
-   "name": "cindy ochoa",
-   "city": "Orlando",
-   "state": "FL",
-   "tags": [
-    "apify-daily-lead",
-    "opted-out",
-    "bot-seen-1793375657676"
-   ],
-   "dnd": true,
-   "dndSettings": {
-    "SMS": {
-     "status": "permanent",
-     "message": "STOP_KEYWORD"
-    },
-    "RCS": {
-     "status": "permanent",
-     "message": "STOP_KEYWORD"
-    }
-   },
-   "messages": [
-    {
-     "id": "RsoxhlfJqkqmaKmKSCBQ",
-     "direction": "inbound",
-     "type": 25,
-     "body": "DnD enabled by customer",
-     "dateAdded": "2026-10-30T15:54:18.631Z",
-     "dateUpdated": "2026-10-30T15:54:18.631Z",
-     "from": "+14074515780",
-     "to": "Lucia - Outreach 1",
-     "activity": {
-      "data": {
-       "channel": [
-        "RCS",
-        "SMS"
-       ]
-      },
-      "title": "DND enabled by customer",
-      "type": "contact_dnd_enabled"
-     },
-     "messageType": "TYPE_ACTIVITY_CONTACT"
-    },
-    {
-     "id": "4G5n17k0OzMghPN9pMm5",
-     "direction": "inbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Stop",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-30T15:54:17.765Z",
-     "dateUpdated": "2026-10-30T15:54:17.765Z",
-     "altId": "SM29bcfff0156921309b129b1e56db4b18",
-     "from": "+14074515780",
-     "to": "+18323451435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "HNQfWRwyCnw8tU88bFTE",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "let me know",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-27T19:40:45.593Z",
-     "dateUpdated": "2026-10-27T19:40:50.315Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SMf79fe2ca933171766c32e6c36cdcc211",
-     "from": "+18323451435",
-     "to": "+14074515780",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "Xs8ZzNYO7WO2caoLwLHX",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Cindy, my name is Zack. I am in an investor here in Orlando looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-27T16:40:44.265Z",
-     "dateUpdated": "2026-10-27T16:41:07.072Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SM49ceb070bc6527d3ec8636f1720a07f5",
-     "from": "+18323451435",
-     "to": "+14074515780",
      "messageType": "TYPE_SMS"
     }
    ],
    "notes": [
     {
-     "at": "2026-10-30T15:54:21.691Z",
-     "body": "SMS bot: opted out, no more texts. They said: \"Stop\""
+     "at": "2026-11-02T19:18:13.411Z",
+     "body": "\ud83c\udfe0 New qualified lead\n1005 Flametree Dr, Bryant, AR 72022\n\ud83d\udd17 <https://www.zillow.com/homedetails/1005-Flametree-Dr-Bryant-AR-72022/391456zpid/|Click here to view on Zillow>\n\n\ud83d\udcb0 Asking: $125,000 (planned list price, agent says there's room)\n\ud83d\udcca Zestimate: $231,200 (asking is 54%)\n\ud83d\udccd Status: Off-market (not on MLS yet, per agent)\n\n\ud83d\udd27 Condition: Rough, tenant just evicted. Water heater 2016, roof 10-15 yrs per seller, HVAC unknown. Photos pending.\n\ud83c\udfe1 Property: 3/2/1700 \u00b7 built 1989 \u00b7 Vacant\n\n\ud83d\ude4b Seller: Investor owners evicted tenant, want to sell; no repairs, quick close, cash only\n\u23f1\ufe0f Timeline: Quick close\n\n\ud83e\uddee Deal calculator\nARV: $231,200 (Zestimate (comps came in lower))\nComps: No verified comps found. Using agent's remodeled estimate of $225k, just under the Zestimate of $231,200. Rough estimate.\nRepairs: $76,500 (heavy, $45/sqft \u00d7 1,700 sqft)\nBuyer pays: $85,340 (70% of ARV minus repairs)\nYour fee: $10,000 \u00b7 EMD $746 (1% of offer)\nMax offer: $74,594\n\u274c Asking $125,000 is $50,406 over your max. Seller needs to come down to $74,594\n<https://claude.ai/artifact/N7qkPw3VY59ugckT9AhMvV|Adjust in the calculator>\n\n\ud83e\udd1d Pitch to the agent\nOpen at: $67,000\nWhat to say: Since it's rough, the roof is 10-15 years old and the seller wants a quick close with no repairs, I can do $67,000 cash, as-is, close in about 2 weeks, no inspections or repairs. Is the HVAC working?\n\n\ud83d\udc64 Agent: Cindy Allwine, Executive Broker, Ausum Realty \u00b7 +15019513330\n\n\u2705 Why it qualifies: Off-market 3/2 in Bryant, vacant after eviction. Agent Cindy says the owners will deal, with room under $125k. Zillow's description mentions old auction terms, but the days-on-Zillow figure suggests that data is stale, and the agent says it's not on the MLS. Worth confirming. Numbers are rough.\n\n<https://app.gohighlevel.com/v2/location/nvnsI7VgLrDYA5JeQ945/contacts/detail/WeuXKFimdnHyzM0tqDxk|Open in GHL>\n\n\ud83d\udcac Reply yes in this thread to send the opening offer, or reply a number (like 150k) to offer that instead."
+    },
+    {
+     "at": "2026-11-02T19:18:13.218Z",
+     "body": "SMS bot handoff: QUALIFIED: 1005 Flametree Dr, Bryant AR. Zestimate $231,200, planned list $125k (54%), off-market per agent, 3/2/1700, built 1989, vacant, rough, roof 10-15 yrs, water heater 2016, HVAC unknown. Investor owners, no repairs, quick cash close. Zillow text mentions old auction terms, probably stale. Photos pending."
+    },
+    {
+     "at": "2026-10-27T16:30:42.894Z",
+     "body": "SMS bot, possible future deal: Cindy has nothing now; sellers overpriced. She said she'll reach out if a rough, inherited or landlord house comes up. Check in about a month."
+    },
+    {
+     "at": "2026-10-27T16:26:00.047Z",
+     "body": "SMS bot, possible future deal: Cindy (Little Rock) has nothing now; said she'll reach out if something comes down the pipeline. Check back in about a month."
+    },
+    {
+     "at": "2026-10-27T16:23:42.866Z",
+     "body": "SMS bot, possible future deal: Cindy (Little Rock) has nothing now, sellers' expectations too high. She said she'll reach out if something comes through. Check back in about a month."
     }
    ]
-  },
-  {
-   "id": "oYoe1s",
-   "name": "cindy jenkins",
-   "city": "Fl",
-   "state": "FL",
-   "tags": [
-    "apify-daily-lead"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "y9CoMfANFxA07HNhXiKi",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "let me know",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-27T19:14:31.413Z",
-     "dateUpdated": "2026-10-27T19:14:40.153Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SM45b1327033bc7e6d7b733d8e376f6b2b",
-     "from": "+18323451435",
-     "to": "+19046217492",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "MB2tsrqdkTOMOxd7PUq1",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Cindy, my name is Zack. I am in an investor here in Fl looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-27T16:14:30.201Z",
-     "dateUpdated": "2026-10-27T16:15:51.584Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SMe9d2f7c7a53bea8ddc92bb00f7b15460",
-     "from": "+18323451435",
-     "to": "+19046217492",
-     "messageType": "TYPE_SMS"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "CSJ8lv",
-   "name": "cindy holt",
-   "city": "Huntsville",
-   "state": "AL",
-   "tags": [
-    "apify-daily-lead"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "gWk0ZK9Pa3PVj24mxRn1",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "let me know",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-23T19:12:39.306Z",
-     "dateUpdated": "2026-10-23T19:13:09.744Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SMa3d66668d657e5369374fbb2d7e20c7b",
-     "from": "+18323451435",
-     "to": "+12566036435",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "Bx0aaBumyB0GosQCcpKN",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey CINDY, my name is Zack. I am in an investor here in Huntsville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-23T16:12:37.770Z",
-     "dateUpdated": "2026-10-23T16:14:45.004Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SM77c61dd456981cf38d73a9df4f338a03",
-     "from": "+18323451435",
-     "to": "+12566036435",
-     "messageType": "TYPE_SMS"
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "I4GH6f",
-   "name": "cindy kennamer",
-   "city": "Guntersville",
-   "state": "AL",
-   "tags": [
-    "apify-daily-lead"
-   ],
-   "dnd": null,
-   "dndSettings": null,
-   "messages": [
-    {
-     "id": "SluaMQK15wzvESk8Y8T8",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "let me know",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-23T19:12:26.826Z",
-     "dateUpdated": "2026-10-23T19:12:52.575Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SM0e0b56e08b767148686df3f1ec3a3b0d",
-     "from": "+18323451435",
-     "to": "+12565068349",
-     "messageType": "TYPE_SMS"
-    },
-    {
-     "id": "Ko3TqYeeLbKfNKzjMeGM",
-     "direction": "outbound",
-     "status": "delivered",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Cindy, my name is Zack. I am in an investor here in Guntersville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-10-23T16:12:25.168Z",
-     "dateUpdated": "2026-10-23T16:15:41.342Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SM22805de26c51932de0a308f6c1206571",
-     "from": "+18323451435",
-     "to": "+12565068349",
-     "messageType": "TYPE_SMS"
-    }
-   ],
-   "notes": []
   }
  ]
 }

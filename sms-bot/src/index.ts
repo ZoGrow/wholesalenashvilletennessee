@@ -22,7 +22,8 @@ export interface Env {
   DRY_RUN?: string; // "true" = log the reply instead of texting it
   SLACK_BOT_TOKEN?: string; // Slack app "Offer Bot": reads Zack's replies on lead cards (Zack 2026-10-29)
   SLACK_SIGNING_SECRET?: string;
-  SLACK_ZACK_USER?: string; // only this Slack user's "yes" / number sends an offer
+  SLACK_ZACK_USER?: string;
+  PROPERTY_PINGS?: string; // "on" = Slack ping when an agent first says they have a house (off: Zack 2026-11-02) // only this Slack user's "yes" / number sends an offer
 }
 
 const GHL = "https://services.leadconnectorhq.com";
@@ -387,7 +388,7 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
   if (!decision.reply.trim()) console.log("no reply sent to", contactId, "deal", decision.deal, "note", decision.note);
   // Zack 2026-11-02: "why do I have to check in with you, we have good responses". The first time an agent
   // says they have a house for us, ping Slack right away, before it qualifies. Once per contact.
-  if (decision.has_property && decision.deal !== "qualified" && decision.deal !== "not_qualified" && !tags.includes(PINGED_TAG)) {
+  if (env.PROPERTY_PINGS === "on" && decision.has_property && decision.deal !== "qualified" && decision.deal !== "not_qualified" && !tags.includes(PINGED_TAG)) {
     await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [PINGED_TAG] });
     if (env.SLACK_WEBHOOK_URL) {
       const who = [contact.firstName, contact.lastName].filter(Boolean).join(" ") || contact.phone || "An agent";

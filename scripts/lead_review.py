@@ -27,7 +27,7 @@ def when(v):
     return datetime.fromisoformat(str(v).replace("Z", "+00:00"))
 
 out = {"days": DAYS, "agents_replied": 0, "buckets": Counter(), "still_vetting": 0, "unanswered": [],
-       "not_qualified_reasons": [], "qualified": [], "handed_off_not_qualified": []}
+       "not_qualified_reasons": [], "qualified": [], "handed_off_not_qualified": [], "open_convos": []}
 after = None
 done = False
 while not done:
@@ -50,6 +50,10 @@ while not done:
         hit = [b for b in BUCKETS if b in tags]
         for b in hit: out["buckets"][b] += 1
         if not hit: out["still_vetting"] += 1
+        if not hit or hit == ["warm-lead"]:
+            out["open_convos"].append({"name": name, "id": c["contactId"], "city": contact.get("city"), "state": contact.get("state"),
+                "bucket": "warm" if hit else "vetting",
+                "texts": [f"{'US' if x.get('direction') == 'outbound' else 'AGENT'} {x['dateAdded'][5:16]}: {(x.get('body') or '[photo]')[:220]}" for x in ms[-10:]]})
         last = ms[-1]
         if last.get("direction") == "inbound" and not ({"hot-lead", "bot-off", "opted-out", "dnd-skipped"} & tags) \
                 and now - when(last["dateAdded"]) > timedelta(minutes=10):

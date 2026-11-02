@@ -464,6 +464,8 @@ function qualifiedLeadCard(lead: Lead, contact: Record<string, any>, contactId: 
 
 const REPAIR_PSF: Record<string, number> = { light: 15, medium: 30, heavy: 45, full_gut: 65 }; // same levels as the deal calculator
 const EMD_PERCENT = 1; // earnest money deposit, % of our offer price (Zack 2026-10-22)
+const EMD_MIN = 1000; // Zack 2026-11-02: EMD is 1% of the price, but never under $1,000
+const emd = (price: number) => Math.max(EMD_MIN, Math.round(price * EMD_PERCENT / 100));
 const CALCULATOR_URL = "https://claude.ai/artifact/N7qkPw3VY59ugckT9AhMvV";
 const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
 
@@ -485,12 +487,12 @@ function dealReport(lead: Lead, env: Env): string {
     return `🧮 *Rough numbers* (not enough to run the calculator)\nARV: ${v("arv_range")}\nRepairs: ${v("repairs")}\nMax offer: ${v("max_offer")}\n\n🤝 *Make the offer*\nOpen at: ${v("opening_offer")}\nWhat to say: ${script(/^\$/.test(v("opening_offer")) ? v("opening_offer") : "[your number]")}`;
   }
   const pct = Number(env.ARV_PERCENT || "70"), fee = Number(env.ASSIGNMENT_FEE || "10000");
-  const buyer = arv * pct / 100 - repairs, max = (buyer - fee) / (1 + EMD_PERCENT / 100), open = Math.floor(max * 0.9 / 500) * 500;
+  const buyer = arv * pct / 100 - repairs, max = Math.min((buyer - fee) / (1 + EMD_PERCENT / 100), buyer - fee - EMD_MIN), open = Math.floor(max * 0.9 / 500) * 500;
   const arvHow = comps && comps >= (zest || 0) ? `from sold comps${sqft && comps ? `, ~$${Math.round(comps / sqft)}/sqft` : ""}` : "Zestimate (comps came in lower)";
   const repHow = psf && sqft ? `${level.replace("_", " ")}, $${psf}/sqft × ${sqft.toLocaleString("en-US")} sqft` : "bot's estimate";
   let verdict = "";
   if (asking) {
-    const spread = buyer - asking * (1 + EMD_PERCENT / 100);
+    const spread = buyer - asking - emd(asking);
     verdict = asking <= max ? `✅ Asking ${usd(asking)} is under your max. Fee at asking: ${usd(spread)}`
       : spread > 0 ? `⚠️ Asking ${usd(asking)} is ${usd(asking - max)} over your max. Fee at asking only ${usd(spread)}`
       : `❌ Asking ${usd(asking)} is ${usd(asking - max)} over your max. Seller needs to come down to ${usd(max)}`;
@@ -501,7 +503,7 @@ function dealReport(lead: Lead, env: Env): string {
     ...(lead?.arv_comps?.trim() && !/^unknown/i.test(lead.arv_comps) ? [`Comps: ${lead.arv_comps.trim()}`] : []),
     `Repairs: ${usd(repairs)} (${repHow})`,
     `Buyer pays: ${usd(buyer)} (${pct}% of ARV minus repairs)`,
-    `Your fee: ${usd(fee)} · EMD ${usd(max * EMD_PERCENT / 100)} (${EMD_PERCENT}% of offer)`,
+    `Your fee: ${usd(fee)} · EMD ${usd(emd(max))} (${EMD_PERCENT}% of offer, $1,000 minimum)`,
     `*Max offer: ${usd(max)}*`,
     ...(verdict ? [verdict] : []),
     `<${CALCULATOR_URL}|Adjust in the calculator>`,
@@ -827,7 +829,7 @@ function offerPrice(text: string): number | null {
 }
 
 const OFFER_CHANNEL = "C0C9A8D6AS2"; // #wholesaling-hot-lead
-const DONE_MARKS = ["eyes", "white_check_mark", "warning", "fast_forward"]; // our reactions = already handled
+const DONE_MARKS = ["eyes", "white_check_mark", "warning", "fast_forward", "memo"]; // our reactions = already handled
 
 /** Every minute: Zack's "yes" / number replies on lead cards in the last hour that the bot hasn't marked yet.
  *  Only the newest one per card is sent; older ones get ⏩ so a card never gets two offers from one batch. */
@@ -842,22 +844,43 @@ async function pollSlackOffers(env: Env): Promise<Record<string, unknown>> {
     const replies: any[] = (await slackGet(env, "conversations.replies", { channel: OFFER_CHANNEL, ts: card.ts, oldest: String(since), limit: "100" })).messages ?? [];
     const mine = replies.filter((r) => r.ts !== card.ts && !r.bot_id && (!env.SLACK_ZACK_USER || r.user === env.SLACK_ZACK_USER) &&
       !(r.reactions ?? []).some((x: any) => DONE_MARKS.includes(x.name) && (x.users ?? []).includes(me)));
-    // Looks like an offer but has extra instructions the bot can't follow: say so instead of staying silent.
-    for (const r of mine.filter((r) => offerPrice(r.text || "") === null && /\d/.test(r.text || "") && /\boffer\b|\d\s*k\b|\$/i.test(r.text || ""))) {
-      await slack(env, "reactions.add", { channel: OFFER_CHANNEL, timestamp: r.ts, name: "warning" });
-      await slack(env, "chat.postMessage", { channel: OFFER_CHANNEL, thread_ts: card.ts,
-        text: "⚠️ Not sent. I can only auto-send a plain *yes* or a number like *90k* here. For custom terms (email only, different closing, expiry), ask Claude in the project and it'll send it." });
+    // Zack 2026-11-02: read the whole reply, not just the number. Plain "yes"/"90k" goes straight through;
+    // anything with more words is read by Claude for instructions (email only, closing days, expiry, extra terms).
+    const todo: { r: any; price: number; o: OfferOpts }[] = [];
+    for (const r of mine) {
+      const t = (r.text || "").replace(/<[^>]*>/g, "").trim();
+      if (/^(:[a-z_]+:|✅|⚠️|🎉|❌|🔁|📤)/.test(t) || /Sent using\*? Claude/i.test(t)) continue; // status notes, not offers
+      const quick = offerPrice(t);
+      if (quick !== null) { todo.push({ r, price: quick, o: {} }); continue; }
+      if (!/\d|\b(yes|yep|send|offer)\b/i.test(t)) continue; // just chat, not an offer
+      let parsed: any;
+      try { parsed = await readOfferInstructions(t, card.text || "", env); } catch (e) { console.error("offer parse failed", e); continue; }
+      if (!parsed.is_offer) { await slack(env, "reactions.add", { channel: OFFER_CHANNEL, timestamp: r.ts, name: "memo" }); continue; }
+      if (parsed.unclear) {
+        await slack(env, "reactions.add", { channel: OFFER_CHANNEL, timestamp: r.ts, name: "warning" });
+        await slack(env, "chat.postMessage", { channel: OFFER_CHANNEL, thread_ts: card.ts, text: `⚠️ Not sent yet: ${String(parsed.unclear).slice(0, 300)}` });
+        continue;
+      }
+      const o: OfferOpts = {
+        channel: ["email", "text"].includes(parsed.send_via) ? parsed.send_via : "both",
+        closingDays: Number(parsed.closing_business_days) || undefined,
+        ddDays: Number(parsed.due_diligence_days) || undefined,
+        expiryHours: Number(parsed.expires_in_hours) || undefined,
+        confirmByText: parsed.confirm_by_text !== false,
+        extraStips: Array.isArray(parsed.extra_terms) ? parsed.extra_terms.map(String).filter(Boolean) : [],
+        notes: String(parsed.summary || ""),
+      };
+      todo.push({ r, price: Number(parsed.price) >= 10000 ? Math.round(Number(parsed.price)) : 0, o });
     }
-    const todo = mine.filter((r) => offerPrice(r.text || "") !== null);
     if (!todo.length) continue;
     const last = todo[todo.length - 1];
-    for (const r of todo.slice(0, -1)) await slack(env, "reactions.add", { channel: OFFER_CHANNEL, timestamp: r.ts, name: "fast_forward" });
+    for (const x of todo.slice(0, -1)) await slack(env, "reactions.add", { channel: OFFER_CHANNEL, timestamp: x.r.ts, name: "fast_forward" });
     try {
-      (seen.sent as string[]).push(last.ts);
-      await offerFromSlack(OFFER_CHANNEL, card.ts, last.ts, offerPrice(last.text || "")!, env);
+      (seen.sent as string[]).push(last.r.ts);
+      await offerFromSlack(OFFER_CHANNEL, card.ts, last.r.ts, last.price, env, last.o);
     } catch (e) {
       console.error("slack offer failed", e);
-      await slack(env, "reactions.add", { channel: OFFER_CHANNEL, timestamp: last.ts, name: "warning" });
+      await slack(env, "reactions.add", { channel: OFFER_CHANNEL, timestamp: last.r.ts, name: "warning" });
       await slack(env, "chat.postMessage", { channel: OFFER_CHANNEL, thread_ts: card.ts, text: `⚠️ Offer not sent: ${String(e).slice(0, 300)}` });
       seen.error = String(e);
     }
@@ -883,7 +906,39 @@ async function slack(env: Env, method: string, body: Record<string, unknown>): P
   return out;
 }
 
-async function offerFromSlack(channel: string, threadTs: string, ts: string, price: number, env: Env): Promise<void> {
+/** Reads Zack's Slack reply on a lead card and pulls out the offer and any instructions that come with it. */
+async function readOfferInstructions(reply: string, card: string, env: Env): Promise<any> {
+  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
+  const res = await client.messages.create({
+    model: MODEL, max_tokens: 400,
+    messages: [{ role: "user", content: `Zack (a real estate investor) replied in Slack under a lead card. Decide if he is telling us to send an offer now, and pull out his instructions.
+
+Lead card (for context):
+${card.slice(0, 2500)}
+
+Zack's reply:
+${reply}
+
+Our default offer: price = the card's "Open at" number, sent by email (if we have one) and text, closing 21 business days, due diligence 5 business days, no expiry. Only change what he asks to change.
+
+Answer with JSON only:
+{"is_offer": true/false (false if he is asking a question, commenting, or saying NOT to send yet),
+ "price": number in dollars or null to use the card's opening offer ("90k" = 90000),
+ "send_via": "both" | "email" | "text",
+ "confirm_by_text": true/false (if email only: should we text the agent that the offer is in their inbox? default true),
+ "closing_business_days": number or null, "due_diligence_days": number or null, "expires_in_hours": number or null,
+ "extra_terms": [extra lines to add to the offer's special stips, written as offer terms, only if he asked],
+ "unclear": null, or a one-line question if his instructions can't be followed safely,
+ "summary": "short list of the changes he asked for, empty if none"}` }],
+  });
+  const text = res.content.map((b: any) => b.text || "").join("");
+  return JSON.parse(text.match(/\{[\s\S]*\}/)?.[0] ?? "{}");
+}
+
+type OfferOpts = { closingDays?: number; ddDays?: number; expiryHours?: number; channel?: "both" | "email" | "text";
+  confirmByText?: boolean; extraStips?: string[]; notes?: string };
+
+async function offerFromSlack(channel: string, threadTs: string, ts: string, price: number, env: Env, o: OfferOpts = {}): Promise<void> {
   await slack(env, "reactions.add", { channel, timestamp: ts, name: "eyes" });
   const card: string = (await slackGet(env, "conversations.replies", { channel, ts: threadTs, limit: "1" })).messages?.[0]?.text ?? "";
   const contactId = card.match(/contacts\/detail\/([A-Za-z0-9]+)/)?.[1];
@@ -896,11 +951,13 @@ async function offerFromSlack(channel: string, threadTs: string, ts: string, pri
   const title = await findTitleCompany(address, env);
   const first = (contact.firstName || "").trim().split(/\s+/)[0] || "there";
   const name = first.charAt(0).toUpperCase() + first.slice(1).toLowerCase();
-  const terms = offerTerms(address, price, title);
-  const text = `Hi ${name}, here's my offer:\n\n${terms}\n\nLet me know if you have any questions.\n\nThanks,\nZack Olabi\nZoGrow Media LLC`;
+  const terms = offerTerms(address, price, title, o);
+  const expiry = o.expiryHours ? ` (offer expires in ${o.expiryHours} hours)` : "";
+  const text = `Hi ${name}, here's my offer${expiry}:\n\n${terms}\n\nLet me know if you have any questions.\n\nThanks,\nZack Olabi\nZoGrow Media LLC`;
 
   const done: string[] = [];
-  if (email) {
+  if (o.channel === "email" && !email) throw new Error("you asked for email only, but there's no email for this agent in GHL or on the card");
+  if (email && o.channel !== "text") {
     if (!contact.email) await ghl(env, `/contacts/${contactId}`, "PUT", { email });
     try {
       await ghl(env, "/conversations/messages", "POST", {
@@ -915,14 +972,20 @@ async function offerFromSlack(channel: string, threadTs: string, ts: string, pri
   const hour = Number(new Date().toLocaleString("en-US", { timeZone: "America/Chicago", hour: "numeric", hour12: false }));
   const tags: string[] = (contact.tags ?? []).map((t: string) => t.toLowerCase());
   const noText = tags.includes(OPTED_OUT_TAG) || contact.dnd || contact.dndSettings?.SMS?.status === "active";
-  if (noText) done.push("no text (opted out / DND)");
+  const emailed = done.some((d) => d.startsWith("emailed"));
+  const smsBody = o.channel === "email"
+    ? (o.confirmByText === false ? "" : `Hi ${name}, just emailed my offer on ${address.split(",")[0]} to ${email}: ${usd(price)} cash, as-is${expiry}. Let me know what the sellers think.`)
+    : text;
+  if (o.channel === "email" && !emailed) throw new Error(`email didn't go out: ${done.join(", ")}`);
+  if (!smsBody) { /* email only, no confirmation text */ }
+  else if (noText) done.push("no text (opted out / DND)");
   else if (hour < 8 || hour >= 20) {
-    await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `${PENDING_NOTE} [${channel} ${threadTs}]\n${text}` });
+    await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `${PENDING_NOTE} [${channel} ${threadTs}]\n${smsBody}` });
     await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [PENDING_TAG] });
     done.push("text goes out at 9am CT (it's after hours)");
   } else {
-    await ghl(env, "/conversations/messages", "POST", { type: "SMS", contactId, message: text });
-    done.push(`texted ${contact.phone || "the agent"}`);
+    await ghl(env, "/conversations/messages", "POST", { type: "SMS", contactId, message: smsBody });
+    done.push(o.channel === "email" ? `texted ${contact.phone || "the agent"} that it's in their inbox` : `texted ${contact.phone || "the agent"}`);
   }
   await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [OFFER_TAG, HANDOFF_TAG] });
   await starConversation(contactId, env);
@@ -930,19 +993,19 @@ async function offerFromSlack(channel: string, threadTs: string, ts: string, pri
   await slack(env, "reactions.remove", { channel, timestamp: ts, name: "eyes" });
   await slack(env, "reactions.add", { channel, timestamp: ts, name: "white_check_mark" });
   await slack(env, "chat.postMessage", { channel, thread_ts: threadTs,
-    text: `✅ Offer ${usd(price)} on ${address} to ${name}: ${done.join(", ")}.\nTitle company: ${title} · EMD ${usd(price / 100)}` });
+    text: `✅ Offer ${usd(price)} on ${address} to ${name}: ${done.join(", ")}.\nTitle company: ${title} · EMD ${usd(emd(price))}${o.notes ? `\nFollowed your notes: ${o.notes}` : ""}` });
 }
 
-function offerTerms(address: string, price: number, title: string): string {
+function offerTerms(address: string, price: number, title: string, o: OfferOpts = {}): string {
   return [
     `Offer on: ${address}`,
     `Purchase Price: ${usd(price)}`,
     `Funding: Cash or Hard Money - No financing contingency`,
     `As-is. No seller repairs`,
     `Buyer pays all closing costs`,
-    `Closing date: 21 business days or sooner`,
-    `Due diligence: 5 business days`,
-    `EMD: ${usd(price * EMD_PERCENT / 100)}`,
+    `Closing date: ${o.closingDays || 21} business days or sooner`,
+    `Due diligence: ${o.ddDays || 5} business days`,
+    `EMD: ${usd(emd(price))}`,
     `Title company: ${title}`,
     `Email: zack@zogrowmedia.com`,
     `Buyer's name: ZoGrow Media LLC`,
@@ -950,6 +1013,7 @@ function offerTerms(address: string, price: number, title: string): string {
     `Special Stips:`,
     `Buyer will not request a price drop unless there is a major issue that would cost more than $10,000 to repair.`,
     `Property to be delivered vacant.`,
+    ...(o.extraStips ?? []),
     ``,
     `Proof of funds: ${POF_URL}`,
   ].join("\n");

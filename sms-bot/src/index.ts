@@ -1022,7 +1022,7 @@ async function offerResponseCheck(contact: any, contactId: string, env: Env): Pr
   const address = (thread[i].body.match(/offer on:?\s*([^\n]+)/i)?.[1] || "").trim();
   const price = thread[i].body.match(/purchase price:?\s*(\$[\d,]+)/i)?.[1] || "";
   const name = [contact.firstName, contact.lastName].filter(Boolean).join(" ") || "The agent";
-  const head = out.status === "accepted" ? "🥳🎉 *Offer accepted!*" : out.status === "declined" ? "❌ *Offer declined*" : `🔁 *Counteroffer${out.counter ? `: ${out.counter}` : ""}*`;
+  const head = out.status === "accepted" ? "🎉 *Offer accepted!*" : out.status === "declined" ? "❌ *Offer declined*" : `🔁 *Counteroffer${out.counter ? `: ${out.counter}` : ""}*`;
   const link = `https://app.gohighlevel.com/v2/location/${env.GHL_LOCATION_ID}/contacts/detail/${contactId}`;
   const msg = `${head}\n${name}${address ? ` on ${address}` : ""}${price ? ` (we offered ${price})` : ""}\n> ${last.body.slice(0, 500)}\n${out.summary || ""}\n<${link}|Open in GHL>`;
   const cards: any[] = (await slackGet(env, "conversations.history", { channel: OFFER_CHANNEL, oldest: String(Date.now() / 1000 - 90 * 86400), limit: "500" })).messages ?? [];

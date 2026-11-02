@@ -87,6 +87,7 @@ const SWEEP_CRON = "*/3 * * * *"; // must match wrangler.toml
 const SLACK_CRON = "* * * * *"; // must match wrangler.toml: checks Zack's Slack replies for offers
 const SWEEP_PER_RUN = 3; // replies per sweep (stays within Cloudflare's per-run request limit)
 const SWEEP_LOOKUPS = 15; // contact reads per sweep, for conversations GHL returns without tags
+const PINGED_TAG = "pinged-property"; // Slack got the "agent has a house" ping
 const SEEN_PREFIX = "bot-seen-"; // + the time of the last text the sweep handled
 const OFFER_CRON = "5 14-23 * * *"; // must match wrangler.toml
 // Zack's offer texts ("Offer on: ... Purchase Price: $46,500"). The bot itself never names a price.
@@ -383,6 +384,22 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
       await ghl(env, `/contacts/${contactId}/notes`, "POST", { body: `${label}: ${decision.note}` });
     }
   }
+  if (!decision.reply.trim()) console.log("no reply sent to", contactId, "deal", decision.deal, "note", decision.note);
+  // Zack 2026-11-02: "why do I have to check in with you, we have good responses". The first time an agent
+  // says they have a house for us, ping Slack right away, before it qualifies. Once per contact.
+  if (decision.has_property && decision.deal !== "qualified" && decision.deal !== "not_qualified" && !tags.includes(PINGED_TAG)) {
+    await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [PINGED_TAG] });
+    if (env.SLACK_WEBHOOK_URL) {
+      const who = [contact.firstName, contact.lastName].filter(Boolean).join(" ") || contact.phone || "An agent";
+      const where = [contact.city, contact.state].filter(Boolean).join(", ");
+      const ghlUrl = `https://app.gohighlevel.com/v2/location/${env.GHL_LOCATION_ID}/contacts/detail/${contactId}`;
+      const text = `👀 *Agent has a house*: ${who}${where ? ` (${where})` : ""}\n> ${last.body.slice(0, 300).replace(/\n/g, " ")}\n` +
+        (decision.reply.trim() ? `Bot replied: _${decision.reply.trim().slice(0, 300)}_\n` : "") +
+        `Still vetting it. You'll get the full card if it qualifies. <${ghlUrl}|Open in GHL>`;
+      const res = await fetch(env.SLACK_WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text }) });
+      if (!res.ok) console.error("slack ping failed", res.status, await res.text());
+    }
+  }
   // Only qualified leads go to Slack (Zack 2026-10-20, again 2026-10-22). A handoff about a house that
   // doesn't qualify still gets the card as a GHL note so he can see it there.
   const qualified = decision.deal === "qualified";
@@ -530,7 +547,7 @@ function listingLink(url?: string, address?: string): string {
 
 type Decision = {
   reply: string; handoff: boolean; warm: boolean; optout: boolean; deal: string; note: string; lead: Lead;
-  follow_up_days: number;
+  follow_up_days: number; has_property?: boolean;
 };
 
 /** They asked us to stop: no reply, tag them, and turn on SMS Do Not Disturb so nothing texts them again. */
@@ -567,6 +584,10 @@ const REPLY_FORMAT = {
         type: "integer",
         description: "Days until a check-in text if they don't text first, when they might have something later or need time: 'let me see what I can find' = 4, 'maybe soon' or 'maybe' = 7, 'next week' = 7, 'nothing now, I'll keep you in mind' = 14, 'next month' = 30, 'after the holidays' = until then (max 120). If we're vetting a specific house and are waiting on their answer to our question, 1 (follow up tomorrow). 0 = no check-in (handed off, not interested, opted out, or nothing pending).",
       },
+      has_property: {
+        type: "boolean",
+        description: "True when the agent says they have, or may have, a specific house or seller for us right now (even with no address yet, e.g. 'I have 2, what's your budget?'), and it isn't already clearly listed on the MLS or junk. False for 'nothing now', 'maybe later', listed-only houses, or small talk.",
+      },
       deal: {
         type: "string",
         enum: ["qualified", "not_qualified", "unknown"],
@@ -584,7 +605,7 @@ const REPLY_FORMAT = {
         description: "When handoff or warm is true: for warm, one line on what they might have and when; for handoff, one or two lines for the human with the address, listing price, condition and seller's asking price learned so far. Else empty.",
       },
     },
-    required: ["reply", "handoff", "warm", "optout", "follow_up_days", "deal", "lead", "note"],
+    required: ["reply", "handoff", "warm", "optout", "follow_up_days", "has_property", "deal", "lead", "note"],
     additionalProperties: false,
   },
 };

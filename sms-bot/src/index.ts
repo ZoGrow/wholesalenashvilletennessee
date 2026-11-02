@@ -308,6 +308,8 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
   const contact = (await ghl(env, `/contacts/${contactId}`)).contact ?? {};
   const tags: string[] = (contact.tags ?? []).map((t: string) => t.toLowerCase());
   if (outreachOnly && !tags.includes(OUTREACH_TAG)) return false;
+  // Runs even when the bot is off for them (hot leads): Zack wants offer answers in Slack (2026-11-02).
+  await offerResponseCheck(contact, contactId, env).catch((e) => console.error("offer response check failed", contactId, e));
   if (BOT_OFF_TAGS.some((t) => tags.includes(t)) || contact.dnd || contact.dndSettings?.SMS?.status === "active") {
     console.log("skip: bot off for", contactId);
     return false;
@@ -987,4 +989,44 @@ async function sendPendingOffers(env: Env): Promise<void> {
     const [, channel, threadTs] = head.match(/\[(\S+) (\S+)\]/) ?? [];
     if (channel && env.SLACK_BOT_TOKEN) await slack(env, "chat.postMessage", { channel, thread_ts: threadTs, text: `📤 Morning: offer text sent to ${c.phone || "the agent"}.` });
   }
+}
+
+// ---- Offer answers to Slack (Zack 2026-11-02): when an agent answers an offer by text, post "accepted",
+// "declined" or "countered" on that lead's Slack card. "Thinking about it" and no answer post nothing.
+const OFFER_SEEN_PREFIX = "offer-seen-"; // + time of the agent text already classified
+
+async function offerResponseCheck(contact: any, contactId: string, env: Env): Promise<void> {
+  const tags: string[] = (contact.tags ?? []).map((t: string) => t.toLowerCase());
+  if (!env.SLACK_BOT_TOKEN || ![OFFER_TAG, HANDOFF_TAG, QUALIFIED_TAG].some((t) => tags.includes(t))) return;
+  const thread = await smsThread(contactId, env);
+  let i = thread.length - 1;
+  while (i >= 0 && !(thread[i].direction === "outbound" && OFFER_RE.test(thread[i].body))) i--;
+  const last = thread[thread.length - 1];
+  if (i < 0 || !last || last.direction !== "inbound") return;
+  const seen = `${OFFER_SEEN_PREFIX}${Date.parse(last.at)}`;
+  if (tags.includes(seen)) return;
+  const old = tags.filter((t) => t.startsWith(OFFER_SEEN_PREFIX));
+  if (old.length) await ghl(env, `/contacts/${contactId}/tags`, "DELETE", { tags: old });
+  await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [seen] });
+
+  const after = thread.slice(i + 1).map((m) => `${m.direction === "outbound" ? "US" : "AGENT"}: ${m.body || "[photo]"}`).join("\n");
+  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
+  const res = await client.messages.create({
+    model: MODEL, max_tokens: 300,
+    messages: [{ role: "user", content: `We texted a real estate agent this offer:\n${thread[i].body}\n\nWhat came after, oldest first:\n${after}\n\nBased on the agent's newest text, did the seller accept the offer, decline it, or counter with a different price? Anything else (thinking about it, will present it, questions, no clear answer) is "other". Reply with only JSON like {"status":"accepted|declined|countered|other","counter":"$X or empty","summary":"one short sentence"}` }],
+  });
+  const text = res.content.map((b) => (b.type === "text" ? b.text : "")).join("");
+  const out = JSON.parse(text.match(/\{[\s\S]*\}/)?.[0] ?? "{}");
+  if (!["accepted", "declined", "countered"].includes(out.status)) return;
+
+  const address = (thread[i].body.match(/offer on:?\s*([^\n]+)/i)?.[1] || "").trim();
+  const price = thread[i].body.match(/purchase price:?\s*(\$[\d,]+)/i)?.[1] || "";
+  const name = [contact.firstName, contact.lastName].filter(Boolean).join(" ") || "The agent";
+  const head = out.status === "accepted" ? "🥳🎉 *Offer accepted!*" : out.status === "declined" ? "❌ *Offer declined*" : `🔁 *Counteroffer${out.counter ? `: ${out.counter}` : ""}*`;
+  const link = `https://app.gohighlevel.com/v2/location/${env.GHL_LOCATION_ID}/contacts/detail/${contactId}`;
+  const msg = `${head}\n${name}${address ? ` on ${address}` : ""}${price ? ` (we offered ${price})` : ""}\n> ${last.body.slice(0, 500)}\n${out.summary || ""}\n<${link}|Open in GHL>`;
+  const cards: any[] = (await slackGet(env, "conversations.history", { channel: OFFER_CHANNEL, oldest: String(Date.now() / 1000 - 90 * 86400), limit: "500" })).messages ?? [];
+  const card = cards.find((m) => (m.text || "").includes(`contacts/detail/${contactId}`) && /lead\*/.test(m.text || ""));
+  await slack(env, "chat.postMessage", card ? { channel: OFFER_CHANNEL, thread_ts: card.ts, reply_broadcast: true, text: msg } : { channel: OFFER_CHANNEL, text: msg });
+  await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [`offer-${out.status}`] });
 }

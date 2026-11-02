@@ -473,7 +473,7 @@ function dealReport(lead: Lead, env: Env): string {
   const num = (s?: string) => { const n = parseFloat((s || "").replace(/[$,\s]/g, "").replace(/k$/i, "000")); return isFinite(n) && n > 0 ? n : null; };
   const zest = dollars(lead?.zestimate), comps = dollars(lead?.arv_value) ?? dollars(lead?.arv_range);
   const sqft = num(lead?.sqft) ?? num((lead?.beds_baths_sqft || "").match(/([\d,]{3,6})\s*(sq|sf)/i)?.[1]);
-  const asking = dollars(lead?.asking_price);
+  const asking = /^\s*unknown/i.test(lead?.asking_price || "") ? null : dollars(lead?.asking_price); // "unknown (…~$40k repairs)" isn't a price
   const arv = Math.max(comps || 0, zest || 0) || null;
   const level = (lead?.repair_level || "").toLowerCase().replace(/[\s-]+/g, "_");
   const psf = REPAIR_PSF[level] ?? null;

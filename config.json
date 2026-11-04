@@ -16,7 +16,7 @@
     "max_wait_minutes": 60,
     "max_cost_usd": 3.5,
     "zip_rotation": {
-      "_note": "Each run scrapes the next 3 ZIPs not scraped in rescrape_after_days. Order: Nashville, Middle TN, Memphis/Knoxville/Chattanooga, then big metros nationwide. Never add ZIPs in PA, SC, IA, KY, NE, ND, OR, CT or VA (Zack, 2026-10-13). Each run's 3 locations come from 3 different areas, least-used first. Only markets with typical prices ~$100k-400k (Zack 2026-10-20).",
+      "_note": "Each run scrapes the next 3 ZIPs not scraped in rescrape_after_days. Order: Nashville, Middle TN, Memphis/Knoxville/Chattanooga, then big metros nationwide. Never add ZIPs in PA, SC, IA, KY, NE, ND, OR, CT, VA or IL (Zack, 2026-10-13; IL added 2026-11-04). Each run's 3 locations come from 3 different areas, least-used first. Only markets with typical prices ~$100k-400k (Zack 2026-10-20).",
       "per_round": 3,
       "zips": [
         "37203",
@@ -829,12 +829,6 @@
         "Gary, IN",
         "Muncie, IN",
         "Terre Haute, IN",
-        "Peoria, IL",
-        "Rockford, IL",
-        "Springfield, IL",
-        "Decatur, IL",
-        "Champaign, IL",
-        "Chicago, IL",
         "St. Louis, MO",
         "Kansas City, MO",
         "Springfield, MO",
@@ -899,7 +893,8 @@
     "ND",
     "OR",
     "CT",
-    "VA"
+    "VA",
+    "IL"
   ],
   "field_map": {
     "first_name": [

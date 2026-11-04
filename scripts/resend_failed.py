@@ -25,6 +25,11 @@ def call(method, path, body=None):
             if e.code in (429, 500, 502, 503) and attempt < 3:
                 time.sleep(2 ** attempt); continue
             raise
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
+            # Network blips (SSL EOF killed the 2026-11-03 night run). Only retry reads: a resent POST could double-text.
+            if method == "GET" and attempt < 3:
+                time.sleep(2 ** attempt); continue
+            raise
 
 def messages(cid):
     convs = call("GET", f"/conversations/search?locationId={loc}&contactId={cid}").get("conversations", [])

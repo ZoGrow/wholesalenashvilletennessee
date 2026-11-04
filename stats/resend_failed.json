@@ -3,24 +3,22 @@
  "tagged": 13442,
  "eligible": 0,
  "skipped": {
-  "they replied": 626,
-  "tag agent-replied": 1426,
+  "tag agent-replied": 1503,
   "dnd": 436,
-  "tag opted-out": 433,
-  "bad number (Error 30003 - Number)": 12,
+  "tag opted-out": 448,
+  "bad number (Error 30003 - Number)": 9,
   "bad number (Error 30007 - Messag)": 1,
-  "bad number (Error 30008 - Messag)": 4,
+  "bad number (Error 30008 - Messag)": 3,
   "tag dnd-skipped": 7,
-  "bad number (Error 21211 - Invali)": 1,
   "no messages": 3,
   "tag not-qualified": 2,
-  "tag hot-lead": 4
+  "tag hot-lead": 4,
+  "they replied": 613
  },
  "errors": {
-  "Error 30003 - Number unreachable or out of service.": 12,
-  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 4,
-  "Error 30007 - Message blocked due to carrier policies. This often happens if content viola": 1,
-  "Error 21211 - Invalid \"To\" number format. Please check and try again.": 1
+  "Error 30003 - Number unreachable or out of service.": 9,
+  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 3,
+  "Error 30007 - Message blocked due to carrier policies. This often happens if content viola": 1
  },
  "sent": 0,
  "delivered": 0,

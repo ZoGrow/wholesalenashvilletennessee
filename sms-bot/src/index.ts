@@ -703,22 +703,51 @@ async function threadPhotos(thread: Sms[]): Promise<Anthropic.Beta.BetaImageBloc
 
 const ZILLOW_TOOL: Anthropic.Beta.BetaToolUnion = {
   name: "zillow_lookup",
-  description: "Look up a US home on Zillow by full street address (street, city, state, ZIP if known). Returns Zillow's exact Zestimate, the Zillow page URL, list price and status, beds/baths/sqft, year built, days on Zillow, last sale and tax value. Use it first for every property address; web search is the fallback.",
+  description: "Look up a US home on Zillow by full street address (street, city, state, ZIP if known). Returns Zillow's exact Zestimate, the Zillow page URL, list price and status, beds/baths/sqft, year built, days on Zillow, last sale and tax value. Use it first for every property address. If it isn't found, the agent's city name is often not the one Zillow uses (Newport vs Wilmington DE, Brooklyn Park vs Brooklyn Center MN): web-search the street address to find its ZIP and call this again with street + state + ZIP. Only report the Zestimate as unknown after a ZIP retry fails.",
   input_schema: { type: "object", properties: { address: { type: "string" } }, required: ["address"] },
 };
 
 /** Zillow data via Apify (Zillow blocks direct page reads, which is why Zestimates kept coming back unknown). */
+/** Other ways to write the address. Agents often give a city name Zillow doesn't use for that street
+ *  (Zack 2026-11-05: "Newport, DE" is "Wilmington, DE 19804" on Zillow; "Brooklyn Park" vs "Brooklyn Center"),
+ *  and then the lookup missed a Zestimate that was right there on the Zillow page. */
+function addressVariants(address: string): string[] {
+  const parts = address.split(",").map((x) => x.trim()).filter(Boolean);
+  const street = parts[0] ?? address;
+  const tail = parts.slice(1).join(" ");
+  const state = tail.match(/\b([A-Z]{2})\b/)?.[1] ?? "";
+  const zip = tail.match(/\b(\d{5})\b/)?.[1] ?? "";
+  const city = parts.length > 2 ? parts[1] : "";
+  return [...new Set([
+    address,
+    zip ? `${street}, ${state} ${zip}`.replace(/,\s+(\d)/, ", $1") : "",
+    city && state ? `${street}, ${city}, ${state}` : "",
+    state ? `${street}, ${state}` : "",
+  ].map((x) => x.trim()).filter((x) => x && x !== ", "))];
+}
+
+async function zillowFetch(address: string, env: Env): Promise<any | null> {
+  const res = await fetch(`https://api.apify.com/v2/acts/maxcopell~zillow-detail-scraper/run-sync-get-dataset-items?token=${env.APIFY_TOKEN}&timeout=90`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ addresses: [address], propertyStatus: "FOR_SALE" }),
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const it = ((await res.json()) as any[])[0];
+  return !it || it.isValid === false ? null : it;
+}
+
 async function zillowLookup(address: string, env: Env): Promise<string> {
   if (!address.trim()) return "No address given.";
   try {
-    const res = await fetch(`https://api.apify.com/v2/acts/maxcopell~zillow-detail-scraper/run-sync-get-dataset-items?token=${env.APIFY_TOKEN}&timeout=90`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ addresses: [address], propertyStatus: "FOR_SALE" }),
-    });
-    if (!res.ok) return `Zillow lookup failed (HTTP ${res.status}); use web search instead.`;
-    const it = ((await res.json()) as any[])[0];
-    if (!it || it.isValid === false) return "Not found on Zillow; use web search instead.";
+    // Try the address as given, then without the agent's city name; keep the first hit that has a Zestimate.
+    let it: any = null;
+    for (const a of addressVariants(address)) {
+      const hit = await zillowFetch(a, env).catch(() => null);
+      if (hit && (!it || (it.zestimate == null && hit.zestimate != null))) it = hit;
+      if (it?.zestimate != null) break;
+    }
+    if (!it) return "Not found on Zillow under that address or its ZIP; web-search the street to find its ZIP and call zillow_lookup again with street, state and ZIP. Don't report the Zestimate as unknown without trying the ZIP.";
     const money = (v: any) => (typeof v === "number" ? `$${v.toLocaleString("en-US")}` : v?.amount ? `$${Number(v.amount).toLocaleString("en-US")}` : "unknown");
     return JSON.stringify({
       address: it.listingAddress ?? it.addressOrUrlFromInput, zillow_url: it.propertyUrl,

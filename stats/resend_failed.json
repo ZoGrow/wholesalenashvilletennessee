@@ -3,9 +3,9 @@
  "tagged": 14493,
  "eligible": 0,
  "skipped": {
-  "tag opted-out": 474,
+  "tag opted-out": 475,
   "dnd": 504,
-  "tag agent-replied": 1612,
+  "tag agent-replied": 1620,
   "bad number (Error 30003 - Number)": 8,
   "bad number (read ECONNRESET)": 1,
   "bad number (Error 30007 - Messag)": 2,
@@ -13,7 +13,7 @@
   "no messages": 3,
   "tag not-qualified": 2,
   "tag hot-lead": 4,
-  "they replied": 632,
+  "they replied": 631,
   "bad number (ErrorCode: 30024)": 1,
   "bad number (Error 30008 - Messag)": 2
  },

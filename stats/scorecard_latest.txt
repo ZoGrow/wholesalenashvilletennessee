@@ -1,18 +1,18 @@
 📈 *Weekly scorecard* (week ending Nov 9)
 
-📤 Texts sent: *4,000* (from 5,916 agents scraped, 15,495 agents texted all-time)
+📤 Texts sent: *5,000* (from 7,879 agents scraped, 16,403 agents texted all-time)
 
-Agents who replied: *+540* this week (1,780 total)
-Warm (something later): *+94* this week (281 total)
-Qualified leads: *+28* this week (100 total)
-Didn't qualify: *+100* this week (360 total)
-Handed to you: *+33* this week (148 total)
+Agents who replied: *+150* this week (1,930 total)
+Warm (something later): *+18* this week (299 total)
+Qualified leads: *+13* this week (113 total)
+Didn't qualify: *+28* this week (388 total)
+Handed to you: *+13* this week (161 total)
 
-Reply rate: 13.5% of this week's texts
+Reply rate: 3.0% of this week's texts
 
-🎯 Qualified leads you made an offer on: *37 of 99* (37%, goal 90%)
-No offer yet: Lawrence Blaber, Louis Rizzo, Henry Guillen, Luis F Contreras, Jean Marcel Kouame With Belle Demeure Of Wichita Llc, Brandon Le, Dianne Platt, Julia Bacon and more
+🎯 Qualified leads you made an offer on: *44 of 112* (39%, goal 90%)
+No offer yet: Anne Loy, India Mesa, Tabitha Puente, Christine Stewart, Kristen Clark, Leigh Martin, Riley Ragan, Lawrence Blaber and more
 
-Opted out: *+126* this week (580 total)
-First text failed: *+215* this week (609 total)
-Bot text blocked by carrier: *+26* this week (101 total)
+Opted out: *+33* this week (613 total)
+First text failed: *+31* this week (640 total)
+Bot text blocked by carrier: *+4* this week (105 total)

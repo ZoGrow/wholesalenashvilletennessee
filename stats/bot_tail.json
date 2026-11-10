@@ -1,94 +1,51 @@
 [
  {
-  "at": 1793655869805,
+  "at": 1794334110230,
   "outcome": "ok",
   "trigger": "* * * * *",
   "logs": [
-   "slack poll {\"cards\":126,\"active\":0,\"sent\":[]}"
+   "slack poll {\"cards\":200,\"active\":1,\"sent\":[]}"
   ],
   "errors": []
  },
  {
-  "at": 1793655885015,
+  "at": 1794334126670,
   "outcome": "ok",
   "trigger": "POST",
-  "logs": [
-   "skip: bot off for ANwuQU6ZWGtyYbJJeZbt"
-  ],
+  "logs": [],
   "errors": []
  },
  {
-  "at": 1793655889796,
-  "outcome": "ok",
-  "trigger": "POST",
-  "logs": [
-   "carrier blocked text to e19VzHGDZUsAY2qrrJVF : Hey Alicja, it's Zack. I buy houses around Atlanta and work with a lot of agents. Do you have any sellers who need to sell quick, or a house that needs too much work to list?",
-   "carrier blocked text to e19VzHGDZUsAY2qrrJVF : Hi Alicja, it's Zack. Sorry for the confusion. I'm looking for homes around Atlanta, especially ones that need a lot of work. Do you have a client with a house like that, or one that isn't on the MLS yet?"
-  ],
-  "errors": []
- },
- {
-  "at": 1793655930002,
-  "outcome": "ok",
-  "trigger": "* * * * *",
-  "logs": [
-   "slack poll {\"cards\":126,\"active\":0,\"sent\":[]}"
-  ],
-  "errors": []
- },
- {
-  "at": 1793655926999,
+  "at": 1794334166793,
   "outcome": "ok",
   "trigger": "*/3 * * * *",
-  "logs": [
-   "sweep: answering missed text from 09KKC5y5gD4vsUDKZDZF",
-   "sweep: answering missed text from 131ZWREcXcsrY4Zy950f"
-  ],
+  "logs": [],
   "errors": []
  },
  {
-  "at": 1793655989867,
+  "at": 1794334169910,
   "outcome": "ok",
   "trigger": "* * * * *",
   "logs": [
-   "slack poll {\"cards\":126,\"active\":0,\"sent\":[]}"
+   "slack poll {\"cards\":200,\"active\":1,\"sent\":[]}"
   ],
   "errors": []
  },
  {
-  "at": 1793656046431,
-  "outcome": "ok",
-  "trigger": "POST",
-  "logs": [
-   "skip: bot off for ZlyRHf0fHDF0Wka8kzCV"
-  ],
-  "errors": []
- },
- {
-  "at": 1793656050054,
+  "at": 1794334230091,
   "outcome": "ok",
   "trigger": "* * * * *",
   "logs": [
-   "slack poll {\"cards\":126,\"active\":0,\"sent\":[]}"
+   "slack poll {\"cards\":200,\"active\":1,\"sent\":[]}"
   ],
   "errors": []
  },
  {
-  "at": 1793656106882,
-  "outcome": "ok",
-  "trigger": "*/3 * * * *",
-  "logs": [
-   "sweep: answering missed text from mjd2Aqa8jQgou7YNzGcd",
-   "skip: bot off for mjd2Aqa8jQgou7YNzGcd"
-  ],
-  "errors": []
- },
- {
-  "at": 1793656109967,
+  "at": 1794334289750,
   "outcome": "ok",
   "trigger": "* * * * *",
   "logs": [
-   "slack poll {\"cards\":126,\"active\":0,\"sent\":[]}"
+   "slack poll {\"cards\":200,\"active\":1,\"sent\":[]}"
   ],
   "errors": []
  }

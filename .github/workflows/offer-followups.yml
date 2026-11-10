@@ -1,0 +1,33 @@
+name: Follow up on unanswered offers
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "list = only list them, send = text each a follow-up"
+        default: list
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  followups:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Find (and follow up on) unanswered offers
+        env:
+          GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
+          GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
+          MODE: ${{ inputs.mode }}
+        run: python scripts/offer_followups.py
+      - name: Save the result to the repo
+        if: always()
+        run: |
+          git config user.name "lead-pipeline"
+          git config user.email "lead-pipeline@users.noreply.github.com"
+          git add stats/offer_followups.json || exit 0
+          git commit -m "Offer follow-ups" || exit 0
+          git pull --rebase origin main && git push origin HEAD:main

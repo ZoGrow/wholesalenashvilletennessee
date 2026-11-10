@@ -1,21 +1,21 @@
 {
  "mode": "send",
- "tagged": 16403,
+ "tagged": 17324,
  "eligible": 0,
  "skipped": {
-  "tag agent-replied": 1930,
-  "tag opted-out": 523,
-  "dnd": 570,
+  "dnd": 597,
+  "bad number (Error 30003 - Number)": 4,
+  "they replied": 677,
+  "tag agent-replied": 1976,
+  "tag opted-out": 527,
   "bad number (Error 30008 - Messag)": 1,
-  "bad number (Error 30003 - Number)": 2,
-  "tag dnd-skipped": 9,
+  "tag dnd-skipped": 10,
   "no messages": 3,
   "tag not-qualified": 2,
-  "tag hot-lead": 4,
-  "they replied": 654
+  "tag hot-lead": 4
  },
  "errors": {
-  "Error 30003 - Number unreachable or out of service.": 2,
+  "Error 30003 - Number unreachable or out of service.": 4,
   "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 1
  },
  "sent": 0,

@@ -920,6 +920,7 @@ async function pollSlackOffers(env: Env): Promise<Record<string, unknown>> {
         confirmByText: parsed.confirm_by_text !== false,
         extraStips: Array.isArray(parsed.extra_terms) ? parsed.extra_terms.map(String).filter(Boolean) : [],
         notes: String(parsed.summary || ""),
+        noteToAgent: String(parsed.note_to_agent || "").trim(),
       };
       todo.push({ r, price: Number(parsed.price) >= 10000 ? Math.round(Number(parsed.price)) : 0, o });
     }
@@ -980,6 +981,7 @@ Answer with JSON only:
  "closing_business_days": number or null, "due_diligence_days": number or null, "expires_in_hours": number or null,
  "extra_terms": [extra lines to add to the offer's special stips, written as offer terms, only if he asked],
  "unclear": null, or a one-line question if his instructions can't be followed safely,
+ "note_to_agent": "If he gives a reason or something to say (e.g. repairs will cost $X, roof is old), write it as 1-3 short, friendly sentences in Zack's voice to the agent explaining the offer, using only facts he gave. Empty string if he gave none.",
  "summary": "short list of the changes he asked for, empty if none"}` }],
   });
   const text = res.content.map((b: any) => b.text || "").join("");
@@ -987,7 +989,7 @@ Answer with JSON only:
 }
 
 type OfferOpts = { closingDays?: number; ddDays?: number; expiryHours?: number; channel?: "both" | "email" | "text";
-  confirmByText?: boolean; extraStips?: string[]; notes?: string };
+  confirmByText?: boolean; extraStips?: string[]; notes?: string; noteToAgent?: string };
 
 async function offerFromSlack(channel: string, threadTs: string, ts: string, price: number, env: Env, o: OfferOpts = {}): Promise<void> {
   await slack(env, "reactions.add", { channel, timestamp: ts, name: "eyes" });
@@ -1004,7 +1006,8 @@ async function offerFromSlack(channel: string, threadTs: string, ts: string, pri
   const name = first.charAt(0).toUpperCase() + first.slice(1).toLowerCase();
   const terms = offerTerms(address, price, title, o);
   const expiry = o.expiryHours ? ` (offer expires in ${o.expiryHours} hours)` : "";
-  const text = `Hi ${name}, here's my offer${expiry}:\n\n${terms}\n\nLet me know if you have any questions.\n\nThanks,\nZack Olabi\nZoGrow Media LLC`;
+  const intro = o.noteToAgent ? `${o.noteToAgent}\n\n` : "";
+  const text = `Hi ${name}, here's my offer${expiry}:\n\n${intro}${terms}\n\nLet me know if you have any questions.\n\nThanks,\nZack Olabi\nZoGrow Media LLC`;
 
   const done: string[] = [];
   if (o.channel === "email" && !email) throw new Error("you asked for email only, but there's no email for this agent in GHL or on the card");
@@ -1044,7 +1047,7 @@ async function offerFromSlack(channel: string, threadTs: string, ts: string, pri
   await slack(env, "reactions.remove", { channel, timestamp: ts, name: "eyes" });
   await slack(env, "reactions.add", { channel, timestamp: ts, name: "white_check_mark" });
   await slack(env, "chat.postMessage", { channel, thread_ts: threadTs,
-    text: `✅ Offer ${usd(price)} on ${address} to ${name}: ${done.join(", ")}.\nTitle company: ${title} · EMD ${usd(emd(price))}${o.notes ? `\nFollowed your notes: ${o.notes}` : ""}` });
+    text: `✅ Offer ${usd(price)} on ${address} to ${name}: ${done.join(", ")}.\nTitle company: ${title} · EMD ${usd(emd(price))}${o.notes ? `\nFollowed your notes: ${o.notes}` : ""}${o.noteToAgent ? `\nNote to agent: "${o.noteToAgent}"` : ""}` });
 }
 
 function offerTerms(address: string, price: number, title: string, o: OfferOpts = {}): string {

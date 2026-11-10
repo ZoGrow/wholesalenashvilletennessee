@@ -1,3 +1,154 @@
 {
- "matches": []
+ "matches": [
+  {
+   "id": "pQiqIw",
+   "tags": [
+    "apify-daily-lead",
+    "agent-replied",
+    "not-qualified",
+    "follow-up-2026-11-11",
+    "bot-seen-1794333619274"
+   ],
+   "messages": [
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2026-11-10T18:09:01.163Z"
+    },
+    {
+     "direction": "inbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2026-11-10T18:00:19.368Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2026-11-10T17:59:22.270Z"
+    },
+    {
+     "direction": "inbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2026-11-10T17:52:31.588Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2026-11-10T17:49:58.753Z"
+    }
+   ]
+  },
+  {
+   "id": "Xl2DrI",
+   "tags": [
+    "lucia"
+   ],
+   "messages": [
+    {
+     "direction": "inbound",
+     "messageType": "TYPE_ACTIVITY_CONTACT",
+     "type": 25,
+     "status": null,
+     "dateAdded": "2025-12-17T21:20:58.202Z"
+    },
+    {
+     "direction": "inbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2025-12-17T21:20:57.477Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2025-12-17T21:20:09.000Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2025-12-17T19:20:07.000Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_ACTIVITY_OPPORTUNITY",
+     "type": 28,
+     "status": null,
+     "dateAdded": "2025-12-17T19:20:06.452Z"
+    }
+   ]
+  },
+  {
+   "id": "GotekG",
+   "tags": [
+    "lucia"
+   ],
+   "messages": [
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2024-02-25T16:52:04.000Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "failed",
+     "dateAdded": "2024-02-22T16:52:02.000Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2024-02-21T16:52:00.000Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_ACTIVITY_OPPORTUNITY",
+     "type": 28,
+     "status": null,
+     "dateAdded": "2024-02-21T14:51:59.142Z"
+    },
+    {
+     "direction": "outbound",
+     "messageType": "TYPE_SMS",
+     "type": 2,
+     "status": "delivered",
+     "dateAdded": "2024-02-21T14:51:59.000Z"
+    }
+   ]
+  }
+ ],
+ "probed": "pQiqIw",
+ "status": 200,
+ "body": "ok",
+ "seconds": 0.8,
+ "notes": [
+  {
+   "at": "2026-11-10T17:50:06.951Z",
+   "body": "SMS bot, did not qualify: Both 2436 Thomas Ave ($100k) and 8300 4th Ave N ($87k) are actively listed on the MLS, so passed. Asked once about off-market sellers."
+  }
+ ],
+ "tags_now": [
+  "apify-daily-lead",
+  "agent-replied",
+  "not-qualified",
+  "follow-up-2026-11-11",
+  "bot-seen-1794333619274"
+ ]
 }

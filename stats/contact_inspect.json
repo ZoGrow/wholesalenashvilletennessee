@@ -1,80 +1,401 @@
 {
  "matches": [
   {
-   "id": "Zy950f",
-   "name": "ceegee hilton",
-   "city": "Baton Rouge",
-   "state": "LA",
+   "id": "pQiqIw",
+   "name": "stephanie taylor",
+   "city": "Oneonta,",
+   "state": "AL",
    "tags": [
     "apify-daily-lead",
     "agent-replied",
-    "bot-seen-1793652754928"
+    "not-qualified",
+    "bot-seen-1794333151516"
    ],
    "dnd": null,
    "dndSettings": null,
    "messages": [
     {
-     "id": "eCnBKeS10sdd8mPglCTP",
+     "id": "ul5zEO3bDCHOSQV1f5DS",
      "direction": "inbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "One of them is not necessarily distressed, but you could get a good deal on it",
+     "body": "It's off market, 65k do you want to see pics",
      "contentType": "text/plain",
-     "dateAdded": "2026-11-02T20:52:34.992Z",
-     "dateUpdated": "2026-11-02T20:52:34.992Z",
-     "altId": "SM529a84754fced6db17cb2673aa6ee86b",
-     "from": "+12258030218",
+     "dateAdded": "2026-11-10T18:00:19.368Z",
+     "dateUpdated": "2026-11-10T18:00:19.368Z",
+     "altId": "SM20e44837cb0ddc3ffdb1cc73616e9050",
+     "from": "+12053690912",
      "to": "+18323451435",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "ztugx52VHbOY90WbW4WK",
+     "id": "UKzkkYYs1LjboyeSWNjG",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Thanks Stephanie. Looks like a 3/2, about 1,659 sqft, built in '55. Is that one off the MLS, and what's the seller asking for it?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-10T17:59:22.270Z",
+     "dateUpdated": "2026-11-10T17:59:26.035Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SM44c003010728fd92f1e6031ddd243ab1",
+     "from": "+18323451435",
+     "to": "+12053690912",
+     "meta": {
+      "marketplace": {
+       "appId": "6ac82161cc0c50bbf18cf2ff"
+      }
+     },
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "Bc0Ywsq1HnxszK42DET9",
      "direction": "inbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "I have 2 \nWhat kind of budget?",
+     "body": "1632 30th street Ensley birmingham 35208",
      "contentType": "text/plain",
-     "dateAdded": "2026-11-02T20:52:17.099Z",
-     "dateUpdated": "2026-11-02T20:52:17.099Z",
-     "altId": "SM2a627847843b4713b3d49052f2c7046c",
-     "from": "+12258030218",
+     "dateAdded": "2026-11-10T17:52:31.588Z",
+     "dateUpdated": "2026-11-10T17:52:31.588Z",
+     "altId": "SM42eada92872d277e6cc2289bf0dee26f",
+     "from": "+12053690912",
      "to": "+18323451435",
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "9IjqIqR0jAQxBFLCwbAt",
+     "id": "lPpGBwDGbZjR7HiSCv4D",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "let me know",
+     "body": "Thanks Stephanie. Both of those show as listed on the MLS right now, and I'm only buying off-market at the moment. Do you have any sellers who haven't listed yet, like an inherited house or a landlord who's done?",
      "contentType": "text/plain",
-     "dateAdded": "2026-11-02T20:42:02.950Z",
-     "dateUpdated": "2026-11-02T20:42:41.474Z",
+     "dateAdded": "2026-11-10T17:49:58.753Z",
+     "dateUpdated": "2026-11-10T17:50:03.426Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SM0a28fa790e51887d9a4d7e3d16ed3f0a",
+     "source": "app",
+     "altId": "SM807cc2192132079a4b6d866cb69a41d1",
      "from": "+18323451435",
-     "to": "+12258030218",
+     "to": "+12053690912",
+     "meta": {
+      "marketplace": {
+       "appId": "6ac82161cc0c50bbf18cf2ff"
+      }
+     },
      "messageType": "TYPE_SMS"
     },
     {
-     "id": "qMmqeMrFzErHOuPDxZeu",
+     "id": "FJsG1tXjPS09IZanmFjY",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "8300 4th Ave N, Birmingham, AL 35206",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-10T17:42:52.587Z",
+     "dateUpdated": "2026-11-10T17:42:52.587Z",
+     "altId": "SM98b6ea25d7f349a5046b210dbde7be46",
+     "from": "+12053690912",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "YAbCaskovVxZgfrzJ6fj",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Just put this on market but I'm sure we could work something out ck it out\n\n2436 Thomas Ave Bham 35217",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-10T17:42:22.658Z",
+     "dateUpdated": "2026-11-10T17:42:22.658Z",
+     "altId": "SM1abf16eb5b913382b652450cb50d7f27",
+     "from": "+12053690912",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "Z0kcUZ7eLzYC8i7N9kFa",
      "direction": "outbound",
      "status": "delivered",
      "type": 2,
      "attachments": [],
-     "body": "Hey CEEGEE, my name is Zack. I am in an investor here in Baton Rouge looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "body": "Yes, I'm open to Birmingham. Any off-market houses or sellers who'd want a simple, quick sale there? Send over what you have, address and what the seller wants if you know it.",
      "contentType": "text/plain",
-     "dateAdded": "2026-11-02T17:42:00.960Z",
-     "dateUpdated": "2026-11-02T17:44:40.762Z",
+     "dateAdded": "2026-11-10T17:22:12.878Z",
+     "dateUpdated": "2026-11-10T17:22:19.542Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SMf2a57b58439c6907e308b21384cfe361",
+     "from": "+18323451435",
+     "to": "+12053690912",
+     "meta": {
+      "marketplace": {
+       "appId": "6ac82161cc0c50bbf18cf2ff"
+      }
+     },
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "0KrZXNdY0nsLsfXgW5uz",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "I'll send you some. Do you like the Birmingham area?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-10T17:21:51.368Z",
+     "dateUpdated": "2026-11-10T17:21:51.368Z",
+     "altId": "SM270aca3da13f8dd5004390ec4c1ea3dd",
+     "from": "+12053690912",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "xuD5jSgii6Jl5bz4iT2p",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Stephanie, my name is Zack. I am in an investor here in Oneonta, looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-10T17:08:00.646Z",
+     "dateUpdated": "2026-11-10T17:12:13.303Z",
      "userId": "igZ4OBnjAI86UmGLD7HQ",
      "source": "workflow",
-     "altId": "SM9d3de55a733fcba41aebc5271ff50a2d",
+     "altId": "SM01acd61741f3f0b1f42c74c27e909489",
      "from": "+18323451435",
-     "to": "+12258030218",
+     "to": "+12053690912",
+     "messageType": "TYPE_SMS"
+    }
+   ],
+   "notes": [
+    {
+     "at": "2026-11-10T17:50:06.951Z",
+     "body": "SMS bot, did not qualify: Both 2436 Thomas Ave ($100k) and 8300 4th Ave N ($87k) are actively listed on the MLS, so passed. Asked once about off-market sellers."
+    }
+   ]
+  },
+  {
+   "id": "Xl2DrI",
+   "name": "stephanie taylor",
+   "city": "McDonough",
+   "state": null,
+   "tags": [
+    "lucia"
+   ],
+   "dnd": null,
+   "dndSettings": {
+    "SMS": {
+     "status": "permanent",
+     "message": "STOP_KEYWORD"
+    }
+   },
+   "messages": [
+    {
+     "id": "IrEghy7MfVzK15jYOvCa",
+     "direction": "inbound",
+     "type": 25,
+     "body": "DnD enabled by customer",
+     "dateAdded": "2025-12-17T21:20:58.202Z",
+     "dateUpdated": "2025-12-17T21:20:58.202Z",
+     "from": "+16789649221",
+     "to": "Lucia - Outreach 1",
+     "activity": {
+      "data": {
+       "channel": [
+        "SMS"
+       ]
+      },
+      "title": "DND enabled by customer",
+      "type": "contact_dnd_enabled"
+     },
+     "messageType": "TYPE_ACTIVITY_CONTACT"
+    },
+    {
+     "id": "VUWeT0dfPdToDgV3WrTr",
+     "direction": "inbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Stop",
+     "contentType": "text/plain",
+     "dateAdded": "2025-12-17T21:20:57.477Z",
+     "dateUpdated": "2025-12-17T21:20:57.477Z",
+     "altId": "SMf3a9c0d9ef137d13e0a2e250752941fd",
+     "from": "+16789649221",
+     "to": "+18323451435",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "0lvo7q4nbRTXg5QhxEAj",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey, are we still here?",
+     "contentType": "text/plain",
+     "dateAdded": "2025-12-17T21:20:09.000Z",
+     "dateUpdated": "2025-12-17T21:20:14.389Z",
+     "userId": "hvWkhA5JpZ4m0snh7MYy",
+     "source": "workflow",
+     "altId": "SM61151f26c4ed5ffb7331de6f34514ae8",
+     "from": "+18323451435",
+     "to": "+16789649221",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "1A4diuxkr7Mno6S8SfOQ",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Stephanie, I was just was wondering if you are an agent that serves residential sales in the McDonough area?",
+     "contentType": "text/plain",
+     "dateAdded": "2025-12-17T19:20:07.000Z",
+     "dateUpdated": "2025-12-17T19:20:14.620Z",
+     "userId": "hvWkhA5JpZ4m0snh7MYy",
+     "source": "workflow",
+     "altId": "SM51d31d6df7188000f3a15b292c5ddfc3",
+     "from": "+18323451435",
+     "to": "+16789649221",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "fBzfYL5wSB4RkQ8ylecA",
+     "direction": "outbound",
+     "type": 28,
+     "body": "Opportunity created",
+     "dateAdded": "2025-12-17T19:20:06.452Z",
+     "dateUpdated": "2025-12-17T19:20:06.452Z",
+     "source": "app",
+     "from": "Lucia - Outreach 1",
+     "to": "+16789649221",
+     "activity": {
+      "data": {
+       "id": "psAeLc0w3ZMoh6ECJa26",
+       "name": "Stephanie Taylor",
+       "status": "open",
+       "pipeline": "Text Outbound",
+       "stage": {
+        "newStageName": "Started"
+       }
+      },
+      "title": "Opportunity created",
+      "type": "opportunity_created"
+     },
+     "messageType": "TYPE_ACTIVITY_OPPORTUNITY"
+    }
+   ],
+   "notes": []
+  },
+  {
+   "id": "GotekG",
+   "name": "stephanie taylor - sowell & company realtors",
+   "city": "Memphis",
+   "state": "TN",
+   "tags": [
+    "lucia"
+   ],
+   "dnd": null,
+   "dndSettings": null,
+   "messages": [
+    {
+     "id": "7VwiFn8Z3E7AKSXwTQ8R",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Are you still a realtor Stephanie?",
+     "contentType": "text/plain",
+     "dateAdded": "2024-02-25T16:52:04.000Z",
+     "dateUpdated": "2024-02-25T16:52:05.586Z",
+     "userId": "hvWkhA5JpZ4m0snh7MYy",
+     "source": "workflow",
+     "altId": "SMbfcc9263defe16474e48bd41265e17d4",
+     "from": "+18323451435",
+     "to": "+19014877452",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "YyRWLlFPrvPcWOm6LgV0",
+     "direction": "outbound",
+     "status": "failed",
+     "type": 2,
+     "attachments": [],
+     "body": "^",
+     "contentType": "text/plain",
+     "dateAdded": "2024-02-22T16:52:02.000Z",
+     "dateUpdated": "2024-02-22T16:52:02.658Z",
+     "userId": "hvWkhA5JpZ4m0snh7MYy",
+     "source": "workflow",
+     "from": "Lucia - Outreach 1",
+     "to": "+19014877452",
+     "error": "You have violated our sms sending policy. And hence your account has been suspended. Please contact support",
+     "messageType": "TYPE_SMS",
+     "detail": "HTTP Error 401: Unauthorized"
+    },
+    {
+     "id": "9cL3kstY58JjwZCGc1r8",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey, are we still here?",
+     "contentType": "text/plain",
+     "dateAdded": "2024-02-21T16:52:00.000Z",
+     "dateUpdated": "2024-02-21T16:52:01.979Z",
+     "userId": "hvWkhA5JpZ4m0snh7MYy",
+     "source": "workflow",
+     "altId": "SM69547fb4ae757fa191c5546038d0b228",
+     "from": "+18323451435",
+     "to": "+19014877452",
+     "messageType": "TYPE_SMS"
+    },
+    {
+     "id": "gsCJDaczq95jBzgqk1Hh",
+     "direction": "outbound",
+     "type": 28,
+     "body": "Opportunity created",
+     "dateAdded": "2024-02-21T14:51:59.142Z",
+     "dateUpdated": "2024-02-21T14:51:59.405Z",
+     "source": "app",
+     "from": "Lucia - Outreach 1",
+     "to": "+19014877452",
+     "activity": {
+      "data": {
+       "pipeline": "Text Outbound",
+       "stage": {
+        "newStageName": "Started"
+       },
+       "name": "Stephanie Taylor - Sowell & Company Realtors",
+       "id": "2fwBTNgmoi8ZPig0TutU",
+       "status": "open"
+      },
+      "title": "Opportunity created",
+      "type": "opportunity_created"
+     },
+     "messageType": "TYPE_ACTIVITY_OPPORTUNITY"
+    },
+    {
+     "id": "r2MoxarR6ktBQpJCyc6p",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Hey Stephanie, I was just was wondering if you are an agent that serves residential sales in the Memphis area?",
+     "contentType": "text/plain",
+     "dateAdded": "2024-02-21T14:51:59.000Z",
+     "dateUpdated": "2024-02-21T14:52:00.762Z",
+     "userId": "hvWkhA5JpZ4m0snh7MYy",
+     "source": "workflow",
+     "altId": "SM184b70ddefff96b7ef35556b6a1d0b4a",
+     "from": "+18323451435",
+     "to": "+19014877452",
      "messageType": "TYPE_SMS"
     }
    ],

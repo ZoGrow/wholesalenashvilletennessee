@@ -1,0 +1,38 @@
+[
+ {
+  "name": "Dialine Booker",
+  "contact_id": "fqM5jM2gD1I4cGPANGxM",
+  "address": "1209 S Lions Gate Dr, Memphis, TN 38116",
+  "amount": "$145,000",
+  "offer_date": "2026-11-09",
+  "nudges_since": 0,
+  "status": "skipped (we texted in the last 24h)"
+ },
+ {
+  "name": "Jennifer Mcdonald",
+  "contact_id": "cnq4YHhm8bMIxHzVigAd",
+  "address": "7922 Allen Glen Ln, Olive Branch, MS 38654",
+  "amount": "$135,000",
+  "offer_date": "2026-11-09",
+  "nudges_since": 0,
+  "status": "skipped (we texted in the last 24h)"
+ },
+ {
+  "name": "Lavera D Coleman",
+  "contact_id": "EaGZvkV4iRllgpwM8E11",
+  "address": "3341 Seaforth Dr, Memphis, TN 38127 ( Valid for 24 hours )",
+  "amount": "$36,400",
+  "offer_date": "2026-10-20",
+  "nudges_since": 2,
+  "status": "would follow up"
+ },
+ {
+  "name": "Cindy Garvey",
+  "contact_id": "qxaVQIMXFRPoPbKdohYv",
+  "address": "1101 Spencer Creek Pass, Franklin, TN 37069",
+  "amount": "$425,000",
+  "offer_date": "2026-11-09",
+  "nudges_since": 0,
+  "status": "skipped (we texted in the last 24h)"
+ }
+]

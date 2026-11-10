@@ -892,7 +892,16 @@ async function pollSlackOffers(env: Env, hours = 3): Promise<Record<string, unkn
   // per-minute runs and aged out of a 1-hour window. Handled replies carry our reaction, so a wider
   // window never sends twice.
   const since = Date.now() / 1000 - hours * 3600;
-  const cards: any[] = (await slackGet(env, "conversations.history", { channel: OFFER_CHANNEL, oldest: String(Date.now() / 1000 - 30 * 86400), limit: "200" })).messages ?? [];
+  // Page through every card from the last 30 days. One 200-message page stopped reaching today's cards once
+  // the channel passed 200 messages (2026-11-10: Deb Long's and Brandon Hawkins' offers were never seen).
+  const cards: any[] = [];
+  let cursor = "";
+  for (let page = 0; page < 10; page++) {
+    const h = await slackGet(env, "conversations.history", { channel: OFFER_CHANNEL, oldest: String(Date.now() / 1000 - 30 * 86400), limit: "200", ...(cursor ? { cursor } : {}) });
+    cards.push(...(h.messages ?? []));
+    cursor = h.response_metadata?.next_cursor || "";
+    if (!h.has_more || !cursor) break;
+  }
   seen.cards = cards.length; seen.active = cards.filter((m) => Number(m.latest_reply || 0) > since).length; seen.sent = [];
   for (const card of cards.filter((m) => Number(m.latest_reply || 0) > since)) {
    try { // one bad card must not stop the others

@@ -1,51 +1,42 @@
 [
  {
-  "at": 1794334110230,
-  "outcome": "ok",
-  "trigger": "* * * * *",
-  "logs": [
-   "slack poll {\"cards\":200,\"active\":1,\"sent\":[]}"
-  ],
-  "errors": []
- },
- {
-  "at": 1794334126670,
-  "outcome": "ok",
-  "trigger": "POST",
-  "logs": [],
-  "errors": []
- },
- {
-  "at": 1794334166793,
+  "at": 1794337587768,
   "outcome": "ok",
   "trigger": "*/3 * * * *",
   "logs": [],
   "errors": []
  },
  {
-  "at": 1794334169910,
+  "at": 1794337590259,
   "outcome": "ok",
   "trigger": "* * * * *",
   "logs": [
-   "slack poll {\"cards\":200,\"active\":1,\"sent\":[]}"
+   "slack poll {\"cards\":200,\"active\":0,\"sent\":[]}"
   ],
   "errors": []
  },
  {
-  "at": 1794334230091,
+  "at": 1794337649958,
   "outcome": "ok",
   "trigger": "* * * * *",
   "logs": [
-   "slack poll {\"cards\":200,\"active\":1,\"sent\":[]}"
+   "slack poll {\"cards\":200,\"active\":0,\"sent\":[]}"
   ],
   "errors": []
  },
  {
-  "at": 1794334289750,
+  "at": 1794337636336,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1794337710049,
   "outcome": "ok",
   "trigger": "* * * * *",
   "logs": [
-   "slack poll {\"cards\":200,\"active\":1,\"sent\":[]}"
+   "slack poll {\"cards\":200,\"active\":0,\"sent\":[]}"
   ],
   "errors": []
  }

@@ -1112,7 +1112,12 @@ async function findTitleCompany(address: string, env: Env): Promise<string> {
   });
   const texts = res.content.filter((b): b is Anthropic.Beta.BetaTextBlock => b.type === "text");
   const out = (texts[texts.length - 1]?.text || "").trim().split("\n").pop()!.replace(/^[*\s]+|[*\s.]+$/g, "");
-  return out && out.length < 120 ? out : "TBD (buyer's choice of local title company)";
+  // Only a company name goes in the offer. On 2026-11-10 Brandon Hawkins' offer said "Title company: For a
+  // local option, call title companies in Crossville and ask whether they handle assignment..." because the
+  // search came back with advice instead of a name.
+  const looksLikeName = /\b(title|abstract|escrow|closing|settlement|law|legal|attorneys?)\b/i.test(out) &&
+    out.split(/\s+/).length <= 10 && !/\b(call|ask|whether|option|recommend|could|should|you|I|couldn't|unable|not)\b/i.test(out);
+  return out && out.length < 120 && looksLikeName ? out : "TBD (buyer's choice of local title company)";
 }
 
 /** Morning: send the offer texts Zack approved after 8pm. */

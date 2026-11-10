@@ -9,11 +9,34 @@
     "apify-daily-lead",
     "agent-replied",
     "not-qualified",
-    "bot-seen-1794333151516"
+    "follow-up-2026-11-11",
+    "bot-seen-1794333619274"
    ],
    "dnd": null,
    "dndSettings": null,
    "messages": [
+    {
+     "id": "JqL5R1NGcCcqLJOmJUHK",
+     "direction": "outbound",
+     "status": "delivered",
+     "type": 2,
+     "attachments": [],
+     "body": "Yes, please text the pics over. Do you know what needs work, like the roof, HVAC, kitchen or baths? And is it vacant or does someone live there?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-11-10T18:09:01.163Z",
+     "dateUpdated": "2026-11-10T18:09:05.175Z",
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
+     "source": "app",
+     "altId": "SMe3191942fdc4e2dd7e54a39aa4593a19",
+     "from": "+18323451435",
+     "to": "+12053690912",
+     "meta": {
+      "marketplace": {
+       "appId": "6ac82161cc0c50bbf18cf2ff"
+      }
+     },
+     "messageType": "TYPE_SMS"
+    },
     {
      "id": "ul5zEO3bDCHOSQV1f5DS",
      "direction": "inbound",

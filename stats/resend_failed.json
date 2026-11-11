@@ -3,16 +3,16 @@
  "tagged": 17324,
  "eligible": 0,
  "skipped": {
-  "tag agent-replied": 2081,
+  "tag agent-replied": 2092,
   "dnd": 598,
-  "tag opted-out": 546,
+  "tag opted-out": 547,
   "bad number (Error 30003 - Number)": 4,
-  "they replied": 663,
   "bad number (Error 30008 - Messag)": 1,
   "tag dnd-skipped": 10,
   "no messages": 3,
   "tag not-qualified": 2,
-  "tag hot-lead": 4
+  "tag hot-lead": 4,
+  "they replied": 661
  },
  "errors": {
   "Error 30003 - Number unreachable or out of service.": 4,

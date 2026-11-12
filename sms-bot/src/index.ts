@@ -718,11 +718,16 @@ function addressVariants(address: string): string[] {
   const state = tail.match(/\b([A-Z]{2})\b/)?.[1] ?? "";
   const zip = tail.match(/\b(\d{5})\b/)?.[1] ?? "";
   const city = parts.length > 2 ? parts[1] : "";
+  // Agents often get the street type wrong (Zack 2026-11-12: "2401 Linda Cv" is 2401 Linda Ln on Zillow), so
+  // the last tries drop it and let Zillow's search match the street name.
+  const SUFFIX = /\s+(cv|cove|ln|lane|dr|drive|ct|court|rd|road|st|street|ave|avenue|cir|circle|pl|place|way|blvd|trl|trail|pkwy|ter|loop|hwy)\.?$/i;
+  const bare = street.replace(SUFFIX, "");
   return [...new Set([
     address,
     zip ? `${street}, ${state} ${zip}`.replace(/,\s+(\d)/, ", $1") : "",
     city && state ? `${street}, ${city}, ${state}` : "",
     state ? `${street}, ${state}` : "",
+    bare !== street && state ? `${bare}, ${city ? city + ", " : ""}${state}${zip ? " " + zip : ""}` : "",
   ].map((x) => x.trim()).filter((x) => x && x !== ", "))];
 }
 
@@ -741,11 +746,18 @@ async function zillowLookup(address: string, env: Env): Promise<string> {
   if (!address.trim()) return "No address given.";
   try {
     // Try the address as given, then without the agent's city name; keep the first hit that has a Zestimate.
-    let it: any = null;
-    for (const a of addressVariants(address)) {
-      const hit = await zillowFetch(a, env).catch(() => null);
+    let it: any = null, failed = 0, lastErr = "";
+    const variants = addressVariants(address);
+    for (const a of variants) {
+      const hit = await zillowFetch(a, env).catch((e) => { failed++; lastErr = String(e); return null; });
       if (hit && (!it || (it.zestimate == null && hit.zestimate != null))) it = hit;
       if (it?.zestimate != null) break;
+    }
+    // Every try errored (e.g. Apify refused the token, 2026-11-11/12): say so plainly instead of "not found",
+    // so the card doesn't claim Zillow has no Zestimate.
+    if (!it && failed === variants.length) {
+      console.error("zillow lookup error", address, lastErr);
+      return `Zillow lookup ERROR (${lastErr.slice(0, 80)}), not a missing Zestimate. Try zillow_lookup once more; if it still errors, write the Zestimate as "lookup error, check the Zillow link", never "no Zestimate".`;
     }
     if (!it) return "Not found on Zillow under that address or its ZIP; web-search the street to find its ZIP and call zillow_lookup again with street, state and ZIP. Don't report the Zestimate as unknown without trying the ZIP.";
     const money = (v: any) => (typeof v === "number" ? `$${v.toLocaleString("en-US")}` : v?.amount ? `$${Number(v.amount).toLocaleString("en-US")}` : "unknown");

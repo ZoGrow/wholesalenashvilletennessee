@@ -336,6 +336,18 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
   let decision = await nextReply(thread, contact, env);
   if (!decision) return true;
   applyDealRules(decision, contactId, env);
+  // Zack 2026-11-12: "don't ever send leads to Slack without a listing address". No house number and
+  // street = no card: the bot asks for the exact address instead and keeps vetting.
+  if (decision.deal === "qualified" && !hasStreetAddress(decision.lead?.address)) {
+    console.log("qualified without a street address, asking for it", contactId, decision.lead?.address);
+    decision = (await nextReply(thread, contact, env, false, "", NO_ADDRESS_FIX)) ?? decision;
+    applyDealRules(decision, contactId, env);
+    if (decision.deal === "qualified" && !hasStreetAddress(decision.lead?.address)) {
+      decision.deal = "unknown";
+      decision.handoff = false;
+      if (PROMISED_NUMBERS.test(decision.reply || "")) decision.reply = "What's the exact address (house number and street)?";
+    }
+  }
   // "I'll run the numbers" is only for leads that go to Zack in Slack (Zack 2026-10-22). If the bot
   // promised numbers on anything else, have it rewrite: keep vetting or pass on the price.
   if (decision.deal !== "qualified" && PROMISED_NUMBERS.test(decision.reply || "")) {
@@ -431,6 +443,13 @@ function applyDealRules(decision: Decision, contactId: string, env: Env): void {
     decision.handoff = false;
     decision.note = `Listed on the MLS, Zack only buys off-market. ${decision.note || ""}`;
   }
+}
+
+const NO_ADDRESS_FIX = `You don't have the property's exact street address yet (house number and street name, plus city or ZIP). Zack never gets a lead without one. Don't qualify it and don't say you'll run numbers: ask the agent for the exact address in one short, relaxed line.`;
+
+/** True when the address starts with a house number and a street name ("123 Main St", "4049 Grays Point Rd"). */
+function hasStreetAddress(address?: string): boolean {
+  return /^\s*\d+[A-Za-z-]*\s+[A-Za-z0-9]/.test(address || "") && !/unknown|not given|tbd/i.test(address || "");
 }
 
 const NO_PROMISE_FIX = `Your draft was: "{{REPLY}}". Don't tell the agent you'll run numbers, send a number or get them an offer: that's only said on leads that qualify and go to Zack. Rewrite it. If you still need info (photos, condition, asking price, why they're selling, timeline), ask your next question. If there's a real house with an address and the seller might take less and it is OFF-MARKET (off-market with a price or reason, needs work, or motivated), it qualifies. A house listed on the MLS never qualifies: pass with a short thanks: set deal = "qualified" and say you're running the numbers. Otherwise ask your next question, or if it's junk (wholesaler, multifamily, auction, no property) end with a short thanks and no "send it my way".`;

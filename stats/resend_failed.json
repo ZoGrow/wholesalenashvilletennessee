@@ -3,10 +3,10 @@
  "tagged": 19206,
  "eligible": 0,
  "skipped": {
-  "tag agent-replied": 2354,
-  "tag opted-out": 568,
-  "they replied": 725,
+  "tag agent-replied": 2448,
+  "tag opted-out": 573,
   "dnd": 644,
+  "they replied": 716,
   "bad number (Error 30003 - Number)": 6,
   "bad number (Error 30008 - Messag)": 1,
   "tag dnd-skipped": 12,

@@ -96,6 +96,16 @@ const OFFER_RE = /purchase price|offer on:|\b(my|our) offer\b.{0,40}\$\s?\d|\bof
 const OFFER_CHECKS_PER_RUN = 12; // handed-off leads checked per hourly run (2 requests each)
 const OFFER_NUDGES_PER_RUN = 3;
 
+/** 2026-11-16: the Claude API key died Friday and nobody noticed until Monday. When a reply fails because a
+ *  key or the account is broken, tell Zack in Slack, once an hour (only the sweep run in the first 3 minutes). */
+async function alertBroken(env: Env, err: string): Promise<void> {
+  if (!/authentication_error|invalid x-api-key|credit balance|permission_error|billing/i.test(err)) return;
+  if (new Date().getUTCMinutes() >= 3 || !env.SLACK_WEBHOOK_URL) return;
+  const text = `:rotating_light: *SMS bot is down:* Claude API refused the key, so agent replies aren't being answered. ` +
+    `Make a new key at console.anthropic.com (check billing), save it as ANTHROPIC_API_KEY in the GitHub repo secrets, and tell Claude to redeploy.\n> ${err.slice(0, 200)}`;
+  await fetch(env.SLACK_WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text }) }).catch(() => {});
+}
+
 /** Safety net: answer agents whose text never reached us (GHL webhook missed or failed). */
 async function answerMissed(env: Env): Promise<void> {
   const hour = Number(new Date().toLocaleString("en-US", { timeZone: "America/Chicago", hour: "numeric", hour12: false }));
@@ -156,6 +166,7 @@ async function answerMissed(env: Env): Promise<void> {
       if (await handleReply(c.contactId, env, true)) answered++;
     } catch (e) {
       console.error("sweep reply failed", c.contactId, e);
+      await alertBroken(env, String(e));
     }
     try {
       const old = tags.filter((t) => t.startsWith(SEEN_PREFIX));

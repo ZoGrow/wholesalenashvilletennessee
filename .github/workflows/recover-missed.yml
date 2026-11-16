@@ -1,0 +1,30 @@
+name: Re-answer texts missed during a bot outage
+
+on:
+  workflow_dispatch:
+    inputs:
+      hours:
+        description: How far back to look
+        default: "96"
+
+permissions:
+  contents: write
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Clear bot-seen tags on unanswered texts
+        env:
+          GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
+          GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
+          HOURS: ${{ inputs.hours }}
+        run: python scripts/recover_missed.py
+      - name: Save the result
+        run: |
+          git config user.name "lead-pipeline"
+          git config user.email "lead-pipeline@users.noreply.github.com"
+          git add stats/recover_missed.json
+          git commit -m "Recover missed texts" || exit 0
+          git pull --rebase origin main && git push origin HEAD:main

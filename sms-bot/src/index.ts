@@ -128,7 +128,7 @@ async function answerMissed(env: Env): Promise<void> {
       const batch: any[] = (await ghl(env, base + (after ? `&startAfterDate=${after}` : ""))).conversations ?? [];
       convs.push(...batch);
       const last = batch[batch.length - 1];
-      if (batch.length < 100 || !last || Date.now() - Number(last.lastMessageDate) > 72 * 3600_000) break;
+      if (batch.length < 100 || !last || Date.now() - Number(last.lastMessageDate) > 96 * 3600_000) break;
       after = String(last.lastMessageDate);
     }
   }
@@ -146,7 +146,7 @@ async function answerMissed(env: Env): Promise<void> {
     if (c.lastMessageDirection !== "inbound" || !/SMS/i.test(c.lastMessageType ?? "")) continue;
     // Give the live webhook time first. A reply with Zillow and comp lookups can run past GHL's webhook
     // timeout and get cut off (David Lorrison, 2026-10-20), so this sweep is the backstop.
-    if (!(age > 4 * 60_000 && age < 72 * 3600_000)) continue; // a late answer beats none; Claude skips "ok"/"thanks"
+    if (!(age > 4 * 60_000 && age < 96 * 3600_000)) continue; // a late answer beats none; Claude skips "ok"/"thanks"
     if (c.tags && !c.tags.some((t: string) => t.toLowerCase() === OUTREACH_TAG)) continue;
     let tags: string[] = c.tags ?? [];
     if (!c.tags) {
@@ -165,8 +165,11 @@ async function answerMissed(env: Env): Promise<void> {
       console.log("sweep: answering missed text from", c.contactId);
       if (await handleReply(c.contactId, env, true)) answered++;
     } catch (e) {
+      // Not tagged as seen, so the next sweep retries it (2026-11-16: during the dead-key outage every
+      // failed reply was tagged seen and never retried).
       console.error("sweep reply failed", c.contactId, e);
       await alertBroken(env, String(e));
+      continue;
     }
     try {
       const old = tags.filter((t) => t.startsWith(SEEN_PREFIX));

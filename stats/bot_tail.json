@@ -1,42 +1,108 @@
 [
  {
-  "at": 1794337587768,
+  "at": 1794867569748,
+  "outcome": "ok",
+  "trigger": "* * * * *",
+  "logs": [
+   "slack poll {\"cards\":246,\"active\":0,\"sent\":[]}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1794867592840,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [
+   "reply failed pV8JSsvaxM6mZlZw4SAd Error: 401 {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011Ch7PGQGHsrYwXsbD4nxWU\"}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1794867600983,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [
+   "reply failed 2XG4ptgK3UMr3toXRwGy Error: 401 {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011Ch7PH8M7f7EC3XDa4uNtD\"}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1794867630044,
+  "outcome": "ok",
+  "trigger": "* * * * *",
+  "logs": [
+   "slack poll {\"cards\":246,\"active\":0,\"sent\":[]}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1794867687261,
+  "outcome": "ok",
+  "trigger": "*/3 * * * *",
+  "logs": [
+   "sweep: answering missed text from pV8JSsvaxM6mZlZw4SAd",
+   "sweep reply failed pV8JSsvaxM6mZlZw4SAd Error: 401 {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011Ch7PPRDXzqT18MEKMapzY\"}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1794867690093,
+  "outcome": "ok",
+  "trigger": "* * * * *",
+  "logs": [
+   "slack poll {\"cards\":246,\"active\":0,\"sent\":[]}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1794867750019,
+  "outcome": "ok",
+  "trigger": "* * * * *",
+  "logs": [
+   "slack poll {\"cards\":246,\"active\":0,\"sent\":[]}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1794867810422,
+  "outcome": "ok",
+  "trigger": "* * * * *",
+  "logs": [
+   "slack poll {\"cards\":246,\"active\":0,\"sent\":[]}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1794867867314,
   "outcome": "ok",
   "trigger": "*/3 * * * *",
   "logs": [],
   "errors": []
  },
  {
-  "at": 1794337590259,
+  "at": 1794867870169,
   "outcome": "ok",
   "trigger": "* * * * *",
   "logs": [
-   "slack poll {\"cards\":200,\"active\":0,\"sent\":[]}"
+   "slack poll {\"cards\":246,\"active\":0,\"sent\":[]}"
   ],
   "errors": []
  },
  {
-  "at": 1794337649958,
-  "outcome": "ok",
-  "trigger": "* * * * *",
-  "logs": [
-   "slack poll {\"cards\":200,\"active\":0,\"sent\":[]}"
-  ],
-  "errors": []
- },
- {
-  "at": 1794337636336,
+  "at": 1794867877176,
   "outcome": "ok",
   "trigger": "POST",
-  "logs": [],
+  "logs": [
+   "reply failed RMXVunF5RqolKJfoeD4y Error: 401 {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011Ch7PdLPy8TMcN2LU7AkLx\"}"
+  ],
   "errors": []
  },
  {
-  "at": 1794337710049,
+  "at": 1794867886560,
   "outcome": "ok",
-  "trigger": "* * * * *",
+  "trigger": "POST",
   "logs": [
-   "slack poll {\"cards\":200,\"active\":0,\"sent\":[]}"
+   "reply failed ksvhEX2QlmVYGVcRIk7x Error: 401 {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"invalid x-api-key\"},\"request_id\":\"req_011Ch7Pe23gweqkmvu2p6hww\"}"
   ],
   "errors": []
  }

@@ -6,6 +6,10 @@ on:
       hours:
         description: How far back to look
         default: "96"
+      fire:
+        description: Also send each waiting text to the bot now
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -13,6 +17,7 @@ permissions:
 jobs:
   recover:
     runs-on: ubuntu-latest
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
       - name: Clear bot-seen tags on unanswered texts
@@ -20,6 +25,8 @@ jobs:
           GHL_TOKEN: ${{ secrets.GHL_TOKEN }}
           GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
           HOURS: ${{ inputs.hours }}
+          FIRE: ${{ inputs.fire }}
+          WEBHOOK_SECRET: ${{ secrets.SMS_BOT_WEBHOOK_SECRET }}
         run: python scripts/recover_missed.py
       - name: Save the result
         run: |

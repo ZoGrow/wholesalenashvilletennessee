@@ -2,10 +2,14 @@
 never retried. This clears bot-seen tags from contacts whose last text is an unanswered inbound text from the
 last HOURS hours, so the bot's sweep answers them again. Saves stats/recover_missed.json."""
 import json, os, time, urllib.error, urllib.request
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime
+from zoneinfo import ZoneInfo
 H = {"Authorization": f"Bearer {os.environ['GHL_TOKEN']}", "Version": "2021-07-28", "Accept": "application/json",
      "Content-Type": "application/json", "User-Agent": "Mozilla/5.0"}
 GHL, loc = "https://services.leadconnectorhq.com", os.environ["GHL_LOCATION_ID"]
 HOURS = float(os.environ.get("HOURS") or 96)
+FIRE = os.environ.get("FIRE") == "true"  # also send each waiting contact to the bot's webhook now (each is its own run)
 
 def call(method, path, body=None):
     req = urllib.request.Request(GHL + path, method=method, headers=H, data=json.dumps(body).encode() if body else None)
@@ -27,6 +31,7 @@ for _ in range(40):
     convs += batch
     if len(batch) < 100 or float(batch[-1]["lastMessageDate"]) < cutoff: break
     after = str(batch[-1]["lastMessageDate"])
+waiting = []
 out = {"scanned": len(convs), "inbound_waiting": 0, "cleared": 0, "names": []}
 for c in convs:
     if float(c["lastMessageDate"]) < cutoff or c.get("lastMessageDirection") != "inbound": continue
@@ -34,11 +39,28 @@ for c in convs:
     tags = c.get("tags") or call("GET", f"/contacts/{c['contactId']}").get("contact", {}).get("tags", [])
     if "apify-daily-lead" not in [t.lower() for t in tags]: continue
     out["inbound_waiting"] += 1
+    waiting.append(c["contactId"])
     seen = [t for t in tags if t.startswith("bot-seen-")]
     if seen:
         call("DELETE", f"/contacts/{c['contactId']}/tags", {"tags": seen})
         out["cleared"] += 1
         out["names"].append(c.get("fullName") or c.get("contactName") or c["contactId"])
+def fire(cid):
+    if datetime.now(ZoneInfo("America/Chicago")).hour >= 21: return "late"  # no texts after 9pm CT
+    req = urllib.request.Request(f"{open('sms-bot/deployed_url.txt').read().strip()}/?key={os.environ['WEBHOOK_SECRET'].strip()}",
+                                 method="POST", data=json.dumps({"contact_id": cid}).encode(),
+                                 headers={"Content-Type": "application/json", "User-Agent": "Mozilla/5.0"})
+    try:
+        return str(urllib.request.urlopen(req, timeout=180).status)
+    except urllib.error.HTTPError as e:
+        return f"{e.code} {e.read().decode(errors='replace')[:80]}"
+    except Exception as e:
+        return f"error {e}"[:80]
+if FIRE:
+    with ThreadPoolExecutor(4) as pool:
+        results = list(pool.map(fire, waiting))
+    out["fired"] = {r: results.count(r) for r in set(results)}
+    print(out["fired"])
 os.makedirs("stats", exist_ok=True)
 json.dump(out, open("stats/recover_missed.json", "w"), indent=1)
 print(json.dumps({k: v for k, v in out.items() if k != "names"}))

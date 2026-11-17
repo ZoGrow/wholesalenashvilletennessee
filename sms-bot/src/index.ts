@@ -86,8 +86,8 @@ export default {
 const OUTREACH_TAG = "apify-daily-lead"; // the GHL bot workflow only fires for these contacts
 const SWEEP_CRON = "*/3 * * * *"; // must match wrangler.toml
 const SLACK_CRON = "* * * * *"; // must match wrangler.toml: checks Zack's Slack replies for offers
-const SWEEP_PER_RUN = 6; // replies per sweep (stays within Cloudflare's per-run request limit)
-const SWEEP_LOOKUPS = 25; // contact reads per sweep, for conversations GHL returns without tags
+const SWEEP_PER_RUN = 3; // replies per sweep (stays within Cloudflare's per-run request limit)
+const SWEEP_LOOKUPS = 15; // contact reads per sweep, for conversations GHL returns without tags
 const PINGED_TAG = "pinged-property"; // Slack got the "agent has a house" ping
 const SEEN_PREFIX = "bot-seen-"; // + the time of the last text the sweep handled
 const OFFER_CRON = "5 14-23 * * *"; // must match wrangler.toml
@@ -169,6 +169,8 @@ async function answerMissed(env: Env): Promise<void> {
       // failed reply was tagged seen and never retried).
       console.error("sweep reply failed", c.contactId, e);
       await alertBroken(env, String(e));
+      answered++; // a failed try still uses up this run's request budget
+      if (/too many subrequests/i.test(String(e))) break;
       continue;
     }
     try {

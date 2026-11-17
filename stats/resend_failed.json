@@ -3,9 +3,9 @@
  "tagged": 21012,
  "eligible": 0,
  "skipped": {
-  "tag agent-replied": 2803,
+  "tag agent-replied": 2809,
   "dnd": 690,
-  "tag opted-out": 605,
+  "tag opted-out": 606,
   "bad number (4 DEADLINE_EXCEEDED:)": 1,
   "bad number (Error 30003 - Number)": 5,
   "bad number (Error 30008 - Messag)": 1,

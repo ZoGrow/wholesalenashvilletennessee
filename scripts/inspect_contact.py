@@ -21,7 +21,7 @@ for c in find(sys.argv[1]):
             "state": c.get("state"), "tags": full.get("tags"), "dnd": full.get("dnd"),
             "dndSettings": full.get("dndSettings"), "messages": []}
     for conv in get(f"/conversations/search?{urllib.parse.urlencode({'locationId': loc, 'contactId': c['id']})}").get("conversations", []):
-        msgs = get(f"/conversations/{conv['id']}/messages?limit=10").get("messages", {})
+        msgs = get(f"/conversations/{conv['id']}/messages?limit=100").get("messages", {})
         for m in (msgs.get("messages", []) if isinstance(msgs, dict) else msgs):
             m = {k: v for k, v in m.items() if k not in ("locationId", "contactId", "conversationId")}
             if m.get("status") in ("failed", "undelivered") and m.get("id"):

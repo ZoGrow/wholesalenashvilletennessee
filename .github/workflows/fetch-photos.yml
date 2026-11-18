@@ -1,0 +1,28 @@
+name: Fetch photos from last inspected contact
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download attachments listed in stats/contact_inspect.json
+        run: |
+          mkdir photos
+          python3 - <<'PY'
+          import json, urllib.request
+          d = json.load(open("stats/contact_inspect.json"))
+          urls = [u for c in d["matches"] for m in reversed(c["messages"]) for u in (m.get("attachments") or [])]
+          for i, u in enumerate(urls, 1):
+              ext = u.rsplit(".", 1)[-1][:5]
+              req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"})
+              open(f"photos/photo_{i:02d}.{ext}", "wb").write(urllib.request.urlopen(req).read())
+              print("saved", i)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: photos
+          path: photos/
+          retention-days: 3

@@ -3,6 +3,9 @@ name: Fetch photos from last inspected contact
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   fetch:
     runs-on: ubuntu-latest
@@ -21,8 +24,12 @@ jobs:
               open(f"photos/photo_{i:02d}.{ext}", "wb").write(urllib.request.urlopen(req).read())
               print("saved", i)
           PY
-      - uses: actions/upload-artifact@v4
-        with:
-          name: photos
-          path: photos/
-          retention-days: 3
+      - name: Push photos to a temporary branch (photos-tmp)
+        run: |
+          git config user.name "lead-pipeline"
+          git config user.email "lead-pipeline@users.noreply.github.com"
+          git checkout --orphan photos-tmp
+          git rm -rq --cached .
+          git add photos
+          git commit -qm "Photos from inspected contact"
+          git push -f origin photos-tmp

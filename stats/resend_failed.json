@@ -1,22 +1,24 @@
 {
  "mode": "send",
- "tagged": 21012,
+ "tagged": 21934,
  "eligible": 0,
  "skipped": {
-  "tag agent-replied": 2809,
-  "dnd": 690,
-  "tag opted-out": 606,
+  "dnd": 714,
+  "tag agent-replied": 2934,
+  "tag opted-out": 634,
+  "bad number (Error 21211 - Invali)": 1,
+  "tag dnd-skipped": 14,
   "bad number (4 DEADLINE_EXCEEDED:)": 1,
   "bad number (Error 30003 - Number)": 5,
   "bad number (Error 30008 - Messag)": 1,
-  "tag dnd-skipped": 13,
-  "they replied": 785,
+  "they replied": 835,
   "no messages": 3,
   "tag not-qualified": 2,
   "tag hot-lead": 4
  },
  "errors": {
   "Error 30003 - Number unreachable or out of service.": 5,
+  "Error 21211 - Invalid \"To\" number format. Please check and try again.": 1,
   "4 DEADLINE_EXCEEDED: Deadline exceeded after 60.000s,remote_addr=199.36.153.8:443": 1,
   "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 1
  },

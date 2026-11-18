@@ -1,3 +1,5 @@
+import { SIGNATURE_PNG_B64 } from "./signature";
+const SIGNATURE_URL = "https://nashville-sms-bot.holy-resonance-dc00.workers.dev/signature.png";
 // SMS reply bot: GoHighLevel sends a webhook when a lead texts back, this Worker
 // reads the SMS thread from GHL, asks Claude for the next reply, and texts it back.
 // When the lead is ready for a human (or asks for one), it tags them and goes quiet.
@@ -54,6 +56,10 @@ const MAX_PHOTOS = 6; // newest photos the bot looks at each reply (each costs ~
 export default {
   async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(req.url);
+    if (url.pathname === "/signature.png") {
+      const bytes = Uint8Array.from(atob(SIGNATURE_PNG_B64), (c) => c.charCodeAt(0));
+      return new Response(bytes, { headers: { "content-type": "image/png", "cache-control": "public, max-age=86400" } });
+    }
     if (url.pathname === "/slack") return slackEvent(req, env, ctx);
     if (url.pathname === "/slack-poll" && url.searchParams.get("key") === env.WEBHOOK_SECRET) {
       try { return new Response(JSON.stringify(await pollSlackOffers(env, Number(url.searchParams.get("hours")) || 3))); } catch (e) { return new Response(`error: ${e}`, { status: 500 }); }
@@ -1080,7 +1086,8 @@ async function offerFromSlack(channel: string, threadTs: string, ts: string, pri
     try {
       await ghl(env, "/conversations/messages", "POST", {
         type: "Email", contactId, subject: `Offer on ${address}`, emailFrom: `Zack Olabi <${env.SENDER_EMAIL || "zack@zogrowmedia.com"}>`,
-        html: text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\n/g, "<br>"),
+        html: text.replace(/\nZack Olabi\nZoGrow Media LLC$/, "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\n/g, "<br>") +
+          `<br><br><img src="${SIGNATURE_URL}" alt="Zack Olabi, Acquisitions Partner | ZoGrow, zack@zogrowmedia.com" width="400" style="width:400px;max-width:100%;height:auto;display:block">`,
       });
       done.push(`emailed ${email}`);
     } catch (e) {

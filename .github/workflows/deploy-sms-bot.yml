@@ -66,3 +66,7 @@ jobs:
           git pull --rebase origin main && git push origin HEAD:main
         env:
           URL: ${{ steps.deploy.outputs.deployment-url }}
+      - name: Check the email signature image is served
+        run: curl -sS -o /dev/null -w "signature.png %{http_code} %{content_type} %{size_download} bytes\n" "$URL/signature.png" | tee -a "$GITHUB_STEP_SUMMARY"
+        env:
+          URL: ${{ steps.deploy.outputs.deployment-url }}

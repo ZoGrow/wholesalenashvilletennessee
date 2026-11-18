@@ -1087,7 +1087,7 @@ async function offerFromSlack(channel: string, threadTs: string, ts: string, pri
       await ghl(env, "/conversations/messages", "POST", {
         type: "Email", contactId, subject: `Offer on ${address}`, emailFrom: `Zack Olabi <${env.SENDER_EMAIL || "zack@zogrowmedia.com"}>`,
         html: text.replace(/\nZack Olabi\nZoGrow Media LLC$/, "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\n/g, "<br>") +
-          `<br><br><img src="${SIGNATURE_URL}" alt="Zack Olabi, Acquisitions Partner | ZoGrow, zack@zogrowmedia.com" width="400" style="width:400px;max-width:100%;height:auto;display:block">`,
+          `<br><br><img src="${SIGNATURE_URL}" alt="Zack Olabi, Acquisitions Partner | ZoGrow, zack@zogrowmedia.com" width="320" style="width:320px;max-width:100%;height:auto;display:block">`,
       });
       done.push(`emailed ${email}`);
     } catch (e) {

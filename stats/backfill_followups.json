@@ -1,5 +1,5 @@
 {
- "mode": "list",
+ "mode": "apply",
  "candidates": 87,
  "skipped": {
   "already scheduled": 302,

@@ -370,6 +370,23 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
       if (PROMISED_NUMBERS.test(decision.reply || "")) decision.reply = "What's the exact address (house number and street)?";
     }
   }
+  // Zack 2026-11-18: every lead gets checked on Zillow for the Zestimate (the bot sometimes sent "unknown"
+  // when Zillow had one), and asking over QUALIFY_PERCENT (75%) of the Zestimate is a pass.
+  if (decision.deal === "qualified") {
+    await ensureZestimate(decision, contactId, env);
+    const over = overPercent(decision.lead, env);
+    if (over) {
+      console.log("asking over the qualify % of Zestimate, passing", contactId, over);
+      decision = (await nextReply(thread, contact, env, false, "", OVER_PERCENT_FIX.replace("{{WHY}}", over))) ?? decision;
+      applyDealRules(decision, contactId, env);
+      if (decision.deal === "qualified") {
+        decision.deal = "not_qualified";
+        decision.handoff = false;
+        if (PROMISED_NUMBERS.test(decision.reply || "")) decision.reply = "Got it, that's a bit more than I can do on this one. If the seller gets flexible on price, let me know.";
+      }
+      decision.note = `${over}. ${decision.note || ""}`;
+    }
+  }
   // "I'll run the numbers" is only for leads that go to Zack in Slack (Zack 2026-10-22). If the bot
   // promised numbers on anything else, have it rewrite: keep vetting or pass on the price.
   if (decision.deal !== "qualified" && PROMISED_NUMBERS.test(decision.reply || "")) {
@@ -478,6 +495,46 @@ const NO_PROMISE_FIX = `Your draft was: "{{REPLY}}". Don't tell the agent you'll
 // "I'll run the numbers", "let me crunch numbers", "I'll get you an offer", "get back to you with a number" ...
 const PROMISED_NUMBERS =
   /\b(run(ning)?|crunch(ing)?|work(ing)? up|put together|look(ing)? at) (the |some )?(numbers|comps|an offer|a number|figures)\b|\b(get|send|have) (you |back to you with |over )?(an offer|a number|my number|numbers|an? (cash )?offer)\b|\bget back to you (shortly |soon |today |tomorrow )?with\b/i;
+
+const OVER_PERCENT_FIX = `{{WHY}}. Zack only wants leads where the seller's asking price is at or under 75% of the Zillow Zestimate, so this one does NOT qualify: don't say you'll run numbers and don't hand it off. If you haven't already asked in this thread whether the seller has any flexibility on price, ask that now in one short, relaxed line (don't name a number) and set deal = "unknown". If you already asked and they didn't come down enough, pass with one short friendly line like "Got it, that's a bit more than I can do on this one. If the seller gets flexible, let me know." with deal = "not_qualified" and follow_up_days = 14.`;
+
+/** "Asking $X is N% of the $Z Zestimate (over 75%)" when the seller's price is over QUALIFY_PERCENT of the Zestimate, else "". */
+function overPercent(lead: Lead | undefined, env: Env): string {
+  const limit = Number(env.QUALIFY_PERCENT || "75");
+  if (!lead || limit >= 100 || zestimateMissing(lead.zestimate)) return "";
+  const zest = dollars(lead.zestimate);
+  const asking = /^\s*unknown/i.test(lead.asking_price || "") ? null : dollars(lead.asking_price);
+  if (!zest || !asking) return "";
+  const pct = Math.round((asking / zest) * 100);
+  return pct > limit ? `Asking ${usd(asking)} is ${pct}% of the ${usd(zest)} Zestimate (over ${limit}%)` : "";
+}
+
+/** True when the lead has no real Zillow Zestimate (unknown, lookup error, only a Redfin estimate, blank). */
+function zestimateMissing(z?: string): boolean {
+  return !dollars(z) || /unknown|error|redfin|no zestimate|not found|n\/a|check the zillow/i.test(z || "");
+}
+
+/** Zack 2026-11-18: look the house up on Zillow ourselves before a lead goes to Slack, so a card never says
+ *  "unknown" when Zillow has a Zestimate. Tries each address variant twice. */
+async function ensureZestimate(decision: Decision, contactId: string, env: Env): Promise<void> {
+  const lead = decision.lead;
+  if (!lead?.address || !zestimateMissing(lead.zestimate)) return;
+  for (let round = 0; round < 2; round++) {
+    for (const a of addressVariants(lead.address)) {
+      const it = await zillowFetch(a, env).catch(() => null);
+      const z = typeof it?.zestimate === "number" ? it.zestimate : Number(it?.zestimate?.amount) || null;
+      if (z) {
+        lead.zestimate = usd(z);
+        const asking = /^\s*unknown/i.test(lead.asking_price || "") ? null : dollars(lead.asking_price);
+        if (asking) lead.percent_of_zestimate = `${Math.round((asking / z) * 100)}%`;
+        if (it.propertyUrl && !/zillow\.com/i.test(lead.listing_url || "")) lead.listing_url = it.propertyUrl;
+        console.log("filled missing Zestimate from Zillow", contactId, lead.address, lead.zestimate);
+        return;
+      }
+    }
+  }
+  console.log("Zillow still has no Zestimate", contactId, lead.address, lead.zestimate);
+}
 
 /** First dollar amount in a string like "$475,000", "475k", "unknown on Zillow, Redfin Estimate $240k". */
 function dollars(s?: string): number | null {

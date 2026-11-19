@@ -1,0 +1,31 @@
+{
+ "mode": "list",
+ "candidates": 87,
+ "skipped": {
+  "already scheduled": 302,
+  "skip tag": 140,
+  "they texted last (bot answers)": 36
+ },
+ "scheduled_per_day": {
+  "2026-11-20": 40,
+  "2026-11-21": 40,
+  "2026-11-22": 7
+ },
+ "sample": [
+  "Joyce Jaeger (Baker)",
+  "Grant Waters (Mandeville)",
+  "Devan Hope (Bryant)",
+  "Maryanne \"MAC\" Campbell (Little Rock)",
+  "Tim Clark (Cabot)",
+  "George Roser (Hernando)",
+  "Christy Sumrall Purvis (Laurel)",
+  "Brandon McDonald (Biloxi)",
+  "Jeffrey Dillon (Ridgeland)",
+  "Macayla Mcghee (Mobile)",
+  "Alexa Crow (Decatur)",
+  "Asher Leist (Guntersville)",
+  "Jessica Wilburn (Huntsville)",
+  "Candy Creekmore (Huntsville)",
+  "Tamika Gaines (Birmingham)"
+ ]
+}

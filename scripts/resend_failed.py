@@ -60,7 +60,10 @@ for c in contacts:
     if tags & SKIP: out["skipped"]["tag " + sorted(tags & SKIP)[0]] += 1; continue
     if c.get("dnd") or (c.get("dndSettings") or {}).get("SMS", {}).get("status") == "active":
         out["skipped"]["dnd"] += 1; continue
-    conv, ms = messages(c["id"])
+    try:
+        conv, ms = messages(c["id"])
+    except urllib.error.HTTPError as e:  # one bad conversation (400) crashed the 2026-11-19 run; skip it
+        out["skipped"][f"read error {e.code}"] += 1; continue
     if not ms: out["skipped"]["no messages"] += 1; continue
     if any(m["direction"] == "inbound" for m in ms): out["skipped"]["they replied"] += 1; continue
     # Anything not failed counts as got (incl. pending/queued), so a text another run just sent isn't sent again.

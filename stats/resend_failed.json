@@ -1,30 +1,33 @@
 {
  "mode": "send",
- "tagged": 21934,
- "eligible": 0,
+ "tagged": 22921,
+ "eligible": 54,
  "skipped": {
-  "dnd": 714,
-  "tag agent-replied": 2939,
-  "tag opted-out": 634,
+  "tag agent-replied": 3054,
+  "tag opted-out": 701,
+  "bad number (ErrorCode: 30024)": 1,
+  "dnd": 732,
+  "bad number (Error 30008 - Messag)": 2,
+  "bad number (Error 30003 - Number)": 1,
   "bad number (Error 21211 - Invali)": 1,
   "tag dnd-skipped": 14,
-  "bad number (4 DEADLINE_EXCEEDED:)": 1,
-  "bad number (Error 30003 - Number)": 5,
-  "bad number (Error 30008 - Messag)": 1,
-  "they replied": 833,
+  "they replied": 917,
   "no messages": 3,
   "tag not-qualified": 2,
   "tag hot-lead": 4
  },
  "errors": {
-  "Error 30003 - Number unreachable or out of service.": 5,
-  "Error 21211 - Invalid \"To\" number format. Please check and try again.": 1,
-  "4 DEADLINE_EXCEEDED: Deadline exceeded after 60.000s,remote_addr=199.36.153.8:443": 1,
-  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 1
+  "Your account has reached today's opt-out/error limit. Please review your messages and try ": 54,
+  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 2,
+  "ErrorCode: 30024": 1,
+  "Error 30003 - Number unreachable or out of service.": 1,
+  "Error 21211 - Invalid \"To\" number format. Please check and try again.": 1
  },
  "sent": 0,
  "delivered": 0,
  "failed_again": 0,
- "kinds": {},
- "stopped_early": null
+ "kinds": {
+  "follow-up": 54
+ },
+ "stopped_early": "8pm Central, too late to text"
 }

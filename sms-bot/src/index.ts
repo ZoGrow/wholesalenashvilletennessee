@@ -46,8 +46,10 @@ const REPLY_DELAY_MS = 20_000; // replies go out no sooner than this after their
 // A cron (wrangler.toml) texts everyone whose date has come, if they haven't texted since.
 const FOLLOW_UP_PREFIX = "follow-up-";
 const CHECKED_IN_TAG = "checked-in"; // got a check-in and hasn't replied yet
-const CHECKED_IN_2_TAG = "checked-in-2"; // got a second unanswered check-in; one last one is scheduled
-const CHECKINS_PER_RUN = 12; // each check-in uses ~8 Cloudflare subrequests (paid plan allows 1,000 per run)
+const CHECKED_IN_2_TAG = "checked-in-2"; // second unanswered check-in
+const CHECKED_IN_3_TAG = "checked-in-3"; // third unanswered check-in
+const CHECKED_IN_4_TAG = "checked-in-4"; // fourth unanswered check-in; the fifth is the last
+const CHECKINS_PER_RUN = 20; // each check-in uses ~8 Cloudflare subrequests (paid plan allows 1,000 per run)
 const LOOKBACK_DAYS = 14; // also catch check-ins a missed or full run left behind
 
 type Sms = { direction: "inbound" | "outbound"; body: string; at: string; media?: string[] };
@@ -289,11 +291,14 @@ async function checkIn(contactId: string, dueTag: string, env: Env): Promise<boo
   } else {
     await sendSms(contactId, decision.reply.trim(), thread, contact, env);
   }
-  // Up to three check-ins in a row if they stay quiet (Zack 2026-10-27: keep hunting the "maybe soon" agents),
-  // the last one at least two weeks out, so nobody gets chased forever.
-  const second = tags.includes(CHECKED_IN_TAG), third = tags.includes(CHECKED_IN_2_TAG);
-  const days = Math.min(Math.max(decision.follow_up_days || 7, second ? 14 : 7), 120);
-  const add = [second ? CHECKED_IN_2_TAG : CHECKED_IN_TAG, ...(!third ? [FOLLOW_UP_PREFIX + centralDate(days)] : [])];
+  // Zack 2026-11-19: follow-ups on "maybe / soon" agents bring the best leads, so keep at them longer:
+  // up to five check-ins in a row if they stay quiet, spaced out more each time (about 4, 7, 10, 14 days),
+  // then stop so nobody gets chased forever.
+  const level = tags.includes(CHECKED_IN_4_TAG) ? 4 : tags.includes(CHECKED_IN_3_TAG) ? 3 : tags.includes(CHECKED_IN_2_TAG) ? 2 : tags.includes(CHECKED_IN_TAG) ? 1 : 0;
+  const minGap = [4, 7, 10, 14, 14][level];
+  const days = Math.min(Math.max(decision.follow_up_days || minGap, minGap), 120);
+  const levelTags = [CHECKED_IN_TAG, CHECKED_IN_2_TAG, CHECKED_IN_3_TAG, CHECKED_IN_4_TAG];
+  const add = [...(level < 4 ? [levelTags[level]] : []), ...(level < 4 ? [FOLLOW_UP_PREFIX + centralDate(days)] : [])];
   await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: add });
   return true;
 }
@@ -352,7 +357,7 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
 
   if (!tags.includes(REPLIED_TAG)) await ghl(env, `/contacts/${contactId}/tags`, "POST", { tags: [REPLIED_TAG] });
   // They texted back: any planned check-in is replaced by whatever this reply decides.
-  const stale = tags.filter((t) => t.startsWith(FOLLOW_UP_PREFIX) || t === CHECKED_IN_TAG || t === CHECKED_IN_2_TAG);
+  const stale = tags.filter((t) => t.startsWith(FOLLOW_UP_PREFIX) || t.startsWith(CHECKED_IN_TAG));
   if (stale.length) await ghl(env, `/contacts/${contactId}/tags`, "DELETE", { tags: stale });
 
   let decision = await nextReply(thread, contact, env);
@@ -896,7 +901,7 @@ function nearbySold(it: any, money: (v: any) => string): string[] {
     `${n.address?.street ?? "nearby"}${n.address?.zipcode ? ` (${n.address.zipcode})` : ""}: sold ${money(n.price)}, ${n.livingArea} sqft ($${Math.round(n.price / n.livingArea)}/sqft)${d != null ? `, ${d.toFixed(1)} mi away` : ""}`);
 }
 
-const CHECK_IN_ASK = `Today is {{TODAY}}. The agent hasn't texted since, and it's time for the check-in you planned. Write one short, casual follow-up that picks up on what they said (for example "Hey Sarah, checking back on that seller who was thinking about selling. Anything firm up?"). Don't repeat earlier wording or re-introduce yourself. Ask about the specific house or seller they mentioned; if they never named one, ask about off-market situations (a house that needs work, an inherited place, a landlord who's done, a seller behind on payments). If a check-in no longer makes sense (they said a firm no, or they're not an agent anymore), return an empty reply. Set follow_up_days to when to check again if they stay quiet (7-14 days, or their own timing).`;
+const CHECK_IN_ASK = `Today is {{TODAY}}. The agent hasn't texted since, and it's time for the check-in you planned. Write one short, casual follow-up that picks up on what they said (for example "Hey Sarah, checking back on that seller who was thinking about selling. Anything firm up?"). Don't repeat earlier wording or re-introduce yourself. Ask about the specific house or seller they mentioned; if they never named one, ask about off-market situations (a house that needs work, an inherited place, a landlord who's done, a seller behind on payments). If a check-in no longer makes sense (they said a firm no, or they're not an agent anymore), return an empty reply. Set follow_up_days to when to check again if they stay quiet (4-14 days, or their own timing).`;
 
 function systemPrompt(env: Env): string {
   return SYSTEM_PROMPT.replaceAll("{{GOAL}}", env.BOT_GOAL)

@@ -378,8 +378,17 @@ async function handleReply(contactId: string, env: Env, outreachOnly = false): P
   // Zack 2026-11-18: every lead gets checked on Zillow for the Zestimate (the bot sometimes sent "unknown"
   // when Zillow had one), and asking over QUALIFY_PERCENT (75%) of the Zestimate is a pass.
   if (decision.deal === "qualified") {
-    await ensureZestimate(decision, contactId, env);
-    const over = overPercent(decision.lead, env);
+    const zest = await ensureZestimate(decision, contactId, env);
+    // Zack 2026-11-19: no Zestimate on Zillow (cards that only had a tax assessed value) = pass. Only the
+    // off-market houses that have a Zestimate go to Slack. A lookup that errored isn't a pass: hold and retry later.
+    if (zest !== "found") {
+      console.log("no Zestimate, not sending the lead", contactId, zest, decision.lead?.address);
+      decision.deal = zest === "none" ? "not_qualified" : "unknown";
+      decision.handoff = false;
+      decision.note = `${zest === "none" ? "No Zestimate on Zillow, Zack only takes houses with one" : "Zillow lookup failed, not sent yet"}. ${decision.note || ""}`;
+      if (PROMISED_NUMBERS.test(decision.reply || "")) decision.reply = zest === "none" ? "Got it, thanks for sending it over. I'll pass on this one." : "";
+    }
+    const over = decision.deal === "qualified" ? overPercent(decision.lead, env) : "";
     if (over) {
       console.log("asking over the qualify % of Zestimate, passing", contactId, over);
       decision = (await nextReply(thread, contact, env, false, "", OVER_PERCENT_FIX.replace("{{WHY}}", over))) ?? decision;
@@ -521,12 +530,15 @@ function zestimateMissing(z?: string): boolean {
 
 /** Zack 2026-11-18: look the house up on Zillow ourselves before a lead goes to Slack, so a card never says
  *  "unknown" when Zillow has a Zestimate. Tries each address variant twice. */
-async function ensureZestimate(decision: Decision, contactId: string, env: Env): Promise<void> {
+async function ensureZestimate(decision: Decision, contactId: string, env: Env): Promise<"found" | "none" | "error"> {
   const lead = decision.lead;
-  if (!lead?.address || !zestimateMissing(lead.zestimate)) return;
+  if (!lead?.address) return "error";
+  if (!zestimateMissing(lead.zestimate)) return "found";
+  let errors = 0, tries = 0;
   for (let round = 0; round < 2; round++) {
     for (const a of addressVariants(lead.address)) {
-      const it = await zillowFetch(a, env).catch(() => null);
+      tries++;
+      const it = await zillowFetch(a, env).catch(() => { errors++; return null; });
       const z = typeof it?.zestimate === "number" ? it.zestimate : Number(it?.zestimate?.amount) || null;
       if (z) {
         lead.zestimate = usd(z);
@@ -534,11 +546,12 @@ async function ensureZestimate(decision: Decision, contactId: string, env: Env):
         if (asking) lead.percent_of_zestimate = `${Math.round((asking / z) * 100)}%`;
         if (it.propertyUrl && !/zillow\.com/i.test(lead.listing_url || "")) lead.listing_url = it.propertyUrl;
         console.log("filled missing Zestimate from Zillow", contactId, lead.address, lead.zestimate);
-        return;
+        return "found";
       }
     }
   }
-  console.log("Zillow still has no Zestimate", contactId, lead.address, lead.zestimate);
+  console.log("Zillow still has no Zestimate", contactId, lead.address, lead.zestimate, { errors, tries });
+  return errors === tries ? "error" : "none";
 }
 
 /** First dollar amount in a string like "$475,000", "475k", "unknown on Zillow, Redfin Estimate $240k". */

@@ -1,31 +1,29 @@
 {
  "mode": "send",
- "tagged": 24725,
- "eligible": 153,
+ "tagged": 25669,
+ "eligible": 49,
  "skipped": {
-  "tag agent-replied": 3327,
-  "dnd": 778,
-  "tag opted-out": 740,
-  "bad number (Error 30003 - Number)": 8,
-  "bad number (Error 30008 - Messag)": 3,
-  "bad number (ErrorCode: 30024)": 1,
+  "dnd": 803,
+  "tag opted-out": 761,
+  "tag agent-replied": 3498,
+  "bad number (Error 30008 - Messag)": 4,
+  "bad number (Error 30003 - Number)": 11,
   "tag dnd-skipped": 15,
-  "they replied": 961,
+  "they replied": 994,
   "no messages": 3,
   "tag not-qualified": 2,
   "tag hot-lead": 4
  },
  "errors": {
-  "Your account has reached today's opt-out/error limit. Please review your messages and try ": 153,
-  "Error 30003 - Number unreachable or out of service.": 8,
-  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 3,
-  "ErrorCode: 30024": 1
+  "Your account has reached today's opt-out/error limit. Please review your messages and try ": 49,
+  "Error 30003 - Number unreachable or out of service.": 11,
+  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 4
  },
- "sent": 0,
- "delivered": 0,
+ "sent": 49,
+ "delivered": 49,
  "failed_again": 0,
  "kinds": {
-  "follow-up": 153
+  "follow-up": 49
  },
- "stopped_early": "8pm Central, too late to text"
+ "stopped_early": null
 }

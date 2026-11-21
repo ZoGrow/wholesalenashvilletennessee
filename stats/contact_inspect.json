@@ -1,785 +1,323 @@
 {
  "matches": [
   {
-   "id": "8RzXcM",
-   "name": "Tom Drake",
-   "city": "Boone",
-   "state": "NC",
+   "id": "aagkq5",
+   "name": "ronda christiansen",
+   "city": "Oviedo",
+   "state": "FL",
    "tags": [
     "apify-daily-lead",
-    "text-not-sent"
-   ],
-   "dnd": null,
-   "dndSettings": {
-    "SMS": {
-     "status": "active",
-     "message": "TWILIO_ERROR_CODE: 30006"
-    }
-   },
-   "messages": [
-    {
-     "activity": {
-      "data": {
-       "channel": [
-        "SMS"
-       ]
-      },
-      "title": "DND enabled by customer",
-      "type": "contact_dnd_enabled"
-     },
-     "body": "DnD enabled by customer",
-     "dateAdded": "2026-11-19T17:53:16.256Z",
-     "dateUpdated": "2026-11-19T17:53:16.256Z",
-     "direction": "inbound",
-     "from": "+18282621990",
-     "id": "xkqIKXzwqRMvwqnzaYr3",
-     "messageType": "TYPE_ACTIVITY_CONTACT",
-     "to": "Lucia - Outreach 1",
-     "type": 25
-    },
-    {
-     "altId": "SMe27d1ba21b80b7ff70a76dac1dba5e15",
-     "attachments": [],
-     "body": "Hey Tom, my name is Zack. I am in an investor here in Boone looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-11-19T17:53:11.977Z",
-     "dateUpdated": "2026-11-19T17:53:16.003Z",
-     "direction": "outbound",
-     "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
-     "from": "+18323451435",
-     "id": "VwAAZpSi4LNZNmHCxsET",
-     "messageType": "TYPE_SMS",
-     "source": "workflow",
-     "status": "undelivered",
-     "to": "+18282621990",
-     "type": 2,
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "detail": {
-      "message": {
-       "altId": "SMe27d1ba21b80b7ff70a76dac1dba5e15",
-       "attachments": [],
-       "body": "Hey Tom, my name is Zack. I am in an investor here in Boone looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-       "contactId": "cXBy2wpOBSBkMr8RzXcM",
-       "contentType": "text/plain",
-       "conversationId": "9XsnNECQB6GmWuwkJlwF",
-       "dateAdded": "2026-11-19T17:53:11.977Z",
-       "dateUpdated": "2026-11-19T17:53:16.003Z",
-       "direction": "outbound",
-       "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
-       "from": "+18323451435",
-       "id": "VwAAZpSi4LNZNmHCxsET",
-       "locationId": "nvnsI7VgLrDYA5JeQ945",
-       "messageType": "TYPE_SMS",
-       "source": "workflow",
-       "status": "undelivered",
-       "to": "+18282621990",
-       "type": 2,
-       "userId": "igZ4OBnjAI86UmGLD7HQ"
-      },
-      "traceId": "1e50eca9-046c-4564-a84c-de62804d22d0"
-     }
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "v7IrN0",
-   "name": "Shantae Brown",
-   "city": "Mooresville",
-   "state": "NC",
-   "tags": [
-    "apify-daily-lead",
-    "text-not-sent"
-   ],
-   "dnd": null,
-   "dndSettings": {
-    "SMS": {
-     "status": "active",
-     "message": "TWILIO_ERROR_CODE: 30006"
-    }
-   },
-   "messages": [
-    {
-     "id": "UW8Jb42asXSX9yCCkLW7",
-     "direction": "inbound",
-     "type": 25,
-     "body": "DnD enabled by customer",
-     "dateAdded": "2026-11-19T17:49:09.150Z",
-     "dateUpdated": "2026-11-19T17:49:09.150Z",
-     "from": "+17046633655",
-     "to": "Lucia - Outreach 1",
-     "activity": {
-      "data": {
-       "channel": [
-        "SMS"
-       ]
-      },
-      "title": "DND enabled by customer",
-      "type": "contact_dnd_enabled"
-     },
-     "messageType": "TYPE_ACTIVITY_CONTACT"
-    },
-    {
-     "id": "xKsLni5AKYWNzYKrK4YG",
-     "direction": "outbound",
-     "status": "failed",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Shantae, my name is Zack. I am in an investor here in Mooresville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-11-19T17:49:07.590Z",
-     "dateUpdated": "2026-11-19T17:49:07.590Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "from": "+18323451435",
-     "to": "+17046633655",
-     "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
-     "messageType": "TYPE_SMS",
-     "detail": {
-      "message": {
-       "attachments": [],
-       "body": "Hey Shantae, my name is Zack. I am in an investor here in Mooresville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-       "contactId": "Sp3OORWmcO1o6Pv7IrN0",
-       "contentType": "text/plain",
-       "conversationId": "Y3BgU7GUSjCCE9dLW6HT",
-       "dateAdded": "2026-11-19T17:49:07.590Z",
-       "dateUpdated": "2026-11-19T17:49:07.590Z",
-       "direction": "outbound",
-       "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
-       "from": "+18323451435",
-       "id": "xKsLni5AKYWNzYKrK4YG",
-       "locationId": "nvnsI7VgLrDYA5JeQ945",
-       "messageType": "TYPE_SMS",
-       "source": "workflow",
-       "status": "failed",
-       "to": "+17046633655",
-       "type": 2,
-       "userId": "igZ4OBnjAI86UmGLD7HQ"
-      },
-      "traceId": "8819dd68-ca5d-4ade-8334-512c42b72ae0"
-     }
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "lIM5Zs",
-   "name": "Jessica Estes",
-   "city": "Mooresville",
-   "state": "NC",
-   "tags": [
-    "apify-daily-lead",
-    "text-not-sent"
-   ],
-   "dnd": null,
-   "dndSettings": {
-    "SMS": {
-     "status": "active",
-     "message": "TWILIO_ERROR_CODE: 30006"
-    }
-   },
-   "messages": [
-    {
-     "id": "Je5BfdIRTS1S8Cr4C0ZL",
-     "direction": "inbound",
-     "type": 25,
-     "body": "DnD enabled by customer",
-     "dateAdded": "2026-11-19T17:48:58.798Z",
-     "dateUpdated": "2026-11-19T17:48:58.798Z",
-     "from": "+17046580381",
-     "to": "Lucia - Outreach 1",
-     "activity": {
-      "data": {
-       "channel": [
-        "SMS"
-       ]
-      },
-      "title": "DND enabled by customer",
-      "type": "contact_dnd_enabled"
-     },
-     "messageType": "TYPE_ACTIVITY_CONTACT"
-    },
-    {
-     "id": "a6KjTdSKRYeagqlFKVTT",
-     "direction": "outbound",
-     "status": "failed",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Jessica, my name is Zack. I am in an investor here in Mooresville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-11-19T17:48:57.495Z",
-     "dateUpdated": "2026-11-19T17:48:57.495Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "from": "+18323451435",
-     "to": "+17046580381",
-     "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
-     "messageType": "TYPE_SMS",
-     "detail": {
-      "message": {
-       "attachments": [],
-       "body": "Hey Jessica, my name is Zack. I am in an investor here in Mooresville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-       "contactId": "MuU11VzSmZyPoTlIM5Zs",
-       "contentType": "text/plain",
-       "conversationId": "sXnD6COnOYIbNtYY1hBG",
-       "dateAdded": "2026-11-19T17:48:57.495Z",
-       "dateUpdated": "2026-11-19T17:48:57.495Z",
-       "direction": "outbound",
-       "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
-       "from": "+18323451435",
-       "id": "a6KjTdSKRYeagqlFKVTT",
-       "locationId": "nvnsI7VgLrDYA5JeQ945",
-       "messageType": "TYPE_SMS",
-       "source": "workflow",
-       "status": "failed",
-       "to": "+17046580381",
-       "type": 2,
-       "userId": "igZ4OBnjAI86UmGLD7HQ"
-      },
-      "traceId": "b10022bc-a7d4-4fab-88ac-674ada754a3d"
-     }
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "FkIhdW",
-   "name": "Cat McCrary",
-   "city": "Mooresville",
-   "state": "NC",
-   "tags": [
-    "apify-daily-lead",
-    "text-not-sent"
-   ],
-   "dnd": null,
-   "dndSettings": {
-    "SMS": {
-     "status": "active",
-     "message": "TWILIO_ERROR_CODE: 30006"
-    }
-   },
-   "messages": [
-    {
-     "id": "i5N740y1tWv0Jqiczspe",
-     "direction": "inbound",
-     "type": 25,
-     "body": "DnD enabled by customer",
-     "dateAdded": "2026-11-19T17:48:50.306Z",
-     "dateUpdated": "2026-11-19T17:48:50.306Z",
-     "from": "+18284854652",
-     "to": "Lucia - Outreach 1",
-     "activity": {
-      "data": {
-       "channel": [
-        "SMS"
-       ]
-      },
-      "title": "DND enabled by customer",
-      "type": "contact_dnd_enabled"
-     },
-     "messageType": "TYPE_ACTIVITY_CONTACT"
-    },
-    {
-     "id": "hND1HWaydpKgWiSVCRKx",
-     "direction": "outbound",
-     "status": "failed",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Cat, my name is Zack. I am in an investor here in Mooresville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-11-19T17:48:49.125Z",
-     "dateUpdated": "2026-11-19T17:48:49.125Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "from": "+18323451435",
-     "to": "+18284854652",
-     "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
-     "messageType": "TYPE_SMS",
-     "detail": {
-      "message": {
-       "attachments": [],
-       "body": "Hey Cat, my name is Zack. I am in an investor here in Mooresville looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-       "contactId": "u5GVQRNy5G6inSFkIhdW",
-       "contentType": "text/plain",
-       "conversationId": "cToVGOCF2aoNrtGOlUgI",
-       "dateAdded": "2026-11-19T17:48:49.125Z",
-       "dateUpdated": "2026-11-19T17:48:49.125Z",
-       "direction": "outbound",
-       "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
-       "from": "+18323451435",
-       "id": "hND1HWaydpKgWiSVCRKx",
-       "locationId": "nvnsI7VgLrDYA5JeQ945",
-       "messageType": "TYPE_SMS",
-       "source": "workflow",
-       "status": "failed",
-       "to": "+18284854652",
-       "type": 2,
-       "userId": "igZ4OBnjAI86UmGLD7HQ"
-      },
-      "traceId": "f8a585a9-5546-4d84-8bd8-67983cff1102"
-     }
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "IM0BSQ",
-   "name": "Gary Morrow",
-   "city": "Hickory",
-   "state": "NC",
-   "tags": [
-    "apify-daily-lead",
-    "text-not-sent"
-   ],
-   "dnd": null,
-   "dndSettings": {
-    "SMS": {
-     "status": "active",
-     "message": "TWILIO_ERROR_CODE: 30006"
-    }
-   },
-   "messages": [
-    {
-     "id": "UBROWtlTJf5BLOsSpp9W",
-     "direction": "inbound",
-     "type": 25,
-     "body": "DnD enabled by customer",
-     "dateAdded": "2026-11-19T17:48:30.353Z",
-     "dateUpdated": "2026-11-19T17:48:30.353Z",
-     "from": "+18283288600",
-     "to": "Lucia - Outreach 1",
-     "activity": {
-      "data": {
-       "channel": [
-        "SMS"
-       ]
-      },
-      "title": "DND enabled by customer",
-      "type": "contact_dnd_enabled"
-     },
-     "messageType": "TYPE_ACTIVITY_CONTACT"
-    },
-    {
-     "id": "PzBNZqKzHG18JRfZIIiy",
-     "direction": "outbound",
-     "status": "failed",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Gary, my name is Zack. I am in an investor here in Hickory looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-11-19T17:48:28.456Z",
-     "dateUpdated": "2026-11-19T17:48:28.456Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "from": "+18323451435",
-     "to": "+18283288600",
-     "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
-     "messageType": "TYPE_SMS",
-     "detail": {
-      "message": {
-       "attachments": [],
-       "body": "Hey Gary, my name is Zack. I am in an investor here in Hickory looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-       "contactId": "VCSCJWIRYhi4jQIM0BSQ",
-       "contentType": "text/plain",
-       "conversationId": "0KNYpM9XXM5g22p5yMls",
-       "dateAdded": "2026-11-19T17:48:28.456Z",
-       "dateUpdated": "2026-11-19T17:48:28.456Z",
-       "direction": "outbound",
-       "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
-       "from": "+18323451435",
-       "id": "PzBNZqKzHG18JRfZIIiy",
-       "locationId": "nvnsI7VgLrDYA5JeQ945",
-       "messageType": "TYPE_SMS",
-       "source": "workflow",
-       "status": "failed",
-       "to": "+18283288600",
-       "type": 2,
-       "userId": "igZ4OBnjAI86UmGLD7HQ"
-      },
-      "traceId": "794b1e7b-c761-4dac-91c6-b69ea4392f8e"
-     }
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "Qd372J",
-   "name": "Rose Griswold",
-   "city": "Wilmington",
-   "state": "NC",
-   "tags": [
-    "apify-daily-lead",
-    "text-not-sent"
-   ],
-   "dnd": null,
-   "dndSettings": {
-    "SMS": {
-     "status": "active",
-     "message": "TWILIO_ERROR_CODE: 30005"
-    }
-   },
-   "messages": [
-    {
-     "activity": {
-      "data": {
-       "channel": [
-        "SMS"
-       ]
-      },
-      "title": "DND enabled by customer",
-      "type": "contact_dnd_enabled"
-     },
-     "body": "DnD enabled by customer",
-     "dateAdded": "2026-11-19T17:51:46.190Z",
-     "dateUpdated": "2026-11-19T17:51:46.190Z",
-     "direction": "inbound",
-     "from": "+15133401847",
-     "id": "4MwNdY2KyjmzFYfQ6dTi",
-     "messageType": "TYPE_ACTIVITY_CONTACT",
-     "to": "Lucia - Outreach 1",
-     "type": 25
-    },
-    {
-     "altId": "SMc4388be8d6fc0b3350052e2448f7fb06",
-     "attachments": [],
-     "body": "Hey Rose, my name is Zack. I am in an investor here in Wilmington looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-11-19T17:48:06.601Z",
-     "dateUpdated": "2026-11-19T17:51:45.823Z",
-     "direction": "outbound",
-     "error": "Error 30005 - The recipient's number is inactive or does not exist.",
-     "from": "+18323451435",
-     "id": "tTjy8HtArAqOWFYQProq",
-     "messageType": "TYPE_SMS",
-     "source": "workflow",
-     "status": "undelivered",
-     "to": "+15133401847",
-     "type": 2,
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "detail": {
-      "message": {
-       "altId": "SMc4388be8d6fc0b3350052e2448f7fb06",
-       "attachments": [],
-       "body": "Hey Rose, my name is Zack. I am in an investor here in Wilmington looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-       "contactId": "BAbAGCfdKO3dGNQd372J",
-       "contentType": "text/plain",
-       "conversationId": "OQ9rCZy7rPSeWRelbm41",
-       "dateAdded": "2026-11-19T17:48:06.601Z",
-       "dateUpdated": "2026-11-19T17:51:45.823Z",
-       "direction": "outbound",
-       "error": "Error 30005 - The recipient's number is inactive or does not exist.",
-       "from": "+18323451435",
-       "id": "tTjy8HtArAqOWFYQProq",
-       "locationId": "nvnsI7VgLrDYA5JeQ945",
-       "messageType": "TYPE_SMS",
-       "source": "workflow",
-       "status": "undelivered",
-       "to": "+15133401847",
-       "type": 2,
-       "userId": "igZ4OBnjAI86UmGLD7HQ"
-      },
-      "traceId": "4f065647-d9ff-44cd-b32a-4cfc184b1ae9"
-     }
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "xo6N87",
-   "name": "Chase Gray",
-   "city": "Hudson",
-   "state": "NC",
-   "tags": [
-    "apify-daily-lead",
-    "text-not-sent"
-   ],
-   "dnd": null,
-   "dndSettings": {
-    "SMS": {
-     "status": "active",
-     "message": "TWILIO_ERROR_CODE: 30006"
-    }
-   },
-   "messages": [
-    {
-     "id": "5lkQHuM5mNbr4zZ595ld",
-     "direction": "inbound",
-     "type": 25,
-     "body": "DnD enabled by customer",
-     "dateAdded": "2026-11-19T17:48:07.522Z",
-     "dateUpdated": "2026-11-19T17:48:07.522Z",
-     "from": "+18287260370",
-     "to": "Lucia - Outreach 1",
-     "activity": {
-      "data": {
-       "channel": [
-        "SMS"
-       ]
-      },
-      "title": "DND enabled by customer",
-      "type": "contact_dnd_enabled"
-     },
-     "messageType": "TYPE_ACTIVITY_CONTACT"
-    },
-    {
-     "id": "iptNSBjB7fx2zLEoOUWO",
-     "direction": "outbound",
-     "status": "failed",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Chase, my name is Zack. I am in an investor here in Hudson looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-11-19T17:48:05.907Z",
-     "dateUpdated": "2026-11-19T17:48:05.907Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "from": "+18323451435",
-     "to": "+18287260370",
-     "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
-     "messageType": "TYPE_SMS",
-     "detail": {
-      "message": {
-       "attachments": [],
-       "body": "Hey Chase, my name is Zack. I am in an investor here in Hudson looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-       "contactId": "k8Uat74RnoJpSIxo6N87",
-       "contentType": "text/plain",
-       "conversationId": "aL15P995oZzVaDTm37IW",
-       "dateAdded": "2026-11-19T17:48:05.907Z",
-       "dateUpdated": "2026-11-19T17:48:05.907Z",
-       "direction": "outbound",
-       "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
-       "from": "+18323451435",
-       "id": "iptNSBjB7fx2zLEoOUWO",
-       "locationId": "nvnsI7VgLrDYA5JeQ945",
-       "messageType": "TYPE_SMS",
-       "source": "workflow",
-       "status": "failed",
-       "to": "+18287260370",
-       "type": 2,
-       "userId": "igZ4OBnjAI86UmGLD7HQ"
-      },
-      "traceId": "eba8c910-81cb-426c-9435-694ba9880bf7"
-     }
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "zquJCV",
-   "name": "Trisha Mcfeeters Browne",
-   "city": "Castle Hayne",
-   "state": "NC",
-   "tags": [
-    "apify-daily-lead",
-    "text-not-sent"
-   ],
-   "dnd": null,
-   "dndSettings": {
-    "SMS": {
-     "status": "active",
-     "message": "TWILIO_ERROR_CODE: 30006"
-    }
-   },
-   "messages": [
-    {
-     "id": "xu9Zlnpz7R3RqcUpHBOK",
-     "direction": "inbound",
-     "type": 25,
-     "body": "DnD enabled by customer",
-     "dateAdded": "2026-11-19T17:48:00.056Z",
-     "dateUpdated": "2026-11-19T17:48:00.056Z",
-     "from": "+19102563528",
-     "to": "Lucia - Outreach 1",
-     "activity": {
-      "data": {
-       "channel": [
-        "SMS"
-       ]
-      },
-      "title": "DND enabled by customer",
-      "type": "contact_dnd_enabled"
-     },
-     "messageType": "TYPE_ACTIVITY_CONTACT"
-    },
-    {
-     "id": "YCYubMvtZJ4nXZiQLq5X",
-     "direction": "outbound",
-     "status": "failed",
-     "type": 2,
-     "attachments": [],
-     "body": "Hey Trisha, my name is Zack. I am in an investor here in Castle Hayne looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-     "contentType": "text/plain",
-     "dateAdded": "2026-11-19T17:47:58.374Z",
-     "dateUpdated": "2026-11-19T17:47:58.374Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "from": "+18323451435",
-     "to": "+19102563528",
-     "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
-     "messageType": "TYPE_SMS",
-     "detail": {
-      "message": {
-       "attachments": [],
-       "body": "Hey Trisha, my name is Zack. I am in an investor here in Castle Hayne looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-       "contactId": "rH18xJavyHKlH7zquJCV",
-       "contentType": "text/plain",
-       "conversationId": "xmvbnA3I1VLNTH4vnx53",
-       "dateAdded": "2026-11-19T17:47:58.374Z",
-       "dateUpdated": "2026-11-19T17:47:58.374Z",
-       "direction": "outbound",
-       "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
-       "from": "+18323451435",
-       "id": "YCYubMvtZJ4nXZiQLq5X",
-       "locationId": "nvnsI7VgLrDYA5JeQ945",
-       "messageType": "TYPE_SMS",
-       "source": "workflow",
-       "status": "failed",
-       "to": "+19102563528",
-       "type": 2,
-       "userId": "igZ4OBnjAI86UmGLD7HQ"
-      },
-      "traceId": "0765bc7e-7d1a-42b3-b9bf-0ff0691a8d68"
-     }
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "reTmMI",
-   "name": "Alyssa Bleau",
-   "city": "Wilmington",
-   "state": "NC",
-   "tags": [
-    "apify-daily-lead",
-    "text-not-sent"
+    "agent-replied",
+    "carrier-blocked",
+    "bot-seen-1793204810912",
+    "hot-lead",
+    "qualified-lead"
    ],
    "dnd": null,
    "dndSettings": null,
    "messages": [
     {
-     "id": "voOpCYXSKYW8f85CFHnI",
-     "direction": "outbound",
-     "status": "undelivered",
-     "type": 2,
+     "altId": "SM6910e9f0ffbebd4398a5e4c41e2014ca",
      "attachments": [],
-     "body": "Hey Alyssa, my name is Zack. I am in an investor here in Wilmington looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "body": "Zack@zogrowmedia.com",
      "contentType": "text/plain",
-     "dateAdded": "2026-11-19T17:47:34.034Z",
-     "dateUpdated": "2026-11-19T17:48:29.986Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
-     "altId": "SM2eafe7d6361567d29b2138244cca1774",
+     "dateAdded": "2026-10-28T19:27:54.218Z",
+     "dateUpdated": "2026-10-28T19:28:00.862Z",
+     "direction": "outbound",
      "from": "+18323451435",
-     "to": "+19107463434",
-     "error": "Error 30003 - Number unreachable or out of service.",
+     "id": "PdIGcoJIfaoZQfnDiyk9",
      "messageType": "TYPE_SMS",
-     "detail": {
-      "message": {
-       "altId": "SM2eafe7d6361567d29b2138244cca1774",
-       "attachments": [],
-       "body": "Hey Alyssa, my name is Zack. I am in an investor here in Wilmington looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-       "contactId": "1LCfDxnqMCrirereTmMI",
-       "contentType": "text/plain",
-       "conversationId": "hsWec2uTub0vW1rjOkSE",
-       "dateAdded": "2026-11-19T17:47:34.034Z",
-       "dateUpdated": "2026-11-19T17:48:29.986Z",
-       "direction": "outbound",
-       "error": "Error 30003 - Number unreachable or out of service.",
-       "from": "+18323451435",
-       "id": "voOpCYXSKYW8f85CFHnI",
-       "locationId": "nvnsI7VgLrDYA5JeQ945",
-       "messageType": "TYPE_SMS",
-       "source": "workflow",
-       "status": "undelivered",
-       "to": "+19107463434",
-       "type": 2,
-       "userId": "igZ4OBnjAI86UmGLD7HQ"
-      },
-      "traceId": "2e2c3869-1d9c-47ef-9989-a5a558964bf5"
-     }
-    }
-   ],
-   "notes": []
-  },
-  {
-   "id": "bLgdfN",
-   "name": "Janice T Brinkley",
-   "city": "Rocky Mount",
-   "state": "NC",
-   "tags": [
-    "apify-daily-lead",
-    "text-not-sent"
-   ],
-   "dnd": null,
-   "dndSettings": {
-    "SMS": {
-     "status": "active",
-     "message": "TWILIO_ERROR_CODE: 30006"
-    }
-   },
-   "messages": [
-    {
-     "id": "8IkQIP5HL50o8qIZc96L",
-     "direction": "inbound",
-     "type": 25,
-     "body": "DnD enabled by customer",
-     "dateAdded": "2026-11-19T17:47:23.250Z",
-     "dateUpdated": "2026-11-19T17:47:23.250Z",
-     "from": "+19192336747",
-     "to": "Lucia - Outreach 1",
-     "activity": {
-      "data": {
-       "channel": [
-        "SMS"
-       ]
-      },
-      "title": "DND enabled by customer",
-      "type": "contact_dnd_enabled"
-     },
-     "messageType": "TYPE_ACTIVITY_CONTACT"
+     "source": "app",
+     "status": "delivered",
+     "to": "+14079249520",
+     "type": 2,
+     "userId": "igZ4OBnjAI86UmGLD7HQ"
     },
     {
-     "id": "2nrn18UOthEeT9cawNLM",
-     "direction": "outbound",
-     "status": "failed",
-     "type": 2,
+     "altId": "CA9d75af217a897aad4a1d8ae5947075ab",
+     "dateAdded": "2026-10-28T19:27:03.999Z",
+     "dateUpdated": "2026-10-28T19:30:05.955Z",
+     "direction": "inbound",
+     "from": "+14079249520",
+     "id": "8CQLJzC2OxmRYvQYu4qj",
+     "messageType": "TYPE_CALL",
+     "meta": {
+      "call": {
+       "duration": 162,
+       "status": "completed"
+      }
+     },
+     "status": "completed",
+     "to": "+18323451435",
+     "type": 1,
+     "userId": "igZ4OBnjAI86UmGLD7HQ"
+    },
+    {
+     "altId": "SM197a4d9f35169fd5d2127633f0cd348a",
      "attachments": [],
-     "body": "Hey Janice, my name is Zack. I am in an investor here in Rocky Mount looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "body": "Thanks Ronda, good to meet you. I'm running the numbers on Fallwood now and I'll get back to you with an offer. What's the seller asking, and why are they selling? Any more pics of the inside would help too.",
      "contentType": "text/plain",
-     "dateAdded": "2026-11-19T17:47:21.099Z",
-     "dateUpdated": "2026-11-19T17:47:21.100Z",
-     "userId": "igZ4OBnjAI86UmGLD7HQ",
-     "source": "workflow",
+     "dateAdded": "2026-10-28T19:25:25.694Z",
+     "dateUpdated": "2026-10-28T19:25:33.555Z",
+     "direction": "outbound",
      "from": "+18323451435",
-     "to": "+19192336747",
-     "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
+     "id": "th9um9dO4tcKvrYiNU8a",
      "messageType": "TYPE_SMS",
+     "source": "app",
+     "status": "delivered",
+     "to": "+14079249520",
+     "type": 2,
+     "userId": "igZ4OBnjAI86UmGLD7HQ"
+    },
+    {
+     "altId": "SMae549e3a22a1ca0ee1d1e8150ee875e2",
+     "attachments": [],
+     "body": "Ronda Christiansen with Keller Williams Advantage Realty RondaChristiansen@kw.com",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-28T19:24:58.814Z",
+     "dateUpdated": "2026-10-28T19:24:58.814Z",
+     "direction": "inbound",
+     "from": "+14079249520",
+     "id": "QmZO9DGzpICAW5lxrLFw",
+     "messageType": "TYPE_SMS",
+     "status": "delivered",
+     "to": "+18323451435",
+     "type": 2
+    },
+    {
+     "altId": "SM4da5fe9601f4dad5ffd8c02a472c390b",
+     "attachments": [],
+     "body": "Olabi",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-28T19:23:49.451Z",
+     "dateUpdated": "2026-10-28T19:23:55.046Z",
+     "direction": "outbound",
+     "from": "+18323451435",
+     "id": "1t46awbmesGIqjyQou3d",
+     "messageType": "TYPE_SMS",
+     "source": "app",
+     "status": "delivered",
+     "to": "+14079249520",
+     "type": 2,
+     "userId": "igZ4OBnjAI86UmGLD7HQ"
+    },
+    {
+     "altId": "SMae4277c3b75d1dddc17a2732b280ff9c",
+     "attachments": [],
+     "body": "Last name?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-28T19:21:55.591Z",
+     "dateUpdated": "2026-10-28T19:21:55.591Z",
+     "direction": "inbound",
+     "from": "+14079249520",
+     "id": "qC633okoeYNkM3SKGHNl",
+     "messageType": "TYPE_SMS",
+     "status": "delivered",
+     "to": "+18323451435",
+     "type": 2
+    },
+    {
+     "altId": "MM2eff68ae51c958b914dc71e59b998c66",
+     "attachments": [
+      "https://static-assets.internal.usercontent.site/conversations-assets/location/nvnsI7VgLrDYA5JeQ945/contact/t9tpHZh3cSvbEeaagkq5/ME885f0a90912fb1e192b0bc6cb64cb7d8.jpeg"
+     ],
+     "body": "",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-28T19:21:47.822Z",
+     "dateUpdated": "2026-10-28T19:21:48.287Z",
+     "direction": "inbound",
+     "from": "+14079249520",
+     "id": "VdGFvZrg6o93W8ipstp7",
+     "messageType": "TYPE_SMS",
+     "status": "delivered",
+     "to": "+18323451435",
+     "type": 2
+    },
+    {
+     "altId": "SM7dbd51a2fac9927c960f892bcf1876ec",
+     "attachments": [],
+     "body": "Totally understand, Ronda. I'm Zack, I work with agents around Oviedo on houses that need work. You can reach me at zackyolabi@gmail.com or right here by text. What's the address of the off-market one?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-28T16:33:52.611Z",
+     "dateUpdated": "2026-10-28T16:33:58.447Z",
+     "direction": "outbound",
+     "from": "+18323451435",
+     "id": "pIyyFLMXq0SOtex5T7R0",
+     "messageType": "TYPE_SMS",
+     "source": "app",
+     "status": "delivered",
+     "to": "+14079249520",
+     "type": 2,
+     "userId": "igZ4OBnjAI86UmGLD7HQ"
+    },
+    {
+     "altId": "SM3febc81e4d63abe271c50e3e6352edaa",
+     "attachments": [],
+     "body": "Fair enough, Ronda. I'm Zack, I buy houses in the Oviedo area and work with a lot of agents. Email is zackyolabi@gmail.com. What's the off-market property you have?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-28T16:33:40.797Z",
+     "dateUpdated": "2026-10-28T16:33:46.871Z",
+     "direction": "outbound",
+     "error": "Error 30007 - Message blocked due to carrier policies. This often happens if content violates carrier rules.",
+     "from": "+18323451435",
+     "id": "sxqUlV1A1eb2Sct5V4iA",
+     "messageType": "TYPE_SMS",
+     "source": "app",
+     "status": "undelivered",
+     "to": "+14079249520",
+     "type": 2,
+     "userId": "igZ4OBnjAI86UmGLD7HQ",
      "detail": {
       "message": {
+       "altId": "SM3febc81e4d63abe271c50e3e6352edaa",
        "attachments": [],
-       "body": "Hey Janice, my name is Zack. I am in an investor here in Rocky Mount looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
-       "contactId": "s5nmB5dxhMmWoUbLgdfN",
+       "body": "Fair enough, Ronda. I'm Zack, I buy houses in the Oviedo area and work with a lot of agents. Email is zackyolabi@gmail.com. What's the off-market property you have?",
+       "contactId": "t9tpHZh3cSvbEeaagkq5",
        "contentType": "text/plain",
-       "conversationId": "8BBRymKkiXyplVDT3Xau",
-       "dateAdded": "2026-11-19T17:47:21.099Z",
-       "dateUpdated": "2026-11-19T17:47:21.100Z",
+       "conversationId": "mHQ6rPCskz0CPMoqHh9A",
+       "dateAdded": "2026-10-28T16:33:40.797Z",
+       "dateUpdated": "2026-10-28T16:33:46.871Z",
        "direction": "outbound",
-       "error": "Error 30006 - Landline or non-mobile number. Cannot receive SMS.",
+       "error": "Error 30007 - Message blocked due to carrier policies. This often happens if content violates carrier rules.",
        "from": "+18323451435",
-       "id": "2nrn18UOthEeT9cawNLM",
+       "id": "sxqUlV1A1eb2Sct5V4iA",
        "locationId": "nvnsI7VgLrDYA5JeQ945",
        "messageType": "TYPE_SMS",
-       "source": "workflow",
-       "status": "failed",
-       "to": "+19192336747",
+       "source": "app",
+       "status": "undelivered",
+       "to": "+14079249520",
        "type": 2,
        "userId": "igZ4OBnjAI86UmGLD7HQ"
       },
-      "traceId": "c19b3e81-7b4c-4b55-bcfd-3ba985a29329"
+      "traceId": "28595c11-46b4-49f6-8983-42478ad7fe0a"
      }
+    },
+    {
+     "altId": "SMa0c7d8c1d95737d9ccee56074c522cd2",
+     "attachments": [],
+     "body": "I don't know who you are I only have your name as Chris and you're an investor I would like your complete information in order to do business with you or possibly do business with you",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-28T16:26:50.995Z",
+     "dateUpdated": "2026-10-28T16:26:50.995Z",
+     "direction": "inbound",
+     "from": "+14079249520",
+     "id": "BkAzV29Aq7jXBlJjnQaa",
+     "messageType": "TYPE_SMS",
+     "status": "delivered",
+     "to": "+18323451435",
+     "type": 2
+    },
+    {
+     "altId": "SM79b5c4eb662122fc541e4fbde96e84ec",
+     "attachments": [],
+     "body": "When you send me your contact information including your email I will send you the property that I have that's off Market",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-28T16:26:34.225Z",
+     "dateUpdated": "2026-10-28T16:26:34.225Z",
+     "direction": "inbound",
+     "from": "+14079249520",
+     "id": "CQdPtzHdFKtoxuLujlJX",
+     "messageType": "TYPE_SMS",
+     "status": "delivered",
+     "to": "+18323451435",
+     "type": 2
+    },
+    {
+     "altId": "SM8c4ac71f6f962c71695b7f740cf3a3a4",
+     "attachments": [],
+     "body": "This number is the best way to reach me, it's Zack. Do you have a client with a house that needs a lot of work, an inherited place, or a landlord who's done? Happy to take a look at the address.",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-28T16:26:01.656Z",
+     "dateUpdated": "2026-10-28T16:26:07.371Z",
+     "direction": "outbound",
+     "from": "+18323451435",
+     "id": "6wItcCbSNGBNtL0GPUm5",
+     "messageType": "TYPE_SMS",
+     "source": "app",
+     "status": "delivered",
+     "to": "+14079249520",
+     "type": 2,
+     "userId": "igZ4OBnjAI86UmGLD7HQ"
+    },
+    {
+     "altId": "SM1ebb80248e4791d20978f00dd386495b",
+     "attachments": [],
+     "body": "Send me your contact information including your email",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-28T16:25:40.620Z",
+     "dateUpdated": "2026-10-28T16:25:40.620Z",
+     "direction": "inbound",
+     "from": "+14079249520",
+     "id": "mQBFIbkn3l6Lj26PGpyt",
+     "messageType": "TYPE_SMS",
+     "status": "delivered",
+     "to": "+18323451435",
+     "type": 2
+    },
+    {
+     "altId": "SM8bf70ca45c9f63cd91bade0880fdbbe5",
+     "attachments": [],
+     "body": "Hey Ronda, this number is the best way to reach me, it's Zack. Do you have a house in mind, maybe something off-market or a seller who needs to sell without the hassle?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-28T16:25:18.359Z",
+     "dateUpdated": "2026-10-28T16:25:25.206Z",
+     "direction": "outbound",
+     "from": "+18323451435",
+     "id": "xtpoAvZePKWSEGIho6Bc",
+     "messageType": "TYPE_SMS",
+     "source": "app",
+     "status": "delivered",
+     "to": "+14079249520",
+     "type": 2,
+     "userId": "igZ4OBnjAI86UmGLD7HQ"
+    },
+    {
+     "altId": "SM9e04a36e7f6c0b1e24cbf9a49fac2323",
+     "attachments": [],
+     "body": "Send me your contact information including your email",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-28T16:24:57.571Z",
+     "dateUpdated": "2026-10-28T16:24:57.571Z",
+     "direction": "inbound",
+     "from": "+14079249520",
+     "id": "nbcEKsEJeVtYfnlXgDM1",
+     "messageType": "TYPE_SMS",
+     "status": "delivered",
+     "to": "+18323451435",
+     "type": 2
+    },
+    {
+     "altId": "SM9249c1fc70ffc171113cd64ff8e9f92e",
+     "attachments": [],
+     "body": "Hey Ronda, my name is Zack. I am in an investor here in Oviedo looking to buy some distressed homes to add into my portfolio. Do you have anything off-market, coming soon or the seller would consider an as-is offer?",
+     "contentType": "text/plain",
+     "dateAdded": "2026-10-28T16:04:13.539Z",
+     "dateUpdated": "2026-10-28T16:05:02.224Z",
+     "direction": "outbound",
+     "from": "+18323451435",
+     "id": "eCtFtbbTmM4dmLPKzGeC",
+     "messageType": "TYPE_SMS",
+     "source": "workflow",
+     "status": "delivered",
+     "to": "+14079249520",
+     "type": 2,
+     "userId": "igZ4OBnjAI86UmGLD7HQ"
     }
    ],
-   "notes": []
+   "notes": [
+    {
+     "at": "2026-10-28T19:25:36.211Z",
+     "body": "\ud83c\udfe0 New qualified lead\n165 Fallwood St, Fern Park, FL 32730\n\ud83d\udd17 <https://www.zillow.com/homedetails/165-Fallwood-St-Fern-Park-FL-32730/47684894zpid/|Click here to view on Zillow>\n\n\ud83d\udcb0 Asking: unknown\n\ud83d\udcca Zestimate: $277,800 (asking is unknown)\n\ud83d\udccd Status: Off-market, coming soon, hits MLS Nov 1 (open houses 10/28 and 10/29)\n\n\ud83d\udd27 Condition: Flyer says fixer upper; photos show dated tile and blue walls, kitchen with newer white cabinets and stainless appliances; roof, HVAC unknown\n\ud83c\udfe1 Property: 3/2.5/1634 \u00b7 built 1975 \u00b7 unknown\n\n\ud83d\ude4b Seller: unknown\n\u23f1\ufe0f Timeline: Lists Nov 1\n\n\ud83e\uddee Deal calculator\nARV: $285,000 (from sold comps, ~$174/sqft)\nComps: 163 Fallwood St, sold $349,000, 1842 sqft, built unknown, 2-story, $189/sqft, same street (weak, bigger); 169 Fallwood St, sold $305,000, 1144 sqft, $267/sqft, same street (outlier, smaller). Rough, used lower value near Zestimate\nRepairs: $49,000 (medium, $30/sqft \u00d7 1,634 sqft)\nBuyer pays: $150,500 (70% of ARV minus repairs)\nYour fee: $10,000 \u00b7 EMD $1,391 (1% of offer)\nMax offer: $139,109\n<https://claude.ai/artifact/N7qkPw3VY59ugckT9AhMvV|Adjust in the calculator>\n\n\ud83e\udd1d Pitch to the agent\nOpen at: $125,000\nWhat to say: Since it needs work and you list Nov 1, I can do $125,000 cash, as-is, close in 2 weeks, no inspections or repairs, and you skip showings and open houses.\n\n\ud83d\udc64 Agent: Ronda Christiansen \u00b7 KELLER WILLIAMS ADVANTAGE RLTY \u00b7 +14079249520\n\n\u2705 Why it qualifies: Rough estimates. Townhouse, HOA about $281/mo, Fannie Mae-type history on Zillow. Agent Ronda Christiansen, KW, RondaChristiansen@kw.com, 407-924-9520. Asking price and seller reason not yet known.\n\n<https://app.gohighlevel.com/v2/location/nvnsI7VgLrDYA5JeQ945/contacts/detail/t9tpHZh3cSvbEeaagkq5|Open in GHL>"
+    },
+    {
+     "at": "2026-10-28T19:25:36.017Z",
+     "body": "SMS bot handoff: QUALIFIED. 165 Fallwood St, Fern Park. Zestimate $277,800, asking unknown, off-market coming soon (MLS Nov 1). 3/2.5/1634 sqft townhouse, 1975, fixer per flyer. Motivation unknown. Agent Ronda, 407-924-9520, RondaChristiansen@kw.com. Time-sensitive: it lists Nov 1."
+    },
+    {
+     "at": "2026-10-28T16:33:48.466Z",
+     "body": "SMS bot: carrier blocked this text as spam (30007): \"Fair enough, Ronda. I'm Zack, I buy houses in the Oviedo area and work with a lot of agents. Email is zackyolabi@gmail.com. What's the off-market property you have?\""
+    }
+   ]
   }
  ]
 }

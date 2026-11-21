@@ -1,13 +1,26 @@
 {
  "contact": "6b1NK6",
- "mode": "send",
- "sent": {
-  "threadId": "9UOObd3kc7rF37ul15ej",
-  "messageId": "RCSZdJEZbz7pWdtgNVYM",
-  "emailMessageId": "RCSZdJEZbz7pWdtgNVYM",
-  "msg": "Email queued successfully.",
-  "conversationId": "NY5hgklsEPRSpRhnH855",
-  "traceId": "e2666af0-c5b8-42e3-bebe-8ce6ca2a459a"
- },
- "messages": []
+ "mode": "check",
+ "messages": [
+  {
+   "dateAdded": "2026-11-21T22:28:58.637Z",
+   "messageType": "TYPE_EMAIL",
+   "direction": "outbound",
+   "status": null,
+   "attachments": null,
+   "meta": {
+    "email": {
+     "messageIds": [
+      "RCSZdJEZbz7pWdtgNVYM"
+     ],
+     "direction": "outbound",
+     "subject": "Photo test (reply with a photo)"
+    },
+    "marketplace": {
+     "appId": "6ac82161cc0c50bbf18cf2ff"
+    }
+   },
+   "source": "app"
+  }
+ ]
 }

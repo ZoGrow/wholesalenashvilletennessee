@@ -1103,6 +1103,20 @@ async function slack(env: Env, method: string, body: Record<string, unknown>): P
   return out;
 }
 
+/** 1-2 sentences to the agent on why the offer lands where it does, using only facts on the lead card. */
+async function explainOffer(card: string, price: number, env: Env): Promise<string> {
+  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
+  const res = await client.messages.create({
+    model: MODEL, max_tokens: 200,
+    messages: [{ role: "user", content: `Write a short note (1-2 sentences, under 50 words) from Zack, a cash buyer, to a listing agent, placed right above his offer of ${usd(price)}. It explains how he got to that number and why it makes sense. Usually: nearby sold comps come in lower than the seller's ARV or Zillow's estimate, the house needs work, and after closing and holding costs this is where he lands. Use ONLY facts and numbers from the lead card below (comps, Zestimate, condition, repairs); never invent a number, never mention a wholesale or assignment fee, our max offer, or any percentages, and don't over-explain. Friendly and plain. No greeting, no sign-off. Reply with the note only.
+
+Lead card:
+${card.slice(0, 3000)}` }],
+  });
+  const note = res.content.map((b: any) => b.text || "").join("").trim().replace(/^"|"$/g, "");
+  return note.length > 20 && note.length < 500 ? note : "";
+}
+
 /** Reads Zack's Slack reply on a lead card and pulls out the offer and any instructions that come with it. */
 async function readOfferInstructions(reply: string, card: string, env: Env): Promise<any> {
   const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
@@ -1126,7 +1140,7 @@ Answer with JSON only:
  "closing_business_days": number or null, "due_diligence_days": number or null, "expires_in_hours": number or null,
  "extra_terms": [extra lines to add to the offer's special stips, written as offer terms, only if he asked],
  "unclear": null, or a one-line question if his instructions can't be followed safely,
- "note_to_agent": "If he gives a reason or something to say (e.g. repairs will cost $X, roof is old), write it as 1-3 short, friendly sentences in Zack's voice to the agent explaining the offer, using only facts he gave. Empty string if he gave none.",
+ "note_to_agent": "If he gives a reason or something to say (e.g. repairs will cost $X, roof is old, comps are lower), write it as 1-2 short, friendly sentences in Zack's voice to the agent explaining how we got to the offer, using his facts plus comps/Zestimate/condition from the card; never mention our fee, max offer or percentages, don't over-explain. Empty string if he gave none (a note is then written from the card).",
  "summary": "short list of the changes he asked for, empty if none"}` }],
   });
   const text = res.content.map((b: any) => b.text || "").join("");
@@ -1144,6 +1158,9 @@ async function offerFromSlack(channel: string, threadTs: string, ts: string, pri
   if (!contactId || !address) throw new Error("couldn't find the lead's address and GHL contact on this card");
   if (!price) price = dollars(card.match(/Open at: \*(\$[\d,]+)\*/)?.[1]) ?? 0;
   if (!price) throw new Error("this card has no opening offer, reply with a number instead");
+  // Zack 2026-11-23: every offer gets a short "how we got here" note above the terms. His own reasons win;
+  // otherwise it's written from the card's numbers (nearby comps, Zestimate, repairs) plus closing costs.
+  if (!o.noteToAgent) o.noteToAgent = await explainOffer(card, price, env).catch((e) => { console.error("offer note failed", e); return ""; });
   const contact = (await ghl(env, `/contacts/${contactId}`)).contact ?? {};
   const email = (contact.email || card.match(/mailto:([^|>\s]+)/)?.[1] || "").trim();
   const title = await findTitleCompany(address, env);

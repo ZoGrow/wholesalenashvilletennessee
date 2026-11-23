@@ -1,18 +1,17 @@
-📈 *Weekly scorecard* (week ending Nov 16)
+📈 *Weekly scorecard* (week ending Nov 23)
 
-📤 Texts sent: *4,979* (from 8,698 agents scraped, 21,012 agents texted all-time)
+📤 Texts sent: *4,000* (from 7,782 agents scraped, 25,669 agents texted all-time)
 
-Agents who replied: *+159* this week (2,803 total)
-Warm (something later): *+1* this week (446 total)
-Qualified leads: *+0* this week (165 total)
-Didn't qualify: *+1* this week (513 total)
-Handed to you: *+0* this week (216 total)
+Agents who replied: *+713* this week (3,516 total)
+Warm (something later): *+113* this week (559 total)
+Qualified leads: *+34* this week (199 total)
+Didn't qualify: *+149* this week (662 total)
+Handed to you: *+41* this week (257 total)
 
-Reply rate: 3.2% of this week's texts
+Reply rate: 17.8% of this week's texts
 
-🎯 Qualified leads you made an offer on: *53 of 164* (32%, goal 90%)
-No offer yet: Amy Bellard, Sharon L Harmon, Karen Bridges, Jimmy Stewart, Victoria Pickard, Don Johnston Jr, Brooke Tkach, Marc B. Oppenhuizen and more
+🎯 Lead-to-offer rate: couldn't check (HTTP Error 503: Service Unavailable)
 
-Opted out: *+16* this week (710 total)
-First text failed: *+28* this week (779 total)
-Bot text blocked by carrier: *+1* this week (131 total)
+Opted out: *+193* this week (903 total)
+First text failed: *+240* this week (1,019 total)
+Bot text blocked by carrier: *+78* this week (209 total)

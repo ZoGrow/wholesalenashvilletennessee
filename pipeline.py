@@ -450,7 +450,12 @@ def sms_outcome(contact_id, location_id, h):
         convs = http_json("GET", f"{GHL_BASE}/conversations/search?{q}", h) or {}
         outcome = "none"
         for conv in convs.get("conversations", []):
-            res = http_json("GET", f"{GHL_BASE}/conversations/{conv['id']}/messages", h) or {}
+            try:
+                res = http_json("GET", f"{GHL_BASE}/conversations/{conv['id']}/messages", h) or {}
+            except RuntimeError as e:
+                if "CONVERSATION_NOT_FOUND" in str(e) or "HTTP 404" in str(e):
+                    continue  # conversation vanished between search and read; check the others
+                raise
             msgs = res.get("messages", [])
             if isinstance(msgs, dict):  # GHL nests the list: {"messages": {"messages": [...]}}
                 msgs = msgs.get("messages", [])

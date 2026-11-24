@@ -1,17 +1,18 @@
-📈 *Weekly scorecard* (week ending Nov 23)
+📈 *Weekly scorecard* (week ending Nov 24)
 
-📤 Texts sent: *4,000* (from 7,782 agents scraped, 25,669 agents texted all-time)
+📤 Texts sent: *4,000* (from 7,661 agents scraped, 26,624 agents texted all-time)
 
-Agents who replied: *+713* this week (3,516 total)
-Warm (something later): *+113* this week (559 total)
-Qualified leads: *+34* this week (199 total)
-Didn't qualify: *+149* this week (662 total)
-Handed to you: *+41* this week (257 total)
+Agents who replied: *+147* this week (3,663 total)
+Warm (something later): *+23* this week (582 total)
+Qualified leads: *+5* this week (204 total)
+Didn't qualify: *+29* this week (691 total)
+Handed to you: *+6* this week (263 total)
 
-Reply rate: 17.8% of this week's texts
+Reply rate: 3.7% of this week's texts
 
-🎯 Lead-to-offer rate: couldn't check (HTTP Error 503: Service Unavailable)
+🎯 Qualified leads you made an offer on: *65 of 203* (32%, goal 90%)
+No offer yet: Jim Matheos, Kristina Berezhna, Stewart Shankel, Jennifer Kiser, Hope Rogers, Trevor Berry, Brittany A Brathwaite, Maggie Basnight and more
 
-Opted out: *+193* this week (903 total)
-First text failed: *+240* this week (1,019 total)
-Bot text blocked by carrier: *+78* this week (209 total)
+Opted out: *+32* this week (935 total)
+First text failed: *+17* this week (1,036 total)
+Bot text blocked by carrier: *+3* this week (212 total)

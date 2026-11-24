@@ -1,213 +1,151 @@
 [
  {
-  "at": 1794873689915,
+  "at": 1795546586694,
   "outcome": "ok",
-  "trigger": "* * * * *",
+  "trigger": "POST",
   "logs": [
-   "slack poll {\"cards\":247,\"active\":0,\"sent\":[]}"
+   "opt-out from CyvDHrSu01CAfKeaaxiS",
+   "SMS DND refused, setting DND CyvDHrSu01CAfKeaaxiS Error: GHL PUT /contacts/CyvDHrSu01CAfKeaaxiS: 401 {\"statusCode\":401,\"message\":\"Not authorized to update permanent dnd setting for SMS\",\"succeded\":false,\"succeeded\":false,\"traceId\":\"b0d1e1ff-a438-402e-b14f-523d4066915f\"}"
   ],
   "errors": []
  },
  {
-  "at": 1794873750055,
-  "outcome": "ok",
-  "trigger": "* * * * *",
-  "logs": [
-   "slack poll {\"cards\":247,\"active\":0,\"sent\":[]}"
-  ],
-  "errors": []
- },
- {
-  "at": 1794873809947,
-  "outcome": "ok",
-  "trigger": "* * * * *",
-  "logs": [
-   "slack poll {\"cards\":247,\"active\":0,\"sent\":[]}"
-  ],
-  "errors": []
- },
- {
-  "at": 1794873807100,
-  "outcome": "ok",
-  "trigger": "*/3 * * * *",
-  "logs": [
-   "sweep: answering missed text from aAfLnBrKQqhF33fW3lJB",
-   "no reply sent to aAfLnBrKQqhF33fW3lJB deal unknown note Isabella has nothing now but agreed to ask her clients about off-market or distressed houses. Check back in about 4 days.",
-   "sweep: answering missed text from IrXHbV0ZtnMIxCYJvxaY",
-   "sweep: answering missed text from qmWqftqAlGeTwukX8Shn",
-   "sweep: answering missed text from ibNNHZ67hi3l8XdOy68A",
-   "skip: bot off for ibNNHZ67hi3l8XdOy68A",
-   "sweep: answering missed text from MCze59PFwO9n9CWKal1X",
-   "sweep: answering missed text from gPJUJTqqHom7Ir2CM2XJ",
-   "sweep reply failed gPJUJTqqHom7Ir2CM2XJ Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from SbQ4LTOP42kqokuSiHTJ",
-   "sweep reply failed SbQ4LTOP42kqokuSiHTJ Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from zAZERZM9Nh1MfxdILJ8K",
-   "sweep reply failed zAZERZM9Nh1MfxdILJ8K Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from RzzOk24WDettRNXmJhtR",
-   "sweep reply failed RzzOk24WDettRNXmJhtR Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from 6vNo1aEKeiVzLlJMAkG2",
-   "sweep reply failed 6vNo1aEKeiVzLlJMAkG2 Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from cmU3VjAiLJJieWZ3eKgY",
-   "sweep reply failed cmU3VjAiLJJieWZ3eKgY Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from FBe6tv5jzdDxcLuIqfKZ",
-   "sweep reply failed FBe6tv5jzdDxcLuIqfKZ Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from Bij4Xa5uo5AM2XSzf9JA",
-   "sweep reply failed Bij4Xa5uo5AM2XSzf9JA Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from awcEpnEHJf2CrGkf5LWO",
-   "sweep reply failed awcEpnEHJf2CrGkf5LWO Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from IMN0tus71eFBTw2XxusO",
-   "sweep reply failed IMN0tus71eFBTw2XxusO Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from XvPYCVZ3JgSqYzI7YgOQ",
-   "sweep reply failed XvPYCVZ3JgSqYzI7YgOQ Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from WpTwGi8w952hzJ4Hd1E2",
-   "sweep reply failed WpTwGi8w952hzJ4Hd1E2 Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from 5VNXsWvzGwRU23Xz2MBd",
-   "sweep reply failed 5VNXsWvzGwRU23Xz2MBd Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from 421NamfmP613grcmUhpm",
-   "sweep reply failed 421NamfmP613grcmUhpm Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from MRIqMv98BigtxyJN6ak9",
-   "sweep reply failed MRIqMv98BigtxyJN6ak9 Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from ZULnjALEdE6iSghffQ5m",
-   "sweep reply failed ZULnjALEdE6iSghffQ5m Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from FPaDYyPnFzjzQW5Lpkes",
-   "sweep reply failed FPaDYyPnFzjzQW5Lpkes Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from q9WFRkhZalgi1l5vTYsN",
-   "sweep reply failed q9WFRkhZalgi1l5vTYsN Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from Eg1hDyN9fbMkxQudSJv4",
-   "sweep reply failed Eg1hDyN9fbMkxQudSJv4 Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from qPW7oFs6ok7Ph2uw2fCs",
-   "sweep reply failed qPW7oFs6ok7Ph2uw2fCs Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from xddRKg6SNaedvGUGaKjj",
-   "sweep reply failed xddRKg6SNaedvGUGaKjj Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from kysViAbv3dnK0FIQK8jU",
-   "sweep reply failed kysViAbv3dnK0FIQK8jU Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from Ftcu9e9fT6lhjzfxndAx",
-   "sweep reply failed Ftcu9e9fT6lhjzfxndAx Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from m5WPVQO8bOxwO6Dybjlf",
-   "sweep reply failed m5WPVQO8bOxwO6Dybjlf Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from nl9Gs0jTQBtxYpDvtBwt",
-   "sweep reply failed nl9Gs0jTQBtxYpDvtBwt Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from BYg58mXLz1XTwXDg8CwZ",
-   "sweep reply failed BYg58mXLz1XTwXDg8CwZ Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from KkRz4g9eEH9TvyPK5SWp",
-   "sweep reply failed KkRz4g9eEH9TvyPK5SWp Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from wXkEEsO5cm5TwVp76oXG",
-   "sweep reply failed wXkEEsO5cm5TwVp76oXG Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from 9CeXdma1gCYC9ERh0XWz",
-   "sweep reply failed 9CeXdma1gCYC9ERh0XWz Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from ONBOUKRXWwf00nOEW2u6",
-   "sweep reply failed ONBOUKRXWwf00nOEW2u6 Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from 3fPuA2SwSEaFnLStdxD8",
-   "sweep reply failed 3fPuA2SwSEaFnLStdxD8 Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from hYHGHZFg4sqGBeQ4cCvB",
-   "sweep reply failed hYHGHZFg4sqGBeQ4cCvB Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from wXAqRou04x5cHDjUK6G4",
-   "sweep reply failed wXAqRou04x5cHDjUK6G4 Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from t6MmSfmvhJZpHmFlHqU0",
-   "sweep reply failed t6MmSfmvhJZpHmFlHqU0 Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from 0rkWG6X830tzJUmSW2UP",
-   "sweep reply failed 0rkWG6X830tzJUmSW2UP Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from ze8mZXANGzMoOcwCF3tS",
-   "sweep reply failed ze8mZXANGzMoOcwCF3tS Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from zvS6HtzzB497DVxYCNIp",
-   "sweep reply failed zvS6HtzzB497DVxYCNIp Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from hi2MONI26fOsjel4KjBA",
-   "sweep reply failed hi2MONI26fOsjel4KjBA Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from DSgMrPgJpAYZodzMmHpY",
-   "sweep reply failed DSgMrPgJpAYZodzMmHpY Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from 2ls3JbMlCXkzKOx1aZjw",
-   "sweep reply failed 2ls3JbMlCXkzKOx1aZjw Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from EFt9Ea3JEgM3WZeus76Y",
-   "sweep reply failed EFt9Ea3JEgM3WZeus76Y Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from ngIJMEPvYSCki2yDHnxR",
-   "sweep reply failed ngIJMEPvYSCki2yDHnxR Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from zLqyOZwdQuAevoTTdqDX",
-   "sweep reply failed zLqyOZwdQuAevoTTdqDX Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from KVd2XpeH2hz1Ja10LvmP",
-   "sweep reply failed KVd2XpeH2hz1Ja10LvmP Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from 9IivIYAG3rSbKW5jXTGD",
-   "sweep reply failed 9IivIYAG3rSbKW5jXTGD Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from PeeJaL8MundPhvaAx8Iq",
-   "sweep reply failed PeeJaL8MundPhvaAx8Iq Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from jI76B5lf4LvEHU99EfJN",
-   "sweep reply failed jI76B5lf4LvEHU99EfJN Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from STbj4N9cwbti4ju1TkMM",
-   "sweep reply failed STbj4N9cwbti4ju1TkMM Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from izW3BW8RcAeBy0CAd16J",
-   "sweep reply failed izW3BW8RcAeBy0CAd16J Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from FW3unmqggx4joie65IFn",
-   "sweep reply failed FW3unmqggx4joie65IFn Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from 3CFOejQ1aU2IjVdxWhon",
-   "sweep reply failed 3CFOejQ1aU2IjVdxWhon Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from gD26zjvNBzw5eJCpy5SE",
-   "sweep reply failed gD26zjvNBzw5eJCpy5SE Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from cA6dDyD1PpKU2LLZxom8",
-   "sweep reply failed cA6dDyD1PpKU2LLZxom8 Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from tSKCH6FkStbGWqA7GUz9",
-   "sweep reply failed tSKCH6FkStbGWqA7GUz9 Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from uHpix4DSZ1Lr9pf9BJqd",
-   "sweep reply failed uHpix4DSZ1Lr9pf9BJqd Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from ENekYjjEGlGiGHUlcMOu",
-   "sweep reply failed ENekYjjEGlGiGHUlcMOu Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from dUh17oWMkLu5mvkwNxGn",
-   "sweep reply failed dUh17oWMkLu5mvkwNxGn Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from fLIWZovJtuH0QqmpMdZR",
-   "sweep reply failed fLIWZovJtuH0QqmpMdZR Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from KI9OhQnVIb4gySj9vIcG",
-   "sweep reply failed KI9OhQnVIb4gySj9vIcG Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from gpYbQjBpOB0dpbahq7mD",
-   "sweep reply failed gpYbQjBpOB0dpbahq7mD Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from oqmFcyUXtzRkrUfDORyI",
-   "sweep reply failed oqmFcyUXtzRkrUfDORyI Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from jHan14pF65CPBiOzFNzQ",
-   "sweep reply failed jHan14pF65CPBiOzFNzQ Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from mpMZZ5XWWikwbIXxuNBP",
-   "sweep reply failed mpMZZ5XWWikwbIXxuNBP Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from Y1h6pDNNPvpFgCSMrgIe",
-   "sweep reply failed Y1h6pDNNPvpFgCSMrgIe Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from IJit2zT4UrPJQJL1cTWi",
-   "sweep reply failed IJit2zT4UrPJQJL1cTWi Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from 2g9fvFzqtvpChkYzn6ZB",
-   "sweep reply failed 2g9fvFzqtvpChkYzn6ZB Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from MTQZFzEAmPXs6XdTOH2L",
-   "sweep reply failed MTQZFzEAmPXs6XdTOH2L Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from toafm0AOgjnOq4nXixz4",
-   "sweep reply failed toafm0AOgjnOq4nXixz4 Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from 0IQET7TJbaXoa6U4Ijat",
-   "sweep reply failed 0IQET7TJbaXoa6U4Ijat Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from qZpivuMlrrWMOFRAX0KK",
-   "sweep reply failed qZpivuMlrrWMOFRAX0KK Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from DfL1us4E9DEkabqxZJm8",
-   "sweep reply failed DfL1us4E9DEkabqxZJm8 Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits",
-   "sweep: answering missed text from 4tVipw6pJd0rFAXdasp6",
-   "sweep reply failed 4tVipw6pJd0rFAXdasp6 Error: Too many subrequests by single Worker invocation. To configure this limit, refer to https://developers.cloudflare.com/workers/wrangler/configuration/#limits"
-  ],
-  "errors": []
- },
- {
-  "at": 1794873870291,
-  "outcome": "ok",
-  "trigger": "* * * * *",
-  "logs": [
-   "slack poll {\"cards\":247,\"active\":0,\"sent\":[]}"
-  ],
-  "errors": []
- },
- {
-  "at": 1794873930035,
-  "outcome": "ok",
-  "trigger": "* * * * *",
-  "logs": [
-   "slack poll {\"cards\":247,\"active\":0,\"sent\":[]}"
-  ],
-  "errors": []
- },
- {
-  "at": 1794873952290,
+  "at": 1795546560757,
   "outcome": "ok",
   "trigger": "POST",
   "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1795546589840,
+  "outcome": "ok",
+  "trigger": "* * * * *",
+  "logs": [
+   "slack poll {\"cards\":282,\"active\":0,\"sent\":[]}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1795546562845,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1795546649677,
+  "outcome": "ok",
+  "trigger": "* * * * *",
+  "logs": [
+   "slack poll {\"cards\":282,\"active\":0,\"sent\":[]}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1795546647081,
+  "outcome": "ok",
+  "trigger": "*/3 * * * *",
+  "logs": [
+   "sweep: answering missed text from RnhPZqt3kqGN5GjW3Umi",
+   "no reply sent to RnhPZqt3kqGN5GjW3Umi deal unknown note "
+  ],
+  "errors": []
+ },
+ {
+  "at": 1795546677404,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1795546710028,
+  "outcome": "ok",
+  "trigger": "* * * * *",
+  "logs": [
+   "slack poll {\"cards\":282,\"active\":0,\"sent\":[]}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1795546718554,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1795546769834,
+  "outcome": "ok",
+  "trigger": "* * * * *",
+  "logs": [
+   "slack poll {\"cards\":283,\"active\":0,\"sent\":[]}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1795546827046,
+  "outcome": "ok",
+  "trigger": "*/3 * * * *",
+  "logs": [
+   "sweep: answering missed text from CyvDHrSu01CAfKeaaxiS",
+   "skip: bot off for CyvDHrSu01CAfKeaaxiS",
+   "sweep: answering missed text from WXia1umg43oqjnfoAl5g",
+   "skip: bot off for WXia1umg43oqjnfoAl5g"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1795546830092,
+  "outcome": "ok",
+  "trigger": "* * * * *",
+  "logs": [
+   "slack poll {\"cards\":283,\"active\":0,\"sent\":[]}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1795546875901,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [
+   "opt-out from hVIVoqCAp8kfOwYjIjBk",
+   "SMS DND refused, setting DND hVIVoqCAp8kfOwYjIjBk Error: GHL PUT /contacts/hVIVoqCAp8kfOwYjIjBk: 401 {\"statusCode\":401,\"message\":\"Not authorized to update permanent dnd setting for SMS\",\"succeded\":false,\"succeeded\":false,\"traceId\":\"dd8b5069-ac02-4384-9e2d-193708293cea\"}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1795546890504,
+  "outcome": "ok",
+  "trigger": "* * * * *",
+  "logs": [
+   "slack poll {\"cards\":283,\"active\":0,\"sent\":[]}"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1795546874814,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [],
+  "errors": []
+ },
+ {
+  "at": 1795546904448,
+  "outcome": "ok",
+  "trigger": "POST",
+  "logs": [
+   "skip: bot off for gKNUwIz5YWPRGI3eCIKL"
+  ],
+  "errors": []
+ },
+ {
+  "at": 1795546949887,
+  "outcome": "ok",
+  "trigger": "* * * * *",
+  "logs": [
+   "slack poll {\"cards\":283,\"active\":0,\"sent\":[]}"
+  ],
   "errors": []
  }
 ]

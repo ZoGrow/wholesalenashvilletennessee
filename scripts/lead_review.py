@@ -20,6 +20,8 @@ def get(path):
         except urllib.error.HTTPError as e:
             if e.code in (429, 500, 502, 503) and attempt < 3:
                 time.sleep(2 ** attempt); continue
+            if e.code in (400, 404):  # conversation deleted between search and read; skip it
+                return {}
             raise
 
 def when(v):

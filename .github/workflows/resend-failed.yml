@@ -39,7 +39,9 @@ jobs:
           MODE: ${{ inputs.mode || 'send' }}
           LIMIT: ${{ inputs.limit || '1000' }}
           DAYS: ${{ inputs.days || '2' }}
-        run: python scripts/resend_failed.py
+        run: |
+          if grep -q "^$(TZ=America/Chicago date +%F)" stats/off_days.txt 2>/dev/null; then echo "Day off; skipping."; exit 0; fi
+          python scripts/resend_failed.py
       - if: always()
         run: |
           git config user.name "lead-pipeline"

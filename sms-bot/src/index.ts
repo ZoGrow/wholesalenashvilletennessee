@@ -8,6 +8,7 @@ import { SYSTEM_PROMPT } from "./prompt";
 
 export interface Env {
   ANTHROPIC_API_KEY: string;
+  OFF_DAYS?: string; // comma/space separated Central dates (YYYY-MM-DD) with no outbound check-ins or follow-ups
   SLACK_WEBHOOK_URL?: string; // optional: qualified leads are posted to this Slack channel
   APIFY_TOKEN?: string; // Zillow lookups through Apify (exact Zestimate + Zillow link)
   GHL_TOKEN: string;
@@ -86,6 +87,9 @@ export default {
   },
 
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
+    const outbound = event.cron !== SLACK_CRON && event.cron !== SWEEP_CRON; // check-ins and offer follow-ups
+    const today = new Date().toLocaleDateString("en-CA", { timeZone: "America/Chicago" });
+    if (outbound && (env.OFF_DAYS || "").includes(today)) { console.log("day off, no outbound texts", today); return; }
     ctx.waitUntil(event.cron === SLACK_CRON ? pollSlackOffers(env).then((r) => console.log("slack poll", JSON.stringify(r))) : event.cron === SWEEP_CRON ? answerMissed(env)
       : event.cron === OFFER_CRON ? runOfferFollowUps(env) : runCheckIns(env));
   },

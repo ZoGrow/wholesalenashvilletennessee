@@ -3,7 +3,7 @@
  "tagged": 29237,
  "eligible": 0,
  "skipped": {
-  "tag agent-replied": 4050,
+  "tag agent-replied": 4054,
   "dnd": 914,
   "tag opted-out": 845,
   "bad number (Error 30003 - Number)": 7,
@@ -11,7 +11,7 @@
   "tag dnd-skipped": 21,
   "bad number (Error 30007 - Messag)": 1,
   "no messages": 10,
-  "they replied": 1068,
+  "they replied": 1067,
   "tag not-qualified": 2,
   "tag hot-lead": 4,
   "bad number (Error 21610 - DND En)": 1

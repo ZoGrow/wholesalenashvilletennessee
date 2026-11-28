@@ -1,25 +1,24 @@
 {
  "mode": "send",
- "tagged": 29918,
+ "tagged": 30175,
  "eligible": 0,
  "skipped": {
-  "tag agent-replied": 4067,
-  "dnd": 941,
-  "they replied": 1102,
-  "bad number (Error 30008 - Messag)": 4,
+  "tag agent-replied": 4153,
+  "tag opted-out": 868,
+  "dnd": 944,
+  "bad number (Error 30008 - Messag)": 2,
   "bad number (Error 21610 - DND En)": 1,
-  "tag opted-out": 846,
-  "bad number (Error 30003 - Number)": 2,
   "tag dnd-skipped": 24,
   "no messages": 10,
-  "read error 400": 1,
+  "they replied": 1102,
   "tag not-qualified": 2,
-  "tag hot-lead": 4
+  "tag hot-lead": 4,
+  "bad number (Error 30003 - Number)": 1
  },
  "errors": {
-  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 4,
-  "Error 30003 - Number unreachable or out of service.": 2,
-  "Error 21610 - DND Enabled or user has unsubscribed by replying STOP": 1
+  "Error 30008 - Message failed due to unknown error. Retry or check Twilio logs.": 2,
+  "Error 21610 - DND Enabled or user has unsubscribed by replying STOP": 1,
+  "Error 30003 - Number unreachable or out of service.": 1
  },
  "sent": 0,
  "delivered": 0,
